@@ -1,0 +1,92 @@
+[ERROR] 08-12-2021 22:49:15.125 [main] AbstractLazyInitializer - Initialization failure [dao.Repositorio#]
+java.lang.NullPointerException: null
+	at org.hibernate.proxy.AbstractLazyInitializer.permissiveInitialization(AbstractLazyInitializer.java:205) [hibernate-core-5.5.3.Final.jar:5.5.3.Final]
+	at org.hibernate.proxy.AbstractLazyInitializer.initialize(AbstractLazyInitializer.java:168) [hibernate-core-5.5.3.Final.jar:5.5.3.Final]
+	at org.hibernate.proxy.AbstractLazyInitializer.getImplementation(AbstractLazyInitializer.java:317) [hibernate-core-5.5.3.Final.jar:5.5.3.Final]
+	at org.hibernate.proxy.pojo.bytebuddy.ByteBuddyInterceptor.intercept(ByteBuddyInterceptor.java:45) [hibernate-core-5.5.3.Final.jar:5.5.3.Final]
+	at org.hibernate.proxy.ProxyConfiguration$InterceptorDispatcher.intercept(ProxyConfiguration.java:95) [hibernate-core-5.5.3.Final.jar:5.5.3.Final]
+	at dao.Repositorio$HibernateProxy$o6FX2hFG.toString(Unknown Source) [classes/:?]
+	at java.lang.String.valueOf(String.java:2951) [?:?]
+	at dto.CommitDTO.toString(CommitDTO.java:16) [classes/:?]
+	at java.lang.String.valueOf(String.java:2951) [?:?]
+	at java.lang.StringBuilder.append(StringBuilder.java:168) [?:?]
+	at java.util.AbstractCollection.toString(AbstractCollection.java:473) [?:?]
+	at java.util.Formatter$FormatSpecifier.printString(Formatter.java:3031) [?:?]
+	at java.util.Formatter$FormatSpecifier.print(Formatter.java:2908) [?:?]
+	at java.util.Formatter.format(Formatter.java:2673) [?:?]
+	at java.util.Formatter.format(Formatter.java:2609) [?:?]
+	at java.lang.String.format(String.java:2897) [?:?]
+	at java.util.Optional.toString(Optional.java:466) [?:?]
+	at controller.CommitController.getAllCommitsJSON(CommitController.java:39) [classes/:?]
+	at Facade.commitsJSON(Facade.java:527) [classes/:?]
+	at Facade.salidaJSON(Facade.java:88) [classes/:?]
+	at Facade.selectJsonOrXml(Facade.java:73) [classes/:?]
+	at App.main(App.java:19) [classes/:?]
+[ERROR] 08-12-2021 22:53:51.971 [main] AbstractLazyInitializer - Initialization failure [dao.Repositorio#]
+java.lang.NullPointerException: null
+	at org.hibernate.proxy.AbstractLazyInitializer.permissiveInitialization(AbstractLazyInitializer.java:205) [hibernate-core-5.5.3.Final.jar:5.5.3.Final]
+	at org.hibernate.proxy.AbstractLazyInitializer.initialize(AbstractLazyInitializer.java:168) [hibernate-core-5.5.3.Final.jar:5.5.3.Final]
+	at org.hibernate.proxy.AbstractLazyInitializer.getImplementation(AbstractLazyInitializer.java:317) [hibernate-core-5.5.3.Final.jar:5.5.3.Final]
+	at org.hibernate.proxy.pojo.bytebuddy.ByteBuddyInterceptor.intercept(ByteBuddyInterceptor.java:45) [hibernate-core-5.5.3.Final.jar:5.5.3.Final]
+	at org.hibernate.proxy.ProxyConfiguration$InterceptorDispatcher.intercept(ProxyConfiguration.java:95) [hibernate-core-5.5.3.Final.jar:5.5.3.Final]
+	at dao.Repositorio$HibernateProxy$lPyvSxve.toString(Unknown Source) [classes/:?]
+	at java.lang.String.valueOf(String.java:2951) [?:?]
+	at dto.CommitDTO.toString(CommitDTO.java:16) [classes/:?]
+	at java.lang.String.valueOf(String.java:2951) [?:?]
+	at java.lang.StringBuilder.append(StringBuilder.java:168) [?:?]
+	at java.util.AbstractCollection.toString(AbstractCollection.java:473) [?:?]
+	at java.util.Formatter$FormatSpecifier.printString(Formatter.java:3031) [?:?]
+	at java.util.Formatter$FormatSpecifier.print(Formatter.java:2908) [?:?]
+	at java.util.Formatter.format(Formatter.java:2673) [?:?]
+	at java.util.Formatter.format(Formatter.java:2609) [?:?]
+	at java.lang.String.format(String.java:2897) [?:?]
+	at java.util.Optional.toString(Optional.java:466) [?:?]
+	at controller.CommitController.getAllCommitsJSON(CommitController.java:39) [classes/:?]
+	at Facade.commitsJSON(Facade.java:527) [classes/:?]
+	at Facade.salidaJSON(Facade.java:88) [classes/:?]
+	at Facade.selectJsonOrXml(Facade.java:73) [classes/:?]
+	at App.main(App.java:19) [classes/:?]
+[ERROR] 08-12-2021 23:06:42.939 [main] SqlExceptionHelper - (conn=84) Field 'idRepositorio' doesn't have a default value
+[ERROR] 10-12-2021 19:57:40.822 [main] SqlExceptionHelper - (conn=64) Field 'trabajadores' doesn't have a default value
+[ERROR] 10-12-2021 22:28:24.296 [main] SqlExceptionHelper - (conn=275) Cannot delete or update a parent row: a foreign key constraint fails (`adSL`.`proyecto`, CONSTRAINT `FK9asdh6j6quf5dx0m6pfmlhb05` FOREIGN KEY (`idDepartamento`) REFERENCES `departamento` (`idDepartamento`))
+[ERROR] 10-12-2021 22:34:04.561 [main] SqlExceptionHelper - (conn=283) Cannot delete or update a parent row: a foreign key constraint fails (`adSL`.`proyecto`, CONSTRAINT `FK9asdh6j6quf5dx0m6pfmlhb05` FOREIGN KEY (`idDepartamento`) REFERENCES `departamento` (`idDepartamento`))
+[ERROR] 10-12-2021 22:39:15.337 [main] SqlExceptionHelper - (conn=291) Cannot delete or update a parent row: a foreign key constraint fails (`adSL`.`proyecto`, CONSTRAINT `FK9asdh6j6quf5dx0m6pfmlhb05` FOREIGN KEY (`idDepartamento`) REFERENCES `departamento` (`idDepartamento`))
+[ERROR] 10-12-2021 22:43:19.590 [main] SqlExceptionHelper - (conn=302) Cannot delete or update a parent row: a foreign key constraint fails (`adSL`.`proyecto`, CONSTRAINT `FK9asdh6j6quf5dx0m6pfmlhb05` FOREIGN KEY (`idDepartamento`) REFERENCES `departamento` (`idDepartamento`))
+[ERROR] 11-12-2021 01:20:45.264 [main] SqlExceptionHelper - (conn=596) Cannot delete or update a parent row: a foreign key constraint fails (`adSL`.`proyecto`, CONSTRAINT `FK9asdh6j6quf5dx0m6pfmlhb05` FOREIGN KEY (`idDepartamento`) REFERENCES `departamento` (`idDepartamento`))
+[ERROR] 11-12-2021 01:25:27.861 [main] SqlExceptionHelper - (conn=612) Cannot delete or update a parent row: a foreign key constraint fails (`adSL`.`proyecto`, CONSTRAINT `FK9asdh6j6quf5dx0m6pfmlhb05` FOREIGN KEY (`idDepartamento`) REFERENCES `departamento` (`idDepartamento`))
+[ERROR] 11-12-2021 01:26:35.873 [main] SqlExceptionHelper - (conn=620) Cannot delete or update a parent row: a foreign key constraint fails (`adSL`.`proyecto`, CONSTRAINT `FK9asdh6j6quf5dx0m6pfmlhb05` FOREIGN KEY (`idDepartamento`) REFERENCES `departamento` (`idDepartamento`))
+[ERROR] 11-12-2021 01:49:53.154 [main] SqlExceptionHelper - (conn=628) Cannot delete or update a parent row: a foreign key constraint fails (`adSL`.`proyecto`, CONSTRAINT `FK9asdh6j6quf5dx0m6pfmlhb05` FOREIGN KEY (`idDepartamento`) REFERENCES `departamento` (`idDepartamento`))
+[ERROR] 11-12-2021 01:53:33.042 [main] SqlExceptionHelper - (conn=636) Cannot delete or update a parent row: a foreign key constraint fails (`adSL`.`proyecto`, CONSTRAINT `FK9asdh6j6quf5dx0m6pfmlhb05` FOREIGN KEY (`idDepartamento`) REFERENCES `departamento` (`idDepartamento`))
+[ERROR] 11-12-2021 01:57:06.861 [main] SqlExceptionHelper - (conn=644) Cannot delete or update a parent row: a foreign key constraint fails (`adSL`.`proyecto`, CONSTRAINT `FK9asdh6j6quf5dx0m6pfmlhb05` FOREIGN KEY (`idDepartamento`) REFERENCES `departamento` (`idDepartamento`))
+[ERROR] 11-12-2021 02:00:45.214 [main] SqlExceptionHelper - (conn=652) Cannot delete or update a parent row: a foreign key constraint fails (`adSL`.`proyecto`, CONSTRAINT `FK9asdh6j6quf5dx0m6pfmlhb05` FOREIGN KEY (`idDepartamento`) REFERENCES `departamento` (`idDepartamento`))
+[ERROR] 11-12-2021 02:02:45.515 [main] SqlExceptionHelper - (conn=663) Cannot delete or update a parent row: a foreign key constraint fails (`adSL`.`proyecto`, CONSTRAINT `FK9asdh6j6quf5dx0m6pfmlhb05` FOREIGN KEY (`idDepartamento`) REFERENCES `departamento` (`idDepartamento`))
+[ERROR] 11-12-2021 02:35:57.647 [main] SqlExceptionHelper - (conn=741) Cannot delete or update a parent row: a foreign key constraint fails (`adSL`.`proyecto`, CONSTRAINT `FK9asdh6j6quf5dx0m6pfmlhb05` FOREIGN KEY (`idDepartamento`) REFERENCES `departamento` (`idDepartamento`))
+[ERROR] 11-12-2021 02:55:28.045 [main] SqlExceptionHelper - (conn=780) Cannot delete or update a parent row: a foreign key constraint fails (`adSL`.`repositorio`, CONSTRAINT `FK5wksucmrvvl2g0d1899jseud4` FOREIGN KEY (`idProyecto`) REFERENCES `proyecto` (`idProyecto`))
+[ERROR] 11-12-2021 03:18:59.632 [main] SqlExceptionHelper - (conn=835) Cannot delete or update a parent row: a foreign key constraint fails (`adSL`.`repositorio`, CONSTRAINT `FK5wksucmrvvl2g0d1899jseud4` FOREIGN KEY (`idProyecto`) REFERENCES `proyecto` (`idProyecto`))
+[ERROR] 11-12-2021 03:24:54.882 [main] SqlExceptionHelper - (conn=843) Cannot delete or update a parent row: a foreign key constraint fails (`adSL`.`repositorio`, CONSTRAINT `FK5wksucmrvvl2g0d1899jseud4` FOREIGN KEY (`idProyecto`) REFERENCES `proyecto` (`idProyecto`))
+[ERROR] 11-12-2021 03:27:37.428 [main] SqlExceptionHelper - (conn=851) Cannot delete or update a parent row: a foreign key constraint fails (`adSL`.`repositorio`, CONSTRAINT `FK5wksucmrvvl2g0d1899jseud4` FOREIGN KEY (`idProyecto`) REFERENCES `proyecto` (`idProyecto`))
+[ERROR] 11-12-2021 03:31:51.299 [main] SqlExceptionHelper - (conn=867) Cannot delete or update a parent row: a foreign key constraint fails (`adSL`.`repositorio`, CONSTRAINT `FK5wksucmrvvl2g0d1899jseud4` FOREIGN KEY (`idProyecto`) REFERENCES `proyecto` (`idProyecto`))
+[ERROR] 11-12-2021 03:38:21.797 [main] SqlExceptionHelper - (conn=876) Cannot delete or update a parent row: a foreign key constraint fails (`adSL`.`repositorio`, CONSTRAINT `FK5wksucmrvvl2g0d1899jseud4` FOREIGN KEY (`idProyecto`) REFERENCES `proyecto` (`idProyecto`))
+[ERROR] 11-12-2021 12:55:15.029 [main] SqlExceptionHelper - (conn=884) Cannot delete or update a parent row: a foreign key constraint fails (`adSL`.`repositorio`, CONSTRAINT `FK5wksucmrvvl2g0d1899jseud4` FOREIGN KEY (`idProyecto`) REFERENCES `proyecto` (`idProyecto`))
+[ERROR] 11-12-2021 13:30:18.629 [main] SqlExceptionHelper - (conn=958) Unknown column 'commits0_.autor' in 'field list'
+[ERROR] 11-12-2021 13:50:11.966 [main] SqlExceptionHelper - (conn=1014) Cannot delete or update a parent row: a foreign key constraint fails (`adSL`.`repositorio`, CONSTRAINT `FK5wksucmrvvl2g0d1899jseud4` FOREIGN KEY (`idProyecto`) REFERENCES `proyecto` (`idProyecto`))
+[ERROR] 11-12-2021 13:51:16.019 [main] SqlExceptionHelper - (conn=1022) Cannot delete or update a parent row: a foreign key constraint fails (`adSL`.`repositorio`, CONSTRAINT `FK5wksucmrvvl2g0d1899jseud4` FOREIGN KEY (`idProyecto`) REFERENCES `proyecto` (`idProyecto`))
+[ERROR] 11-12-2021 13:52:07.488 [main] SqlExceptionHelper - (conn=1030) Cannot delete or update a parent row: a foreign key constraint fails (`adSL`.`repositorio`, CONSTRAINT `FK5wksucmrvvl2g0d1899jseud4` FOREIGN KEY (`idProyecto`) REFERENCES `proyecto` (`idProyecto`))
+[ERROR] 11-12-2021 13:53:08.625 [main] SqlExceptionHelper - (conn=1038) Cannot delete or update a parent row: a foreign key constraint fails (`adSL`.`repositorio`, CONSTRAINT `FK5wksucmrvvl2g0d1899jseud4` FOREIGN KEY (`idProyecto`) REFERENCES `proyecto` (`idProyecto`))
+[ERROR] 11-12-2021 13:55:29.449 [main] SqlExceptionHelper - (conn=1046) Cannot delete or update a parent row: a foreign key constraint fails (`adSL`.`repositorio`, CONSTRAINT `FK5wksucmrvvl2g0d1899jseud4` FOREIGN KEY (`idProyecto`) REFERENCES `proyecto` (`idProyecto`))
+[ERROR] 11-12-2021 14:09:14.214 [main] SqlExceptionHelper - (conn=1094) Cannot delete or update a parent row: a foreign key constraint fails (`adSL`.`programador`, CONSTRAINT `FKdc3am238cwnilpqpxqklhp32h` FOREIGN KEY (`idDepartamento`) REFERENCES `departamento` (`idDepartamento`))
+[ERROR] 11-12-2021 16:25:14.429 [main] SqlExceptionHelper - (conn=1374) Cannot delete or update a parent row: a foreign key constraint fails (`adSL`.`proyecto`, CONSTRAINT `FK9asdh6j6quf5dx0m6pfmlhb05` FOREIGN KEY (`idDepartamento`) REFERENCES `departamento` (`idDepartamento`))
+[ERROR] 11-12-2021 16:30:48.274 [main] SqlExceptionHelper - (conn=1396) Column 'idProyecto' cannot be null
+[ERROR] 11-12-2021 18:30:57.732 [main] SqlExceptionHelper - (conn=1572) Cannot delete or update a parent row: a foreign key constraint fails (`adSL`.`utilidades`, CONSTRAINT `FKdg4xmtv1q0qf4ro60f6xrtaax` FOREIGN KEY (`idProyecto`) REFERENCES `proyecto` (`idProyecto`))
+[ERROR] 11-12-2021 18:34:11.968 [main] SqlExceptionHelper - (conn=1584) Cannot delete or update a parent row: a foreign key constraint fails (`adSL`.`utilidades`, CONSTRAINT `FKdg4xmtv1q0qf4ro60f6xrtaax` FOREIGN KEY (`idProyecto`) REFERENCES `proyecto` (`idProyecto`))
+[ERROR] 11-12-2021 18:36:21.733 [main] SqlExceptionHelper - (conn=1598) Cannot delete or update a parent row: a foreign key constraint fails (`adSL`.`utilidades`, CONSTRAINT `FKdg4xmtv1q0qf4ro60f6xrtaax` FOREIGN KEY (`idProyecto`) REFERENCES `proyecto` (`idProyecto`))
+[ERROR] 11-12-2021 18:41:01.865 [main] SqlExceptionHelper - (conn=1626) Cannot delete or update a parent row: a foreign key constraint fails (`adSL`.`utilidades`, CONSTRAINT `FKdg4xmtv1q0qf4ro60f6xrtaax` FOREIGN KEY (`idProyecto`) REFERENCES `proyecto` (`idProyecto`))
+[ERROR] 11-12-2021 18:56:25.357 [main] SqlExceptionHelper - (conn=19) Cannot delete or update a parent row: a foreign key constraint fails (`adSL`.`utilidades`, CONSTRAINT `FKdg4xmtv1q0qf4ro60f6xrtaax` FOREIGN KEY (`idProyecto`) REFERENCES `proyecto` (`idProyecto`))
+[ERROR] 11-12-2021 19:12:34.681 [main] SqlExceptionHelper - (conn=77) Cannot delete or update a parent row: a foreign key constraint fails (`adSL`.`conocimiento`, CONSTRAINT `FKapt7y1oghoo5c3dcn88cw4mjm` FOREIGN KEY (`idProgramador`) REFERENCES `programador` (`idProgramador`))
+[ERROR] 11-12-2021 19:13:29.948 [main] SqlExceptionHelper - (conn=90) Cannot delete or update a parent row: a foreign key constraint fails (`adSL`.`conocimiento`, CONSTRAINT `FKapt7y1oghoo5c3dcn88cw4mjm` FOREIGN KEY (`idProgramador`) REFERENCES `programador` (`idProgramador`))
+[ERROR] 11-12-2021 19:17:04.424 [main] SqlExceptionHelper - (conn=103) Cannot delete or update a parent row: a foreign key constraint fails (`adSL`.`conocimiento`, CONSTRAINT `FKapt7y1oghoo5c3dcn88cw4mjm` FOREIGN KEY (`idProgramador`) REFERENCES `programador` (`idProgramador`))
+[ERROR] 11-12-2021 21:20:04.770 [main] SqlExceptionHelper - (conn=370) Field 'idRepositorio' doesn't have a default value
+[ERROR] 11-12-2021 21:20:05.467 [main] SqlExceptionHelper - (conn=371) Column 'idDepartamento' cannot be null
+[ERROR] 11-12-2021 21:29:05.953 [main] SqlExceptionHelper - (conn=414) Field 'esJefeDepartamento' doesn't have a default value
+[ERROR] 11-12-2021 21:36:56.982 [main] SqlExceptionHelper - (conn=431) Field 'esJefeDepartamento' doesn't have a default value
+[ERROR] 11-12-2021 21:38:00.781 [main] SqlExceptionHelper - (conn=448) Field 'esJefeDepartamento' doesn't have a default value
