@@ -2,7 +2,6 @@ package repository;
 
 import dao.Programador;
 import dao.Proyecto;
-import dao.Tecnologia;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Order;

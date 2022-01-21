@@ -7,7 +7,6 @@ import javax.persistence.TypedQuery;
 
 import java.sql.SQLException;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class RepoProgramador implements CrudRepository<Programador, String> {
 
@@ -41,7 +40,7 @@ public class RepoProgramador implements CrudRepository<Programador, String> {
         hc.open();
         try {
             hc.getTransaction().begin();
-            programador.setIdProgramador(UUID.randomUUID().toString());
+            programador.setId(UUID.randomUUID().toString());
             hc.getManager().persist(programador);
             hc.getTransaction().commit();
             hc.close();
@@ -69,7 +68,7 @@ public class RepoProgramador implements CrudRepository<Programador, String> {
             hc.close();
             return Optional.of(programador);
         } catch (Exception e) {
-            throw new SQLException("Error RepoProgramador al actualizar commit con id: " + programador.getIdProgramador());
+            throw new SQLException("Error RepoProgramador al actualizar commit con id: " + programador.getId());
         } finally {
             if (hc.getTransaction().isActive()) {
                 hc.getTransaction().rollback();
@@ -87,13 +86,13 @@ public class RepoProgramador implements CrudRepository<Programador, String> {
             try {
                 hc.getTransaction().begin();
                 // Ojo que borrar implica que estemos en la misma sesión y nos puede dar problemas, por eso lo recuperamos otra vez
-                programador = hc.getManager().find(Programador.class, programador.getIdProgramador());
+                programador = hc.getManager().find(Programador.class, programador.getId());
                 hc.getManager().remove(programador);
                 hc.getTransaction().commit();
                 hc.close();
                 return Optional.of(programador);
             } catch (Exception e) {
-                throw new SQLException("Error RepoProgramador al eliminar categoria con id: " + programador.getIdProgramador());
+                throw new SQLException("Error RepoProgramador al eliminar categoria con id: " + programador.getId());
             } finally {
                 if (hc.getTransaction().isActive()) {
                     hc.getTransaction().rollback();

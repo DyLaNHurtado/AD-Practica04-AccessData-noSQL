@@ -2,19 +2,15 @@ package dto;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.google.gson.annotations.Expose;
 import dao.Departamento;
 import dao.Programador;
-import dao.Tecnologia;
 import lombok.Builder;
 import lombok.Data;
 
-import javax.persistence.Access;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 @Data
 @Builder

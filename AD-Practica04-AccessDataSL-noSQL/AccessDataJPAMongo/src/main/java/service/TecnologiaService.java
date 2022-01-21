@@ -1,8 +1,5 @@
 package service;
 
-import dto.TecnologiaDTO;
-import mapper.TecnologiaMapper;
-import dao.Tecnologia;
 import repository.RepoTecnologia;
 
 import java.sql.SQLException;

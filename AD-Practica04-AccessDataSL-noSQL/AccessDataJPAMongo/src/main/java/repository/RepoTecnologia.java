@@ -1,6 +1,5 @@
 package repository;
 
-import dao.Tecnologia;
 import manager.HibernateController;
 
 import javax.persistence.TypedQuery;

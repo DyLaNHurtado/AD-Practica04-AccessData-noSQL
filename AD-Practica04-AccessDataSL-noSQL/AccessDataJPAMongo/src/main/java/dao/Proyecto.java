@@ -20,32 +20,31 @@ import java.util.List;
 })
 
 public class Proyecto implements Serializable {
-    private String idProyecto;
+    private long idProyecto;
     private String nombre;
     private Double presupuesto;
     private LocalDate fechaInicio;
     private LocalDate fechaFin;
-    private List<Tecnologia> tecnologias = new ArrayList<>();
+    private List<String> tecnologias = new ArrayList<>();
     private Departamento departamento;
     private List<Programador> programadores = new ArrayList<>();
 
     public Proyecto() {
     }
 
-    public Proyecto(String idProyecto) {
+    public Proyecto(long idProyecto) {
         this.idProyecto= idProyecto;
     }
 
     @Id
     @Column(name="idProyecto",nullable = false)
-    public String getIdProyecto() {
+    public long getIdProyecto() {
         return idProyecto;
     }
-
-
-    public void setIdProyecto(String idProyecto) {
+    public void setIdProyecto(long idProyecto) {
         this.idProyecto = idProyecto;
     }
+
     @Basic
     @Column(name="nombre",nullable = false)
     public String getNombre() {
@@ -84,15 +83,6 @@ public class Proyecto implements Serializable {
         this.fechaFin = fechaFin;
     }
 
-    @ManyToMany(mappedBy = "proyectos",cascade = CascadeType.ALL)
-    public List<Tecnologia> getTecnologias() {
-        return tecnologias;
-    }
-
-    public void setTecnologias(List<Tecnologia> tecnologias) {
-        this.tecnologias = tecnologias;
-    }
-
     @ManyToOne()
     @JoinColumn(name="idDepartamento",referencedColumnName = "idDepartamento",columnDefinition = "departamento", foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT))
     public Departamento getDepartamento() {
@@ -114,7 +104,7 @@ public class Proyecto implements Serializable {
     @Override
     public String toString() {
         List<String> idProgramadores = new ArrayList<>();
-        programadores.forEach(x -> idProgramadores.add(x.getIdProgramador()));
+        programadores.forEach(x -> idProgramadores.add(x.getId())); //da error
         return "Proyecto{\n" +
                 "idProyecto='\n" + idProyecto + '\'' +
                 ", \nnombre='" + nombre + '\'' +

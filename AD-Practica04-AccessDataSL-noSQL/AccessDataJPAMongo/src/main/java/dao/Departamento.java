@@ -19,30 +19,30 @@ import java.util.List;
 })
 public class Departamento implements Serializable {
 
-    private String idDepartamento;
+    private long idDepartamento;
     private String nombre;
-    private List<Programador> jefes;
+    @Embedded
+    private JefeDepartamento jefe;
     private List<Proyecto> proyFinalizados = new ArrayList<>();
     private List<Proyecto> proyDesarrollo = new ArrayList<>();
     private Double presupuesto;
     private Double presupuestoAnual;
     private List<Programador> trabajadores = new ArrayList<>();
 
-
     public Departamento() {
     }
 
-    public Departamento(String idDepartamento) {
+    public Departamento(long idDepartamento) {
         this.idDepartamento = idDepartamento;
     }
 
     @Id
-    @Column(name = "idDepartamento", nullable = false)
-    public String getIdDepartamento() {
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "id_departamento", nullable = false)
+    public long getIdDepartamento() {
         return idDepartamento;
     }
-
-    public void setIdDepartamento(String idDepartamento) {
+    public void setIdDepartamento(long idDepartamento) {
         this.idDepartamento = idDepartamento;
     }
 
@@ -61,12 +61,12 @@ public class Departamento implements Serializable {
             name = "historialJefesDep",
             joinColumns = @JoinColumn(name = "idDepartamento",foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT)),
             inverseJoinColumns = @JoinColumn(name = "idProgramador",foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT)))
-    public List<Programador> getJefes() {
-        return jefes;
+    public JefeDepartamento getJefe() {
+        return jefe;
     }
 
-    public void setJefes(List<Programador> jefes) {
-        this.jefes = jefes;
+    public void setJefe(JefeDepartamento jefe) {
+        this.jefe = jefe;
     }
 
     @OneToMany(mappedBy = "departamento",cascade = CascadeType.ALL)
@@ -87,7 +87,7 @@ public class Departamento implements Serializable {
     }
 
     @Basic
-    @Column()
+    @Column(name="presupuesto",nullable = false)
     public Double getPresupuesto() {
         return presupuesto;
     }
@@ -97,7 +97,7 @@ public class Departamento implements Serializable {
     }
 
     @Basic
-    @Column()
+    @Column(name="presupuesto_anual")
     public Double getPresupuestoAnual() {
         return presupuestoAnual;
     }
@@ -120,7 +120,7 @@ public class Departamento implements Serializable {
         return "Departamento{\n" +
                 "idDepartamento='" + idDepartamento + '\'' +
                 ", \nnombre='" + nombre + '\'' +
-                ", \njefes='" + jefes + '\'' +
+                ", \njefe='" + jefe + '\'' +
                 ", \nproyFinalizados=" + proyFinalizados +
                 ", \nproyDesarrollo=" + proyDesarrollo +
                 ", \npresupuesto=" + presupuesto +
