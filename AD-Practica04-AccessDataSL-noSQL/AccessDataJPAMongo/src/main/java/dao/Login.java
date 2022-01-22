@@ -1,14 +1,12 @@
 package dao;
 
-import org.bson.types.ObjectId;
-
 import java.sql.Timestamp;
 
 public class Login {
 
     private long id;
     private String correo;
-    private String contraseña;
+    private String password;
     private Timestamp fecha;
 
     public Login() {
@@ -30,12 +28,12 @@ public class Login {
         this.correo = correo;
     }
 
-    public String getContraseña() {
-        return contraseña;
+    public String getPassword() {
+        return password;
     }
 
-    public void setContraseña(String contraseña) {
-        this.contraseña = contraseña;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Timestamp getFecha() {

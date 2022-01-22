@@ -5,6 +5,7 @@ import java.sql.Timestamp;
 import java.util.List;
 
 @Entity
+@Table(name="repositorio")
 public class Repositorio {
 
     private long id;
@@ -46,8 +47,8 @@ public class Repositorio {
     public void setFechaCreacion(Timestamp fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
-
-    @OneToOne
+    //mappedBy = al nombre de la variable repositorio dentro de proyecto
+    @OneToOne(mappedBy = "repositorio")
     public Proyecto getProyecto() {
         return proyecto;
     }
@@ -56,7 +57,7 @@ public class Repositorio {
         this.proyecto = proyecto;
     }
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "repositorio", cascade = CascadeType.REMOVE, orphanRemoval = true)
     public List<Issue> getIssues() {
         return issues;
     }
@@ -65,7 +66,7 @@ public class Repositorio {
         this.issues = issues;
     }
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "repositorio", cascade = CascadeType.REMOVE, orphanRemoval = true)
     public List<Commit> getCommits() {
         return commits;
     }
@@ -73,4 +74,5 @@ public class Repositorio {
     public void setCommits(List<Commit> commits) {
         this.commits = commits;
     }
+
 }

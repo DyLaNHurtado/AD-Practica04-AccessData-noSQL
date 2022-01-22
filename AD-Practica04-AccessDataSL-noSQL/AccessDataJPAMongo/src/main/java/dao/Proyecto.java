@@ -5,6 +5,7 @@ import lombok.Builder;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,38 +16,40 @@ import java.util.List;
 @Entity
 @Table(name = "proyecto")
 @NamedQueries({
-        @NamedQuery(name = "Proyecto.getAll", query = "SELECT c FROM dao.Proyecto c"),
-        @NamedQuery(name = "Proyecto.getByIdDepartamento", query = "SELECT c FROM dao.Proyecto c WHERE c.departamento.idDepartamento=:idDepartamento"),
+        @NamedQuery(name = "Proyecto.getAll", query = "SELECT c FROM dao.Proyecto c")
 })
 
 public class Proyecto implements Serializable {
     private long idProyecto;
     private String nombre;
     private Double presupuesto;
-    private LocalDate fechaInicio;
-    private LocalDate fechaFin;
+    private Timestamp fechaInicio;
+    private Timestamp fechaFin;
     private List<String> tecnologias = new ArrayList<>();
+    private JefeProyecto jefe;
     private Departamento departamento;
+    private Repositorio repositorio;
     private List<Programador> programadores = new ArrayList<>();
 
     public Proyecto() {
     }
 
     public Proyecto(long idProyecto) {
-        this.idProyecto= idProyecto;
+        this.idProyecto = idProyecto;
     }
 
     @Id
-    @Column(name="idProyecto",nullable = false)
+    @Column(name = "idProyecto", nullable = false)
     public long getIdProyecto() {
         return idProyecto;
     }
+
     public void setIdProyecto(long idProyecto) {
         this.idProyecto = idProyecto;
     }
 
     @Basic
-    @Column(name="nombre",nullable = false)
+    @Column(name = "nombre", nullable = false)
     public String getNombre() {
         return nombre;
     }
@@ -56,7 +59,7 @@ public class Proyecto implements Serializable {
     }
 
     @Basic
-    @Column(name="presupuesto",nullable = false)
+    @Column(name = "presupuesto", nullable = false)
     public Double getPresupuesto() {
         return presupuesto;
     }
@@ -64,32 +67,66 @@ public class Proyecto implements Serializable {
     public void setPresupuesto(Double presupuesto) {
         this.presupuesto = presupuesto;
     }
+
     @Basic
-    @Column(name="fechaInicio",nullable = false)
-    public LocalDate getFechaInicio() {
+    @Column(name = "fechaInicio", nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    public Timestamp getFechaInicio() {
         return fechaInicio;
     }
 
-    public void setFechaInicio(LocalDate fechaInicio) {
+    public void setFechaInicio(Timestamp fechaInicio) {
         this.fechaInicio = fechaInicio;
     }
+
     @Basic
-    @Column(name="fechaFin",nullable = false)
-    public LocalDate getFechaFin() {
+    @Column(name = "fechaFin", nullable = false)
+    @Temporal(TemporalType.TIMESTAMP)
+    public Timestamp getFechaFin() {
         return fechaFin;
     }
 
-    public void setFechaFin(LocalDate fechaFin) {
+    public void setFechaFin(Timestamp fechaFin) {
         this.fechaFin = fechaFin;
     }
 
-    @ManyToOne()
-    @JoinColumn(name="idDepartamento",referencedColumnName = "idDepartamento",columnDefinition = "departamento", foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT))
+    @ElementCollection //Igual que @Basic pero para colecciones
+    @Column(name = "tecnologias", nullable = false)
+    public List<String> getTecnologias() {
+        return tecnologias;
+    }
+
+    public void setTecnologias(List<String> tecnologias) {
+        this.tecnologias = tecnologias;
+    }
+
+    @OneToOne(cascade = CascadeType.ALL)
+    public JefeProyecto getJefe() {
+        return jefe;
+    }
+
+    public void setJefe(JefeProyecto jefe) {
+        this.jefe = jefe;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "departamento_id", referencedColumnName = "id", nullable = false)
     public Departamento getDepartamento() {
         return departamento;
     }
+
     public void setDepartamento(Departamento departamento) {
         this.departamento = departamento;
+    }
+
+    //Como hacer un OneToOne??: https://www.baeldung.com/jpa-one-to-one
+    @OneToOne(cascade = CascadeType.ALL)
+    public Repositorio getRepositorio() {
+        return repositorio;
+    }
+
+    public void setRepositorio(Repositorio repositorio) {
+        this.repositorio = repositorio;
     }
 
     @ManyToMany(mappedBy = "proyectosParticipa")
@@ -103,7 +140,7 @@ public class Proyecto implements Serializable {
 
     @Override
     public String toString() {
-        List<String> idProgramadores = new ArrayList<>();
+        List<Long> idProgramadores = new ArrayList<>();
         programadores.forEach(x -> idProgramadores.add(x.getId())); //da error
         return "Proyecto{\n" +
                 "idProyecto='\n" + idProyecto + '\'' +
@@ -116,4 +153,6 @@ public class Proyecto implements Serializable {
                 ", \nprogramadores=" + idProgramadores +
                 "\n}";
     }
+
+
 }

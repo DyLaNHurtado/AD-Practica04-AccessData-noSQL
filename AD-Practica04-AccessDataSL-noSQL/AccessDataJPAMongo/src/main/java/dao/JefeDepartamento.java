@@ -14,7 +14,7 @@ public class JefeDepartamento extends Empleado{
         return super.getId();
     }
 
-    @OneToOne
+    @OneToOne(mappedBy = "jefeDepartamento")
     public Departamento getDepartamento() {
         return departamento;
     }

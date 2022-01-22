@@ -23,7 +23,7 @@ public class ProyectoDTO {
     private Double presupuesto;
     private LocalDate fechaInicio;
     private LocalDate fechaFin;
-    private List<Tecnologia> tecnologias;
+    private List<String> tecnologias;
     private Departamento departamento;
     private List<Programador> programadores;
 

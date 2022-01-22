@@ -24,7 +24,7 @@ public class ProgramadorDTO {
     private LocalDate fechaAlta;
     private Departamento departamento;
     private List<Proyecto> proyectosParticipa;
-    private List<Tecnologia> tecnologias;
+    private List<String> tecnologias;
     private Double salario;
     private boolean jefeDepartamento;
     private boolean jefeProyecto;

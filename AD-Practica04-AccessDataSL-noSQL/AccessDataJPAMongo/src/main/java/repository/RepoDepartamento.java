@@ -4,6 +4,7 @@ import dao.Departamento;
 import dao.Programador;
 import dao.Proyecto;
 import manager.HibernateController;
+import org.bson.types.ObjectId;
 
 import javax.persistence.TypedQuery;
 import java.sql.SQLException;
@@ -42,7 +43,7 @@ public class RepoDepartamento implements CrudRepository<Departamento, String> {
         hc.open();
         try {
             hc.getTransaction().begin();
-            departamento.setIdDepartamento(UUID.randomUUID().toString());
+            departamento.setIdDepartamento(Long.parseLong(ObjectId.get().toString()));
             hc.getManager().persist(departamento);
             hc.getTransaction().commit();
             hc.close();

@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 
 import javax.persistence.*;
-import javax.transaction.Transactional;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,8 +20,7 @@ public class Departamento implements Serializable {
 
     private long idDepartamento;
     private String nombre;
-    @Embedded
-    private JefeDepartamento jefe;
+    private JefeDepartamento jefeDepartamento;
     private List<Proyecto> proyFinalizados = new ArrayList<>();
     private List<Proyecto> proyDesarrollo = new ArrayList<>();
     private Double presupuesto;
@@ -38,10 +36,11 @@ public class Departamento implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "id_departamento", nullable = false)
+    @Column(name = "id", nullable = false)
     public long getIdDepartamento() {
         return idDepartamento;
     }
+
     public void setIdDepartamento(long idDepartamento) {
         this.idDepartamento = idDepartamento;
     }
@@ -56,20 +55,27 @@ public class Departamento implements Serializable {
         this.nombre = nombre;
     }
 
-    @OneToMany
-    @JoinTable(
-            name = "historialJefesDep",
-            joinColumns = @JoinColumn(name = "idDepartamento",foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT)),
-            inverseJoinColumns = @JoinColumn(name = "idProgramador",foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT)))
-    public JefeDepartamento getJefe() {
-        return jefe;
+    @Embedded
+    public JefeDepartamento getJefeDepartamento() {
+        return jefeDepartamento;
     }
 
-    public void setJefe(JefeDepartamento jefe) {
-        this.jefe = jefe;
+    public void setJefeDepartamento(JefeDepartamento jefe) {
+        this.jefeDepartamento = jefe;
     }
 
-    @OneToMany(mappedBy = "departamento",cascade = CascadeType.ALL)
+
+    /*
+    Que hace el orphanRemoval=true??:
+
+    Marca la entidad "secundaria" que se eliminará
+    cuando ya no se haga referencia a ella desde la entidad "principal",
+    por ejemplo, cuando elimine la entidad secundaria(proyecto) de la colección
+    correspondiente de la entidad principal(departamento).
+    */
+
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "departamento", cascade = CascadeType.REMOVE, orphanRemoval = true)
     public List<Proyecto> getProyFinalizados() {
         return proyFinalizados;
     }
@@ -77,7 +83,8 @@ public class Departamento implements Serializable {
     public void setProyFinalizados(List<Proyecto> proyFinalizados) {
         this.proyFinalizados = proyFinalizados;
     }
-    @OneToMany(mappedBy = "departamento",cascade = CascadeType.ALL)
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "departamento", cascade = CascadeType.REMOVE, orphanRemoval = true)
     public List<Proyecto> getProyDesarrollo() {
         return proyDesarrollo;
     }
@@ -87,7 +94,7 @@ public class Departamento implements Serializable {
     }
 
     @Basic
-    @Column(name="presupuesto",nullable = false)
+    @Column(name = "presupuesto", nullable = false)
     public Double getPresupuesto() {
         return presupuesto;
     }
@@ -97,7 +104,7 @@ public class Departamento implements Serializable {
     }
 
     @Basic
-    @Column(name="presupuesto_anual")
+    @Column(name = "presupuesto_anual")
     public Double getPresupuestoAnual() {
         return presupuestoAnual;
     }
@@ -106,7 +113,7 @@ public class Departamento implements Serializable {
         this.presupuestoAnual = presupuestoAnual;
     }
 
-    @OneToMany(mappedBy = "departamento",cascade = CascadeType.REMOVE)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "departamento", cascade = CascadeType.REMOVE)
     public List<Programador> getTrabajadores() {
         return trabajadores;
     }
@@ -120,7 +127,7 @@ public class Departamento implements Serializable {
         return "Departamento{\n" +
                 "idDepartamento='" + idDepartamento + '\'' +
                 ", \nnombre='" + nombre + '\'' +
-                ", \njefe='" + jefe + '\'' +
+                ", \njefe='" + jefeDepartamento + '\'' +
                 ", \nproyFinalizados=" + proyFinalizados +
                 ", \nproyDesarrollo=" + proyDesarrollo +
                 ", \npresupuesto=" + presupuesto +

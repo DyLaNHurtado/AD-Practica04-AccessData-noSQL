@@ -4,6 +4,7 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@Table(name="jefe_proyecto")
 public class JefeProyecto extends Empleado{
 
     private Proyecto proyecto;
@@ -16,7 +17,7 @@ public class JefeProyecto extends Empleado{
         return super.getId();
     }
 
-    @OneToOne
+    @OneToOne(mappedBy = "jefe")
     public Proyecto getProyecto(){
         return proyecto;
     }
@@ -24,7 +25,7 @@ public class JefeProyecto extends Empleado{
         this.proyecto=proyecto;
     }
 
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "jefe", cascade = CascadeType.REMOVE)
     public List<Issue> getIssues() {
         return issues;
     }

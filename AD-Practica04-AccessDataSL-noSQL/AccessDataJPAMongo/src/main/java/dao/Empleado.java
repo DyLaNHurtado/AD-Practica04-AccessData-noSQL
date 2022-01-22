@@ -1,9 +1,13 @@
 package dao;
 
+import javax.persistence.Basic;
+import javax.persistence.ElementCollection;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import java.sql.Timestamp;
 import java.util.List;
 
-public class Empleado {
+public abstract class Empleado {
 
 
     private long id;
@@ -14,7 +18,7 @@ public class Empleado {
 
     public Empleado() {
     }
-
+    @Basic
     public long getId() {
         return id;
     }
@@ -22,7 +26,7 @@ public class Empleado {
     public void setId(long id) {
         this.id = id;
     }
-
+    @Basic
     public String getNombre() {
         return nombre;
     }
@@ -30,7 +34,8 @@ public class Empleado {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-
+    @Basic
+    @Temporal(TemporalType.TIMESTAMP)
     public Timestamp getFechaAlta() {
         return fechaAlta;
     }
@@ -38,7 +43,7 @@ public class Empleado {
     public void setFechaAlta(Timestamp fechaAlta) {
         this.fechaAlta = fechaAlta;
     }
-
+    @Basic
     public Double getSalario() {
         return salario;
     }
@@ -46,7 +51,7 @@ public class Empleado {
     public void setSalario(Double salario) {
         this.salario = salario;
     }
-
+    @ElementCollection
     public List<String> getTecnologias() {
         return tecnologias;
     }

@@ -13,8 +13,7 @@ import java.util.List;
 @Entity
 @Table(name = "programador")
 @NamedQueries({
-        @NamedQuery(name = "Programador.getAll", query = "SELECT c FROM dao.Programador c"),
-        @NamedQuery(name = "Programador.getByIdDepartamento", query = "SELECT c FROM dao.Programador c WHERE c.departamento=departamento"),
+        @NamedQuery(name = "Programador.getAll", query = "SELECT c FROM dao.Programador c")
 })
 public class Programador extends Empleado implements Serializable {
 
@@ -23,38 +22,62 @@ public class Programador extends Empleado implements Serializable {
     private List<Commit> commits;
     private List<Issue> issues;
 
-    public Programador() {}
+    public Programador() {
+    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name="id", nullable=false)
-    public long getId(){
+    @Column(name = "id", nullable = false)
+    public long getId() {
         return super.getId();
     }
 
     @ManyToOne
-    @JoinColumn(name = "idDepartamento",foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT))
+    @JoinColumn(name = "departamento_id", referencedColumnName = "id", nullable = false)
     public Departamento getDepartamento() {
         return departamento;
     }
+
     public void setDepartamento(Departamento departamento) {
         this.departamento = departamento;
     }
 
 
-    @ManyToMany(cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE})
+    @ManyToMany
     @JoinTable(
-            name = "participaciones",
-            joinColumns = @JoinColumn(name = "idProyecto",unique = true),
-            inverseJoinColumns = @JoinColumn(name = "idProgramador",unique = true,foreignKey = @ForeignKey(value = ConstraintMode.NO_CONSTRAINT))
-    )
+            name = "participacion",
+            joinColumns = @JoinColumn(name = "programador_id"),
+            inverseJoinColumns = @JoinColumn(name = "proyecto_id"))
+
     public List<Proyecto> getProyectosParticipa() {
         return proyectosParticipa;
     }
+
     public void setProyectosParticipa(List<Proyecto> proyectosParticipa) {
         this.proyectosParticipa = proyectosParticipa;
+    }
+
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "programador", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    public List<Commit> getCommits() {
+        return commits;
+    }
+
+    public void setCommits(List<Commit> commits) {
+        this.commits = commits;
+    }
+
+    @ManyToMany
+    @JoinTable(
+            name = "asignacion",
+            joinColumns = @JoinColumn(name = "programador_id"),
+            inverseJoinColumns = @JoinColumn(name = "issue_id"))
+
+    public List<Issue> getIssues() {
+        return issues;
+    }
+
+    public void setIssues(List<Issue> issues) {
+        this.issues = issues;
     }
 
     @Override

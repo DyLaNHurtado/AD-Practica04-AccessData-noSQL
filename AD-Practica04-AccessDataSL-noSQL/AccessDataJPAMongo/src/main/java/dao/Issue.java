@@ -2,8 +2,10 @@ package dao;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.List;
 
 @Entity
+@Table(name="issue")
 public class Issue {
 
     private long id;
@@ -12,7 +14,7 @@ public class Issue {
     private Timestamp fecha;
     private Boolean resuelta;
     private JefeProyecto jefe;
-    private Programador programador;
+    private List<Programador> programadores;
     private Repositorio repositorio;
     private Commit commit;
 
@@ -29,7 +31,8 @@ public class Issue {
     public void setId(long id) {
         this.id = id;
     }
-
+    @Basic
+    @Column(name="titulo")
     public String getTitulo() {
         return titulo;
     }
@@ -37,7 +40,8 @@ public class Issue {
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
-
+    @Basic
+    @Column(name="texto")
     public String getTexto() {
         return texto;
     }
@@ -45,7 +49,9 @@ public class Issue {
     public void setTexto(String texto) {
         this.texto = texto;
     }
-
+    @Basic
+    @Column(name="fecha")
+    @Temporal(TemporalType.TIMESTAMP)
     public Timestamp getFecha() {
         return fecha;
     }
@@ -53,7 +59,8 @@ public class Issue {
     public void setFecha(Timestamp fecha) {
         this.fecha = fecha;
     }
-
+    @Basic
+    @Column(name="resuelta")
     public Boolean getResuelta() {
         return resuelta;
     }
@@ -63,6 +70,7 @@ public class Issue {
     }
 
     @ManyToOne
+    @JoinColumn(name = "jefe_id", referencedColumnName = "id", nullable = false)
     public JefeProyecto getJefe() {
         return jefe;
     }
@@ -71,13 +79,16 @@ public class Issue {
         this.jefe = jefe;
     }
 
-    //@A
-    public Programador getProgramador() {
-        return programador;
+    //Como se hace un ManyToMany
+    //https://www.baeldung.com/jpa-many-to-many
+    @ManyToMany(mappedBy = "issues")
+
+    public List<Programador> getProgramadores() {
+        return programadores;
     }
 
-    public void setProgramador(Programador programador) {
-        this.programador = programador;
+    public void setProgramadores(List<Programador> programadores) {
+        this.programadores = programadores;
     }
 
     @ManyToOne

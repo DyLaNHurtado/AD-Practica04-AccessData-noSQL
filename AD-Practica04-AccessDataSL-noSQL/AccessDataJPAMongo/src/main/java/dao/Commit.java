@@ -20,6 +20,7 @@ public class Commit {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "id", nullable = false)
     public long getId() {
         return id;
     }
@@ -48,6 +49,7 @@ public class Commit {
     }
     @Basic
     @Column(name="fecha",nullable=false)
+    @Temporal(TemporalType.TIMESTAMP)
     public Timestamp getFecha() {
         return fecha;
     }
@@ -56,7 +58,8 @@ public class Commit {
         this.fecha = fecha;
     }
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name="issue",referencedColumnName = "issue")
     public Issue getIssue() {
         return issue;
     }
@@ -66,6 +69,7 @@ public class Commit {
     }
 
     @ManyToOne
+    @JoinColumn(name = "repositorio_id", referencedColumnName = "id", nullable = false)
     public Repositorio getRepositorio() {
         return repositorio;
     }
@@ -75,6 +79,7 @@ public class Commit {
     }
 
     @ManyToOne
+    @JoinColumn(name = "programador_id", referencedColumnName = "id", nullable = false)
     public Programador getProgramador() {
         return programador;
     }
