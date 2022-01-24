@@ -1,51 +1,51 @@
 package repository;
 
+import dao.Commit;
 import manager.HibernateController;
+import org.bson.types.ObjectId;
 
 import javax.persistence.TypedQuery;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
-public class RepoTecnologia implements CrudRepository<Tecnologia, String> {
+public class RepoCommit implements CrudRepository<Commit,Long>{
     @Override
-    public Optional<List<Tecnologia>> getAll() throws SQLException {
+    public Optional<List<Commit>> getAll() throws SQLException {
         HibernateController hc = HibernateController.getInstance();
         hc.open();
-        TypedQuery<Tecnologia> query = hc.getManager().createNamedQuery("Tecnologia.getAll", Tecnologia.class);
-        List<Tecnologia> list = query.getResultList();
+        TypedQuery<Commit> query = hc.getManager().createNamedQuery("Commit.getAll",Commit.class);
+        List<Commit> list = query.getResultList();
         list.forEach(x-> System.out.println(x.toString()));
         hc.close();
         return Optional.of(list);
     }
 
     @Override
-    public Optional<Tecnologia> getById(String id) throws SQLException {
+    public Optional<Commit> getById(Long id) throws SQLException {
         HibernateController hc = HibernateController.getInstance();
         hc.open();
-        Tecnologia tecnologia = hc.getManager().find(Tecnologia.class, id);
+        Commit commit = hc.getManager().find(Commit.class, id);
         hc.close();
-        if (tecnologia != null) {
-            return Optional.of(tecnologia);
+        if (commit != null) {
+            return Optional.of(commit);
         }
-        throw new SQLException("Error RepoIssue no existe tecnologia con ID: " + id);
+        throw new SQLException("Error RepoCommit no existe Commit con ID: " + id);
     }
 
     @Override
-    public Optional<Tecnologia> save(Tecnologia tecnologia) throws SQLException {
+    public Optional<Commit> save(Commit commit) throws SQLException {
         HibernateController hc = HibernateController.getInstance();
         hc.open();
         try {
             hc.getTransaction().begin();
-            tecnologia.setIdTecnologia(UUID.randomUUID().toString());
-            hc.getManager().persist(tecnologia);
+            commit.setId(Long.parseLong(ObjectId.get().toString()));
+            hc.getManager().persist(commit);
             hc.getTransaction().commit();
             hc.close();
-            return Optional.of(tecnologia);
-
+            return Optional.of(commit);
         } catch (Exception e) {
-            throw new SQLException("Error RepoCommit al insertar tecnologia en BD");
+            throw new SQLException("Error RepoCommit al insertar Commit en BD");
         } finally {
             if (hc.getTransaction().isActive()) {
                 hc.getTransaction().rollback();
@@ -55,17 +55,17 @@ public class RepoTecnologia implements CrudRepository<Tecnologia, String> {
     }
 
     @Override
-    public Optional<Tecnologia> update(Tecnologia tecnologia) throws SQLException {
+    public Optional<Commit> update(Commit commit) throws SQLException {
         HibernateController hc = HibernateController.getInstance();
         hc.open();
         try {
             hc.getTransaction().begin();
-            hc.getManager().merge(tecnologia);
+            hc.getManager().merge(commit);
             hc.getTransaction().commit();
             hc.close();
-            return Optional.of(tecnologia);
+            return Optional.of(commit);
         } catch (Exception e) {
-            throw new SQLException("Error RepoCommit al actualizar tecnologia con id: " + tecnologia.getIdTecnologia());
+            throw new SQLException("Error RepoCommit al actualizar commit con id: " + commit.getId()+e.getMessage());
         } finally {
             if (hc.getTransaction().isActive()) {
                 hc.getTransaction().rollback();
@@ -75,19 +75,19 @@ public class RepoTecnologia implements CrudRepository<Tecnologia, String> {
     }
 
     @Override
-    public Optional<Tecnologia> delete(Tecnologia tecnologia) throws SQLException {
+    public Optional<Commit> delete(Commit commit) throws SQLException {
         HibernateController hc = HibernateController.getInstance();
         hc.open();
         try {
             hc.getTransaction().begin();
-            // Ojo que borrar implica que estemos en la misma sesión y nos puede dar problemas, por eso lo recuperamos otra vez
-            tecnologia = hc.getManager().find(Tecnologia.class, tecnologia.getIdTecnologia());
-            hc.getManager().remove(tecnologia);
+            commit = hc.getManager().find(Commit.class, commit.getId());
+            hc.getManager().remove(commit);
             hc.getTransaction().commit();
             hc.close();
-            return Optional.of(tecnologia);
+            return Optional.of(commit);
         } catch (Exception e) {
-            throw new SQLException("Error CategoryRepository al eliminar tecnologia con id: " + tecnologia.getIdTecnologia());
+            e.printStackTrace();
+            throw new SQLException("Error RepoCommit al eliminar Commit con id: " + commit.getId()+e.getMessage());
         } finally {
             if (hc.getTransaction().isActive()) {
                 hc.getTransaction().rollback();

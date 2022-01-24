@@ -13,9 +13,9 @@ public class RepoProyecto implements CrudRepository<Proyecto, String> {
     public Optional<List<Proyecto>> getAll() throws SQLException {
         HibernateController hc = HibernateController.getInstance();
         hc.open();
-        TypedQuery<Proyecto> query = hc.getManager().createNamedQuery("Proyecto.getAll",Proyecto.class);
+        TypedQuery<Proyecto> query = hc.getManager().createNamedQuery("Proyecto.getAll", Proyecto.class);
         List<Proyecto> list = query.getResultList();
-        list.forEach(x-> System.out.println(x.toString()));
+        list.forEach(x -> System.out.println(x.toString()));
         hc.close();
         return Optional.of(list);
     }
@@ -38,14 +38,14 @@ public class RepoProyecto implements CrudRepository<Proyecto, String> {
         hc.open();
         try {
             hc.getTransaction().begin();
-            proyecto.setIdProyecto(UUID.randomUUID().toString());
+            //proyecto.setIdProyecto(UUID.randomUUID().toString());
             hc.getManager().persist(proyecto);
             hc.getTransaction().commit();
             hc.close();
             return Optional.of(proyecto);
 
         } catch (Exception e) {
-            throw new SQLException("Error "+this.getClass().toString()+" al insertar proyecto en BD"+e.getMessage());
+            throw new SQLException("Error " + this.getClass().toString() + " al insertar proyecto en BD" + e.getMessage());
         } finally {
             if (hc.getTransaction().isActive()) {
                 hc.getTransaction().rollback();
@@ -98,7 +98,6 @@ public class RepoProyecto implements CrudRepository<Proyecto, String> {
     }
 
 
-
     //Operacion 5
 
     //Obtener los tres proyectos más caros en base a su presupuesto asignado y el salario
@@ -108,15 +107,17 @@ public class RepoProyecto implements CrudRepository<Proyecto, String> {
 
 
         if (this.getAll().isPresent()) {
-            List<Proyecto> proyCaros =this.getAll().get().stream().sorted(Comparator.comparingDouble(Proyecto::getPresupuesto).reversed()).limit(3).collect(Collectors.toList());
+            List<Proyecto> proyCaros = this.getAll().get().stream()
+                    .sorted(Comparator.comparingDouble(Proyecto::getPresupuesto).reversed())
+                    .limit(3).collect(Collectors.toList());
             List<Double> salarios = new ArrayList<>();
-            proyCaros.forEach(x->{
-                List<Programador>programadores =x.getProgramadores();
-                programadores.forEach(s->salarios.add(s.getSalario()));
+            proyCaros.forEach(x -> {
+                List<Programador> programadores = x.getProgramadores();
+                programadores.forEach(s -> salarios.add(s.getSalario()));
 
             });
 
-            return Optional.of(List.of(proyCaros,salarios));
+            return Optional.of(List.of(proyCaros, salarios));
         }
         System.out.println("No se han encontrado los tres proyectos mas caros y salarios getProyectosMasCaros");
         return Optional.empty();

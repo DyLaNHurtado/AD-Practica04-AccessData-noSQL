@@ -5,6 +5,9 @@ import java.util.List;
 
 @Entity
 @Table(name="jefe_proyecto")
+@NamedQueries({
+        @NamedQuery(name = "JefeProyecto.getAll", query = "SELECT jp FROM dao.JefeProyecto jp")
+})
 public class JefeProyecto extends Empleado{
 
     private Proyecto proyecto;

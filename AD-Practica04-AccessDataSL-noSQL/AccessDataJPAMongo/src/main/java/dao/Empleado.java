@@ -9,7 +9,6 @@ import java.util.List;
 
 public abstract class Empleado {
 
-
     private long id;
     private String nombre;
     private Timestamp fechaAlta;

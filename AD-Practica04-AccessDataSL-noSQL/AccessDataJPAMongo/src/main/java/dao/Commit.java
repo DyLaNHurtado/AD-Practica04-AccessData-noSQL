@@ -5,6 +5,9 @@ import java.sql.Timestamp;
 
 @Entity
 @Table(name = "commit")
+@NamedQueries({
+        @NamedQuery(name = "Commit.getAll", query = "SELECT c FROM dao.Commit c")
+})
 public class Commit {
 
     private long id;

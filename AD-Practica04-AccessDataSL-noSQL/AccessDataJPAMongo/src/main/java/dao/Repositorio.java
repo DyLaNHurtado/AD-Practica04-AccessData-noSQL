@@ -6,6 +6,9 @@ import java.util.List;
 
 @Entity
 @Table(name="repositorio")
+@NamedQueries({
+        @NamedQuery(name = "Repositorio.getAll", query = "SELECT r FROM dao.Repositorio r")
+})
 public class Repositorio {
 
     private long id;
