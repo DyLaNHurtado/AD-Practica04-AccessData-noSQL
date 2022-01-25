@@ -20,6 +20,11 @@ public class Repositorio {
 
     public Repositorio() {}
 
+    public Repositorio(String nombre, Timestamp fechaCreacion) {
+        this.nombre = nombre;
+        this.fechaCreacion = fechaCreacion;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name="id", nullable=false)

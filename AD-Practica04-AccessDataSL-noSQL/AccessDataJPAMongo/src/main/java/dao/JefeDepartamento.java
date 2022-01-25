@@ -7,6 +7,9 @@ public class JefeDepartamento extends Empleado{
 
     private Departamento departamento;
 
+    public JefeDepartamento() {
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name="id", nullable=false)

@@ -34,8 +34,11 @@ public class Proyecto implements Serializable {
     public Proyecto() {
     }
 
-    public Proyecto(long idProyecto) {
-        this.idProyecto = idProyecto;
+    public Proyecto(String nombre, Double presupuesto, Timestamp fechaInicio, Timestamp fechaFin) {
+        this.nombre = nombre;
+        this.presupuesto = presupuesto;
+        this.fechaInicio = fechaInicio;
+        this.fechaFin = fechaFin;
     }
 
     @Id

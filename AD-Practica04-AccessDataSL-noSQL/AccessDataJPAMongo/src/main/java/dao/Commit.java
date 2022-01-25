@@ -21,6 +21,12 @@ public class Commit {
     public Commit() {
     }
 
+    public Commit(String titulo, String texto, Timestamp fecha) {
+        this.titulo = titulo;
+        this.texto = texto;
+        this.fecha = fecha;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id", nullable = false)

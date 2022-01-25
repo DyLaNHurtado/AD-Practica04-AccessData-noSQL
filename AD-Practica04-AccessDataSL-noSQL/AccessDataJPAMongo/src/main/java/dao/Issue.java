@@ -24,6 +24,13 @@ public class Issue {
     public Issue() {
     }
 
+    public Issue(String titulo, String texto, Timestamp fecha, Boolean resuelta) {
+        this.titulo = titulo;
+        this.texto = texto;
+        this.fecha = fecha;
+        this.resuelta = resuelta;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name="id", nullable=false)

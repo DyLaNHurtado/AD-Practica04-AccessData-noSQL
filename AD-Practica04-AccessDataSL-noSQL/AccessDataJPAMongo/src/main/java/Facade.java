@@ -1,12 +1,19 @@
+import com.mongodb.ConnectionString;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoDatabase;
 import controller.*;
 import dao.*;
 import database.DataBaseController;
 import dto.*;
+import manager.HibernateController;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.time.LocalDate;
 import java.util.*;
 
@@ -15,8 +22,10 @@ public class Facade {
 
     private Facade() {
     }
+
     /**
      * Patron Singleton
+     *
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
@@ -26,8 +35,10 @@ public class Facade {
         }
         return instance;
     }
+
     /**
      * Metodos que comprueba el servicio de la base de datos
+     *
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
@@ -45,58 +56,175 @@ public class Facade {
             System.exit(1);
         }
     }
-    /**
-     * Metodos que carga la base de datos de nuevo a traves del archivo init-db.sql
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
-     */
+
     public void initDataBase() {
-        String sqlFile = System.getProperty("user.dir") + File.separator + "sql" + File.separator + "init-db.sql";
-        System.out.println("***************************\n" +
-                "\t\tSQL FILE\n" +
-                "***************************");
-        System.out.println(sqlFile);
-        DataBaseController controller = DataBaseController.getInstance();
-        try {
-            controller.open();
-            controller.initData(sqlFile);
-            controller.close();
-        } catch (SQLException e) {
-            System.err.println("Error al conectar al servidor de Base de Datos: " + e.getMessage());
-            System.exit(1);
-        } catch (FileNotFoundException e) {
-            System.err.println("Error al leer el fichero de datos iniciales: " + e.getMessage());
-            System.exit(1);
-        }
+        // Borramos los datos previos
+        removeData();
+
+        HibernateController hc = HibernateController.getInstance();
+        hc.open();
+        // Commit
+        hc.getTransaction().begin();
+        Commit c1 = new Commit("Titulo1", "Texto1", Timestamp.from(Instant.now())); // 1
+        Commit c2 = new Commit("Titulo2", "Texto2", Timestamp.from(Instant.now())); // 2
+        Commit c3 = new Commit("Titulo3", "Texto3", Timestamp.from(Instant.now())); // 3
+
+        hc.getManager().persist(c1);
+        hc.getManager().persist(c2);
+        hc.getManager().persist(c3);
+
+        hc.getTransaction().commit();
+
+        // Usuarios
+        System.out.println("Insertando Usuarios de Ejemplo");
+
+        hc.getTransaction().begin();
+        Departamento d1 = new Departamento("Pepe Perez", 100d, 1000d); // 5
+        Departamento d2 = new Departamento("Ana Anaya", 200d, 2000d); // 6
+        Departamento d3 = new Departamento("Paco Perez", 300d, 3000d); // 7
+
+        hc.getManager().persist(d1);
+        hc.getManager().persist(d2);
+        hc.getManager().persist(d3);
+
+        hc.getTransaction().commit();
+
+        // Post
+        System.out.println("Insertando Post de Ejemplo");
+
+        hc.getTransaction().begin();
+        Issue p1 = new Issue("Issue 1", "Textoooo1", Timestamp.from(Instant.now()), true); //10
+        Issue p2 = new Issue("Issue 2", "Textoooo2", Timestamp.from(Instant.now()), false); //11
+        Issue p3 = new Issue("Issue 3", "Textoooo3", Timestamp.from(Instant.now()), true); //12
+        hc.getManager().persist(p1);
+        hc.getManager().persist(p2);
+        hc.getManager().persist(p3);
+
+        hc.getTransaction().commit();
+
+        // Comentarios
+        System.out.println("Insertando Comentarios de Ejemplo");
+
+        hc.getTransaction().begin();
+        JefeDepartamento jd1 = new JefeDepartamento();//15
+        JefeDepartamento jd2 = new JefeDepartamento();//15
+
+        hc.getManager().persist(jd1);
+        hc.getManager().persist(jd2);
+
+        hc.getTransaction().commit();
+
+        // Comentarios
+        System.out.println("Insertando Comentarios de Ejemplo");
+
+        hc.getTransaction().begin();
+        JefeProyecto jp1 = new JefeProyecto();//15
+        JefeProyecto jp2 = new JefeProyecto();//15
+
+        hc.getManager().persist(jp1);
+        hc.getManager().persist(jp2);
+
+        hc.getTransaction().commit();
+
+        // Comentarios
+        System.out.println("Insertando Comentarios de Ejemplo");
+
+        hc.getTransaction().begin();
+        Login login1 = new Login("programador1@gmail.com", "f8638b979b2f4f793ddb6dbd197e0ee25a7a6ea32b0ae22f5e3c5d119d839e75", Timestamp.from(Instant.now()));//15
+        Login login2 = new Login("programador2@gmail.com", "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4", Timestamp.from(Instant.now()));//15
+
+        hc.getManager().persist(login1);
+        hc.getManager().persist(login2);
+
+        hc.getTransaction().commit();
+
+        // Comentarios
+        System.out.println("Insertando Comentarios de Ejemplo");
+
+        hc.getTransaction().begin();
+        Programador pro1 = new Programador();//15
+        Programador pro2 = new Programador();//15
+        Programador pro3 = new Programador();//15
+
+        hc.getManager().persist(pro1);
+        hc.getManager().persist(pro2);
+        hc.getManager().persist(pro3);
+
+        hc.getTransaction().commit();
+
+        // Comentarios
+        System.out.println("Insertando Comentarios de Ejemplo");
+
+        hc.getTransaction().begin();
+        Proyecto proy1 = new Proyecto("Proyecto X", 100d, Timestamp.from(Instant.now()), Timestamp.from(Instant.now()));//15
+        Proyecto proy2 = new Proyecto("Proyecto Y", 300d, Timestamp.from(Instant.now()), Timestamp.from(Instant.now()));//15
+
+        hc.getManager().persist(proy1);
+        hc.getManager().persist(proy2);
+
+        hc.getTransaction().commit();
+
+        // Comentarios
+        System.out.println("Insertando Comentarios de Ejemplo");
+
+        hc.getTransaction().begin();
+        Repositorio rep1 = new Repositorio("Repo 1", Timestamp.from(Instant.now()));//15
+        Repositorio rep2 = new Repositorio("Repo 2", Timestamp.from(Instant.now()));//15
+
+        hc.getManager().persist(rep1);
+        hc.getManager().persist(rep2);
+
+        hc.getTransaction().commit();
+
+        hc.close();
+
     }
+
+    private void removeData() {
+        // Usando Hibernate
+//        transactionManager.begin();
+//        // Collection == name of the class being saved ⮧
+//        entityManager.createNativeQuery("db.GameCharacter.drop()").executeUpdate();
+//        transactionManager.commit();
+        // Lo sutyo sería un controlador
+        ConnectionString connectionString = new ConnectionString("mongodb://mongoadmin:mongopass@localhost/test?authSource=admin");
+        MongoClient mongoClient = MongoClients.create(connectionString);
+
+        // Obtenemos la base de datos que necesitamos
+        MongoDatabase mongoDB = mongoClient.getDatabase("mongodb");
+        mongoDB.drop(); // Si queremos borrar toda la base de datos
+    }
+
     /**
      * Metodo para seleccionar por scanner la salida
+     *
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
     public void selectJsonOrXml() {
         System.out.println("Selecciona una salida para visualizar las operaciones (xml or json): ");
-        Scanner sc = new Scanner (System.in);
-        String value=sc.next().toLowerCase(Locale.ROOT);
-
+        Scanner sc = new Scanner(System.in);
+        String value = sc.next().toLowerCase(Locale.ROOT);
 
 
         while (!(value.equals("xml") || value.equals("json"))) {
             System.out.println("Error: No se ha introducido un valor valido");
             System.out.println("Introduzca json o introduzca xml :");
-            value=sc.next();
+            value = sc.next();
         }
 
-        if (value.equals("json")){
+        if (value.equals("json")) {
             salidaJSON();
         }
-        if (value.equals("xml")){
+        if (value.equals("xml")) {
             salidaXML();
         }
 
     }
+
     /**
      * Dar salida al JSON
+     *
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
@@ -115,22 +243,23 @@ public class Facade {
                 "**********************");
         this.proyectoJSON();
 
-        System.out.println("**********************\n"+
-                "\t\tPROGRAMADOR\n"+
+        System.out.println("**********************\n" +
+                "\t\tPROGRAMADOR\n" +
                 "**********************");
         this.programadorJSON();
 
 
-
-System.out.println("**********************\n"+
-                "\t\tTECNOLOGIA\n"+
+        System.out.println("**********************\n" +
+                "\t\tTECNOLOGIA\n" +
                 "**********************");
         this.tecnologiaJSON();
 
 
     }
+
     /**
      * Dar salida al XML
+     *
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
@@ -144,27 +273,29 @@ System.out.println("**********************\n"+
                 "**********************");
         this.departamentoXML();
 
-        System.out.println("**********************\n"+
-                "\t\tPROYECTO\n"+
+        System.out.println("**********************\n" +
+                "\t\tPROYECTO\n" +
                 "**********************");
         this.proyectoXML();
 
 
-        System.out.println("**********************\n"+
-                "\t\tPROGRAMADOR\n"+
+        System.out.println("**********************\n" +
+                "\t\tPROGRAMADOR\n" +
                 "**********************");
 
         this.programadorXML();
 
 
-        System.out.println("**********************\n"+
-                "\t\tTECNOLOGIA\n"+
+        System.out.println("**********************\n" +
+                "\t\tTECNOLOGIA\n" +
                 "**********************");
         this.tecnologiaXML();
 
     }
+
     /**
      * Metodos CRUD departamento en XML
+     *
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
@@ -203,8 +334,10 @@ System.out.println("**********************\n"+
                 .build();
         departamentoController.deleteDepartamentoXML(departamentoDTO);
     }
+
     /**
      * Metodos CRUD programador en XML
+     *
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
@@ -254,6 +387,7 @@ System.out.println("**********************\n"+
 
     /**
      * Metodos CRUD proyecto en XML
+     *
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
@@ -299,8 +433,10 @@ System.out.println("**********************\n"+
         proyectoController.deleteProyectoXML(proyectoDTO);
 
     }
+
     /**
      * Metodos CRUD tecnologia en XML
+     *
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
@@ -339,6 +475,7 @@ System.out.println("**********************\n"+
 
     /**
      * Metodos CRUD departamento en JSON
+     *
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
@@ -384,6 +521,7 @@ System.out.println("**********************\n"+
 
     /**
      * Metodos CRUD programador en JSON
+     *
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
@@ -432,6 +570,7 @@ System.out.println("**********************\n"+
 
     /**
      * Metodos CRUD proyecto en XML
+     *
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
@@ -480,6 +619,7 @@ System.out.println("**********************\n"+
 
     /**
      * Metodos CRUD tecnologia en JSON
+     *
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */

@@ -30,6 +30,12 @@ public class Departamento implements Serializable {
     public Departamento() {
     }
 
+    public Departamento(String nombre, Double presupuesto, Double presupuestoAnual) {
+        this.nombre = nombre;
+        this.presupuesto = presupuesto;
+        this.presupuestoAnual = presupuestoAnual;
+    }
+
     public Departamento(long idDepartamento) {
         this.idDepartamento = idDepartamento;
     }

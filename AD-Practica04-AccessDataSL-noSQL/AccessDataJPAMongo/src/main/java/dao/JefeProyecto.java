@@ -13,6 +13,9 @@ public class JefeProyecto extends Empleado{
     private Proyecto proyecto;
     private List<Issue> issues;
 
+    public JefeProyecto() {
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name="id", nullable=false)
