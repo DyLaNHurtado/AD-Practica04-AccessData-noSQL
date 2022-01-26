@@ -17,7 +17,6 @@ import java.util.List;
 @NamedQueries({
         @NamedQuery(name = "Proyecto.getAll", query = "SELECT c FROM dao.Proyecto c")
 })
-
 public class Proyecto implements Serializable {
     private long id;
     private String nombre;

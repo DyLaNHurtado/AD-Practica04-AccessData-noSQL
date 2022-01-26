@@ -13,7 +13,6 @@ public class DepartamentoService extends BaseService<Departamento, Long, RepoDep
 
     DepartamentoMapper mapper = new DepartamentoMapper();
 
-    // Inyección de dependencias en el constructor. El servicio necesita este repositorio
     public DepartamentoService(RepoDepartamento repository) {
         super(repository);
     }
@@ -59,11 +58,5 @@ public class DepartamentoService extends BaseService<Departamento, Long, RepoDep
     public DepartamentoDTO deleteDepartamento(DepartamentoDTO departamentoDTO) throws SQLException {
             Optional<Departamento> res = this.delete(mapper.fromDTO(departamentoDTO));
                 return mapper.toDTO(res.get());
-    }
-
-    //Operacion 1
-    public void departamentoFullInfo(long id) throws SQLException {
-        RepoDepartamento repo = new RepoDepartamento();
-        //repo.departamentoInfo(id);
     }
 }

@@ -13,10 +13,8 @@ import java.util.Optional;
 
 public class IssueService extends BaseService<Issue, Long, RepoIssue> {
 
-
     IssueMapper mapper = new IssueMapper();
 
-    // Inyección de dependencias en el constructor. El servicio necesita este repositorio
     public IssueService(RepoIssue repository) {
         super(repository);
     }
