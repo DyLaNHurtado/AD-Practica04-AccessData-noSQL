@@ -38,111 +38,146 @@ public class Facade {
         hc.open();
         // Commit
         hc.getTransaction().begin();
-        Commit c1 = new Commit("Titulo1", "Texto1", Timestamp.from(Instant.now())); // 1
-        Commit c2 = new Commit("Titulo2", "Texto2", Timestamp.from(Instant.now())); // 2
-        Commit c3 = new Commit("Titulo3", "Texto3", Timestamp.from(Instant.now())); // 3
+        Commit c1 = new Commit("Titulo1", "Texto1", Timestamp.from(Instant.now()));
+        Commit c2 = new Commit("Titulo2", "Texto2", Timestamp.from(Instant.now()));
+        Departamento d1 = new Departamento("Pepe Perez", 100d, 1000d);
+        Departamento d2 = new Departamento("Ana Anaya", 200d, 2000d);
+        Issue i1 = new Issue("Issue 1", "Textoooo1", Timestamp.from(Instant.now()), true);
+        Issue i2 = new Issue("Issue 2", "Textoooo2", Timestamp.from(Instant.now()), false);
+        JefeDepartamento jd1 = new JefeDepartamento();
+        JefeDepartamento jd2 = new JefeDepartamento();
+        JefeProyecto jp1 = new JefeProyecto();
+        JefeProyecto jp2 = new JefeProyecto();
+        Login login1 = new Login("programador1@gmail.com", "f8638b979b2f4f793ddb6dbd197e0ee25a7a6ea32b0ae22f5e3c5d119d839e75", Timestamp.from(Instant.now()));
+        Login login2 = new Login("programador2@gmail.com", "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4", Timestamp.from(Instant.now()));
+        Programador pro1 = new Programador();
+        Programador pro2 = new Programador();
+        Proyecto proy1 = new Proyecto("Proyecto X", 100d, Timestamp.from(Instant.now()), Timestamp.from(Instant.now()));//15
+        Proyecto proy2 = new Proyecto("Proyecto Y", 300d, Timestamp.from(Instant.now()), Timestamp.from(Instant.now()));//15
+        Repositorio rep1 = new Repositorio("Repo 1", Timestamp.from(Instant.now()));//15
+        Repositorio rep2 = new Repositorio("Repo 2", Timestamp.from(Instant.now()));//15
+
+        //Commit
+        c1.setIssue(i1);
+        c2.setIssue(i2);
+        c1.setRepositorio(rep1);
+        c2.setRepositorio(rep2);
+        c1.setProgramador(pro1);
+        c2.setProgramador(pro2);
+
+        //Departamento
+
+        d1.setJefeDepartamento(jd1);
+        d2.setJefeDepartamento(jd2);
+        d1.setProyDesarrollo(List.of(proy1));
+        d2.setProyFinalizados(List.of(proy2));
+        d1.setTrabajadores(List.of(pro2));
+        d2.setTrabajadores(List.of(pro1));
+
+        //Issue
+
+        i1.setJefe(jp1);
+        i2.setJefe(jp2);
+        i1.setProgramadores(List.of(pro1));
+        i2.setProgramadores(List.of(pro2));
+        i1.setRepositorio(rep1);
+        i2.setRepositorio(rep2);
+        i1.setCommit(c1);
+        i2.setCommit(c2);
+
+        //JefeDepartamento
+
+        jd1.setNombre("Adolfo");
+        jd2.setNombre("JoseLuis perro apruebame");
+        jd1.setFechaAlta(Timestamp.from(Instant.now()));
+        jd2.setFechaAlta(Timestamp.from(Instant.now()));
+        jd1.setSalario(100d);
+        jd2.setSalario(3000000d);
+        jd1.setTecnologias(List.of("Python","Java"));
+        jd2.setTecnologias(List.of("Kotlin","Kotlin","Y MAS KOTLIN"));
+        jd1.setDepartamento(d1);
+        jd2.setDepartamento(d2);
+
+        //JefeProyecto
+
+        jp1.setNombre("Andres Iniesta");
+        jp2.setNombre("El bicho SIUiUIUIUUUU xD");
+        jp1.setFechaAlta(Timestamp.from(Instant.now()));
+        jp2.setFechaAlta(Timestamp.from(Instant.now()));
+        jp1.setSalario(100d);
+        jp2.setSalario(3000000d);
+        jp1.setTecnologias(List.of("Angular","Javascript"));
+        jp2.setTecnologias(List.of("Pascal","PHP","WHITESPACE"));
+        jp1.setProyecto(proy1);
+        jp2.setProyecto(proy2);
+        jp1.setIssues(List.of(i1));
+        jp1.setIssues(List.of(i2));
+
+        //Programador
+        pro1.setNombre("Manolo");
+        pro2.setNombre("Casemiro");
+        pro1.setFechaAlta(Timestamp.from(Instant.now()));
+        pro2.setFechaAlta(Timestamp.from(Instant.now()));
+        pro1.setSalario(1000d);
+        pro2.setSalario(1022d);
+        pro1.setTecnologias(List.of("PHP","DJango"));
+        pro2.setTecnologias(List.of("Vue","SpringBoot"));
+        pro1.setDepartamento(d1);
+        pro2.setDepartamento(d2);
+        pro1.setProyectosParticipa(List.of(proy1));
+        pro2.setProyectosParticipa(List.of(proy2));
+        pro1.setCommits(List.of(c1));
+        pro2.setCommits(List.of(c2));
+        pro1.setIssues(List.of(i1));
+        pro2.setIssues(List.of(i2));
+
+        //Proyecto
+        proy1.setTecnologias(List.of("Flutter","MongoDB"));
+        proy2.setTecnologias(List.of("Angular","Spring"));
+        proy1.setJefe(jp1);
+        proy2.setJefe(jp2);
+        proy1.setDepartamento(d1);
+        proy2.setDepartamento(d2);
+        proy1.setRepositorio(rep1);
+        proy2.setRepositorio(rep2);
+        proy1.setProgramadores(List.of(pro1));
+        proy2.setProgramadores(List.of(pro2));
+
+        //Repositorio
+
+        rep1.setProyecto(proy1);
+        rep2.setProyecto(proy2);
+        rep1.setIssues(List.of(i1));
+        rep2.setIssues(List.of(i2));
+        rep1.setCommits(List.of(c1));
+        rep2.setCommits(List.of(c2));
+
+
+        hc.getTransaction().begin();
 
         hc.getManager().persist(c1);
         hc.getManager().persist(c2);
-        hc.getManager().persist(c3);
-
-        hc.getTransaction().commit();
-
-        // Usuarios
-        System.out.println("Insertando Usuarios de Ejemplo");
-
-        hc.getTransaction().begin();
-        Departamento d1 = new Departamento("Pepe Perez", 100d, 1000d); // 5
-        Departamento d2 = new Departamento("Ana Anaya", 200d, 2000d); // 6
-        Departamento d3 = new Departamento("Paco Perez", 300d, 3000d); // 7
 
         hc.getManager().persist(d1);
         hc.getManager().persist(d2);
-        hc.getManager().persist(d3);
 
-        hc.getTransaction().commit();
-
-        // Post
-        System.out.println("Insertando Post de Ejemplo");
-
-        hc.getTransaction().begin();
-        Issue p1 = new Issue("Issue 1", "Textoooo1", Timestamp.from(Instant.now()), true); //10
-        Issue p2 = new Issue("Issue 2", "Textoooo2", Timestamp.from(Instant.now()), false); //11
-        Issue p3 = new Issue("Issue 3", "Textoooo3", Timestamp.from(Instant.now()), true); //12
-        hc.getManager().persist(p1);
-        hc.getManager().persist(p2);
-        hc.getManager().persist(p3);
-
-        hc.getTransaction().commit();
-
-        // Comentarios
-        System.out.println("Insertando Comentarios de Ejemplo");
-
-        hc.getTransaction().begin();
-        JefeDepartamento jd1 = new JefeDepartamento();//15
-        JefeDepartamento jd2 = new JefeDepartamento();//15
+        hc.getManager().persist(i1);
+        hc.getManager().persist(i2);
 
         hc.getManager().persist(jd1);
         hc.getManager().persist(jd2);
 
-        hc.getTransaction().commit();
-
-        // Comentarios
-        System.out.println("Insertando Comentarios de Ejemplo");
-
-        hc.getTransaction().begin();
-        JefeProyecto jp1 = new JefeProyecto();//15
-        JefeProyecto jp2 = new JefeProyecto();//15
-
         hc.getManager().persist(jp1);
         hc.getManager().persist(jp2);
-
-        hc.getTransaction().commit();
-
-        // Comentarios
-        System.out.println("Insertando Comentarios de Ejemplo");
-
-        hc.getTransaction().begin();
-        Login login1 = new Login("programador1@gmail.com", "f8638b979b2f4f793ddb6dbd197e0ee25a7a6ea32b0ae22f5e3c5d119d839e75", Timestamp.from(Instant.now()));//15
-        Login login2 = new Login("programador2@gmail.com", "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4", Timestamp.from(Instant.now()));//15
 
         hc.getManager().persist(login1);
         hc.getManager().persist(login2);
 
-        hc.getTransaction().commit();
-
-        // Comentarios
-        System.out.println("Insertando Comentarios de Ejemplo");
-
-        hc.getTransaction().begin();
-        Programador pro1 = new Programador();//15
-        Programador pro2 = new Programador();//15
-        Programador pro3 = new Programador();//15
-
         hc.getManager().persist(pro1);
         hc.getManager().persist(pro2);
-        hc.getManager().persist(pro3);
-
-        hc.getTransaction().commit();
-
-        // Comentarios
-        System.out.println("Insertando Comentarios de Ejemplo");
-
-        hc.getTransaction().begin();
-        Proyecto proy1 = new Proyecto("Proyecto X", 100d, Timestamp.from(Instant.now()), Timestamp.from(Instant.now()));//15
-        Proyecto proy2 = new Proyecto("Proyecto Y", 300d, Timestamp.from(Instant.now()), Timestamp.from(Instant.now()));//15
 
         hc.getManager().persist(proy1);
         hc.getManager().persist(proy2);
-
-        hc.getTransaction().commit();
-
-        // Comentarios
-        System.out.println("Insertando Comentarios de Ejemplo");
-
-        hc.getTransaction().begin();
-        Repositorio rep1 = new Repositorio("Repo 1", Timestamp.from(Instant.now()));//15
-        Repositorio rep2 = new Repositorio("Repo 2", Timestamp.from(Instant.now()));//15
 
         hc.getManager().persist(rep1);
         hc.getManager().persist(rep2);
