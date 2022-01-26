@@ -1,5 +1,7 @@
 package dao;
 
+import lombok.Builder;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 
@@ -8,6 +10,7 @@ import java.sql.Timestamp;
 @NamedQueries({
         @NamedQuery(name = "Commit.getAll", query = "SELECT c FROM dao.Commit c")
 })
+@Builder
 public class Commit {
 
     private long id;

@@ -16,7 +16,6 @@ import java.sql.SQLException;
 
 public class ProgramadorController {
     private static ProgramadorController controller = null;
-    private Marshaller marshaller;
 
     // Mi Servicio unido al repositorio
     private final ProgramadorService programadorService;
@@ -33,7 +32,7 @@ public class ProgramadorController {
         return controller;
     }
 
-    public String getAllProgramadorsJSON() {
+    public String getAllProgramadores() {
         try {
             // Vamos a devolver el JSON de los programadors
             final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
@@ -44,7 +43,7 @@ public class ProgramadorController {
         }
     }
 
-    public String getProgramadorByIdJSON(Long id) {
+    public String getProgramadorById(Long id) {
         try {
             // Vamos a devolver el JSON de las categorías
             final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
@@ -55,7 +54,7 @@ public class ProgramadorController {
         }
     }
 
-    public String postProgramadorJSON(ProgramadorDTO programadorDTO) {
+    public String postProgramador(ProgramadorDTO programadorDTO) {
         try {
             final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
             return prettyGson.toJson(programadorService.postProgramador(programadorDTO));
@@ -65,7 +64,7 @@ public class ProgramadorController {
         }
     }
 
-    public String updateProgramadorJSON(ProgramadorDTO comitDTO) {
+    public String updateProgramador(ProgramadorDTO comitDTO) {
         try {
             final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
             return prettyGson.toJson(programadorService.updateProgramador(comitDTO));
@@ -75,7 +74,7 @@ public class ProgramadorController {
         }
     }
 
-    public String deleteProgramadorJSON(ProgramadorDTO programadorDTO) {
+    public String deleteProgramador(ProgramadorDTO programadorDTO) {
         try {
             final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
             return prettyGson.toJson(programadorService.deleteProgramador(programadorDTO));
@@ -92,67 +91,4 @@ public class ProgramadorController {
             System.err.println("Error ProgramadorController en getAllProgramadoresInfo: " + e.getMessage());
         }
     }
-
-    //XML
-    public void getAllProgramadoresXML() {
-        try {
-            // Vamos a devolver el XML de los commits
-            JAXBContext jaxbContext = JAXBContext.newInstance(ProgramadorDTO.class);
-            marshaller = jaxbContext.createMarshaller();
-            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            marshaller.marshal(programadorService.getAllProgramadores(), System.out);
-        } catch (SQLException | JAXBException e) {
-            System.err.println("Error ProgramadorController en getAllProgramadoresXML: " + e.getMessage());
-        }
-    }
-
-    public void getProgramadorByIdXML(Long id) {
-        try {
-            JAXBContext jaxbContext = JAXBContext.newInstance(ProgramadorDTO.class);
-            marshaller = jaxbContext.createMarshaller();
-            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            marshaller.marshal(programadorService.getProgramadorById(id), System.out);
-        } catch (SQLException | JAXBException e) {
-            System.err.println("Error ProgramadorController en getProgramadorByIdXML: " + e.getMessage());
-        }
-    }
-
-    public void postProgramadorXML(ProgramadorDTO programadorDTO) {
-        try {
-            JAXBContext jaxbContext = JAXBContext.newInstance(ProgramadorDTO.class);
-            marshaller = jaxbContext.createMarshaller();
-            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            marshaller.marshal(programadorService.postProgramador(programadorDTO), System.out);
-        } catch (SQLException | JAXBException e) {
-            System.err.println("Error ProgramadorController en postProgramadorXML: " + e.getMessage());
-        }
-    }
-
-    public void updateProgramadorXML(ProgramadorDTO programadorDTO) {
-        try {
-            JAXBContext jaxbContext = JAXBContext.newInstance(ProgramadorDTO.class);
-            marshaller = jaxbContext.createMarshaller();
-            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            marshaller.marshal(programadorService.updateProgramador(programadorDTO), System.out);
-        } catch (SQLException | JAXBException e) {
-            System.err.println("Error ProgramadorController en updateProgramadorXML: " + e.getMessage());
-        }
-    }
-    /**
-     * Printea  el save de programador en XML
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
-     */
-    public void deleteProgramadorXML(ProgramadorDTO programadorDTO) {
-        try {
-            JAXBContext jaxbContext = JAXBContext.newInstance(ProgramadorDTO.class);
-            marshaller = jaxbContext.createMarshaller();
-            marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
-            marshaller.marshal(programadorService.deleteProgramador(programadorDTO), System.out);
-        } catch (SQLException | JAXBException e) {
-            System.err.println("Error ProgramadorController en deleteProgramadorXML: " + e.getMessage());
-        }
-    }
-
-
 }

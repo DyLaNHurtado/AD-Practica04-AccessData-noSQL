@@ -7,6 +7,7 @@ import dao.*;
 import database.DataBaseController;
 import dto.*;
 import manager.HibernateController;
+import org.bson.types.ObjectId;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -185,39 +186,12 @@ public class Facade {
 //        entityManager.createNativeQuery("db.GameCharacter.drop()").executeUpdate();
 //        transactionManager.commit();
         // Lo sutyo sería un controlador
-        ConnectionString connectionString = new ConnectionString("mongodb://mongoadmin:mongopass@localhost/test?authSource=admin");
+        ConnectionString connectionString = new ConnectionString("mongodb://mongoadmin:mongopass@localhost/mongodb?authSource=admin");
         MongoClient mongoClient = MongoClients.create(connectionString);
 
         // Obtenemos la base de datos que necesitamos
         MongoDatabase mongoDB = mongoClient.getDatabase("mongodb");
         mongoDB.drop(); // Si queremos borrar toda la base de datos
-    }
-
-    /**
-     * Metodo para seleccionar por scanner la salida
-     *
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
-     */
-    public void selectJsonOrXml() {
-        System.out.println("Selecciona una salida para visualizar las operaciones (xml or json): ");
-        Scanner sc = new Scanner(System.in);
-        String value = sc.next().toLowerCase(Locale.ROOT);
-
-
-        while (!(value.equals("xml") || value.equals("json"))) {
-            System.out.println("Error: No se ha introducido un valor valido");
-            System.out.println("Introduzca json o introduzca xml :");
-            value = sc.next();
-        }
-
-        if (value.equals("json")) {
-            salidaJSON();
-        }
-        if (value.equals("xml")) {
-            salidaXML();
-        }
-
     }
 
     /**
@@ -247,171 +221,6 @@ public class Facade {
         this.programadorJSON();
     }
 
-    /**
-     * Dar salida al XML
-     *
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
-     */
-    private void salidaXML() {
-        System.out.println("-------------------------------\n" +
-                "\t\tOPERACIONES CRUD\n" +
-                "-------------------------------\n");
-
-        System.out.println("**********************\n" +
-                "\t\tDEPARTAMENTO\n" +
-                "**********************");
-        this.departamentoXML();
-
-        System.out.println("**********************\n" +
-                "\t\tPROYECTO\n" +
-                "**********************");
-        this.proyectoXML();
-
-
-        System.out.println("**********************\n" +
-                "\t\tPROGRAMADOR\n" +
-                "**********************");
-
-        this.programadorXML();
-    }
-
-    /**
-     * Metodos CRUD departamento en XML
-     *
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
-     */
-    private void departamentoXML() {
-        DepartamentoController departamentoController = DepartamentoController.getInstance();
-
-        System.out.println("GET Todos las Departamentos");
-        departamentoController.getAllDepartamentosXML();
-
-        System.out.println("GET Departamento con ID = 1e89386d-be37-4930-b6ae-bcba6c9917b4");
-        //departamentoController.getDepartamentoByIdXML("1e89386d-be37-4930-b6ae-bcba6c9917b4");
-
-        System.out.println("POST Insertando Departamento");
-        DepartamentoDTO departamentoDTO = DepartamentoDTO.builder()
-                //.idDepartamento(UUID.randomUUID().toString())
-                .nombre("DepartamentoPrueba")
-                .trabajadores(List.of(new Programador()))
-                .presupuesto(10000.0)
-                .presupuestoAnual(100000.0)
-                .build();
-        departamentoController.postDepartamentoXML(departamentoDTO);
-
-        System.out.println("UPDATE Departamento con ID = 512a0695-3294-4c2c-86d9-4babd4485fa8");
-        departamentoDTO = DepartamentoDTO.builder()
-                //.idDepartamento("512a0695-3294-4c2c-86d9-4babd4485fa8")
-                .nombre("DepartamentoPruebaUpdated")
-                .trabajadores(List.of(new Programador()))
-                .presupuesto(10000.0)
-                .presupuestoAnual(100000.0)
-                .build();
-        departamentoController.updateDepartamentoXML(departamentoDTO);
-
-        System.out.println("DELETE Departamento con ID = 512a0695-3294-4c2c-86d9-4babd4485fa8");
-        departamentoDTO = DepartamentoDTO.builder()
-                //.idDepartamento("512a0695-3294-4c2c-86d9-4babd4485fa8")
-                .build();
-        departamentoController.deleteDepartamentoXML(departamentoDTO);
-    }
-
-    /**
-     * Metodos CRUD programador en XML
-     *
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
-     */
-    private void programadorXML() {
-
-        ProgramadorController programadorController = ProgramadorController.getInstance();
-
-        System.out.println("GET Todos los Programadores");
-        programadorController.getAllProgramadoresXML();
-
-        System.out.println("GET Programador con ID = 1376acc9-79a9-4bf1-9084-c82e9a07f432");
-        //programadorController.getProgramadorByIdXML("1376acc9-79a9-4bf1-9084-c82e9a07f432");
-
-        System.out.println("POST Insertando Programador");
-        ProgramadorDTO programadorDTO = ProgramadorDTO.builder()
-                //.idProgramador(UUID.randomUUID().toString())
-                .nombre("Prueba")
-                //.fechaAlta(LocalDate.now())
-                //Cuidado que es tipo Date
-                //.departamento(new Departamento("2d1d1422-fede-4e27-8883-3ffdb1be1a7c"))
-                .proyectosParticipa(List.of(new Proyecto()))
-                .salario(1350.0)
-                .build();
-        programadorController.postProgramadorXML(programadorDTO);
-
-        System.out.println("UPDATE Programador con ID = 53269670-1586-49ac-9df5-62ddd55f96cc");
-        programadorDTO = ProgramadorDTO.builder()
-                //.idProgramador("53269670-1586-49ac-9df5-62ddd55f96cc")
-                .nombre("Prueba2")
-                //.fechaAlta(LocalDate.now())
-                //Cuidado que es tipo Date
-                //.departamento(new Departamento("2d1d1422-fede-4e27-8883-3ffdb1be1a7c"))
-                .proyectosParticipa(List.of(new Proyecto()))
-                .salario(1350.0)
-                .build();
-        programadorController.updateProgramadorXML(programadorDTO);
-
-        System.out.println("DELETE Programador con ID = 1376acc9-79a9-4bf1-9084-c82e9a07f432");
-        programadorDTO = ProgramadorDTO.builder()
-                //.idProgramador("1376acc9-79a9-4bf1-9084-c82e9a07f432")
-                //.fechaAlta(LocalDate.now())
-                .build();
-        programadorController.deleteProgramadorXML(programadorDTO);
-    }
-
-    /**
-     * Metodos CRUD proyecto en XML
-     *
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
-     */
-    private void proyectoXML() {
-        ProyectoController proyectoController = ProyectoController.getInstance();
-
-        System.out.println("GET Todos los Proyectos");
-        proyectoController.getAllProyectosXML();
-
-        System.out.println("GET Proyecto con ID = 81ee1211-760c-493d-968a-380e6af67363");
-        //proyectoController.getProyectoByIdXML("81ee1211-760c-493d-968a-380e6af67363");
-
-        System.out.println("POST Insertando Proyecto");
-        ProyectoDTO proyectoDTO = ProyectoDTO.builder()
-                //.idProyecto(UUID.randomUUID().toString())
-                .nombre("Prueba")
-                .presupuesto(100.0)
-                //.fechaInicio(LocalDate.of(2015, 2, 13))
-                //.fechaFin(LocalDate.now())
-                //.departamento(new Departamento("1e89386d-be37-4930-b6ae-bcba6c9917b4"))
-                .build();
-        proyectoController.postProyectoXML(proyectoDTO);
-
-        System.out.println("UPDATE Proyecto con ID = 81ee1211-760c-493d-968a-380e6af67363");
-        proyectoDTO = ProyectoDTO.builder()
-                //.idProyecto("81ee1211-760c-493d-968a-380e6af67363")
-                .nombre("Prueba")
-                .presupuesto(100.0)
-                //.fechaInicio(LocalDate.of(2015, 2, 13))
-                //.fechaFin(LocalDate.now())
-                //.departamento(new Departamento("1e89386d-be37-4930-b6ae-bcba6c9917b4"))
-                .build();
-        proyectoController.updateProyectoXML(proyectoDTO);
-
-        System.out.println("DELETE Proyecto con ID = 81ee1211-760c-493d-968a-380e6af67363");
-        proyectoDTO = ProyectoDTO.builder()
-                //.idProyecto("81ee1211-760c-493d-968a-380e6af67363")
-                //.fechaInicio(LocalDate.of(2015, 2, 13))
-                //.fechaFin(LocalDate.now())
-                .build();
-        proyectoController.deleteProyectoXML(proyectoDTO);
-
-    }
 
     /**
      * Metodos CRUD departamento en JSON
@@ -423,7 +232,7 @@ public class Facade {
         DepartamentoController departamentoController = DepartamentoController.getInstance();
 
         System.out.println("GET Todos las Departamentos");
-        System.out.println(departamentoController.getAllDepartamentosJSON());
+        System.out.println(departamentoController.getAllDepartamentos());
 
         System.out.println("GET Departamento con ID = 1e89386d-be37-4930-b6ae-bcba6c9917b4");
         //System.out.println(departamentoController.getDepartamentoByIdJSON("1e89386d-be37-4930-b6ae-bcba6c9917b4"));
@@ -438,7 +247,7 @@ public class Facade {
                 .presupuesto(10000.0)
                 .presupuestoAnual(100000.0)
                 .build();
-        System.out.println(departamentoController.postDepartamentoJSON(departamentoDTO));
+        System.out.println(departamentoController.postDepartamento(departamentoDTO));
 
         System.out.println("UPDATE Departamento con ID = 512a0695-3294-4c2c-86d9-4babd4485fa8");
         departamentoDTO = DepartamentoDTO.builder()
@@ -469,7 +278,7 @@ public class Facade {
         ProgramadorController programadorController = ProgramadorController.getInstance();
 
         System.out.println("GET Todos los Programadores");
-        System.out.println(programadorController.getAllProgramadorsJSON());
+        System.out.println(programadorController.getAllProgramadores());
 
         System.out.println("GET Programador con ID = d63f0d73-3f1b-4afd-b5d0-821449daa4a3");
         //System.out.println(programadorController.getProgramadorByIdJSON("d63f0d73-3f1b-4afd-b5d0-821449daa4a3"));
@@ -484,7 +293,7 @@ public class Facade {
                 .proyectosParticipa(List.of(new Proyecto()))
                 .salario(1350.0)
                 .build();
-        System.out.println(programadorController.postProgramadorJSON(programadorDTO));
+        System.out.println(programadorController.postProgramador(programadorDTO));
 
         System.out.println("UPDATE Programador con ID = 53269670-1586-49ac-9df5-62ddd55f96cc");
         programadorDTO = ProgramadorDTO.builder()
@@ -496,14 +305,14 @@ public class Facade {
                 .proyectosParticipa(List.of(new Proyecto()))
                 .salario(1350.0)
                 .build();
-        System.out.println(programadorController.updateProgramadorJSON(programadorDTO));
+        System.out.println(programadorController.updateProgramador(programadorDTO));
 
         System.out.println("DELETE Programador con ID = d63f0d73-3f1b-4afd-b5d0-821449daa4a3");
         programadorDTO = ProgramadorDTO.builder()
                 //.idProgramador("d63f0d73-3f1b-4afd-b5d0-821449daa4a3")
                 //.fechaAlta(LocalDate.now())
                 .build();
-        System.out.println(programadorController.deleteProgramadorJSON(programadorDTO));
+        System.out.println(programadorController.deleteProgramador(programadorDTO));
     }
 
     /**
@@ -516,7 +325,7 @@ public class Facade {
         ProyectoController proyectoController = ProyectoController.getInstance();
 
         System.out.println("GET Todos los Proyectos");
-        System.out.println(proyectoController.getAllProyectosJSON());
+        System.out.println(proyectoController.getAllProyectos());
 
         System.out.println("GET Proyecto con ID = 81ee1211-760c-493d-968a-380e6af67363");
         //System.out.println(proyectoController.getProyectoByIdJSON("81ee1211-760c-493d-968a-380e6af67363"));
@@ -530,7 +339,7 @@ public class Facade {
                 //.fechaFin(LocalDate.now())
                 //.departamento(new Departamento("1e89386d-be37-4930-b6ae-bcba6c9917b4"))
                 .build();
-        System.out.println(proyectoController.postProyectoJSON(proyectoDTO));
+        System.out.println(proyectoController.postProyecto(proyectoDTO));
 
         System.out.println("UPDATE Proyecto con ID = 81ee1211-760c-493d-968a-380e6af67363");
         proyectoDTO = ProyectoDTO.builder()
@@ -541,7 +350,7 @@ public class Facade {
                 //.fechaFin(LocalDate.now())
                 //.departamento(new Departamento("1e89386d-be37-4930-b6ae-bcba6c9917b4"))
                 .build();
-        System.out.println(proyectoController.updateProyectoJSON(proyectoDTO));
+        System.out.println(proyectoController.updateProyecto(proyectoDTO));
 
         System.out.println("DELETE Proyecto con ID = 81ee1211-760c-493d-968a-380e6af67363");
         proyectoDTO = ProyectoDTO.builder()
@@ -549,6 +358,6 @@ public class Facade {
                 //.fechaInicio(LocalDate.of(2015, 2, 13))
                 //.fechaFin(LocalDate.now())
                 .build();
-        System.out.println(proyectoController.deleteProyectoJSON(proyectoDTO));
+        System.out.println(proyectoController.deleteProyecto(proyectoDTO));
     }
 }

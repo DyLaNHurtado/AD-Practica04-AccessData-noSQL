@@ -40,7 +40,7 @@ public class RepoDepartamento implements CrudRepository<Departamento, Long> {
         hc.open();
         try {
             hc.getTransaction().begin();
-            departamento.setIdDepartamento(Long.parseLong(ObjectId.get().toString()));
+            departamento.setId(Long.parseLong(ObjectId.get().toString()));
             hc.getManager().persist(departamento);
             hc.getTransaction().commit();
             hc.close();
@@ -67,7 +67,7 @@ public class RepoDepartamento implements CrudRepository<Departamento, Long> {
             hc.close();
             return Optional.of(departamento);
         } catch (Exception e) {
-            throw new SQLException("Error RepoDepartamento al actualizar departamento con id: " + departamento.getIdDepartamento() + e.getMessage());
+            throw new SQLException("Error RepoDepartamento al actualizar departamento con id: " + departamento.getId() + e.getMessage());
         } finally {
             if (hc.getTransaction().isActive()) {
                 hc.getTransaction().rollback();
@@ -83,14 +83,14 @@ public class RepoDepartamento implements CrudRepository<Departamento, Long> {
         try {
             hc.getTransaction().begin();
             // Ojo que borrar implica que estemos en la misma sesión y nos puede dar problemas, por eso lo recuperamos otra vez
-            departamento = hc.getManager().find(Departamento.class, departamento.getIdDepartamento());
+            departamento = hc.getManager().find(Departamento.class, departamento.getId());
             hc.getManager().remove(departamento);
             hc.getTransaction().commit();
             hc.close();
             return Optional.of(departamento);
         } catch (Exception e) {
             e.printStackTrace();
-            throw new SQLException("Error DepartamentoRepository al eliminar Departamento con id: " + departamento.getIdDepartamento() + e.getMessage());
+            throw new SQLException("Error DepartamentoRepository al eliminar Departamento con id: " + departamento.getId() + e.getMessage());
 
         } finally {
             if (hc.getTransaction().isActive()) {
@@ -103,7 +103,7 @@ public class RepoDepartamento implements CrudRepository<Departamento, Long> {
     // Operacion 1:
     //Obtener de un departamento, los proyectos (información completa) y trabajadores
     //asociados con sus datos completos
-    /*
+
     public void departamentoInfo(Long id) throws SQLException {
 
         if (this.getById(id).isPresent()) {
@@ -112,6 +112,5 @@ public class RepoDepartamento implements CrudRepository<Departamento, Long> {
             //System.out.println(departamento.toStringInfo());
         }
     }
-     */
 
 }

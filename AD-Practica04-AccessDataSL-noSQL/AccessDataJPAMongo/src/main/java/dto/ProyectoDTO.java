@@ -3,7 +3,9 @@ package dto;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import dao.Departamento;
+import dao.JefeProyecto;
 import dao.Programador;
+import dao.Repositorio;
 import lombok.Builder;
 import lombok.Data;
 
@@ -12,6 +14,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.sql.Timestamp;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 @Data
 @Builder
@@ -19,14 +22,16 @@ import java.util.List;
 @XmlRootElement(name="proyecto")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class ProyectoDTO {
-    private long idProyecto;
+    private long id;
     private String nombre;
     private Double presupuesto;
     private Timestamp fechaInicio;
     private Timestamp fechaFin;
+    private List<String> tecnologias = new ArrayList<>();
+    private JefeProyecto jefe;
     private Departamento departamento;
-    private List<Programador> programadores;
-
+    private Repositorio repositorio;
+    private List<Programador> programadores = new ArrayList<>();
     // From/To JSON IMPLEMENTAR METODOS CUANDO PASEMOS A JSON
     public static ProyectoDTO fromJSON(String json) {
         final Gson gson = new Gson();

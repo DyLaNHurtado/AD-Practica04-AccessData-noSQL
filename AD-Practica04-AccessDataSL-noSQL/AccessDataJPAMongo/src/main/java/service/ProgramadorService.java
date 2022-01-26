@@ -63,16 +63,4 @@ public class ProgramadorService extends BaseService<Programador, Long, RepoProgr
                 return mapper.toDTO(res.get());
     }
 
-
-    //Operacion 4
-    public void getAllProgramadoresFullInfo() throws SQLException {
-        if (this.getAll().isPresent()) {
-            List<Programador> programadores = this.getAll().get();
-            //programadores.forEach(x -> System.out.println(x.toStringProductividad()));
-
-        }
-    }
-
-
-
 }

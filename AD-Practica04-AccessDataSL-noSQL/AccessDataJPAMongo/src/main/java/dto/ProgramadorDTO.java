@@ -20,7 +20,7 @@ import java.util.List;
 @XmlRootElement(name="programador")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class ProgramadorDTO {
-    private long idProgramador;
+    private long id;
     private String nombre;
     private Timestamp fechaAlta;
     private Departamento departamento;
@@ -29,6 +29,8 @@ public class ProgramadorDTO {
     private Double salario;
     private boolean jefeDepartamento;
     private boolean jefeProyecto;
+    private List<Commit> commits;
+    private List<Issue> issues;
 
     // From/To JSON IMPLEMENTAR METODOS CUANDO PASEMOS A JSON
     public static ProgramadorDTO fromJSON(String json) {

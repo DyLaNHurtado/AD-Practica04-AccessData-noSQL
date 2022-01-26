@@ -18,7 +18,7 @@ import java.util.List;
 })
 public class Departamento implements Serializable {
 
-    private long idDepartamento;
+    private long id;
     private String nombre;
     private JefeDepartamento jefeDepartamento;
     private List<Proyecto> proyFinalizados = new ArrayList<>();
@@ -36,19 +36,19 @@ public class Departamento implements Serializable {
         this.presupuestoAnual = presupuestoAnual;
     }
 
-    public Departamento(long idDepartamento) {
-        this.idDepartamento = idDepartamento;
+    public Departamento(long id) {
+        this.id = id;
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id", nullable = false)
-    public long getIdDepartamento() {
-        return idDepartamento;
+    public long getId() {
+        return id;
     }
 
-    public void setIdDepartamento(long idDepartamento) {
-        this.idDepartamento = idDepartamento;
+    public void setId(long idDepartamento) {
+        this.id = idDepartamento;
     }
 
     @Basic
@@ -131,7 +131,7 @@ public class Departamento implements Serializable {
     @Override
     public String toString() {
         return "Departamento{\n" +
-                "idDepartamento='" + idDepartamento + '\'' +
+                "idDepartamento='" + id + '\'' +
                 ", \nnombre='" + nombre + '\'' +
                 ", \njefe='" + jefeDepartamento + '\'' +
                 ", \nproyFinalizados=" + proyFinalizados +
