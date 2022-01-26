@@ -6,7 +6,6 @@ import lombok.Builder;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Timestamp;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +19,7 @@ import java.util.List;
 })
 
 public class Proyecto implements Serializable {
-    private long idProyecto;
+    private long id;
     private String nombre;
     private Double presupuesto;
     private Timestamp fechaInicio;
@@ -43,12 +42,12 @@ public class Proyecto implements Serializable {
 
     @Id
     @Column(name = "idProyecto", nullable = false)
-    public long getIdProyecto() {
-        return idProyecto;
+    public long getId() {
+        return id;
     }
 
-    public void setIdProyecto(long idProyecto) {
-        this.idProyecto = idProyecto;
+    public void setId(long idProyecto) {
+        this.id = idProyecto;
     }
 
     @Basic
@@ -146,13 +145,13 @@ public class Proyecto implements Serializable {
         List<Long> idProgramadores = new ArrayList<>();
         programadores.forEach(x -> idProgramadores.add(x.getId())); //da error
         return "Proyecto{\n" +
-                "idProyecto='\n" + idProyecto + '\'' +
+                "idProyecto='\n" + id + '\'' +
                 ", \nnombre='" + nombre + '\'' +
                 ", \npresupuesto=" + presupuesto +
                 ", \nfechaInicio=" + fechaInicio +
                 ", \nfechaFin=" + fechaFin +
                 ", \ntecnologias=" + tecnologias +
-                ", \ndepartamento=" + departamento.getIdDepartamento() +
+                ", \ndepartamento=" + departamento.getId() +
                 ", \nprogramadores=" + idProgramadores +
                 "\n}";
     }

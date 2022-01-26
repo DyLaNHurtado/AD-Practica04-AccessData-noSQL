@@ -8,27 +8,25 @@ public class ProgramadorMapper extends BaseMapper<Programador, ProgramadorDTO> {
     @Override
     public Programador fromDTO(ProgramadorDTO item) {
         return Programador.builder()
-                .idProgramador(item.getIdProgramador())
-                .nombre(item.getNombre())
-                .fechaAlta(item.getFechaAlta())
-                //.departamento(item.getDepartamento())
-                //.proyectosParticipa(item.getProyectosParticipa())
-                //.tecnologias(item.getTecnologias())
-                .salario(item.getSalario())
-                .jefeDepartamento(item.isJefeDepartamento())
-                .jefeProyecto(item.isJefeProyecto())
+                .departamento(item.getDepartamento())
+                .proyectosParticipa(item.getProyectosParticipa())
+                .commits(item.getCommits())
+                .issues(item.getIssues())
                 .build();
     }
 
     @Override
     public ProgramadorDTO toDTO(Programador item) {
         return ProgramadorDTO.builder()
-                .idProgramador(item.getId())
+                .id(item.getId())
                 .nombre(item.getNombre())
                 .fechaAlta(item.getFechaAlta())
                 .salario(item.getSalario())
-                .jefeDepartamento(item.isJefeDepartamento())
-                .jefeProyecto(item.isJefeProyecto())
+                .tecnologias(item.getTecnologias())
+                .departamento(item.getDepartamento())
+                .proyectosParticipa(item.getProyectosParticipa())
+                .commits(item.getCommits())
+                .issues(item.getIssues())
                 .build();
     }
 }

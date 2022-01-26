@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class RepoProyecto implements CrudRepository<Proyecto, String> {
+public class RepoProyecto implements CrudRepository<Proyecto, Long> {
     @Override
     public Optional<List<Proyecto>> getAll() throws SQLException {
         HibernateController hc = HibernateController.getInstance();
@@ -21,7 +21,7 @@ public class RepoProyecto implements CrudRepository<Proyecto, String> {
     }
 
     @Override
-    public Optional<Proyecto> getById(String id) throws SQLException {
+    public Optional<Proyecto> getById(Long id) throws SQLException {
         HibernateController hc = HibernateController.getInstance();
         hc.open();
         Proyecto proyecto = hc.getManager().find(Proyecto.class, id);
@@ -65,7 +65,7 @@ public class RepoProyecto implements CrudRepository<Proyecto, String> {
             hc.close();
             return Optional.of(proyecto);
         } catch (Exception e) {
-            throw new SQLException("Error RepoCommit al actualizar proyecto con id: " + proyecto.getIdProyecto());
+            throw new SQLException("Error RepoCommit al actualizar proyecto con id: " + proyecto.getId());
         } finally {
             if (hc.getTransaction().isActive()) {
                 hc.getTransaction().rollback();
@@ -82,13 +82,13 @@ public class RepoProyecto implements CrudRepository<Proyecto, String> {
         try {
             hc.getTransaction().begin();
             // Ojo que borrar implica que estemos en la misma sesión y nos puede dar problemas, por eso lo recuperamos otra vez
-            proyecto = hc.getManager().find(Proyecto.class, proyecto.getIdProyecto());
+            proyecto = hc.getManager().find(Proyecto.class, proyecto.getId());
             hc.getManager().remove(proyecto);
             hc.getTransaction().commit();
             hc.close();
             return Optional.of(proyecto);
         } catch (Exception e) {
-            throw new SQLException("Error CategoryRepository al eliminar categoria con id: " + proyecto.getIdProyecto());
+            throw new SQLException("Error CategoryRepository al eliminar categoria con id: " + proyecto.getId());
         } finally {
             if (hc.getTransaction().isActive()) {
                 hc.getTransaction().rollback();

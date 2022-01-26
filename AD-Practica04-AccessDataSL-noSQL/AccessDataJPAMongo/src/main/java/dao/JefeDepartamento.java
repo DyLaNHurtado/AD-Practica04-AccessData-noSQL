@@ -1,7 +1,9 @@
 package dao;
 
-import javax.persistence.*;
+import lombok.Builder;
 
+import javax.persistence.*;
+@Builder
 @Embeddable
 public class JefeDepartamento extends Empleado{
 

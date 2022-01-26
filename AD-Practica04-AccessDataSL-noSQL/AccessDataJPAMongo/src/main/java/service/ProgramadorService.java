@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
-public class ProgramadorService extends BaseService<Programador, String, RepoProgramador> {
+public class ProgramadorService extends BaseService<Programador, Long, RepoProgramador> {
 
     ProgramadorMapper mapper = new ProgramadorMapper();
 
@@ -33,7 +33,7 @@ public class ProgramadorService extends BaseService<Programador, String, RepoPro
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
-    public ProgramadorDTO getProgramadorById(String id) throws SQLException {
+    public ProgramadorDTO getProgramadorById(Long id) throws SQLException {
             return mapper.toDTO(this.getById(id).get());
     }
     /**
@@ -65,17 +65,5 @@ public class ProgramadorService extends BaseService<Programador, String, RepoPro
             Optional<Programador> res = this.delete(mapper.fromDTO(programadorDTO));
                 return mapper.toDTO(res.get());
     }
-
-
-    //Operacion 4
-    public void getAllProgramadoresFullInfo() throws SQLException {
-        if (this.getAll().isPresent()) {
-            List<Programador> programadores = this.getAll().get();
-            programadores.forEach(x -> System.out.println(x.toStringProductividad()));
-
-        }
-    }
-
-
 
 }

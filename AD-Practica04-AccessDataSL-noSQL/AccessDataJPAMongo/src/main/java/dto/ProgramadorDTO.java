@@ -10,6 +10,7 @@ import lombok.Data;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
@@ -19,15 +20,17 @@ import java.util.List;
 @XmlRootElement(name="programador")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class ProgramadorDTO {
-    private String idProgramador;
+    private long id;
     private String nombre;
-    private LocalDate fechaAlta;
+    private Timestamp fechaAlta;
     private Departamento departamento;
     private List<Proyecto> proyectosParticipa;
     private List<String> tecnologias;
     private Double salario;
     private boolean jefeDepartamento;
     private boolean jefeProyecto;
+    private List<Commit> commits;
+    private List<Issue> issues;
 
     // From/To JSON IMPLEMENTAR METODOS CUANDO PASEMOS A JSON
     public static ProgramadorDTO fromJSON(String json) {

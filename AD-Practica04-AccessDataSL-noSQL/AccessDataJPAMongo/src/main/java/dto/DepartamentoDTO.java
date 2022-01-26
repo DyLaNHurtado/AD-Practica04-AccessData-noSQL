@@ -3,6 +3,7 @@ package dto;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.annotations.Expose;
+import dao.JefeDepartamento;
 import dao.Programador;
 import dao.Proyecto;
 import lombok.Builder;
@@ -10,6 +11,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.xml.bind.annotation.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -17,8 +19,9 @@ import java.util.List;
 @XmlRootElement(name = "departamento")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class DepartamentoDTO {
-    private String idDepartamento;
+    private long id;
     private String nombre;
+    private JefeDepartamento jefeDepartamento;
     private List<Proyecto> proyFinalizados;
     private List<Proyecto> proyDesarrollo;
     private Double presupuesto;

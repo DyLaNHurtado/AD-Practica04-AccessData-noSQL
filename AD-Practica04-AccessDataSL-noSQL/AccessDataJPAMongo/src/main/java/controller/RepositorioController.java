@@ -4,30 +4,26 @@ package controller;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import dto.ProgramadorDTO;
 import dto.ProyectoDTO;
-import repository.RepoProyecto;
-import service.ProyectoService;
+import repository.RepoRepositorio;
+import service.RepositorioService;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
 import java.sql.SQLException;
 
-public class ProyectoController {
-    private static ProyectoController controller = null;
+public class RepositorioController {
+    private static RepositorioController controller = null;
 
     // Mi Servicio unido al repositorio
-    private final ProyectoService proyectoService;
+    private final RepositorioService repositorioService;
 
     // Implementamos nuestro Singleton para el controlador
-    private ProyectoController(ProyectoService proyectoService) {
-        this.proyectoService = proyectoService;
+    private RepositorioController(RepositorioService repositorioService) {
+        this.repositorioService = repositorioService;
     }
 
-    public static ProyectoController getInstance() {
+    public static RepositorioController getInstance() {
         if (controller == null) {
-            controller = new ProyectoController(new ProyectoService(new RepoProyecto()));
+            controller = new RepositorioController(new RepositorioService(new RepoRepositorio()));
         }
         return controller;
     }
@@ -40,7 +36,7 @@ public class ProyectoController {
         try {
             // Vamos a devolver el JSON de los proyectos
             final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-            return prettyGson.toJson(proyectoService.getAllProyectos());
+            return prettyGson.toJson(repositorioService.getAllProyectos());
         } catch (SQLException e) {
             System.err.println("Error ProyectoController en getAll: " + e.getMessage());
             return "Error ProyectoController en getAll: " + e.getMessage();
@@ -55,7 +51,7 @@ public class ProyectoController {
         try {
             // Vamos a devolver el JSON de las categorías
             final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-            return prettyGson.toJson(proyectoService.getProyectoById(id));
+            return prettyGson.toJson(repositorioService.getProyectoById(id));
         } catch (SQLException e) {
             System.err.println("Error ProyectoController en getProyectoById: " + e.getMessage());
             return "Error ProyectoController en getProyectoById: " + e.getMessage();
@@ -69,7 +65,7 @@ public class ProyectoController {
     public String postProyecto(ProyectoDTO proyectoDTO) {
         try {
             final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-            return prettyGson.toJson(proyectoService.postProyecto(proyectoDTO));
+            return prettyGson.toJson(repositorioService.postProyecto(proyectoDTO));
         } catch (SQLException e) {
             System.err.println("Error ProyectoController en postProyecto: " + e.getMessage());
             return "Error ProyectoController en postProyecto: " + e.getMessage();
@@ -80,10 +76,10 @@ public class ProyectoController {
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
-    public String updateProyecto(ProyectoDTO comitDTO) {
+    public String updateProyectoJSON(ProyectoDTO comitDTO) {
         try {
             final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-            return prettyGson.toJson(proyectoService.updateProyecto(comitDTO));
+            return prettyGson.toJson(repositorioService.updateProyecto(comitDTO));
         } catch (SQLException e) {
             System.err.println("Error ProyectoController en updateProyecto: " + e.getMessage());
             return "Error ProyectoController en updateProyecto: " + e.getMessage();
@@ -97,7 +93,7 @@ public class ProyectoController {
     public String deleteProyecto(ProyectoDTO proyectoDTO) {
         try {
             final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-            return prettyGson.toJson(proyectoService.deleteProyecto(proyectoDTO));
+            return prettyGson.toJson(repositorioService.deleteProyecto(proyectoDTO));
         } catch (SQLException e) {
             System.err.println("Error ProyectoController en deleteProyecto: " + e.getMessage());
             return "Error ProyectoController en deleteProyecto: " + e.getMessage();
@@ -107,7 +103,7 @@ public class ProyectoController {
     public String getProyectosMasCaros() {
         try {
             final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-            return prettyGson.toJson(proyectoService.getProyectosMasCaros());
+            return prettyGson.toJson(repositorioService.getProyectosMasCaros());
         } catch (SQLException e) {
             System.err.println("Error ProyectoController en getProyectosMasCaros: " + e.getMessage());
             return "Error ProyectoController en getProyectosMasCaros: " + e.getMessage();

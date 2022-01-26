@@ -83,7 +83,7 @@ public class Programador extends Empleado implements Serializable {
     @Override
     public String toString() {
         return "Programador{\n" +
-                ", \ndepartamento=" + departamento.getIdDepartamento() +
+                ", \ndepartamento=" + departamento.getId() +
                 ", \nproyectosParticipa=" + proyectosParticipa +
                 "\n}";
     }
