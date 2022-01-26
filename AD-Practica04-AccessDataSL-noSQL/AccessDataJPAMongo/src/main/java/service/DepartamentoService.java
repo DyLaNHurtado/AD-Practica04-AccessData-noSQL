@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
-public class DepartamentoService extends BaseService<Departamento, String, RepoDepartamento> {
+public class DepartamentoService extends BaseService<Departamento, Long, RepoDepartamento> {
 
     DepartamentoMapper mapper = new DepartamentoMapper();
 
@@ -21,7 +21,7 @@ public class DepartamentoService extends BaseService<Departamento, String, RepoD
      * Mapea todos los departamentos a DTO
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
-     */
+     **/
     public Optional<List<DepartamentoDTO>> getAllDepartamentos() throws SQLException {
 
         return mapper.toDTO(this.getAll());
@@ -31,7 +31,7 @@ public class DepartamentoService extends BaseService<Departamento, String, RepoD
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
-    public DepartamentoDTO getDepartamentoById(String id) throws SQLException {
+    public DepartamentoDTO getDepartamentoById(Long id) throws SQLException {
 
             return mapper.toDTO(this.getById(id).get());
     }
@@ -64,9 +64,8 @@ public class DepartamentoService extends BaseService<Departamento, String, RepoD
     }
 
     //Operacion 1
-    public void departamentoFullInfo(String id) throws SQLException {
+    public void departamentoFullInfo(long id) throws SQLException {
         RepoDepartamento repo = new RepoDepartamento();
-        repo.departamentoInfo(id);
+        //repo.departamentoInfo(id);
     }
-
 }

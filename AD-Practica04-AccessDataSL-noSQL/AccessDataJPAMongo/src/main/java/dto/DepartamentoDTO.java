@@ -17,7 +17,7 @@ import java.util.List;
 @XmlRootElement(name = "departamento")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class DepartamentoDTO {
-    private String idDepartamento;
+    private long idDepartamento;
     private String nombre;
     private List<Proyecto> proyFinalizados;
     private List<Proyecto> proyDesarrollo;

@@ -14,8 +14,7 @@ public class RepoCommit implements CrudRepository<Commit,Long>{
     public Optional<List<Commit>> getAll() throws SQLException {
         HibernateController hc = HibernateController.getInstance();
         hc.open();
-        TypedQuery<Commit> query = hc.getManager().createNamedQuery("Commit.getAll",Commit.class);
-        List<Commit> list = query.getResultList();
+        List<Commit> list = hc.getManager().createNamedQuery("Commit.getAll",Commit.class).getResultList();
         list.forEach(x-> System.out.println(x.toString()));
         hc.close();
         return Optional.of(list);

@@ -4,7 +4,6 @@ package controller;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import dto.ProgramadorDTO;
 import dto.ProyectoDTO;
 import repository.RepoProyecto;
 import service.ProyectoService;
@@ -52,7 +51,7 @@ public class ProyectoController {
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
-    public String getProyectoByIdJSON(String id) {
+    public String getProyectoByIdJSON(Long id) {
         try {
             // Vamos a devolver el JSON de las categorías
             final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
@@ -136,7 +135,7 @@ public class ProyectoController {
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
-    public void getProyectoByIdXML(String id) {
+    public void getProyectoByIdXML(Long id) {
         try {
             JAXBContext jaxbContext = JAXBContext.newInstance(ProyectoDTO.class);
             marshaller = jaxbContext.createMarshaller();

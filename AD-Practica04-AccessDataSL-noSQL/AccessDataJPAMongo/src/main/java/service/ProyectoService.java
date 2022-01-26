@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
-public class ProyectoService extends BaseService<Proyecto, String, RepoProyecto> {
+public class ProyectoService extends BaseService<Proyecto, Long, RepoProyecto> {
 
     ProyectoMapper mapper = new ProyectoMapper();
 
@@ -30,7 +30,7 @@ public class ProyectoService extends BaseService<Proyecto, String, RepoProyecto>
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
-    public ProyectoDTO getProyectoById(String id) throws SQLException {
+    public ProyectoDTO getProyectoById(Long id) throws SQLException {
 
             return mapper.toDTO(this.getById(id).get());
     }

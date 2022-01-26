@@ -1,4 +1,4 @@
-package repository;
+package repositorio;
 
 import dao.Departamento;
 import dao.Programador;
@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Order;
 import org.junit.jupiter.api.Test;
+import repository.RepoProgramador;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -17,6 +18,7 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RepoProgramadorTest {
+    /*
 
     private static final RepoProgramador repoProgramador=new RepoProgramador();
     private static List<Programador> list =new ArrayList<>();
@@ -84,5 +86,6 @@ class RepoProgramadorTest {
         Optional<Programador> programadorOptional = repoProgramador.delete(programador);
         Assertions.assertEquals(programadorOptional.orElse(null),programador);
     }
+     */
 
 }

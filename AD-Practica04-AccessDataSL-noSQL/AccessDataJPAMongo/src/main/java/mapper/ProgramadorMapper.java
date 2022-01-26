@@ -8,15 +8,8 @@ public class ProgramadorMapper extends BaseMapper<Programador, ProgramadorDTO> {
     @Override
     public Programador fromDTO(ProgramadorDTO item) {
         return Programador.builder()
-                .idProgramador(item.getIdProgramador())
-                .nombre(item.getNombre())
-                .fechaAlta(item.getFechaAlta())
                 //.departamento(item.getDepartamento())
                 //.proyectosParticipa(item.getProyectosParticipa())
-                //.tecnologias(item.getTecnologias())
-                .salario(item.getSalario())
-                .jefeDepartamento(item.isJefeDepartamento())
-                .jefeProyecto(item.isJefeProyecto())
                 .build();
     }
 
@@ -27,8 +20,6 @@ public class ProgramadorMapper extends BaseMapper<Programador, ProgramadorDTO> {
                 .nombre(item.getNombre())
                 .fechaAlta(item.getFechaAlta())
                 .salario(item.getSalario())
-                .jefeDepartamento(item.isJefeDepartamento())
-                .jefeProyecto(item.isJefeProyecto())
                 .build();
     }
 }

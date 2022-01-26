@@ -8,8 +8,6 @@ import database.DataBaseController;
 import dto.*;
 import manager.HibernateController;
 
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Timestamp;
@@ -247,14 +245,6 @@ public class Facade {
                 "\t\tPROGRAMADOR\n" +
                 "**********************");
         this.programadorJSON();
-
-
-        System.out.println("**********************\n" +
-                "\t\tTECNOLOGIA\n" +
-                "**********************");
-        this.tecnologiaJSON();
-
-
     }
 
     /**
@@ -284,13 +274,6 @@ public class Facade {
                 "**********************");
 
         this.programadorXML();
-
-
-        System.out.println("**********************\n" +
-                "\t\tTECNOLOGIA\n" +
-                "**********************");
-        this.tecnologiaXML();
-
     }
 
     /**
@@ -306,11 +289,11 @@ public class Facade {
         departamentoController.getAllDepartamentosXML();
 
         System.out.println("GET Departamento con ID = 1e89386d-be37-4930-b6ae-bcba6c9917b4");
-        departamentoController.getDepartamentoByIdXML("1e89386d-be37-4930-b6ae-bcba6c9917b4");
+        //departamentoController.getDepartamentoByIdXML("1e89386d-be37-4930-b6ae-bcba6c9917b4");
 
         System.out.println("POST Insertando Departamento");
         DepartamentoDTO departamentoDTO = DepartamentoDTO.builder()
-                .idDepartamento(UUID.randomUUID().toString())
+                //.idDepartamento(UUID.randomUUID().toString())
                 .nombre("DepartamentoPrueba")
                 .trabajadores(List.of(new Programador()))
                 .presupuesto(10000.0)
@@ -320,7 +303,7 @@ public class Facade {
 
         System.out.println("UPDATE Departamento con ID = 512a0695-3294-4c2c-86d9-4babd4485fa8");
         departamentoDTO = DepartamentoDTO.builder()
-                .idDepartamento("512a0695-3294-4c2c-86d9-4babd4485fa8")
+                //.idDepartamento("512a0695-3294-4c2c-86d9-4babd4485fa8")
                 .nombre("DepartamentoPruebaUpdated")
                 .trabajadores(List.of(new Programador()))
                 .presupuesto(10000.0)
@@ -330,7 +313,7 @@ public class Facade {
 
         System.out.println("DELETE Departamento con ID = 512a0695-3294-4c2c-86d9-4babd4485fa8");
         departamentoDTO = DepartamentoDTO.builder()
-                .idDepartamento("512a0695-3294-4c2c-86d9-4babd4485fa8")
+                //.idDepartamento("512a0695-3294-4c2c-86d9-4babd4485fa8")
                 .build();
         departamentoController.deleteDepartamentoXML(departamentoDTO);
     }
@@ -349,38 +332,36 @@ public class Facade {
         programadorController.getAllProgramadoresXML();
 
         System.out.println("GET Programador con ID = 1376acc9-79a9-4bf1-9084-c82e9a07f432");
-        programadorController.getProgramadorByIdXML("1376acc9-79a9-4bf1-9084-c82e9a07f432");
+        //programadorController.getProgramadorByIdXML("1376acc9-79a9-4bf1-9084-c82e9a07f432");
 
         System.out.println("POST Insertando Programador");
         ProgramadorDTO programadorDTO = ProgramadorDTO.builder()
-                .idProgramador(UUID.randomUUID().toString())
+                //.idProgramador(UUID.randomUUID().toString())
                 .nombre("Prueba")
-                .fechaAlta(LocalDate.now())
+                //.fechaAlta(LocalDate.now())
                 //Cuidado que es tipo Date
-                .departamento(new Departamento("2d1d1422-fede-4e27-8883-3ffdb1be1a7c"))
+                //.departamento(new Departamento("2d1d1422-fede-4e27-8883-3ffdb1be1a7c"))
                 .proyectosParticipa(List.of(new Proyecto()))
-                .tecnologias(List.of(new Tecnologia()))
                 .salario(1350.0)
                 .build();
         programadorController.postProgramadorXML(programadorDTO);
 
         System.out.println("UPDATE Programador con ID = 53269670-1586-49ac-9df5-62ddd55f96cc");
         programadorDTO = ProgramadorDTO.builder()
-                .idProgramador("53269670-1586-49ac-9df5-62ddd55f96cc")
+                //.idProgramador("53269670-1586-49ac-9df5-62ddd55f96cc")
                 .nombre("Prueba2")
-                .fechaAlta(LocalDate.now())
+                //.fechaAlta(LocalDate.now())
                 //Cuidado que es tipo Date
-                .departamento(new Departamento("2d1d1422-fede-4e27-8883-3ffdb1be1a7c"))
+                //.departamento(new Departamento("2d1d1422-fede-4e27-8883-3ffdb1be1a7c"))
                 .proyectosParticipa(List.of(new Proyecto()))
-                .tecnologias(List.of(new Tecnologia()))
                 .salario(1350.0)
                 .build();
         programadorController.updateProgramadorXML(programadorDTO);
 
         System.out.println("DELETE Programador con ID = 1376acc9-79a9-4bf1-9084-c82e9a07f432");
         programadorDTO = ProgramadorDTO.builder()
-                .idProgramador("1376acc9-79a9-4bf1-9084-c82e9a07f432")
-                .fechaAlta(LocalDate.now())
+                //.idProgramador("1376acc9-79a9-4bf1-9084-c82e9a07f432")
+                //.fechaAlta(LocalDate.now())
                 .build();
         programadorController.deleteProgramadorXML(programadorDTO);
     }
@@ -398,80 +379,39 @@ public class Facade {
         proyectoController.getAllProyectosXML();
 
         System.out.println("GET Proyecto con ID = 81ee1211-760c-493d-968a-380e6af67363");
-        proyectoController.getProyectoByIdXML("81ee1211-760c-493d-968a-380e6af67363");
+        //proyectoController.getProyectoByIdXML("81ee1211-760c-493d-968a-380e6af67363");
 
         System.out.println("POST Insertando Proyecto");
         ProyectoDTO proyectoDTO = ProyectoDTO.builder()
-                .idProyecto(UUID.randomUUID().toString())
+                //.idProyecto(UUID.randomUUID().toString())
                 .nombre("Prueba")
                 .presupuesto(100.0)
-                .fechaInicio(LocalDate.of(2015, 2, 13))
-                .fechaFin(LocalDate.now())
-                .tecnologias(List.of(new Tecnologia()))
-                .departamento(new Departamento("1e89386d-be37-4930-b6ae-bcba6c9917b4"))
+                //.fechaInicio(LocalDate.of(2015, 2, 13))
+                //.fechaFin(LocalDate.now())
+                //.departamento(new Departamento("1e89386d-be37-4930-b6ae-bcba6c9917b4"))
                 .build();
         proyectoController.postProyectoXML(proyectoDTO);
 
         System.out.println("UPDATE Proyecto con ID = 81ee1211-760c-493d-968a-380e6af67363");
         proyectoDTO = ProyectoDTO.builder()
-                .idProyecto("81ee1211-760c-493d-968a-380e6af67363")
+                //.idProyecto("81ee1211-760c-493d-968a-380e6af67363")
                 .nombre("Prueba")
                 .presupuesto(100.0)
-                .fechaInicio(LocalDate.of(2015, 2, 13))
-                .fechaFin(LocalDate.now())
-                .tecnologias(List.of(new Tecnologia()))
-                .departamento(new Departamento("1e89386d-be37-4930-b6ae-bcba6c9917b4"))
+                //.fechaInicio(LocalDate.of(2015, 2, 13))
+                //.fechaFin(LocalDate.now())
+                //.departamento(new Departamento("1e89386d-be37-4930-b6ae-bcba6c9917b4"))
                 .build();
         proyectoController.updateProyectoXML(proyectoDTO);
 
         System.out.println("DELETE Proyecto con ID = 81ee1211-760c-493d-968a-380e6af67363");
         proyectoDTO = ProyectoDTO.builder()
-                .idProyecto("81ee1211-760c-493d-968a-380e6af67363")
-                .fechaInicio(LocalDate.of(2015, 2, 13))
-                .fechaFin(LocalDate.now())
+                //.idProyecto("81ee1211-760c-493d-968a-380e6af67363")
+                //.fechaInicio(LocalDate.of(2015, 2, 13))
+                //.fechaFin(LocalDate.now())
                 .build();
         proyectoController.deleteProyectoXML(proyectoDTO);
 
     }
-
-    /**
-     * Metodos CRUD tecnologia en XML
-     *
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
-     */
-    private void tecnologiaXML() {
-
-        TecnologiaController tecnologiaController = TecnologiaController.getInstance();
-
-        System.out.println("GET Todos las Tecnologias");
-        tecnologiaController.getAllTecnologiasXML();
-
-        System.out.println("GET Tecnologia con ID = 4f119f1b-7ccf-49f4-b56f-fdace8589b1c");
-        tecnologiaController.getTecnologiaByIdXML("4f119f1b-7ccf-49f4-b56f-fdace8589b1c");
-
-        System.out.println("POST Insertando Tecnologia");
-        TecnologiaDTO tecnologiaDTO = TecnologiaDTO.builder()
-                .idTecnologia(UUID.randomUUID().toString())
-                .nombre("NodeJS")
-                .build();
-        tecnologiaController.postTecnologiaXML(tecnologiaDTO);
-
-        System.out.println("UPDATE Tecnologia con ID = 4f119f1b-7ccf-49f4-b56f-fdace8589b1c");
-        tecnologiaDTO = TecnologiaDTO.builder()
-                .idTecnologia("4f119f1b-7ccf-49f4-b56f-fdace8589b1c")
-                .nombre("Swift")
-                .build();
-        tecnologiaController.updateTecnologiaXML(tecnologiaDTO);
-
-        System.out.println("DELETE Tecnologia con ID = 4f119f1b-7ccf-49f4-b56f-fdace8589b1c");
-        tecnologiaDTO = TecnologiaDTO.builder()
-                .idTecnologia("4f119f1b-7ccf-49f4-b56f-fdace8589b1c")
-                .build();
-        tecnologiaController.deleteTecnologiaXML(tecnologiaDTO);
-
-    }
-
 
     /**
      * Metodos CRUD departamento en JSON
@@ -486,11 +426,11 @@ public class Facade {
         System.out.println(departamentoController.getAllDepartamentosJSON());
 
         System.out.println("GET Departamento con ID = 1e89386d-be37-4930-b6ae-bcba6c9917b4");
-        System.out.println(departamentoController.getDepartamentoByIdJSON("1e89386d-be37-4930-b6ae-bcba6c9917b4"));
+        //System.out.println(departamentoController.getDepartamentoByIdJSON("1e89386d-be37-4930-b6ae-bcba6c9917b4"));
 
         System.out.println("POST Insertando Departamento");
         DepartamentoDTO departamentoDTO = DepartamentoDTO.builder()
-                .idDepartamento(UUID.randomUUID().toString())
+                //.idDepartamento(UUID.randomUUID().toString())
                 .nombre("DepartamentoPrueba")
                 .trabajadores(List.of(new Programador()))
                 .proyDesarrollo(List.of(new Proyecto()))
@@ -502,7 +442,7 @@ public class Facade {
 
         System.out.println("UPDATE Departamento con ID = 512a0695-3294-4c2c-86d9-4babd4485fa8");
         departamentoDTO = DepartamentoDTO.builder()
-                .idDepartamento("512a0695-3294-4c2c-86d9-4babd4485fa8")
+                //.idDepartamento("512a0695-3294-4c2c-86d9-4babd4485fa8")
                 .nombre("DepartamentoPruebaUpdated")
                 .trabajadores(List.of(new Programador()))
                 .proyDesarrollo(List.of(new Proyecto()))
@@ -514,7 +454,7 @@ public class Facade {
 
         System.out.println("DELETE Departamento con ID = 512a0695-3294-4c2c-86d9-4babd4485fa8");
         departamentoDTO = DepartamentoDTO.builder()
-                .idDepartamento("512a0695-3294-4c2c-86d9-4babd4485fa8")
+                //.idDepartamento("512a0695-3294-4c2c-86d9-4babd4485fa8")
                 .build();
         System.out.println(departamentoController.deleteDepartamentoJSON(departamentoDTO));
     }
@@ -532,38 +472,36 @@ public class Facade {
         System.out.println(programadorController.getAllProgramadorsJSON());
 
         System.out.println("GET Programador con ID = d63f0d73-3f1b-4afd-b5d0-821449daa4a3");
-        System.out.println(programadorController.getProgramadorByIdJSON("d63f0d73-3f1b-4afd-b5d0-821449daa4a3"));
+        //System.out.println(programadorController.getProgramadorByIdJSON("d63f0d73-3f1b-4afd-b5d0-821449daa4a3"));
 
         System.out.println("POST Insertando Programador");
         ProgramadorDTO programadorDTO = ProgramadorDTO.builder()
-                .idProgramador(UUID.randomUUID().toString())
+                //.idProgramador(UUID.randomUUID().toString())
                 .nombre("Prueba")
-                .fechaAlta(LocalDate.now())
+                //.fechaAlta(LocalDate.now())
                 //Cuidado que es tipo Date
-                .departamento(new Departamento("2d1d1422-fede-4e27-8883-3ffdb1be1a7c"))
+                //.departamento(new Departamento("2d1d1422-fede-4e27-8883-3ffdb1be1a7c"))
                 .proyectosParticipa(List.of(new Proyecto()))
-                .tecnologias(List.of(new Tecnologia()))
                 .salario(1350.0)
                 .build();
         System.out.println(programadorController.postProgramadorJSON(programadorDTO));
 
         System.out.println("UPDATE Programador con ID = 53269670-1586-49ac-9df5-62ddd55f96cc");
         programadorDTO = ProgramadorDTO.builder()
-                .idProgramador("53269670-1586-49ac-9df5-62ddd55f96cc")
+                //.idProgramador("53269670-1586-49ac-9df5-62ddd55f96cc")
                 .nombre("Prueba2")
-                .fechaAlta(LocalDate.now())
+                //.fechaAlta(LocalDate.now())
                 //Cuidado que es tipo Date
-                .departamento(new Departamento("2d1d1422-fede-4e27-8883-3ffdb1be1a7c"))
+                //.departamento(new Departamento("2d1d1422-fede-4e27-8883-3ffdb1be1a7c"))
                 .proyectosParticipa(List.of(new Proyecto()))
-                .tecnologias(List.of(new Tecnologia()))
                 .salario(1350.0)
                 .build();
         System.out.println(programadorController.updateProgramadorJSON(programadorDTO));
 
         System.out.println("DELETE Programador con ID = d63f0d73-3f1b-4afd-b5d0-821449daa4a3");
         programadorDTO = ProgramadorDTO.builder()
-                .idProgramador("d63f0d73-3f1b-4afd-b5d0-821449daa4a3")
-                .fechaAlta(LocalDate.now())
+                //.idProgramador("d63f0d73-3f1b-4afd-b5d0-821449daa4a3")
+                //.fechaAlta(LocalDate.now())
                 .build();
         System.out.println(programadorController.deleteProgramadorJSON(programadorDTO));
     }
@@ -581,75 +519,36 @@ public class Facade {
         System.out.println(proyectoController.getAllProyectosJSON());
 
         System.out.println("GET Proyecto con ID = 81ee1211-760c-493d-968a-380e6af67363");
-        System.out.println(proyectoController.getProyectoByIdJSON("81ee1211-760c-493d-968a-380e6af67363"));
+        //System.out.println(proyectoController.getProyectoByIdJSON("81ee1211-760c-493d-968a-380e6af67363"));
 
         System.out.println("POST Insertando Proyecto");
         ProyectoDTO proyectoDTO = ProyectoDTO.builder()
-                .idProyecto(UUID.randomUUID().toString())
+                //.idProyecto(UUID.randomUUID().toString())
                 .nombre("Prueba")
                 .presupuesto(100.0)
-                .fechaInicio(LocalDate.of(2015, 2, 13))
-                .fechaFin(LocalDate.now())
-                .tecnologias(List.of(new Tecnologia()))
-                .departamento(new Departamento("1e89386d-be37-4930-b6ae-bcba6c9917b4"))
+                //.fechaInicio(LocalDate.of(2015, 2, 13))
+                //.fechaFin(LocalDate.now())
+                //.departamento(new Departamento("1e89386d-be37-4930-b6ae-bcba6c9917b4"))
                 .build();
         System.out.println(proyectoController.postProyectoJSON(proyectoDTO));
 
         System.out.println("UPDATE Proyecto con ID = 81ee1211-760c-493d-968a-380e6af67363");
         proyectoDTO = ProyectoDTO.builder()
-                .idProyecto("81ee1211-760c-493d-968a-380e6af67363")
+                //.idProyecto("81ee1211-760c-493d-968a-380e6af67363")
                 .nombre("Prueba")
                 .presupuesto(100.0)
-                .fechaInicio(LocalDate.of(2015, 2, 13))
-                .fechaFin(LocalDate.now())
-                .tecnologias(List.of(new Tecnologia()))
-                .departamento(new Departamento("1e89386d-be37-4930-b6ae-bcba6c9917b4"))
+                //.fechaInicio(LocalDate.of(2015, 2, 13))
+                //.fechaFin(LocalDate.now())
+                //.departamento(new Departamento("1e89386d-be37-4930-b6ae-bcba6c9917b4"))
                 .build();
         System.out.println(proyectoController.updateProyectoJSON(proyectoDTO));
 
         System.out.println("DELETE Proyecto con ID = 81ee1211-760c-493d-968a-380e6af67363");
         proyectoDTO = ProyectoDTO.builder()
-                .idProyecto("81ee1211-760c-493d-968a-380e6af67363")
-                .fechaInicio(LocalDate.of(2015, 2, 13))
-                .fechaFin(LocalDate.now())
+                //.idProyecto("81ee1211-760c-493d-968a-380e6af67363")
+                //.fechaInicio(LocalDate.of(2015, 2, 13))
+                //.fechaFin(LocalDate.now())
                 .build();
         System.out.println(proyectoController.deleteProyectoJSON(proyectoDTO));
-    }
-
-
-    /**
-     * Metodos CRUD tecnologia en JSON
-     *
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
-     */
-    private void tecnologiaJSON() {
-        TecnologiaController tecnologiaController = TecnologiaController.getInstance();
-
-        System.out.println("GET Todos las Tecnologias");
-        System.out.println(tecnologiaController.getAllTecnologiasJSON());
-
-        System.out.println("GET Tecnologia con ID = 4f119f1b-7ccf-49f4-b56f-fdace8589b1c");
-        System.out.println(tecnologiaController.getTecnologiaByIdJSON("4f119f1b-7ccf-49f4-b56f-fdace8589b1c"));
-
-        System.out.println("POST Insertando Tecnologia");
-        TecnologiaDTO tecnologiaDTO = TecnologiaDTO.builder()
-                .idTecnologia(UUID.randomUUID().toString())
-                .nombre("NodeJS")
-                .build();
-        System.out.println(tecnologiaController.postTecnologiaJSON(tecnologiaDTO));
-
-        System.out.println("UPDATE Tecnologia con ID = 4f119f1b-7ccf-49f4-b56f-fdace8589b1c");
-        tecnologiaDTO = TecnologiaDTO.builder()
-                .idTecnologia("4f119f1b-7ccf-49f4-b56f-fdace8589b1c")
-                .nombre("Swift")
-                .build();
-        System.out.println(tecnologiaController.updateTecnologiaJSON(tecnologiaDTO));
-
-        System.out.println("DELETE Tecnologia con ID = 4f119f1b-7ccf-49f4-b56f-fdace8589b1c");
-        tecnologiaDTO = TecnologiaDTO.builder()
-                .idTecnologia("4f119f1b-7ccf-49f4-b56f-fdace8589b1c")
-                .build();
-        System.out.println(tecnologiaController.deleteTecnologiaJSON(tecnologiaDTO));
     }
 }

@@ -10,6 +10,7 @@ import lombok.Data;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+import java.sql.Timestamp;
 import java.time.LocalDate;
 import java.util.List;
 @Data
@@ -18,12 +19,11 @@ import java.util.List;
 @XmlRootElement(name="proyecto")
 @XmlAccessorType(XmlAccessType.FIELD)
 public class ProyectoDTO {
-    private String idProyecto;
+    private long idProyecto;
     private String nombre;
     private Double presupuesto;
-    private LocalDate fechaInicio;
-    private LocalDate fechaFin;
-    private List<String> tecnologias;
+    private Timestamp fechaInicio;
+    private Timestamp fechaFin;
     private Departamento departamento;
     private List<Programador> programadores;
 

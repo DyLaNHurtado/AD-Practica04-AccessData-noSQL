@@ -44,7 +44,7 @@ public class ProgramadorController {
         }
     }
 
-    public String getProgramadorByIdJSON(String id) {
+    public String getProgramadorByIdJSON(Long id) {
         try {
             // Vamos a devolver el JSON de las categorías
             final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
@@ -106,7 +106,7 @@ public class ProgramadorController {
         }
     }
 
-    public void getProgramadorByIdXML(String id) {
+    public void getProgramadorByIdXML(Long id) {
         try {
             JAXBContext jaxbContext = JAXBContext.newInstance(ProgramadorDTO.class);
             marshaller = jaxbContext.createMarshaller();

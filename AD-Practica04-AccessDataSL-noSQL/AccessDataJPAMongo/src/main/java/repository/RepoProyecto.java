@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.*;
 import java.util.stream.Collectors;
 
-public class RepoProyecto implements CrudRepository<Proyecto, String> {
+public class RepoProyecto implements CrudRepository<Proyecto, Long> {
     @Override
     public Optional<List<Proyecto>> getAll() throws SQLException {
         HibernateController hc = HibernateController.getInstance();
@@ -21,7 +21,7 @@ public class RepoProyecto implements CrudRepository<Proyecto, String> {
     }
 
     @Override
-    public Optional<Proyecto> getById(String id) throws SQLException {
+    public Optional<Proyecto> getById(Long id) throws SQLException {
         HibernateController hc = HibernateController.getInstance();
         hc.open();
         Proyecto proyecto = hc.getManager().find(Proyecto.class, id);

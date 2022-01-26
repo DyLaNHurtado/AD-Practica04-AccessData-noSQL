@@ -55,7 +55,7 @@ public class DepartamentoController {
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
-    public String getDepartamentoByIdJSON(String id) {
+    public String getDepartamentoByIdJSON(Long id) {
         try {
             // Vamos a devolver el JSON de las categorías
             final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
@@ -131,7 +131,7 @@ public class DepartamentoController {
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
-    public void getDepartamentoByIdXML(String id) {
+    public void getDepartamentoByIdXML(Long id) {
         try {
             JAXBContext jaxbContext = JAXBContext.newInstance(DepartamentoDTO.class);
             marshaller = jaxbContext.createMarshaller();
