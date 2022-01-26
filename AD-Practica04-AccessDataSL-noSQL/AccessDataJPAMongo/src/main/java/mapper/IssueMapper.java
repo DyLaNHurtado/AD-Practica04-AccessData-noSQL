@@ -1,26 +1,15 @@
 package mapper;
 
-import dao.Commit;
-import dao.Departamento;
 import dao.Issue;
-import dto.CommitDTO;
-import dto.DepartamentoDTO;
 import dto.IssueDTO;
 
 public class IssueMapper extends BaseMapper<Issue, IssueDTO> {
     @Override
     public Issue fromDTO(IssueDTO item) {
-        return Issue.builder()
-                .id(item.getId())
-                .titulo(item.getTexto())
-                .texto(item.getTexto())
-                .fecha(item.getFecha())
-                .resuelta(item.getResuelta())
-                .programadores(item.getProgramadores())
-                .jefe(item.getJefe())
-                .commit(item.getCommit())
-                .repositorio(item.getRepositorio())
-                .build();
+        return new Issue(item.getId(),item.getTexto(),
+                item.getTexto(),item.getFecha(),item.getResuelta(),
+                item.getJefe(),item.getProgramadores(),
+                item.getRepositorio(),item.getCommit());
     }
 
     @Override

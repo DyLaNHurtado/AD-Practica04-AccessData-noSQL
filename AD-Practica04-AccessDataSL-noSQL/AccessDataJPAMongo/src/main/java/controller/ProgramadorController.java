@@ -3,15 +3,9 @@ package controller;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import dao.Proyecto;
 import dto.ProgramadorDTO;
-import dto.ProyectoDTO;
 import repository.RepoProgramador;
 import service.ProgramadorService;
-
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
 import java.sql.SQLException;
 
 public class ProgramadorController {

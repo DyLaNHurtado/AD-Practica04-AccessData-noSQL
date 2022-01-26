@@ -7,18 +7,10 @@ import dao.*;
 import lombok.Builder;
 import lombok.Data;
 
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
 import java.sql.Timestamp;
-import java.time.LocalDate;
-import java.util.Date;
 import java.util.List;
 @Data
 @Builder
-
-@XmlRootElement(name="programador")
-@XmlAccessorType(XmlAccessType.FIELD)
 public class ProgramadorDTO {
     private long id;
     private String nombre;
@@ -32,7 +24,7 @@ public class ProgramadorDTO {
     private List<Commit> commits;
     private List<Issue> issues;
 
-    // From/To JSON IMPLEMENTAR METODOS CUANDO PASEMOS A JSON
+    // From/To JSON IMPLEMENTAR MÉTODOS CUANDO PASEMOS A JSON
     public static ProgramadorDTO fromJSON(String json) {
         final Gson gson = new Gson();
         return gson.fromJson(json, ProgramadorDTO.class);

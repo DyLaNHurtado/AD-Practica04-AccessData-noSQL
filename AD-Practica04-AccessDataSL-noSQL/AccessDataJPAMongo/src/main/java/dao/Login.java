@@ -1,9 +1,10 @@
 package dao;
 
-import lombok.Builder;
+import lombok.AllArgsConstructor;
 
 import java.sql.Timestamp;
-@Builder
+
+@AllArgsConstructor
 public class Login {
 
     private long id;

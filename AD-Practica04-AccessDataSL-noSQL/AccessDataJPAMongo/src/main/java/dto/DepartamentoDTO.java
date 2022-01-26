@@ -8,16 +8,10 @@ import dao.Programador;
 import dao.Proyecto;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
-
-import javax.xml.bind.annotation.*;
-import java.util.ArrayList;
 import java.util.List;
 
 @Data
 @Builder
-@XmlRootElement(name = "departamento")
-@XmlAccessorType(XmlAccessType.FIELD)
 public class DepartamentoDTO {
     private long id;
     private String nombre;

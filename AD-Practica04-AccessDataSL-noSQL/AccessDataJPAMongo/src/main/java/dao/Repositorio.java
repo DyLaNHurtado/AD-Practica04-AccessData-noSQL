@@ -1,16 +1,17 @@
 package dao;
 
-import lombok.Builder;
+import lombok.AllArgsConstructor;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.List;
-@Builder
+
 @Entity
 @Table(name="repositorio")
 @NamedQueries({
         @NamedQuery(name = "Repositorio.getAll", query = "SELECT r FROM dao.Repositorio r")
 })
+@AllArgsConstructor
 public class Repositorio {
 
     private long id;

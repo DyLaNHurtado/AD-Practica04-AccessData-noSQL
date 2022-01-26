@@ -1,15 +1,13 @@
 package dao;
 
-import lombok.Builder;
-
 import javax.persistence.*;
-@Builder
+
 @Embeddable
 public class JefeDepartamento extends Empleado{
 
     private Departamento departamento;
 
-    public JefeDepartamento() {
+    public JefeDepartamento(){
     }
 
     @Id

@@ -1,6 +1,6 @@
 package dao;
 
-import lombok.Builder;
+import lombok.AllArgsConstructor;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -11,7 +11,7 @@ import java.util.List;
 @NamedQueries({
         @NamedQuery(name = "Issue.getAll", query = "SELECT i FROM dao.Issue i")
 })
-@Builder
+@AllArgsConstructor
 public class Issue {
 
     private long id;

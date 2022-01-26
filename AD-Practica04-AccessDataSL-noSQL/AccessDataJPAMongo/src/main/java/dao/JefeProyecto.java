@@ -1,10 +1,8 @@
 package dao;
 
-import lombok.Builder;
-
 import javax.persistence.*;
 import java.util.List;
-@Builder
+
 @Entity
 @Table(name="jefe_proyecto")
 @NamedQueries({
