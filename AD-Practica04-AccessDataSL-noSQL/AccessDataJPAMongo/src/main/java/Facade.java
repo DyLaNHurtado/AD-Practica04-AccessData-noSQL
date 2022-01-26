@@ -200,7 +200,7 @@ public class Facade {
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
-    private void salidaJSON() {
+    public void salidaJSON() {
         System.out.println("-------------------------------\n" +
                 "\t\tOPERACIONES CRUD\n" +
                 "-------------------------------\n");
@@ -259,13 +259,13 @@ public class Facade {
                 .presupuesto(10000.0)
                 .presupuestoAnual(100000.0)
                 .build();
-        System.out.println(departamentoController.updateDepartamentoJSON(departamentoDTO));
+        System.out.println(departamentoController.updateDepartamento(departamentoDTO));
 
         System.out.println("DELETE Departamento con ID = 512a0695-3294-4c2c-86d9-4babd4485fa8");
         departamentoDTO = DepartamentoDTO.builder()
                 //.idDepartamento("512a0695-3294-4c2c-86d9-4babd4485fa8")
                 .build();
-        System.out.println(departamentoController.deleteDepartamentoJSON(departamentoDTO));
+        System.out.println(departamentoController.deleteDepartamento(departamentoDTO));
     }
 
     /**

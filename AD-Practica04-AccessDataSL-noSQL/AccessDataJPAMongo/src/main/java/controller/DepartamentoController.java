@@ -7,9 +7,6 @@ import dto.DepartamentoDTO;
 import repository.RepoDepartamento;
 import service.DepartamentoService;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
 import java.sql.SQLException;
 
 
@@ -18,7 +15,6 @@ public class DepartamentoController {
 
     // Mi Servicio unido al repositorio
     private final DepartamentoService departamentoService;
-    private Marshaller marshaller;
 
     // Implementamos nuestro Singleton para el controlador
     private DepartamentoController(DepartamentoService departamentoService) {
@@ -84,10 +80,10 @@ public class DepartamentoController {
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
-    public String updateDepartamento(DepartamentoDTO comitDTO) {
+    public String updateDepartamento(DepartamentoDTO departamentoDTO) {
         try {
             final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-            return prettyGson.toJson(departamentoService.updateDepartamento(comitDTO));
+            return prettyGson.toJson(departamentoService.updateDepartamento(departamentoDTO));
         } catch (SQLException e) {
             System.err.println("Error DepartamentoController en updateDepartamento: " + e.getMessage());
             return "Error DepartamentoController en updateDepartamento: " + e.getMessage();

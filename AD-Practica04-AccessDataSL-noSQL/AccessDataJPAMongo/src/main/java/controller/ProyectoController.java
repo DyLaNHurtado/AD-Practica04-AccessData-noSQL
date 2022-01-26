@@ -1,16 +1,11 @@
 package controller;
 
-
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import dto.ProyectoDTO;
 import repository.RepoProyecto;
 import service.ProyectoService;
 
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
 import java.sql.SQLException;
 
 public class ProyectoController {
@@ -79,10 +74,10 @@ public class ProyectoController {
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
-    public String updateProyecto(ProyectoDTO comitDTO) {
+    public String updateProyecto(ProyectoDTO proyectoDTO) {
         try {
             final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-            return prettyGson.toJson(proyectoService.updateProyecto(comitDTO));
+            return prettyGson.toJson(proyectoService.updateProyecto(proyectoDTO));
         } catch (SQLException e) {
             System.err.println("Error ProyectoController en updateProyecto: " + e.getMessage());
             return "Error ProyectoController en updateProyecto: " + e.getMessage();

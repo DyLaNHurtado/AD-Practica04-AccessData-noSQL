@@ -64,10 +64,10 @@ public class ProgramadorController {
         }
     }
 
-    public String updateProgramador(ProgramadorDTO comitDTO) {
+    public String updateProgramador(ProgramadorDTO programadorDTO) {
         try {
             final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-            return prettyGson.toJson(programadorService.updateProgramador(comitDTO));
+            return prettyGson.toJson(programadorService.updateProgramador(programadorDTO));
         } catch (SQLException e) {
             System.err.println("Error ProgramadorController en updateProgramador: " + e.getMessage());
             return "Error ProgramadorController en updateProgramador: " + e.getMessage();
@@ -81,14 +81,6 @@ public class ProgramadorController {
         } catch (SQLException e) {
             System.err.println("Error ProgramadorController en deleteProgramador: " + e.getMessage());
             return "Error ProgramadorController en deleteProgramador: " + e.getMessage();
-        }
-    }
-
-    public void getAllProgramadoresFullInfo() {
-        try {
-            programadorService.getAllProgramadoresFullInfo();
-        } catch (SQLException e) {
-            System.err.println("Error ProgramadorController en getAllProgramadoresInfo: " + e.getMessage());
         }
     }
 }
