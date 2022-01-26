@@ -34,7 +34,6 @@ public abstract class Empleado {
         this.nombre = nombre;
     }
     @Basic
-    @Temporal(TemporalType.TIMESTAMP)
     public Timestamp getFechaAlta() {
         return fechaAlta;
     }

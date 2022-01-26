@@ -40,7 +40,7 @@ public class Proyecto implements Serializable {
     }
 
     @Id
-    @Column(name = "idProyecto", nullable = false)
+    @Column(name = "id", nullable = false)
     public long getId() {
         return id;
     }
@@ -71,7 +71,6 @@ public class Proyecto implements Serializable {
 
     @Basic
     @Column(name = "fechaInicio", nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
     public Timestamp getFechaInicio() {
         return fechaInicio;
     }
@@ -82,7 +81,6 @@ public class Proyecto implements Serializable {
 
     @Basic
     @Column(name = "fechaFin", nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
     public Timestamp getFechaFin() {
         return fechaFin;
     }

@@ -69,7 +69,6 @@ public class Commit {
     }
     @Basic
     @Column(name="fecha",nullable=false)
-    @Temporal(TemporalType.TIMESTAMP)
     public Timestamp getFecha() {
         return fecha;
     }

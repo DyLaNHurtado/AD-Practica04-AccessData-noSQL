@@ -64,7 +64,6 @@ public class Issue {
     }
     @Basic
     @Column(name="fecha")
-    @Temporal(TemporalType.TIMESTAMP)
     public Timestamp getFecha() {
         return fecha;
     }

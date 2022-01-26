@@ -23,6 +23,7 @@
             <property name="hibernate.ogm.datastore.port" value="27017" />
             <property name="hibernate.ogm.datastore.username" value="mongoadmin" />
             <property name="hibernate.ogm.datastore.password" value="mongopass" />
+            <property name="hibernate.jdbc.time_zone" value="UTC"/>
             <property name="hibernate.ogm.datastore.create_database" value="true" />
         </properties>
     </persistence-unit>
