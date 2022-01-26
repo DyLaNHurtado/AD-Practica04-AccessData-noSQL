@@ -9,8 +9,6 @@ public class App {
                 " hecho por : " +properties.readProperty("app.autores")+" de " +
                 properties.readProperty("app.curso"));
         Facade facade = Facade.getInstance();
-        // Chequeamos el sistema
-        facade.checkService();
 
         // Iniciamos la base de datos al estado original en cada prueba
         if (properties.readProperty("database.init").equals("true"))

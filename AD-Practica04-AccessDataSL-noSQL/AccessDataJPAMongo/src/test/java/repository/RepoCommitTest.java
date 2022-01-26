@@ -1,9 +1,8 @@
-package repositorio;
+package repository;
 
 import dao.Commit;
 import manager.HibernateController;
 import org.junit.jupiter.api.*;
-import repository.RepoCommit;
 
 import java.sql.SQLException;
 import java.sql.Timestamp;

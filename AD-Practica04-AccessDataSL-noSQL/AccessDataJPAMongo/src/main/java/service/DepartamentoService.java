@@ -23,7 +23,6 @@ public class DepartamentoService extends BaseService<Departamento, Long, RepoDep
      * @version 11/12/2021 - 1.0
      **/
     public Optional<List<DepartamentoDTO>> getAllDepartamentos() throws SQLException {
-
         return mapper.toDTO(this.getAll());
     }
     /**
@@ -32,7 +31,6 @@ public class DepartamentoService extends BaseService<Departamento, Long, RepoDep
      * @version 11/12/2021 - 1.0
      */
     public DepartamentoDTO getDepartamentoById(Long id) throws SQLException {
-
             return mapper.toDTO(this.getById(id).get());
     }
     /**

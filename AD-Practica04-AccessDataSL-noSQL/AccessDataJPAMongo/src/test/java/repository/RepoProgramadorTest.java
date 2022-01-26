@@ -1,21 +1,4 @@
-package repositorio;
-
-import dao.Departamento;
-import dao.Programador;
-import dao.Proyecto;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Test;
-import repository.RepoProgramador;
-
-import java.sql.SQLException;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-
-import static org.junit.jupiter.api.Assertions.*;
+package repository;
 
 class RepoProgramadorTest {
     /*

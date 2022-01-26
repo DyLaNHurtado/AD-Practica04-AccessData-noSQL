@@ -4,16 +4,11 @@ import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoDatabase;
 import controller.*;
 import dao.*;
-import database.DataBaseController;
 import dto.*;
 import manager.HibernateController;
-import org.bson.types.ObjectId;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.Instant;
-import java.time.LocalDate;
 import java.util.*;
 
 public class Facade {
@@ -33,27 +28,6 @@ public class Facade {
             instance = new Facade();
         }
         return instance;
-    }
-
-    /**
-     * Metodos que comprueba el servicio de la base de datos
-     *
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
-     */
-    public void checkService() {
-        DataBaseController controller = DataBaseController.getInstance();
-        try {
-            controller.open();
-            Optional<ResultSet> rs = controller.select("SELECT 'Hello World'");
-            if (rs.isPresent()) {
-                rs.get().first();
-                controller.close();
-            }
-        } catch (SQLException e) {
-            System.err.println("Error al conectar al servidor de Base de Datos: " + e.getMessage());
-            System.exit(1);
-        }
     }
 
     public void initDataBase() {
