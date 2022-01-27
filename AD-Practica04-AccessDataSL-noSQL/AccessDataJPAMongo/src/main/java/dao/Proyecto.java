@@ -118,7 +118,6 @@ public class Proyecto implements Serializable {
         this.departamento = departamento;
     }
 
-    //Como hacer un OneToOne??: https://www.baeldung.com/jpa-one-to-one
     @OneToOne(cascade = CascadeType.ALL)
     public Repositorio getRepositorio() {
         return repositorio;

@@ -37,7 +37,6 @@ public class Facade {
         HibernateController hc = HibernateController.getInstance();
         hc.open();
         // Commit
-        hc.getTransaction().begin();
         Commit c1 = new Commit("Titulo1", "Texto1", Timestamp.from(Instant.now()));
         Commit c2 = new Commit("Titulo2", "Texto2", Timestamp.from(Instant.now()));
         Departamento d1 = new Departamento("Pepe Perez", 100d, 1000d);
@@ -56,6 +55,16 @@ public class Facade {
         Proyecto proy2 = new Proyecto("Proyecto Y", 300d, Timestamp.from(Instant.now()), Timestamp.from(Instant.now()));//15
         Repositorio rep1 = new Repositorio("Repo 1", Timestamp.from(Instant.now()));//15
         Repositorio rep2 = new Repositorio("Repo 2", Timestamp.from(Instant.now()));//15
+
+        hc.getTransaction().begin();
+        hc.getManager().persist(d1);
+        hc.getManager().persist(d2);
+        proy1.setDepartamento(d1);
+        proy2.setDepartamento(d2);
+        hc.getManager().persist(proy1);
+        hc.getManager().persist(proy2);
+        hc.getTransaction().commit();
+        System.out.println("Correcto");
 
         //Commit
         c1.setIssue(i1);
@@ -136,8 +145,6 @@ public class Facade {
         proy2.setTecnologias(List.of("Angular","Spring"));
         proy1.setJefe(jp1);
         proy2.setJefe(jp2);
-        proy1.setDepartamento(d1);
-        proy2.setDepartamento(d2);
         proy1.setRepositorio(rep1);
         proy2.setRepositorio(rep2);
         proy1.setProgramadores(List.of(pro1));
@@ -152,26 +159,16 @@ public class Facade {
         rep1.setCommits(List.of(c1));
         rep2.setCommits(List.of(c2));
 
-
         hc.getTransaction().begin();
-
-        hc.getManager().persist(c1);
-        hc.getManager().persist(c2);
 
         hc.getManager().persist(d1);
         hc.getManager().persist(d2);
-
-        hc.getManager().persist(i1);
-        hc.getManager().persist(i2);
 
         hc.getManager().persist(jd1);
         hc.getManager().persist(jd2);
 
         hc.getManager().persist(jp1);
         hc.getManager().persist(jp2);
-
-        hc.getManager().persist(login1);
-        hc.getManager().persist(login2);
 
         hc.getManager().persist(pro1);
         hc.getManager().persist(pro2);
@@ -182,6 +179,12 @@ public class Facade {
         hc.getManager().persist(rep1);
         hc.getManager().persist(rep2);
 
+        hc.getManager().persist(c1);
+        hc.getManager().persist(c2);
+
+        hc.getManager().persist(i1);
+        hc.getManager().persist(i2);
+
         hc.getTransaction().commit();
 
         hc.close();
@@ -189,18 +192,11 @@ public class Facade {
     }
 
     private void removeData() {
-        // Usando Hibernate
-//        transactionManager.begin();
-//        // Collection == name of the class being saved ⮧
-//        entityManager.createNativeQuery("db.GameCharacter.drop()").executeUpdate();
-//        transactionManager.commit();
-        // Lo sutyo sería un controlador
         ConnectionString connectionString = new ConnectionString("mongodb://mongoadmin:mongopass@localhost/mongodb?authSource=admin");
         MongoClient mongoClient = MongoClients.create(connectionString);
 
-        // Obtenemos la base de datos que necesitamos
         MongoDatabase mongoDB = mongoClient.getDatabase("mongodb");
-        mongoDB.drop(); // Si queremos borrar toda la base de datos
+        mongoDB.drop();
     }
 
     /**

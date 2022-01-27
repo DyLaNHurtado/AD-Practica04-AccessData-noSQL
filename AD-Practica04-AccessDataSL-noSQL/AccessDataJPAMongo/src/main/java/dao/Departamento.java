@@ -61,7 +61,7 @@ public class Departamento implements Serializable {
         this.nombre = nombre;
     }
 
-    @Embedded
+    @OneToOne(cascade=CascadeType.ALL)
     public JefeDepartamento getJefeDepartamento() {
         return jefeDepartamento;
     }
@@ -69,17 +69,6 @@ public class Departamento implements Serializable {
     public void setJefeDepartamento(JefeDepartamento jefe) {
         this.jefeDepartamento = jefe;
     }
-
-
-    /*
-    Que hace el orphanRemoval=true??:
-
-    Marca la entidad "secundaria" que se eliminará
-    cuando ya no se haga referencia a ella desde la entidad "principal",
-    por ejemplo, cuando elimine la entidad secundaria(proyecto) de la colección
-    correspondiente de la entidad principal(departamento).
-    */
-
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "departamento", cascade = CascadeType.REMOVE, orphanRemoval = true)
     public List<Proyecto> getProyFinalizados() {

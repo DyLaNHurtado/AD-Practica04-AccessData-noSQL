@@ -2,19 +2,16 @@ package dao;
 
 import javax.persistence.*;
 
-@Embeddable
+@Entity
+@Table(name = "departamento")
+@NamedQueries({
+        @NamedQuery(name = "JefeDepartamento.getAll", query = "SELECT jd FROM dao.JefeDepartamento jd")
+})
 public class JefeDepartamento extends Empleado{
 
     private Departamento departamento;
 
     public JefeDepartamento(){
-    }
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name="id", nullable=false)
-    public long getId(){
-        return super.getId();
     }
 
     @OneToOne(mappedBy = "jefeDepartamento")

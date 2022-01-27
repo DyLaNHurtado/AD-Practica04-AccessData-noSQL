@@ -16,13 +16,6 @@ public class JefeProyecto extends Empleado{
     public JefeProyecto() {
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name="id", nullable=false)
-    public long getId(){
-        return super.getId();
-    }
-
     @OneToOne(mappedBy = "jefe")
     public Proyecto getProyecto(){
         return proyecto;

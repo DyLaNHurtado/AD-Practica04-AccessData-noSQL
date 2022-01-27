@@ -1,12 +1,10 @@
 package dao;
 
-import javax.persistence.Basic;
-import javax.persistence.ElementCollection;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.List;
 
+@MappedSuperclass
 public abstract class Empleado {
 
     private long id;
@@ -17,7 +15,10 @@ public abstract class Empleado {
 
     public Empleado() {
     }
-    @Basic
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(nullable=false)
     public long getId() {
         return id;
     }

@@ -78,7 +78,6 @@ public class Commit {
     }
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="issue",referencedColumnName = "issue")
     public Issue getIssue() {
         return issue;
     }
