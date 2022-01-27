@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Builder
 @AllArgsConstructor
@@ -140,8 +141,6 @@ public class Proyecto implements Serializable {
 
     @Override
     public String toString() {
-        List<Long> idProgramadores = new ArrayList<>();
-        programadores.forEach(x -> idProgramadores.add(x.getId())); //da error
         return "Proyecto{\n" +
                 "idProyecto='\n" + id + '\'' +
                 ", \nnombre='" + nombre + '\'' +
@@ -150,7 +149,9 @@ public class Proyecto implements Serializable {
                 ", \nfechaFin=" + fechaFin +
                 ", \ntecnologias=" + tecnologias +
                 ", \ndepartamento=" + departamento.getId() +
-                ", \nprogramadores=" + idProgramadores +
+                ", \njefe=" + jefe.getId() +
+                ", \nprogramadores=" + programadores.stream().map(Programador::getId).collect(Collectors.toList()) +
+                ", \nrepositorio=" + repositorio.getId() +
                 "\n}";
     }
 

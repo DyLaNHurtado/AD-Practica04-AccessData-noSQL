@@ -15,7 +15,7 @@ public class DepartamentoMapper extends BaseMapper<Departamento, DepartamentoDTO
                 .jefeDepartamento(item.getJefeDepartamento())
                 .proyDesarrollo(item.getProyDesarrollo())
                 .proyFinalizados(item.getProyFinalizados())
-                .trabajadores(item.getTrabajadores())
+                .trabajadores(item.getProgramadores())
                 .build();
     }
 
@@ -29,7 +29,7 @@ public class DepartamentoMapper extends BaseMapper<Departamento, DepartamentoDTO
                 .jefeDepartamento(item.getJefeDepartamento())
                 .proyDesarrollo(item.getProyDesarrollo())
                 .proyFinalizados(item.getProyFinalizados())
-                .trabajadores(item.getTrabajadores())
+                .programadores(item.getTrabajadores())
                 .build();
     }
 }

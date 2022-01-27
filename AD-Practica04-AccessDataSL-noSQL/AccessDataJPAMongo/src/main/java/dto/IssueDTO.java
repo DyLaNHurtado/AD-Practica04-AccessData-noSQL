@@ -1,9 +1,6 @@
 package dto;
 
-import dao.Commit;
-import dao.JefeProyecto;
-import dao.Programador;
-import dao.Repositorio;
+import dao.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -11,6 +8,7 @@ import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Builder
 @Data
@@ -28,4 +26,17 @@ public class IssueDTO {
     private Repositorio repositorio;
     private Commit commit;
 
+    @Override
+    public String toString(){
+        return "Issue{id="+this.id
+                +", titulo="+this.titulo
+                +", texto="+this.texto
+                +", fecha="+this.fecha
+                +", resuelta="+this.resuelta
+                +", jefe="+this.jefe.getId()
+                +", repositorio="+this.repositorio.getId()
+                +", commit="+this.commit.getId()
+                +", programadores="+programadores.stream().map(Programador::getId).collect(Collectors.toList())
+                +"}";
+    }
 }

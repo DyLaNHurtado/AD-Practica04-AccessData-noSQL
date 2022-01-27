@@ -1,20 +1,16 @@
 package controller;
 
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import dto.ProgramadorDTO;
 import repository.RepoProgramador;
 import service.ProgramadorService;
 import java.sql.SQLException;
+import java.util.List;
 
 public class ProgramadorController {
     private static ProgramadorController controller = null;
 
-    // Mi Servicio unido al repositorio
     private final ProgramadorService programadorService;
 
-    // Implementamos nuestro Singleton para el controlador
     private ProgramadorController(ProgramadorService programadorService) {
         this.programadorService = programadorService;
     }
@@ -26,55 +22,48 @@ public class ProgramadorController {
         return controller;
     }
 
-    public String getAllProgramadores() {
+    public List<ProgramadorDTO> getAllProgramadores() {
         try {
-            // Vamos a devolver el JSON de los programadors
-            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-            return prettyGson.toJson(programadorService.getAllProgramadores());
+            return programadorService.getAllProgramadores().get();
         } catch (SQLException e) {
             System.err.println("Error ProgramadorController en getAll: " + e.getMessage());
-            return "Error ProgramadorController en getAll: " + e.getMessage();
+            return null;
         }
     }
 
-    public String getProgramadorById(Long id) {
+    public ProgramadorDTO getProgramadorById(Long id) {
         try {
-            // Vamos a devolver el JSON de las categorías
-            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-            return prettyGson.toJson(programadorService.getProgramadorById(id));
+            return programadorService.getProgramadorById(id);
         } catch (SQLException e) {
             System.err.println("Error ProgramadorController en getProgramadorById: " + e.getMessage());
-            return "Error ProgramadorController en getProgramadorById: " + e.getMessage();
+            return null;
         }
     }
 
-    public String postProgramador(ProgramadorDTO programadorDTO) {
+    public ProgramadorDTO postProgramador(ProgramadorDTO programadorDTO) {
         try {
-            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-            return prettyGson.toJson(programadorService.postProgramador(programadorDTO));
+            return programadorService.postProgramador(programadorDTO);
         } catch (SQLException e) {
             System.err.println("Error ProgramadorController en postProgramador: " + e.getMessage());
-            return "Error ProgramadorController en postProgramador: " + e.getMessage();
+            return null;
         }
     }
 
-    public String updateProgramador(ProgramadorDTO programadorDTO) {
+    public ProgramadorDTO updateProgramador(ProgramadorDTO programadorDTO) {
         try {
-            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-            return prettyGson.toJson(programadorService.updateProgramador(programadorDTO));
+            return programadorService.updateProgramador(programadorDTO);
         } catch (SQLException e) {
             System.err.println("Error ProgramadorController en updateProgramador: " + e.getMessage());
-            return "Error ProgramadorController en updateProgramador: " + e.getMessage();
+            return null;
         }
     }
 
-    public String deleteProgramador(ProgramadorDTO programadorDTO) {
+    public ProgramadorDTO deleteProgramador(ProgramadorDTO programadorDTO) {
         try {
-            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-            return prettyGson.toJson(programadorService.deleteProgramador(programadorDTO));
+            return programadorService.deleteProgramador(programadorDTO);
         } catch (SQLException e) {
             System.err.println("Error ProgramadorController en deleteProgramador: " + e.getMessage());
-            return "Error ProgramadorController en deleteProgramador: " + e.getMessage();
+            return null;
         }
     }
 }

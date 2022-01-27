@@ -211,12 +211,12 @@ public class Facade {
         System.out.println("**********************\n" +
                 "\t\tPROYECTO\n" +
                 "**********************");
-        this.proyectoJSON();
+        //this.proyectoJSON();
 
         System.out.println("**********************\n" +
                 "\t\tPROGRAMADOR\n" +
                 "**********************");
-        this.programadorJSON();
+        //this.programadorJSON();
     }
 
 
@@ -231,6 +231,7 @@ public class Facade {
 
         System.out.println("GET Todos las Departamentos");
         System.out.println(departamentoController.getAllDepartamentos());
+        /*
 
         System.out.println("GET Departamento con ID = 1e89386d-be37-4930-b6ae-bcba6c9917b4");
         //System.out.println(departamentoController.getDepartamentoByIdJSON("1e89386d-be37-4930-b6ae-bcba6c9917b4"));
@@ -264,6 +265,8 @@ public class Facade {
                 //.idDepartamento("512a0695-3294-4c2c-86d9-4babd4485fa8")
                 .build();
         System.out.println(departamentoController.deleteDepartamento(departamentoDTO));
+
+         */
     }
 
     /**

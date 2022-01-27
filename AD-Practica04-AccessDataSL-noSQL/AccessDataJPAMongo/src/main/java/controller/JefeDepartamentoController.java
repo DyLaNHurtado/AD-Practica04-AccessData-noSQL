@@ -1,26 +1,18 @@
 package controller;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import dao.JefeDepartamento;
-import dto.DepartamentoDTO;
 import dto.JefeDepartamentoDTO;
-import repository.RepoDepartamento;
 import repository.RepoJefeDepartamento;
-import repository.RepoJefeProyecto;
-import service.DepartamentoService;
 import service.JefeDepartamentoService;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class JefeDepartamentoController {
 
     private static JefeDepartamentoController controller = null;
 
-    // Mi Servicio unido al repositorio
     private final JefeDepartamentoService jefeDepartamentoService;
 
-    // Implementamos nuestro Singleton para el controlador
     private JefeDepartamentoController(JefeDepartamentoService jefeDepartamentoService) {
         this.jefeDepartamentoService = jefeDepartamentoService;
     }
@@ -41,14 +33,12 @@ public class JefeDepartamentoController {
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
-    public String getAllDepartamentos() {
+    public List<JefeDepartamentoDTO> getAllDepartamentos() {
         try {
-            // Vamos a devolver el JSON de los jefe de departamentos
-            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-            return prettyGson.toJson(jefeDepartamentoService.getAllJefeDepartamento());
+            return jefeDepartamentoService.getAllJefeDepartamento().get();
         } catch (SQLException e) {
             System.err.println("Error JefeDepartamentoController en getAll: " + e.getMessage());
-            return "Error JefeDepartamentoController en getAll: " + e.getMessage();
+            return null;
         }
     }
 
@@ -57,14 +47,12 @@ public class JefeDepartamentoController {
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
-    public String getJefeDepartamentoByIdJSON(Long id) {
+    public JefeDepartamentoDTO getJefeDepartamentoByIdJSON(Long id) {
         try {
-            // Vamos a devolver el JSON de las categorías
-            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-            return prettyGson.toJson(jefeDepartamentoService.getJefeDepartamentoById(id));
+            return jefeDepartamentoService.getJefeDepartamentoById(id);
         } catch (SQLException e) {
             System.err.println("Error JefeDepartamentoController en getJefeDepartamentoById: " + e.getMessage());
-            return "Error JefeDepartamentoController en getJefeDepartamentoById: " + e.getMessage();
+            return null;
         }
     }
 
@@ -73,13 +61,12 @@ public class JefeDepartamentoController {
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
-    public String postJefeDepartamento(JefeDepartamentoDTO jefeDepartamentoDTO) {
+    public JefeDepartamentoDTO postJefeDepartamento(JefeDepartamentoDTO jefeDepartamentoDTO) {
         try {
-            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-            return prettyGson.toJson(jefeDepartamentoService.postJefeDepartamento(jefeDepartamentoDTO));
+            return jefeDepartamentoService.postJefeDepartamento(jefeDepartamentoDTO);
         } catch (SQLException e) {
             System.err.println("Error JefeDepartamentoController en postJefeDepartamento: " + e.getMessage());
-            return "Error JefeDepartamentoController en postJefeDepartamento: " + e.getMessage();
+            return null;
         }
     }
     /**
@@ -87,27 +74,27 @@ public class JefeDepartamentoController {
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
-    public String updateJefeDepartamento(JefeDepartamentoDTO jefeDepartamentoDTO) {
+    public JefeDepartamentoDTO updateJefeDepartamento(JefeDepartamentoDTO jefeDepartamentoDTO) {
         try {
-            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-            return prettyGson.toJson(jefeDepartamentoService.updateJefeDepartamento(jefeDepartamentoDTO));
+
+            return jefeDepartamentoService.updateJefeDepartamento(jefeDepartamentoDTO);
         } catch (SQLException e) {
             System.err.println("Error JefeDepartamentoController en updateJefeDepartamento: " + e.getMessage());
-            return "Error JefeDepartamentoController en updateJefeDepartamento: " + e.getMessage();
+            return null;
         }
     }
     /**
      * Printea  el delete de jefe departamento en JSON
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
+     * @return
      */
-    public String deleteJegeDepartamento(JefeDepartamentoDTO jefeDepartamentoDTO) {
+    public JefeDepartamentoDTO deleteJegeDepartamento(JefeDepartamentoDTO jefeDepartamentoDTO) {
         try {
-            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-            return prettyGson.toJson(jefeDepartamentoService.deleteJefeDepartamento(jefeDepartamentoDTO));
+            return jefeDepartamentoService.deleteJefeDepartamento(jefeDepartamentoDTO);
         } catch (SQLException e) {
             System.err.println("Error JefeDepartamentoController en deleteJefeDepartamento: " + e.getMessage());
-            return "Error JefeDepartamentoController en deleteJefeDepartamento: " + e.getMessage();
+            return null;
         }
     }
 }

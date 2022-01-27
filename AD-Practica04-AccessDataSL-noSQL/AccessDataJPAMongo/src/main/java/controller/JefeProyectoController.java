@@ -1,12 +1,11 @@
 package controller;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import dto.JefeProyectoDTO;
 import repository.RepoJefeProyecto;
 import service.JefeProyectoService;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class JefeProyectoController {
     private static JefeProyectoController controller;
@@ -25,13 +24,12 @@ public class JefeProyectoController {
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
-    public String getAllJefeProyecto() {
+    public List<JefeProyectoDTO> getAllJefeProyecto() {
         try {
-            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-            return prettyGson.toJson(service.getAllJefeProyecto());
+            return service.getAllJefeProyecto().get();
         } catch (SQLException e) {
             System.err.println("Error JefeProyectoController en getAll: " + e.getMessage());
-            return "Error JefeProyectoController en getAll: " + e.getMessage();
+            return null;
         }
     }
     /**
@@ -39,13 +37,12 @@ public class JefeProyectoController {
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
-    public String getJefeProyectoByIdJSON(Long id) {
+    public JefeProyectoDTO getJefeProyectoByIdJSON(Long id) {
         try {
-            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-            return prettyGson.toJson(service.getJefeProyectoById(id));
+            return service.getJefeProyectoById(id);
         } catch (SQLException e) {
             System.err.println("Error JefeProyectoController en getJefeProyectoById: " + e.getMessage());
-            return "Error JefeProyectoController en getJefeProyectoById: " + e.getMessage();
+            return null;
         }
     }
     /**
@@ -53,13 +50,12 @@ public class JefeProyectoController {
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
-    public String postJefeProyecto(JefeProyectoDTO jefeProyectoDTO) {
+    public JefeProyectoDTO postJefeProyecto(JefeProyectoDTO jefeProyectoDTO) {
         try {
-            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-            return prettyGson.toJson(service.postJefeProyecto(jefeProyectoDTO));
+            return service.postJefeProyecto(jefeProyectoDTO);
         } catch (SQLException e) {
             System.err.println("Error JefeProyectoController en postJefeProyecto: " + e.getMessage());
-            return "Error JefeProyectoController en postJefeProyecto: " + e.getMessage();
+            return null;
         }
     }
     /**
@@ -67,13 +63,12 @@ public class JefeProyectoController {
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
-    public String updateJefeProyecto(JefeProyectoDTO jefeProyectoDTO) {
+    public JefeProyectoDTO updateJefeProyecto(JefeProyectoDTO jefeProyectoDTO) {
         try {
-            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-            return prettyGson.toJson(service.updateJefeProyecto(jefeProyectoDTO));
+            return service.updateJefeProyecto(jefeProyectoDTO);
         } catch (SQLException e) {
             System.err.println("Error JefeProyectoController en updateJefeProyecto: " + e.getMessage());
-            return "Error JefeProyectoController en updateJefeProyecto: " + e.getMessage();
+            return null;
         }
     }
     /**
@@ -81,13 +76,12 @@ public class JefeProyectoController {
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
-    public String deleteJefeProyecto(JefeProyectoDTO jefeProyectoDTO) {
+    public JefeProyectoDTO deleteJefeProyecto(JefeProyectoDTO jefeProyectoDTO) {
         try {
-            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-            return prettyGson.toJson(service.deleteJefeProyecto(jefeProyectoDTO));
+            return service.deleteJefeProyecto(jefeProyectoDTO);
         } catch (SQLException e) {
             System.err.println("Error JefeProyectoController en deleteJefeProyecto: " + e.getMessage());
-            return "Error JefeProyectoController en deleteJefeProyecto: " + e.getMessage();
+            return null;
         }
     }
 }

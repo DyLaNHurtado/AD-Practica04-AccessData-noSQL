@@ -1,16 +1,12 @@
 package dto;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import dao.Departamento;
-import dao.JefeProyecto;
-import dao.Programador;
-import dao.Repositorio;
+import dao.*;
 import lombok.Builder;
 import lombok.Data;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Data
 @Builder
@@ -26,19 +22,18 @@ public class ProyectoDTO {
     private Repositorio repositorio;
     private List<Programador> programadores = new ArrayList<>();
 
-    // From/To JSON IMPLEMENTAR METODOS CUANDO PASEMOS A JSON
-    public static ProyectoDTO fromJSON(String json) {
-        final Gson gson = new Gson();
-        return gson.fromJson(json, ProyectoDTO.class);
-    }
-
-    public String toJSON() {
-        final Gson prettyGson = new GsonBuilder()
-                .excludeFieldsWithoutExposeAnnotation() // Quitamos los campos que no están expuestos @expose y evitamos lo anterior
-                .setPrettyPrinting()
-                .create();
-        // Otra manera de quitar un campo determinado para imprimir
-        // prettyGson.toJsonTree(this).getAsJsonObject().remove("password");
-        return prettyGson.toJson(this);
+    @Override
+    public String toString(){
+        return "Proyecto{id="+this.id
+                +", nombre="+this.nombre
+                +", fecha_inicio="+this.fechaInicio
+                +", fecha_fin="+this.fechaFin
+                +", presupuesto="+this.presupuesto
+                +", departamento="+this.departamento.getId()
+                +", tecnologias="+this.tecnologias
+                +", prorgramadores="+programadores.stream().map(Programador::getId).collect(Collectors.toList())
+                +", repositorio="+this.repositorio.getId()
+                +", jefe="+this.jefe.getId()
+                +"}";
     }
 }

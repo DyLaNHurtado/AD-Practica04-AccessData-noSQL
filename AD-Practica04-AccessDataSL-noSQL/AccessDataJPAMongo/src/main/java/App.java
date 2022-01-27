@@ -14,6 +14,6 @@ public class App {
         if (properties.readProperty("database.init").equals("true"))
             facade.initDataBase();
 
-        //facade.salidaJSON();
+        facade.salidaJSON();
     }
 }

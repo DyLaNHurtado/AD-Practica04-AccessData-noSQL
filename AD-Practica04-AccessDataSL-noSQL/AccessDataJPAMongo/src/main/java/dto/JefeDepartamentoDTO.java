@@ -20,4 +20,15 @@ public class JefeDepartamentoDTO {
     private Double salario;
     private List<String> tecnologias;
     private Departamento departamento;
+
+    @Override
+    public String toString(){
+        return "JefeDepartamento{id="+this.id
+                +", nombre="+this.nombre
+                +", fecha="+this.fechaAlta
+                +", salario="+this.salario
+                +", tecnologias="+this.tecnologias
+                +", departamento="+this.departamento.getId()
+                +"}";
+    }
 }

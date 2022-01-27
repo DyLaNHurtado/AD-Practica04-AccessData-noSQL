@@ -1,20 +1,17 @@
 package controller;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import dto.RepositorioDTO;
 import repository.RepoRepositorio;
 import service.RepositorioService;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class RepositorioController {
     private static RepositorioController controller = null;
 
-    // Mi Servicio unido al repositorio
     private final RepositorioService repositorioService;
 
-    // Implementamos nuestro Singleton para el controlador
     private RepositorioController(RepositorioService repositorioService) {
         this.repositorioService = repositorioService;
     }
@@ -25,76 +22,79 @@ public class RepositorioController {
         }
         return controller;
     }
+
     /**
      * Printea todos los proyectos en JSON
+     *
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
-    public String getAllRepositorio() {
+    public List<RepositorioDTO> getAllRepositorio() {
         try {
-            // Vamos a devolver el JSON de los proyectos
-            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-            return prettyGson.toJson(repositorioService.getAllRepositorios());
+            return repositorioService.getAllRepositorios().get();
         } catch (SQLException e) {
-            System.err.println("Error RepositorioController en getAll: " + e.getMessage());
-            return "Error RepositorioController en getAll: " + e.getMessage();
+            e.printStackTrace();
+            return null;
         }
     }
+
     /**
      * Printea proyecto POR ID en JSON
+     *
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
-    public String getRepositorioById(Long id) {
+    public RepositorioDTO getRepositorioById(Long id) {
         try {
-            // Vamos a devolver el JSON de las categorías
-            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-            return prettyGson.toJson(repositorioService.getRepositorioById(id));
+            return repositorioService.getRepositorioById(id);
         } catch (SQLException e) {
-            System.err.println("Error RepositorioController en getRepositorioById: " + e.getMessage());
-            return "Error RepositorioController en getRepositorioById: " + e.getMessage();
+            System.err.println("Error RepositorioController en getAll: " + e.getMessage());
+            return null;
         }
     }
+
     /**
      * Printea el save de proyecto en JSON
+     *
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
-    public String postRepositorio(RepositorioDTO repositorioDTO) {
+    public RepositorioDTO postRepositorio(RepositorioDTO repositorioDTO) {
         try {
-            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-            return prettyGson.toJson(repositorioService.postRepositiorio(repositorioDTO));
+            return repositorioService.postRepositiorio(repositorioDTO);
         } catch (SQLException e) {
             System.err.println("Error RepositorioController en postRepositorio: " + e.getMessage());
-            return "Error RepositorioController en postRepositorio: " + e.getMessage();
+            return null;
         }
     }
+
     /**
      * Printea el update de proyecto en JSON
+     *
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
-    public String updateRepositorioJSON(RepositorioDTO repositorioDTO) {
+    public RepositorioDTO updateRepositorioJSON(RepositorioDTO repositorioDTO) {
         try {
-            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-            return prettyGson.toJson(repositorioService.updateRepositorio(repositorioDTO));
+            return repositorioService.updateRepositorio(repositorioDTO);
         } catch (SQLException e) {
             System.err.println("Error RepositorioController en update: " + e.getMessage());
-            return "Error RepositorioController en update: " + e.getMessage();
+            return null;
         }
     }
+
     /**
      * Printea el delete de proyecto en JSON
+     *
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
-    public String deleteRepositorio(RepositorioDTO repositorioDTO) {
+    public RepositorioDTO deleteRepositorio(RepositorioDTO repositorioDTO) {
         try {
-            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-            return prettyGson.toJson(repositorioService.deleteRepositorio(repositorioDTO));
+            return repositorioService.deleteRepositorio(repositorioDTO);
         } catch (SQLException e) {
             System.err.println("Error RepositorioController en delete: " + e.getMessage());
-            return "Error RepositorioController en delete: " + e.getMessage();
+            return null;
         }
     }
 }

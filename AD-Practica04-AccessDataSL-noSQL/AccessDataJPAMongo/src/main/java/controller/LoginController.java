@@ -1,12 +1,11 @@
 package controller;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import dto.LoginDTO;
 import repository.RepoLogin;
 import service.LoginService;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class LoginController {
     private static LoginController controller;
@@ -25,13 +24,12 @@ public class LoginController {
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
-    public String getAllLogin() {
+    public List<LoginDTO> getAllLogin() {
         try {
-            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-            return prettyGson.toJson(service.getAllLogins());
+            return service.getAllLogins().get();
         } catch (SQLException e) {
             System.err.println("Error LoginController en getAll: " + e.getMessage());
-            return "Error LoginController en getAll: " + e.getMessage();
+            return null;
         }
     }
     /**
@@ -39,13 +37,12 @@ public class LoginController {
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
-    public String getLoginByIdJSON(Long id) {
+    public LoginDTO getLoginByIdJSON(Long id) {
         try {
-            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-            return prettyGson.toJson(service.getLoginById(id));
+            return service.getLoginById(id);
         } catch (SQLException e) {
             System.err.println("Error LoginController en getLoginById: " + e.getMessage());
-            return "Error LoginController en getLoginById: " + e.getMessage();
+            return null;
         }
     }
     /**
@@ -53,13 +50,12 @@ public class LoginController {
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
-    public String postLogin(LoginDTO loginDTO) {
+    public LoginDTO postLogin(LoginDTO loginDTO) {
         try {
-            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-            return prettyGson.toJson(service.postLogin(loginDTO));
+            return service.postLogin(loginDTO);
         } catch (SQLException e) {
             System.err.println("Error LoginController en postLogin: " + e.getMessage());
-            return "Error LoginController en postLogin: " + e.getMessage();
+            return null;
         }
     }
     /**
@@ -67,13 +63,12 @@ public class LoginController {
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
-    public String updateLogin(LoginDTO loginDTO) {
+    public LoginDTO updateLogin(LoginDTO loginDTO) {
         try {
-            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-            return prettyGson.toJson(service.updateLogin(loginDTO));
+            return service.updateLogin(loginDTO);
         } catch (SQLException e) {
             System.err.println("Error LoginController en updateLogin: " + e.getMessage());
-            return "Error LoginController en updateLogin: " + e.getMessage();
+            return null;
         }
     }
     /**
@@ -81,13 +76,12 @@ public class LoginController {
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
-    public String deleteLogin(LoginDTO loginDTO) {
+    public LoginDTO deleteLogin(LoginDTO loginDTO) {
         try {
-            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-            return prettyGson.toJson(service.deleteLogin(loginDTO));
+            return service.deleteLogin(loginDTO);
         } catch (SQLException e) {
             System.err.println("Error LoginController en deleteLogin: " + e.getMessage());
-            return "Error LoginController en deleteLogin: " + e.getMessage();
+            return null;
         }
     }
 }

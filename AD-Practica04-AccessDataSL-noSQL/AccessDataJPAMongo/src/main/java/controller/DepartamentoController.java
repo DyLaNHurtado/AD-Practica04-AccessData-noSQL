@@ -1,22 +1,18 @@
 package controller;
 
-
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import dto.DepartamentoDTO;
 import repository.RepoDepartamento;
 import service.DepartamentoService;
 
 import java.sql.SQLException;
+import java.util.List;
 
 
 public class DepartamentoController {
     private static DepartamentoController controller = null;
 
-    // Mi Servicio unido al repositorio
     private final DepartamentoService departamentoService;
 
-    // Implementamos nuestro Singleton para el controlador
     private DepartamentoController(DepartamentoService departamentoService) {
         this.departamentoService = departamentoService;
     }
@@ -36,14 +32,12 @@ public class DepartamentoController {
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
-    public String getAllDepartamentos() {
+    public List<DepartamentoDTO> getAllDepartamentos() {
         try {
-            // Vamos a devolver el JSON de los departamentos
-            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-            return prettyGson.toJson(departamentoService.getAllDepartamentos());
+            return departamentoService.getAllDepartamentos().get();
         } catch (SQLException e) {
             System.err.println("Error DepartamentoController en getAll: " + e.getMessage());
-            return "Error DepartamentoController en getAll: " + e.getMessage();
+            return null;
         }
     }
     /**
@@ -51,14 +45,12 @@ public class DepartamentoController {
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
-    public String getDepartamentoByIdJSON(Long id) {
+    public DepartamentoDTO getDepartamentoById(Long id) {
         try {
-            // Vamos a devolver el JSON de las categorías
-            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-            return prettyGson.toJson(departamentoService.getDepartamentoById(id));
+            return departamentoService.getDepartamentoById(id);
         } catch (SQLException e) {
             System.err.println("Error DepartamentoController en getDepartamentoById: " + e.getMessage());
-            return "Error DepartamentoController en getDepartamentoById: " + e.getMessage();
+            return null;
         }
     }
     /**
@@ -66,13 +58,12 @@ public class DepartamentoController {
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
-    public String postDepartamento(DepartamentoDTO departamentoDTO) {
+    public DepartamentoDTO postDepartamento(DepartamentoDTO departamentoDTO) {
         try {
-            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-            return prettyGson.toJson(departamentoService.postDepartamento(departamentoDTO));
+            return departamentoService.postDepartamento(departamentoDTO);
         } catch (SQLException e) {
             System.err.println("Error DepartamentoController en postDepartamento: " + e.getMessage());
-            return "Error DepartamentoController en postDepartamento: " + e.getMessage();
+            return null;
         }
     }
     /**
@@ -80,13 +71,12 @@ public class DepartamentoController {
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
-    public String updateDepartamento(DepartamentoDTO departamentoDTO) {
+    public DepartamentoDTO updateDepartamento(DepartamentoDTO departamentoDTO) {
         try {
-            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-            return prettyGson.toJson(departamentoService.updateDepartamento(departamentoDTO));
+            return departamentoService.updateDepartamento(departamentoDTO);
         } catch (SQLException e) {
             System.err.println("Error DepartamentoController en updateDepartamento: " + e.getMessage());
-            return "Error DepartamentoController en updateDepartamento: " + e.getMessage();
+            return null;
         }
     }
     /**
@@ -94,13 +84,12 @@ public class DepartamentoController {
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
-    public String deleteDepartamento(DepartamentoDTO departamentoDTO) {
+    public DepartamentoDTO deleteDepartamento(DepartamentoDTO departamentoDTO) {
         try {
-            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-            return prettyGson.toJson(departamentoService.deleteDepartamento(departamentoDTO));
+            return departamentoService.deleteDepartamento(departamentoDTO);
         } catch (SQLException e) {
             System.err.println("Error DepartamentoController en deleteDepartamento: " + e.getMessage());
-            return "Error DepartamentoController en deleteDepartamento: " + e.getMessage();
+            return null;
         }
     }
 }

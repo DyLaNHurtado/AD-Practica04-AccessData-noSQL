@@ -1,12 +1,11 @@
 package controller;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import dto.IssueDTO;
 import repository.RepoIssue;
 import service.IssueService;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class IssueController {
     private static IssueController controller;
@@ -24,28 +23,28 @@ public class IssueController {
      * Printea  todos los issue en JSON
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
+     * @return
      */
-    public String getAllIssue() {
+    public List<IssueDTO> getAllIssue() {
         try {
-            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-            return prettyGson.toJson(service.getAllIssues());
+            return service.getAllIssues().get();
         } catch (SQLException e) {
             System.err.println("Error IssueController en getAll: " + e.getMessage());
-            return "Error IssueController en getAll: " + e.getMessage();
+            return null;
         }
     }
     /**
      * Printea issue por id en JSON
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
+     * @return
      */
-    public String getIssueByIdJSON(Long id) {
+    public IssueDTO getIssueById(Long id) {
         try {
-            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-            return prettyGson.toJson(service.getIssueById(id));
+            return service.getIssueById(id);
         } catch (SQLException e) {
             System.err.println("Error IssueController en getIssueById: " + e.getMessage());
-            return "Error IssueController en getIssueById: " + e.getMessage();
+            return null;
         }
     }
     /**
@@ -53,13 +52,12 @@ public class IssueController {
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
-    public String postIssue(IssueDTO issueDTO) {
+    public IssueDTO postIssue(IssueDTO issueDTO) {
         try {
-            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-            return prettyGson.toJson(service.postIssue(issueDTO));
+            return service.postIssue(issueDTO);
         } catch (SQLException e) {
             System.err.println("Error IssueController en postIssue: " + e.getMessage());
-            return "Error IssueController en postIssue: " + e.getMessage();
+            return null;
         }
     }
     /**
@@ -67,13 +65,12 @@ public class IssueController {
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
-    public String updateIssue(IssueDTO issueDTO) {
+    public IssueDTO updateIssue(IssueDTO issueDTO) {
         try {
-            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-            return prettyGson.toJson(service.updateIssue(issueDTO));
+            return service.updateIssue(issueDTO);
         } catch (SQLException e) {
             System.err.println("Error IssueController en updateIssue: " + e.getMessage());
-            return "Error IssueController en updateIssue: " + e.getMessage();
+            return null;
         }
     }
     /**
@@ -81,13 +78,12 @@ public class IssueController {
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
-    public String deleteIssue(IssueDTO issueDTO) {
+    public IssueDTO deleteIssue(IssueDTO issueDTO) {
         try {
-            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-            return prettyGson.toJson(service.deleteIssue(issueDTO));
+            return service.deleteIssue(issueDTO);
         } catch (SQLException e) {
             System.err.println("Error IssueController en deleteIssue: " + e.getMessage());
-            return "Error IssueController en deleteIssue: " + e.getMessage();
+            return null;
         }
     }
 }

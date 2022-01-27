@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Data
 @AllArgsConstructor
@@ -22,4 +23,16 @@ public class JefeProyectoDTO {
     private List<String> tecnologias;
     private Proyecto proyecto;
     private List<Issue> issues;
+
+    @Override
+    public String toString(){
+        return "JefeProyecto{id="+this.id
+                +", nombre="+this.nombre
+                +", fecha="+this.fechaAlta
+                +", salario="+this.salario
+                +", proyecto="+this.proyecto.getId()
+                +", tecnologias="+this.tecnologias
+                +", issues="+issues.stream().map(Issue::getId).collect(Collectors.toList())
+                +"}";
+    }
 }

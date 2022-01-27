@@ -23,4 +23,15 @@ public class JefeDepartamento extends Empleado{
     public void setDepartamento(Departamento departamento) {
         this.departamento = departamento;
     }
+
+    @Override
+    public String toString(){
+        return "JefeDepartamento{id="+super.getId()
+                +", nombre="+super.getNombre()
+                +", fecha="+super.getFechaAlta()
+                +", salario="+super.getSalario()
+                +", tecnologias="+super.getTecnologias()
+                +", departamento="+this.departamento.getId()
+                +"}";
+    }
 }

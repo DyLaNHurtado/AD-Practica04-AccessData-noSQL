@@ -1,12 +1,11 @@
 package controller;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import dto.CommitDTO;
 import repository.RepoCommit;
 import service.CommitService;
 
 import java.sql.SQLException;
+import java.util.List;
 
 public class CommitController {
     private static CommitController controller;
@@ -25,13 +24,12 @@ public class CommitController {
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
-    public String getAllCommit() {
+    public List<CommitDTO> getAllCommit() {
         try {
-            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-            return prettyGson.toJson(service.getAllCommits());
+            return service.getAllCommits().get();
         } catch (SQLException e) {
             System.err.println("Error CommitController en getAll: " + e.getMessage());
-            return "Error CommitController en getAll: " + e.getMessage();
+            return null;
         }
     }
     /**
@@ -39,13 +37,12 @@ public class CommitController {
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
-    public String getCommitByIdJSON(Long id) {
+    public CommitDTO getCommitById(Long id) {
         try {
-            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-            return prettyGson.toJson(service.getCommitById(id));
+            return service.getCommitById(id);
         } catch (SQLException e) {
             System.err.println("Error CommitController en getCommitById: " + e.getMessage());
-            return "Error CommitController en getCommitById: " + e.getMessage();
+            return null;
         }
     }
     /**
@@ -53,13 +50,12 @@ public class CommitController {
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
-    public String postCommit(CommitDTO commitDTO) {
+    public CommitDTO postCommit(CommitDTO commitDTO) {
         try {
-            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-            return prettyGson.toJson(service.postCommit(commitDTO));
+            return service.postCommit(commitDTO);
         } catch (SQLException e) {
             System.err.println("Error CommitController en postCommit: " + e.getMessage());
-            return "Error CommitController en postCommit: " + e.getMessage();
+            return null;
         }
     }
     /**
@@ -67,13 +63,12 @@ public class CommitController {
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
-    public String updateCommit(CommitDTO commitDTO) {
+    public CommitDTO updateCommit(CommitDTO commitDTO) {
         try {
-            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-            return prettyGson.toJson(service.updateCommit(commitDTO));
+            return service.updateCommit(commitDTO);
         } catch (SQLException e) {
             System.err.println("Error CommitController en updateCommit: " + e.getMessage());
-            return "Error CommitController en updateCommit: " + e.getMessage();
+            return null;
         }
     }
     /**
@@ -81,13 +76,12 @@ public class CommitController {
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
-    public String deleteCommit(CommitDTO commitDTO) {
+    public CommitDTO deleteCommit(CommitDTO commitDTO) {
         try {
-            final Gson prettyGson = new GsonBuilder().setPrettyPrinting().create();
-            return prettyGson.toJson(service.deleteCommit(commitDTO));
+            return service.deleteCommit(commitDTO);
         } catch (SQLException e) {
             System.err.println("Error CommitController en deleteCommit: " + e.getMessage());
-            return "Error CommitController en deleteCommit: " + e.getMessage();
+            return null;
         }
     }
 }

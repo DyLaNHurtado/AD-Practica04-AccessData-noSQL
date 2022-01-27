@@ -6,6 +6,7 @@ import lombok.Builder;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Builder
 @AllArgsConstructor
@@ -81,10 +82,16 @@ public class Programador extends Empleado implements Serializable {
     }
 
     @Override
-    public String toString() {
-        return "Programador{\n" +
-                ", \ndepartamento=" + departamento.getId() +
-                ", \nproyectosParticipa=" + proyectosParticipa +
-                "\n}";
+    public String toString(){
+        return "Programador{id="+super.getId()
+                +", nombre="+super.getNombre()
+                +", fecha="+super.getFechaAlta()
+                +", salario="+super.getSalario()
+                +", tecnologias="+super.getTecnologias()
+                +", departamento="+this.departamento.getId()
+                +", proyectos="+this.proyectosParticipa.stream().map(Proyecto::getId).collect(Collectors.toList())
+                +", issues="+this.issues.stream().map(Issue::getId).collect(Collectors.toList())
+                +", commits="+this.commits.stream().map(Commit::getId).collect(Collectors.toList())
+                +"}";
     }
 }
