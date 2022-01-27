@@ -3,7 +3,7 @@ package dao;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "departamento")
+@Table(name = "jefe_departamento")
 @NamedQueries({
         @NamedQuery(name = "JefeDepartamento.getAll", query = "SELECT jd FROM dao.JefeDepartamento jd")
 })
@@ -13,6 +13,7 @@ public class JefeDepartamento extends Empleado{
 
     public JefeDepartamento(){
     }
+
 
     @OneToOne(mappedBy = "jefeDepartamento")
     public Departamento getDepartamento() {

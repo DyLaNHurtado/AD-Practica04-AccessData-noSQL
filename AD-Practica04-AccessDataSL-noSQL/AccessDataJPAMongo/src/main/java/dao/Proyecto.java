@@ -2,6 +2,7 @@ package dao;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import org.hibernate.annotations.GeneratorType;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -41,6 +42,7 @@ public class Proyecto implements Serializable {
 
     @Id
     @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     public long getId() {
         return id;
     }

@@ -56,15 +56,6 @@ public class Facade {
         Repositorio rep1 = new Repositorio("Repo 1", Timestamp.from(Instant.now()));//15
         Repositorio rep2 = new Repositorio("Repo 2", Timestamp.from(Instant.now()));//15
 
-        hc.getTransaction().begin();
-        hc.getManager().persist(d1);
-        hc.getManager().persist(d2);
-        proy1.setDepartamento(d1);
-        proy2.setDepartamento(d2);
-        hc.getManager().persist(proy1);
-        hc.getManager().persist(proy2);
-        hc.getTransaction().commit();
-        System.out.println("Correcto");
 
         //Commit
         c1.setIssue(i1);
@@ -149,6 +140,8 @@ public class Facade {
         proy2.setRepositorio(rep2);
         proy1.setProgramadores(List.of(pro1));
         proy2.setProgramadores(List.of(pro2));
+        proy1.setDepartamento(d1);
+        proy2.setDepartamento(d2);
 
         //Repositorio
 

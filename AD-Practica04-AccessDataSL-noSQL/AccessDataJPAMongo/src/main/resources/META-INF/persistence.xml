@@ -18,7 +18,7 @@
         <class>dao.Repositorio</class>
         <properties>
             <property name="hibernate.ogm.datastore.provider" value="mongodb" />
-            <property name="hibernate.ogm.datastore.database" value="blog" />
+            <property name="hibernate.ogm.datastore.database" value="mongodb" />
             <property name="hibernate.ogm.datastore.host" value="127.0.0.1" />
             <property name="hibernate.ogm.datastore.port" value="27017" />
             <property name="hibernate.ogm.datastore.username" value="mongoadmin" />
