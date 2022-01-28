@@ -59,7 +59,7 @@ public class Repositorio {
         this.fechaCreacion = fechaCreacion;
     }
 
-    @OneToOne(mappedBy = "repositorio")
+    @OneToOne(mappedBy = "repositorio", cascade = CascadeType.ALL)
     public Proyecto getProyecto() {
         return proyecto;
     }

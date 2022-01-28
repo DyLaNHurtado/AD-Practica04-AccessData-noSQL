@@ -16,7 +16,7 @@ public class JefeProyecto extends Empleado{
     public JefeProyecto() {
     }
 
-    @OneToOne(mappedBy = "jefe")
+    @OneToOne(mappedBy = "jefe",cascade = CascadeType.ALL)
     public Proyecto getProyecto(){
         return proyecto;
     }
@@ -24,7 +24,7 @@ public class JefeProyecto extends Empleado{
         this.proyecto=proyecto;
     }
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "jefe", cascade = CascadeType.REMOVE)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "jefe", cascade = CascadeType.ALL)
     public List<Issue> getIssues() {
         return issues;
     }

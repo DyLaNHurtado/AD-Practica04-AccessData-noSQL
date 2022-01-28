@@ -2,18 +2,15 @@ import com.mongodb.ConnectionString;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
 import com.mongodb.client.MongoDatabase;
-import com.sun.jdi.connect.spi.Connection;
 import controller.*;
 import dao.*;
 import dto.*;
 import manager.HibernateController;
 
-import java.sql.Time;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Facade {
     private static Facade instance;
@@ -208,7 +205,7 @@ public class Facade {
                 "-------------------------------\n");
 
         System.out.println("**********************\n" +
-                "\t\tDEPARTAMENTO\n" +
+                "\tDEPARTAMENTO\n" +
                 "**********************");
         //this.departamentoJSON();
 
@@ -221,8 +218,27 @@ public class Facade {
                 "\t\tPROGRAMADOR\n" +
                 "**********************");
         //this.programadorJSON();
+        System.out.println("**********************\n" +
+                "\tREPOSITORIO\n" +
+                "**********************");
+        //this.repositorioJSON();
+        System.out.println("**********************\n" +
+                "\t\tCOMMIT\n" +
+                "**********************");
+        //this.commitJSON();
+        System.out.println("**********************\n" +
+                "\t\tISSUE\n" +
+                "**********************");
+        //this.issueJSON();
+        System.out.println("**********************\n" +
+                "\tJEFE DEPARTAMENTO\n" +
+                "**********************");
+        //this.jefeDepartamentoJSON();
+        System.out.println("**********************\n" +
+                "\tJEFE PROYECTO\n" +
+                "**********************");
+        //this.jefeProyectoJSON();
     }
-
 
     /**
      * Metodos CRUD departamento en JSON
@@ -233,7 +249,7 @@ public class Facade {
     private void departamentoJSON() {
         DepartamentoController departamentoController = DepartamentoController.getInstance();
 
-        System.out.println("GET Todos las Departamentos");
+        System.out.println("GET Todos los Departamentos");
         System.out.println(departamentoController.getAllDepartamentos());
 
 
@@ -370,5 +386,229 @@ public class Facade {
                 .id(10L)
                 .build();
         System.out.println(proyectoController.deleteProyecto(proyectoDTO));
+    }
+    /**
+     * Metodos CRUD jefeProyecto en JSON
+     *
+     * @author Dylan Hurtado
+     * @version 11/12/2021 - 1.0
+     */
+    private void jefeProyectoJSON() {
+        JefeProyectoController jefeProyectoController = JefeProyectoController.getInstance();
+
+        System.out.println("GET Todos los Jefes de Proyecto");
+        System.out.println(jefeProyectoController.getAllJefeProyecto());
+
+        System.out.println("GET JefeProyecto con ID = 5");
+        System.out.println(jefeProyectoController.getJefeProyectoById(5L));
+
+        System.out.println("POST Insertando JefeProyecto");
+        JefeProyectoDTO jefeProyectoDTO = JefeProyectoDTO.builder()
+                .nombre("jefeProyPrueba")
+                .fechaAlta(Timestamp.from(Instant.now()))
+                .salario(1000.0)
+                .tecnologias(List.of("Tecnologia1","Tecnologia2"))
+                .proyecto(new Proyecto())
+                .issues(List.of(new Issue()))
+                .build();
+        System.out.println(jefeProyectoController.postJefeProyecto(jefeProyectoDTO));
+
+        System.out.println("UPDATE JefeProyecto con ID = 6");
+        jefeProyectoDTO = JefeProyectoDTO.builder()
+                .id(6L)
+                .nombre("jefeProyPrueba")
+                .fechaAlta(Timestamp.from(Instant.now()))
+                .salario(1000.0)
+                .tecnologias(List.of("Tecnologia1","Tecnologia2"))
+                .proyecto(new Proyecto())
+                .issues(List.of(new Issue()))
+                .build();
+        System.out.println(jefeProyectoController.updateJefeProyecto(jefeProyectoDTO));
+
+        System.out.println("DELETE JefeProyecto con ID = 5");
+        jefeProyectoDTO = JefeProyectoDTO.builder()
+                .id(5L)
+                .build();
+        System.out.println(jefeProyectoController.deleteJefeProyecto(jefeProyectoDTO));
+    }
+    /**
+     * Metodos CRUD jefeDepartamento en JSON
+     *
+     * @author Dylan Hurtado
+     * @version 11/12/2021 - 1.0
+     */
+    private void jefeDepartamentoJSON() {
+        JefeDepartamentoController jefeDepartamentoController = JefeDepartamentoController.getInstance();
+
+        System.out.println("GET Todos los Jefes de Departamento");
+        System.out.println(jefeDepartamentoController.getAllJefesDepartamento());
+
+        System.out.println("GET JefeDepartamento con ID = 2");
+        System.out.println(jefeDepartamentoController.getJefeDepartamentoById(2L));
+
+        System.out.println("POST Insertando JefeDepartamento");
+        JefeDepartamentoDTO jefeDepartamentoDTO = JefeDepartamentoDTO.builder()
+                .nombre("jefeDepPrueba")
+                .fechaAlta(Timestamp.from(Instant.now()))
+                .salario(1000.0)
+                .tecnologias(List.of("Tecnologia1","Tecnologia2"))
+                .departamento(new Departamento())
+                .build();
+        System.out.println(jefeDepartamentoController.postJefeDepartamento(jefeDepartamentoDTO));
+
+        System.out.println("UPDATE JefeDepartamento con ID = 2");
+        jefeDepartamentoDTO = JefeDepartamentoDTO.builder()
+                .id(2L)
+                .nombre("jefeDepPruebaUpdated")
+                .fechaAlta(Timestamp.from(Instant.now()))
+                .salario(1000.0)
+                .tecnologias(List.of("Tecnologia1","Tecnologia2"))
+                .departamento(new Departamento())
+                .build();
+        System.out.println(jefeDepartamentoController.updateJefeDepartamento(jefeDepartamentoDTO));
+
+        System.out.println("DELETE JefeDepartamento con ID = 2");
+        jefeDepartamentoDTO = JefeDepartamentoDTO.builder()
+                .id(2L)
+                .build();
+        System.out.println(jefeDepartamentoController.deleteJegeDepartamento(jefeDepartamentoDTO));
+    }
+    /**
+     * Metodos CRUD issue en JSON
+     *
+     * @author Dylan Hurtado
+     * @version 11/12/2021 - 1.0
+     */
+    private void issueJSON() {
+        IssueController issueController = IssueController.getInstance();
+
+        System.out.println("GET Todos las Issues");
+        System.out.println(issueController.getAllIssue());
+
+
+        System.out.println("GET Issue con ID = 14");
+        System.out.println(issueController.getIssueById(14L));
+
+        System.out.println("POST Insertando Issue");
+        IssueDTO issueDTO = IssueDTO.builder()
+                .titulo("IssuePrueba")
+                .texto("textoooPrueba")
+                .fecha(Timestamp.from(Instant.now()))
+                .resuelta(true)
+                .jefe(new JefeProyecto())
+                .programadores(List.of(new Programador()))
+                .repositorio(new Repositorio())
+                .commit(new Commit())
+                .build();
+        System.out.println(issueController.postIssue(issueDTO));
+
+        System.out.println("UPDATE Issue con ID = 14");
+        issueDTO = IssueDTO.builder()
+                .id(14L)
+                .titulo("IssuePruebaUpdated")
+                .texto("textoooPrueba")
+                .fecha(Timestamp.from(Instant.now()))
+                .resuelta(true)
+                .jefe(new JefeProyecto())
+                .programadores(List.of(new Programador()))
+                .repositorio(new Repositorio())
+                .commit(new Commit())
+                .build();
+        System.out.println(issueController.updateIssue(issueDTO));
+
+        System.out.println("DELETE Issue con ID = 14");
+        issueDTO = IssueDTO.builder()
+                .id(14L)
+                .build();
+        System.out.println(issueController.deleteIssue(issueDTO));
+    }
+    /**
+     * Metodos CRUD commit en JSON
+     *
+     * @author Dylan Hurtado
+     * @version 11/12/2021 - 1.0
+     */
+    private void commitJSON() {
+        CommitController commitController = CommitController.getInstance();
+
+        System.out.println("GET Todos los Commits");
+        System.out.println(commitController.getAllCommit());
+
+
+        System.out.println("GET Commit con ID = 13");
+        System.out.println(commitController.getCommitById(13L));
+
+        System.out.println("POST Insertando Commit");
+        CommitDTO commitDTO = CommitDTO.builder()
+                .titulo("CommitPrueba")
+                .texto("textoooPrueba")
+                .fecha(Timestamp.from(Instant.now()))
+                .issue(new Issue())
+                .repositorio(new Repositorio())
+                .programador(new Programador())
+                .build();
+        System.out.println(commitController.postCommit(commitDTO));
+
+        System.out.println("UPDATE Commit con ID = 13");
+        commitDTO = CommitDTO.builder()
+                .id(13L)
+                .titulo("CommitPruebaUpdated")
+                .texto("textoooPrueba")
+                .fecha(Timestamp.from(Instant.now()))
+                .issue(new Issue())
+                .repositorio(new Repositorio())
+                .programador(new Programador())
+                .build();
+        System.out.println(commitController.updateCommit(commitDTO));
+
+        System.out.println("DELETE Commit con ID = 13");
+        commitDTO = CommitDTO.builder()
+                .id(13L)
+                .build();
+        System.out.println(commitController.deleteCommit(commitDTO));
+    }
+    /**
+     * Metodos CRUD repositorio en JSON
+     *
+     * @author Dylan Hurtado
+     * @version 11/12/2021 - 1.0
+     */
+    private void repositorioJSON() {
+        RepositorioController repositorioController = RepositorioController.getInstance();
+
+        System.out.println("GET Todos los Repositorios");
+        System.out.println(repositorioController.getAllRepositorio());
+
+
+        System.out.println("GET Repositorio con ID = 11");
+        System.out.println(repositorioController.getRepositorioById(11L));
+
+        System.out.println("POST Insertando Repositorio");
+        RepositorioDTO repositorioDTO = RepositorioDTO.builder()
+                .nombre("RepositorioPrueba")
+                .fechaCreacion(Timestamp.from(Instant.now()))
+                .proyecto(new Proyecto())
+                .issues(List.of(new Issue()))
+                .commits(List.of(new Commit()))
+                .build();
+        System.out.println(repositorioController.postRepositorio(repositorioDTO));
+
+        System.out.println("UPDATE Repositorio con ID = 11");
+        repositorioDTO = RepositorioDTO.builder()
+                .id(11L)
+                .nombre("RepositorioPruebaUpdated")
+                .fechaCreacion(Timestamp.from(Instant.now()))
+                .proyecto(new Proyecto())
+                .issues(List.of(new Issue()))
+                .commits(List.of(new Commit()))
+                .build();
+        System.out.println(repositorioController.updateRepositorio(repositorioDTO));
+
+        System.out.println("DELETE Repositorio con ID = 11");
+        repositorioDTO = RepositorioDTO.builder()
+                .id(11L)
+                .build();
+        System.out.println(repositorioController.deleteRepositorio(repositorioDTO));
+
     }
 }

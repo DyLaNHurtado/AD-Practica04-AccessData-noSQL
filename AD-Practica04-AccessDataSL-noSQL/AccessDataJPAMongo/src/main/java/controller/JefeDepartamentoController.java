@@ -33,7 +33,7 @@ public class JefeDepartamentoController {
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
-    public List<JefeDepartamentoDTO> getAllDepartamentos() {
+    public List<JefeDepartamentoDTO> getAllJefesDepartamento() {
         try {
             return jefeDepartamentoService.getAllJefeDepartamento().get();
         } catch (SQLException e) {
@@ -47,7 +47,7 @@ public class JefeDepartamentoController {
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
-    public JefeDepartamentoDTO getJefeDepartamentoByIdJSON(Long id) {
+    public JefeDepartamentoDTO getJefeDepartamentoById(Long id) {
         try {
             return jefeDepartamentoService.getJefeDepartamentoById(id);
         } catch (SQLException e) {

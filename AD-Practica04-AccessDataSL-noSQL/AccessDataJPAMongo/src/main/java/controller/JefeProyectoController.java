@@ -13,7 +13,7 @@ public class JefeProyectoController {
     private JefeProyectoController(JefeProyectoService service){
         this.service=service;
     }
-    public JefeProyectoController getInstance(){
+    public static JefeProyectoController getInstance(){
         if(controller==null){
             controller=new JefeProyectoController(new JefeProyectoService(new RepoJefeProyecto()));
         }
@@ -37,7 +37,7 @@ public class JefeProyectoController {
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
-    public JefeProyectoDTO getJefeProyectoByIdJSON(Long id) {
+    public JefeProyectoDTO getJefeProyectoById(Long id) {
         try {
             return service.getJefeProyectoById(id);
         } catch (SQLException e) {

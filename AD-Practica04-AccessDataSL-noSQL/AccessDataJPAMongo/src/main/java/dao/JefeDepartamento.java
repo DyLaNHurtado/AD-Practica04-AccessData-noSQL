@@ -15,7 +15,7 @@ public class JefeDepartamento extends Empleado{
     }
 
 
-    @OneToOne(mappedBy = "jefeDepartamento")
+    @OneToOne(mappedBy = "jefeDepartamento",cascade = CascadeType.ALL)
     public Departamento getDepartamento() {
         return departamento;
     }

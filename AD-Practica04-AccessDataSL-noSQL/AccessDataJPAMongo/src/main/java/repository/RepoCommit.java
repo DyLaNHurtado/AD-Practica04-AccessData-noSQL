@@ -38,7 +38,6 @@ public class RepoCommit implements CrudRepository<Commit,Long>{
         hc.open();
         try {
             hc.getTransaction().begin();
-            commit.setId(Long.parseLong(ObjectId.get().toString()));
             hc.getManager().persist(commit);
             hc.getTransaction().commit();
             hc.close();

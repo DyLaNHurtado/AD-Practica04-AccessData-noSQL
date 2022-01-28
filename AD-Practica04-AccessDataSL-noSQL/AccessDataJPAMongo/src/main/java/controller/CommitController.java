@@ -13,7 +13,7 @@ public class CommitController {
     private CommitController(CommitService service){
         this.service=service;
     }
-    public CommitController getInstance(){
+    public static CommitController getInstance(){
         if(controller==null){
             controller=new CommitController(new CommitService(new RepoCommit()));
         }

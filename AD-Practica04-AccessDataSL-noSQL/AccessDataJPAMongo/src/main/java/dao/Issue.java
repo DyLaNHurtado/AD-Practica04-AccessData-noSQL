@@ -81,7 +81,7 @@ public class Issue {
         this.resuelta = resuelta;
     }
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "jefe_id", referencedColumnName = "id")
     public JefeProyecto getJefe() {
         return jefe;
@@ -91,7 +91,7 @@ public class Issue {
         this.jefe = jefe;
     }
 
-    @ManyToMany(mappedBy = "issues")
+    @ManyToMany(mappedBy = "issues",fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     public List<Programador> getProgramadores() {
         return programadores;
     }
@@ -100,7 +100,7 @@ public class Issue {
         this.programadores = programadores;
     }
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     public Repositorio getRepositorio() {
         return repositorio;
     }
@@ -109,7 +109,7 @@ public class Issue {
         this.repositorio = repositorio;
     }
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     public Commit getCommit() {
         return commit;
     }

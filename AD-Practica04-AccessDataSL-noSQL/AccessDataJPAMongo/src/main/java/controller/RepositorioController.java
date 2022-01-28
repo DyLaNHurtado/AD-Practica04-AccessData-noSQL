@@ -74,7 +74,7 @@ public class RepositorioController {
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
-    public RepositorioDTO updateRepositorioJSON(RepositorioDTO repositorioDTO) {
+    public RepositorioDTO updateRepositorio(RepositorioDTO repositorioDTO) {
         try {
             return repositorioService.updateRepositorio(repositorioDTO);
         } catch (SQLException e) {

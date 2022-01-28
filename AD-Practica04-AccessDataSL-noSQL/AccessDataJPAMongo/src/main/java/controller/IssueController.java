@@ -13,7 +13,7 @@ public class IssueController {
     private IssueController(IssueService service){
         this.service=service;
     }
-    public IssueController getInstance(){
+    public static IssueController getInstance(){
         if(controller==null){
             controller=new IssueController(new IssueService(new RepoIssue()));
         }

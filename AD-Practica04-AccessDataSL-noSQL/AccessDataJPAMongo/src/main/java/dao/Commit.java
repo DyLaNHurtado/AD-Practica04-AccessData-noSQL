@@ -86,7 +86,7 @@ public class Commit {
         this.issue = issue;
     }
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "repositorio_id", referencedColumnName = "id")
     public Repositorio getRepositorio() {
         return repositorio;
@@ -96,7 +96,7 @@ public class Commit {
         this.repositorio = repositorio;
     }
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "programador_id", referencedColumnName = "id")
     public Programador getProgramador() {
         return programador;

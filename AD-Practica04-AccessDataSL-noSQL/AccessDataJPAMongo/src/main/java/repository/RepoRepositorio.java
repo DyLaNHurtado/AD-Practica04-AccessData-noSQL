@@ -16,7 +16,7 @@ public class RepoRepositorio implements CrudRepository<Repositorio,Long>{
         hc.open();
         TypedQuery<Repositorio> query = hc.getManager().createNamedQuery("Repositorio.getAll",Repositorio.class);
         List<Repositorio> list = query.getResultList();
-        list.forEach(x-> System.out.println(x.toString()));
+        //list.forEach(x-> System.out.println(x.toString()));
         hc.close();
         return Optional.of(list);
     }
@@ -39,7 +39,6 @@ public class RepoRepositorio implements CrudRepository<Repositorio,Long>{
         hc.open();
         try {
             hc.getTransaction().begin();
-            repositorio.setId(Long.parseLong(ObjectId.get().toString()));
             hc.getManager().persist(repositorio);
             hc.getTransaction().commit();
             hc.close();
