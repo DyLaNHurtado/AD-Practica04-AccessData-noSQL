@@ -15,7 +15,6 @@ public class RepoProyecto implements CrudRepository<Proyecto, Long> {
         hc.open();
         TypedQuery<Proyecto> query = hc.getManager().createNamedQuery("Proyecto.getAll", Proyecto.class);
         List<Proyecto> list = query.getResultList();
-        list.forEach(x -> System.out.println(x.toString()));
         hc.close();
         return Optional.of(list);
     }
@@ -38,7 +37,6 @@ public class RepoProyecto implements CrudRepository<Proyecto, Long> {
         hc.open();
         try {
             hc.getTransaction().begin();
-            //proyecto.setIdProyecto(UUID.randomUUID().toString());
             hc.getManager().persist(proyecto);
             hc.getTransaction().commit();
             hc.close();

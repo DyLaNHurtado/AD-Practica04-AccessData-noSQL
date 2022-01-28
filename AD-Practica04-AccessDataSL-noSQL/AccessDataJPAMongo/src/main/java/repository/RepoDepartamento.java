@@ -16,10 +16,8 @@ public class RepoDepartamento implements CrudRepository<Departamento, Long> {
         hc.open();
         TypedQuery<Departamento> query = hc.getManager().createNamedQuery("Departamento.getAll", Departamento.class);
         List<Departamento> list = query.getResultList();
-        list.forEach(x -> System.out.println(x.toString()));
         hc.close();
         return Optional.of(list);
-
     }
 
     @Override
@@ -40,7 +38,6 @@ public class RepoDepartamento implements CrudRepository<Departamento, Long> {
         hc.open();
         try {
             hc.getTransaction().begin();
-            departamento.setId(Long.parseLong(ObjectId.get().toString()));
             hc.getManager().persist(departamento);
             hc.getTransaction().commit();
             hc.close();
@@ -82,7 +79,6 @@ public class RepoDepartamento implements CrudRepository<Departamento, Long> {
         hc.open();
         try {
             hc.getTransaction().begin();
-            // Ojo que borrar implica que estemos en la misma sesión y nos puede dar problemas, por eso lo recuperamos otra vez
             departamento = hc.getManager().find(Departamento.class, departamento.getId());
             hc.getManager().remove(departamento);
             hc.getTransaction().commit();
@@ -99,18 +95,4 @@ public class RepoDepartamento implements CrudRepository<Departamento, Long> {
             hc.close();
         }
     }
-
-    // Operacion 1:
-    //Obtener de un departamento, los proyectos (información completa) y trabajadores
-    //asociados con sus datos completos
-
-    public void departamentoInfo(Long id) throws SQLException {
-
-        if (this.getById(id).isPresent()) {
-            Departamento departamento = this.getById(id).get();
-
-            //System.out.println(departamento.toStringInfo());
-        }
-    }
-
 }

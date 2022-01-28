@@ -31,7 +31,7 @@ public class ProyectoDTO {
                 +", presupuesto="+this.presupuesto
                 +", departamento="+this.departamento.getId()
                 +", tecnologias="+this.tecnologias
-                +", prorgramadores="+programadores.stream().map(Programador::getId).collect(Collectors.toList())
+                +", programadores="+this.programadores.stream().map(Programador::getId).collect(Collectors.toList())
                 +", repositorio="+this.repositorio.getId()
                 +", jefe="+this.jefe.getId()
                 +"}";

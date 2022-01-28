@@ -1,8 +1,6 @@
 package mapper;
 
-import dao.Issue;
 import dao.JefeDepartamento;
-import dto.IssueDTO;
 import dto.JefeDepartamentoDTO;
 
 public class JefeDepartamentoMapper extends BaseMapper<JefeDepartamento, JefeDepartamentoDTO>{

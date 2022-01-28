@@ -53,7 +53,7 @@ public class Proyecto implements Serializable {
     }
 
     @Basic
-    @Column(name = "nombre", nullable = false)
+    @Column(name = "nombre")
     public String getNombre() {
         return nombre;
     }
@@ -63,7 +63,7 @@ public class Proyecto implements Serializable {
     }
 
     @Basic
-    @Column(name = "presupuesto", nullable = false)
+    @Column(name = "presupuesto")
     public Double getPresupuesto() {
         return presupuesto;
     }
@@ -73,7 +73,7 @@ public class Proyecto implements Serializable {
     }
 
     @Basic
-    @Column(name = "fechaInicio", nullable = false)
+    @Column(name = "fechaInicio")
     public Timestamp getFechaInicio() {
         return fechaInicio;
     }
@@ -83,7 +83,7 @@ public class Proyecto implements Serializable {
     }
 
     @Basic
-    @Column(name = "fechaFin", nullable = false)
+    @Column(name = "fechaFin")
     public Timestamp getFechaFin() {
         return fechaFin;
     }
@@ -92,8 +92,8 @@ public class Proyecto implements Serializable {
         this.fechaFin = fechaFin;
     }
 
-    @ElementCollection //Igual que @Basic pero para colecciones
-    @Column(name = "tecnologias", nullable = false)
+    @ElementCollection(fetch = FetchType.EAGER)
+    @Column(name = "tecnologias")
     public List<String> getTecnologias() {
         return tecnologias;
     }
@@ -111,8 +111,8 @@ public class Proyecto implements Serializable {
         this.jefe = jefe;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "departamento_id", referencedColumnName = "id", nullable = false)
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "departamento_id", referencedColumnName = "id")
     public Departamento getDepartamento() {
         return departamento;
     }
@@ -130,7 +130,7 @@ public class Proyecto implements Serializable {
         this.repositorio = repositorio;
     }
 
-    @ManyToMany(mappedBy = "proyectosParticipa")
+    @ManyToMany(mappedBy = "proyectosParticipa", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     public List<Programador> getProgramadores() {
         return programadores;
     }

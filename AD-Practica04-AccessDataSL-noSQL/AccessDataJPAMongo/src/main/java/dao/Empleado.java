@@ -50,7 +50,7 @@ public abstract class Empleado {
     public void setSalario(Double salario) {
         this.salario = salario;
     }
-    @ElementCollection
+    @ElementCollection(fetch = FetchType.EAGER)
     public List<String> getTecnologias() {
         return tecnologias;
     }

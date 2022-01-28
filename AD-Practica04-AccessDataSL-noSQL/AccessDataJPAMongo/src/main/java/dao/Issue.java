@@ -82,7 +82,7 @@ public class Issue {
     }
 
     @ManyToOne
-    @JoinColumn(name = "jefe_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "jefe_id", referencedColumnName = "id")
     public JefeProyecto getJefe() {
         return jefe;
     }
@@ -91,10 +91,7 @@ public class Issue {
         this.jefe = jefe;
     }
 
-    //Como se hace un ManyToMany
-    //https://www.baeldung.com/jpa-many-to-many
     @ManyToMany(mappedBy = "issues")
-
     public List<Programador> getProgramadores() {
         return programadores;
     }

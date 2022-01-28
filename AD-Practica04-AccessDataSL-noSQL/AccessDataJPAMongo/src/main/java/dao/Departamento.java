@@ -52,7 +52,7 @@ public class Departamento implements Serializable {
     }
 
     @Basic
-    @Column(name = "nombre", nullable = false)
+    @Column(name = "nombre")
     public String getNombre() {
         return nombre;
     }
@@ -89,7 +89,7 @@ public class Departamento implements Serializable {
     }
 
     @Basic
-    @Column(name = "presupuesto", nullable = false)
+    @Column(name = "presupuesto")
     public Double getPresupuesto() {
         return presupuesto;
     }

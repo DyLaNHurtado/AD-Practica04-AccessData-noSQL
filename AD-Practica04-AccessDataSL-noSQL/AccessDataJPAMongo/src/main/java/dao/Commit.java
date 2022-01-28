@@ -59,7 +59,7 @@ public class Commit {
         this.titulo = titulo;
     }
     @Basic
-    @Column(name="texto",nullable = false)
+    @Column(name="texto")
     public String getTexto() {
         return texto;
     }
@@ -68,7 +68,7 @@ public class Commit {
         this.texto = texto;
     }
     @Basic
-    @Column(name="fecha",nullable=false)
+    @Column(name="fecha")
     public Timestamp getFecha() {
         return fecha;
     }
@@ -87,7 +87,7 @@ public class Commit {
     }
 
     @ManyToOne
-    @JoinColumn(name = "repositorio_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "repositorio_id", referencedColumnName = "id")
     public Repositorio getRepositorio() {
         return repositorio;
     }
@@ -97,7 +97,7 @@ public class Commit {
     }
 
     @ManyToOne
-    @JoinColumn(name = "programador_id", referencedColumnName = "id", nullable = false)
+    @JoinColumn(name = "programador_id", referencedColumnName = "id")
     public Programador getProgramador() {
         return programador;
     }

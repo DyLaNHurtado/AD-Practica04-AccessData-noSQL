@@ -7,12 +7,17 @@ public class ProgramadorMapper extends BaseMapper<Programador, ProgramadorDTO> {
 
     @Override
     public Programador fromDTO(ProgramadorDTO item) {
-        return Programador.builder()
-                .departamento(item.getDepartamento())
-                .proyectosParticipa(item.getProyectosParticipa())
-                .commits(item.getCommits())
-                .issues(item.getIssues())
-                .build();
+        Programador programador=new Programador();
+        programador.setId(item.getId());
+        programador.setNombre(item.getNombre());
+        programador.setFechaAlta(item.getFechaAlta());
+        programador.setSalario(item.getSalario());
+        programador.setTecnologias(item.getTecnologias());
+        programador.setDepartamento(item.getDepartamento());
+        programador.setCommits(item.getCommits());
+        programador.setIssues(item.getIssues());
+        programador.setProyectosParticipa(item.getProyectosParticipa());
+        return programador;
     }
 
     @Override

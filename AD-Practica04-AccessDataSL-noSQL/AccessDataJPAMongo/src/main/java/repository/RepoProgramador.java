@@ -16,7 +16,6 @@ public class RepoProgramador implements CrudRepository<Programador, Long> {
         hc.open();
         TypedQuery<Programador> query = hc.getManager().createNamedQuery("Programador.getAll", Programador.class);
         List<Programador> list = query.getResultList();
-        list.forEach(x -> System.out.println(x.toString()));
         hc.close();
         return Optional.of(list);
     }
@@ -33,20 +32,18 @@ public class RepoProgramador implements CrudRepository<Programador, Long> {
         throw new SQLException("Error RepoProgramador no existe programador con ID: " + id);
     }
 
-
     @Override
     public Optional<Programador> save(Programador programador) throws SQLException {
         HibernateController hc = HibernateController.getInstance();
         hc.open();
         try {
             hc.getTransaction().begin();
-            //programador.setId(UUID.randomUUID().toString());
             hc.getManager().persist(programador);
             hc.getTransaction().commit();
             hc.close();
             return Optional.of(programador);
-
         } catch (Exception e) {
+            System.out.println(e.getMessage());
             throw new SQLException("Error RepoProgramador al insertar Programador en BD");
         } finally {
             if (hc.getTransaction().isActive()) {
@@ -58,7 +55,6 @@ public class RepoProgramador implements CrudRepository<Programador, Long> {
 
     @Override
     public Optional<Programador> update(Programador programador) throws SQLException {
-
         HibernateController hc = HibernateController.getInstance();
         hc.open();
         try {
@@ -84,7 +80,6 @@ public class RepoProgramador implements CrudRepository<Programador, Long> {
         hc.open();
         try {
             hc.getTransaction().begin();
-            // Ojo que borrar implica que estemos en la misma sesión y nos puede dar problemas, por eso lo recuperamos otra vez
             programador = hc.getManager().find(Programador.class, programador.getId());
             hc.getManager().remove(programador);
             hc.getTransaction().commit();
@@ -97,16 +92,6 @@ public class RepoProgramador implements CrudRepository<Programador, Long> {
                 hc.getTransaction().rollback();
             }
             hc.close();
-        }
-    }
-
-    //Operacion 4
-    // Programadores con su productividad completa: proyectos , commits
-    //(información completa) e issues asignadas (información completa).
-    public void allProgramadoresInfo() throws SQLException {
-        if (this.getAll().isPresent()) {
-            List<Programador> programadores = this.getAll().get();
-            //programadores.forEach(x-> System.out.println(x.toStringProductividad()));
         }
     }
 }

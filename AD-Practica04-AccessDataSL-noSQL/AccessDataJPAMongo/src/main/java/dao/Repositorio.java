@@ -40,7 +40,7 @@ public class Repositorio {
     }
 
     @Basic
-    @Column(name="nombre", nullable=false)
+    @Column(name="nombre")
     public String getNombre() {
         return nombre;
     }
@@ -50,7 +50,7 @@ public class Repositorio {
     }
 
     @Basic
-    @Column(name="fecha_creacion", nullable=false)
+    @Column(name="fecha_creacion")
     public Timestamp getFechaCreacion() {
         return fechaCreacion;
     }
@@ -58,7 +58,7 @@ public class Repositorio {
     public void setFechaCreacion(Timestamp fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
-    //mappedBy = al nombre de la variable repositorio dentro de proyecto
+
     @OneToOne(mappedBy = "repositorio")
     public Proyecto getProyecto() {
         return proyecto;

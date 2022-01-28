@@ -33,8 +33,8 @@ public class Programador extends Empleado implements Serializable {
         return super.getId();
     }
 
-    @ManyToOne
-    @JoinColumn(name = "departamento_id", referencedColumnName = "id", nullable = false)
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "departamento_id", referencedColumnName = "id")
     public Departamento getDepartamento() {
         return departamento;
     }
@@ -44,7 +44,7 @@ public class Programador extends Empleado implements Serializable {
     }
 
 
-    @ManyToMany
+    @ManyToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
     @JoinTable(
             name = "participacion",
             joinColumns = @JoinColumn(name = "programador_id"),
@@ -58,7 +58,7 @@ public class Programador extends Empleado implements Serializable {
         this.proyectosParticipa = proyectosParticipa;
     }
 
-    @OneToMany(fetch = FetchType.EAGER, mappedBy = "programador", cascade = CascadeType.REMOVE, orphanRemoval = true)
+    @OneToMany(fetch = FetchType.EAGER, mappedBy = "programador", cascade = CascadeType.ALL)
     public List<Commit> getCommits() {
         return commits;
     }
@@ -67,7 +67,7 @@ public class Programador extends Empleado implements Serializable {
         this.commits = commits;
     }
 
-    @ManyToMany
+    @ManyToMany(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
     @JoinTable(
             name = "asignacion",
             joinColumns = @JoinColumn(name = "programador_id"),
