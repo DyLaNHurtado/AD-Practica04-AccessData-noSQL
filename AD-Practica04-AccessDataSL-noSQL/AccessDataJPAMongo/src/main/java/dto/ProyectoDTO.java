@@ -5,6 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -37,9 +38,29 @@ public class ProyectoDTO {
                 +"}";
     }
 
+    public String proyectoCompleto(){
+        return "Proyecto{id="+this.id
+                +", nombre="+this.nombre
+                +", fecha_inicio="+this.fechaInicio
+                +", fecha_fin="+this.fechaFin
+                +", presupuesto="+this.presupuesto
+                +", departamento="+this.departamento.getId()
+                +", tecnologias="+this.tecnologias
+                +", programadores="+this.programadores
+                +", repositorio="+this.repositorio
+                +", jefe="+this.jefe.jefeProyectoCompleto()
+                +"}";
+    }
+
     public String issuesAbiertas(){
         return "Proyecto{id="+this.id
                 +", repositorio="+this.repositorio.getIssues().stream().map(Issue::getId).collect(Collectors.toList())
+                +"}";
+    }
+
+    public String ordenarProgramadoresCommit(){
+        return "Proyecto{id="+this.id
+                +", programadores="+this.programadores.stream().sorted(Comparator.comparingInt(x->x.getCommits().size())).collect(Collectors.toList())
                 +"}";
     }
 }

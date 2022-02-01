@@ -86,4 +86,13 @@ public class Repositorio {
         this.commits = commits;
     }
 
+    public String toString(){
+        return "Proyecto{id="+this.id
+                +", nombre="+this.nombre
+                +", fechaCreacion="+this.fechaCreacion
+                +", proyecto="+this.proyecto
+                +", issues="+this.issues
+                +", commits="+this.commits
+                +"}";
+    }
 }

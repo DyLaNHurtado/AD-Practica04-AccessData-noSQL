@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name="issue")
@@ -116,5 +117,18 @@ public class Issue {
 
     public void setCommit(Commit commit) {
         this.commit = commit;
+    }
+
+    public String toString(){
+        return "Issue{id="+this.id
+                +", titulo="+this.titulo
+                +", texto="+this.texto
+                +", fecha="+this.fecha
+                +", resuelta="+this.resuelta
+                +", programadores="+this.programadores.stream().map(Programador::getId).collect(Collectors.toList())
+                +", repositorio="+this.repositorio.getId()
+                +", jefe="+this.jefe.getId()
+                +", commit="+this.commit.getId()
+                +"}";
     }
 }

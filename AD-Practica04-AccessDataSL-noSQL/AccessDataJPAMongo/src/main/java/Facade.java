@@ -197,6 +197,8 @@ public class Facade {
     public void soluciones(){
         departamentoCompleto();
         issuesPorProyecto();
+        programadoresProyectoOrdenados();
+        proyectosCompletos();
     }
 
     private void departamentoCompleto(){
@@ -211,6 +213,18 @@ public class Facade {
         controller.getAllProyectos().stream()
                 .filter(p->p.getRepositorio().getIssues().stream().filter(i->i.getResuelta()==false).collect(Collectors.toList()).size()!=0)
                 .forEach(p-> System.out.println(p.issuesAbiertas()));
+    }
+
+    private void programadoresProyectoOrdenados(){
+        System.out.println("Programadores de un proyecto ordenados por número de commits.");
+        ProyectoController controller=ProyectoController.getInstance();
+        controller.getAllProyectos().forEach(p-> System.out.println(p.ordenarProgramadoresCommit()));
+    }
+
+    private void proyectosCompletos(){
+        System.out.println("Proyectos con información completa.");
+        ProyectoController controller=ProyectoController.getInstance();
+        controller.getAllProyectos().forEach(p-> System.out.println(p.proyectoCompleto()));
     }
 
     /**

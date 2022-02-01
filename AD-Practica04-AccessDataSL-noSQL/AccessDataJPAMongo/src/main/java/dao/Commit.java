@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "commit")
@@ -104,5 +105,16 @@ public class Commit {
 
     public void setProgramador(Programador programador) {
         this.programador = programador;
+    }
+
+    public String toString(){
+        return "Commit{id="+this.id
+                +", titulo="+this.titulo
+                +", texto="+this.texto
+                +", fecha="+this.fecha
+                +", programadores="+this.programador.getId()
+                +", repositorio="+this.repositorio.getId()
+                +", issue="+this.issue.getId()
+                +"}";
     }
 }

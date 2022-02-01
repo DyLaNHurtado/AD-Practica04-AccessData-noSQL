@@ -2,6 +2,7 @@ package dao;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Entity
 @Table(name="jefe_proyecto")
@@ -30,5 +31,15 @@ public class JefeProyecto extends Empleado{
     }
     public void setIssues(List<Issue> issues) {
         this.issues = issues;
+    }
+
+    public String jefeProyectoCompleto(){
+        return "JefeProyecto{id="+super.getId()
+                +", nombre="+super.getNombre()
+                +", fechaAlta="+super.getFechaAlta()
+                +", salario="+super.getSalario()
+                +", tecnologias="+super.getTecnologias()
+                +", issues="+this.issues
+                +"}";
     }
 }
