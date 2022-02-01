@@ -198,6 +198,8 @@ public class Facade {
         departamentoCompleto();
         issuesPorProyecto();
         programadoresProyectoOrdenados();
+        programadoresCompletos();
+        proyectosMasCaros();
         proyectosCompletos();
     }
 
@@ -219,6 +221,19 @@ public class Facade {
         System.out.println("Programadores de un proyecto ordenados por número de commits.");
         ProyectoController controller=ProyectoController.getInstance();
         controller.getAllProyectos().forEach(p-> System.out.println(p.ordenarProgramadoresCommit()));
+    }
+
+    private void programadoresCompletos(){
+        System.out.println("Programadores con productividad completa.");
+        ProgramadorController controller=ProgramadorController.getInstance();
+        controller.getAllProgramadores().forEach(p-> System.out.println(p.programadorCompleto()));
+    }
+
+    private void proyectosMasCaros(){
+        System.out.println("Los 3 proyectos mas caros y el salario de sus programadores.");
+        ProyectoController controller=ProyectoController.getInstance();
+        controller.getAllProyectos().stream().sorted(Comparator.comparing(ProyectoDTO::getPresupuesto))
+                .limit(3).collect(Collectors.toList()).forEach(p-> System.out.println(p.programadoresSalario()));
     }
 
     private void proyectosCompletos(){

@@ -63,4 +63,10 @@ public class ProyectoDTO {
                 +", programadores="+this.programadores.stream().sorted(Comparator.comparingInt(x->x.getCommits().size())).collect(Collectors.toList())
                 +"}";
     }
+
+    public String programadoresSalario(){
+        return "Proyecto{id="+this.id
+                +", programadores="+this.programadores.stream().map(Programador::getSalario).collect(Collectors.toList())
+                +"}";
+    }
 }

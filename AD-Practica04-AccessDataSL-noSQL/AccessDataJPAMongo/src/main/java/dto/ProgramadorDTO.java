@@ -35,4 +35,17 @@ public class ProgramadorDTO {
                 +", commits="+commits.stream().map(Commit::getId).collect(Collectors.toList())
                 +"}";
     }
+
+    public String programadorCompleto(){
+        return "Programador{id="+this.id
+                +", nombre="+this.nombre
+                +", fecha_alta="+this.fechaAlta
+                +", salario="+this.salario
+                +", departamento="+this.departamento.getId()
+                +", tecnologias="+this.tecnologias
+                +", proyectos="+proyectosParticipa
+                +", issues="+issues
+                +", commits="+commits
+                +"}";
+    }
 }
