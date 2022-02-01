@@ -13,7 +13,8 @@ public class LoginController {
     private LoginController(LoginService service){
         this.service=service;
     }
-    public LoginController getInstance(){
+
+    public static LoginController getInstance(){
         if(controller==null){
             controller=new LoginController(new LoginService(new RepoLogin()));
         }

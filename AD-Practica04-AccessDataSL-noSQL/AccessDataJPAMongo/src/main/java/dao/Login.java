@@ -15,12 +15,6 @@ public class Login {
     public Login() {
     }
 
-    public Login(String correo, String password, Timestamp fecha) {
-        this.correo = correo;
-        this.password = password;
-        this.fecha = fecha;
-    }
-
     public long getId() {
         return id;
     }

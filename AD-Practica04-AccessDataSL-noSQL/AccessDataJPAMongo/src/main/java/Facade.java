@@ -1,12 +1,17 @@
 import com.mongodb.ConnectionString;
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import controller.*;
 import dao.*;
 import dto.*;
 import manager.HibernateController;
+import manager.MongoDBController;
+import repository.RepoLogin;
+import service.LoginService;
 
+import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -49,8 +54,8 @@ public class Facade {
         JefeDepartamento jd2 = new JefeDepartamento();
         JefeProyecto jp1 = new JefeProyecto();
         JefeProyecto jp2 = new JefeProyecto();
-        Login login1 = new Login("programador1@gmail.com", "f8638b979b2f4f793ddb6dbd197e0ee25a7a6ea32b0ae22f5e3c5d119d839e75", Timestamp.from(Instant.now()));
-        Login login2 = new Login("programador2@gmail.com", "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4", Timestamp.from(Instant.now()));
+        Login login1 = new Login(111L,"programador1@gmail.com", "f8638b979b2f4f793ddb6dbd197e0ee25a7a6ea32b0ae22f5e3c5d119d839e75", Timestamp.from(Instant.now()));
+        Login login2 = new Login(222L,"programador2@gmail.com", "03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4", Timestamp.from(Instant.now()));
         Programador pro1 = new Programador();
         Programador pro2 = new Programador();
         Proyecto proy1 = new Proyecto("Proyecto X", 100d, Timestamp.from(Instant.now()), Timestamp.from(Instant.now()));//15
@@ -183,6 +188,12 @@ public class Facade {
         hc.getTransaction().commit();
 
         hc.close();
+
+        MongoDBController mongoController = MongoDBController.getInstance();
+        mongoController.open();
+        MongoCollection<Login> loginCollection = mongoController.getCollection("mongodb", "login", Login.class);
+        loginCollection.insertMany(List.of(login1,login2));
+        mongoController.close();
 
     }
 
