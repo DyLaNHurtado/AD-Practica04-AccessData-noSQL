@@ -79,7 +79,6 @@ public class RepoProyecto implements CrudRepository<Proyecto, Long> {
         hc.open();
         try {
             hc.getTransaction().begin();
-            // Ojo que borrar implica que estemos en la misma sesión y nos puede dar problemas, por eso lo recuperamos otra vez
             proyecto = hc.getManager().find(Proyecto.class, proyecto.getId());
             hc.getManager().remove(proyecto);
             hc.getTransaction().commit();

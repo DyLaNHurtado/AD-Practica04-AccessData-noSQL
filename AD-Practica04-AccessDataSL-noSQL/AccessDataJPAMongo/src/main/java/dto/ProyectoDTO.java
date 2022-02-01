@@ -36,4 +36,10 @@ public class ProyectoDTO {
                 +", jefe="+this.jefe.getId()
                 +"}";
     }
+
+    public String issuesAbiertas(){
+        return "Proyecto{id="+this.id
+                +", repositorio="+this.repositorio.getIssues().stream().map(Issue::getId).collect(Collectors.toList())
+                +"}";
+    }
 }

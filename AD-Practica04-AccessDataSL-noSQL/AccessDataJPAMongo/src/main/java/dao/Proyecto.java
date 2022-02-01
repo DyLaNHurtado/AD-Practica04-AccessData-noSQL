@@ -154,6 +154,4 @@ public class Proyecto implements Serializable {
                 ", \nrepositorio=" + repositorio.getId() +
                 "\n}";
     }
-
-
 }

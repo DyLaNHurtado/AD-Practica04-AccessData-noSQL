@@ -2,9 +2,6 @@ package repository;
 
 import dao.Commit;
 import manager.HibernateController;
-import org.bson.types.ObjectId;
-
-import javax.persistence.TypedQuery;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
@@ -15,7 +12,6 @@ public class RepoCommit implements CrudRepository<Commit,Long>{
         HibernateController hc = HibernateController.getInstance();
         hc.open();
         List<Commit> list = hc.getManager().createNamedQuery("Commit.getAll",Commit.class).getResultList();
-        list.forEach(x-> System.out.println(x.toString()));
         hc.close();
         return Optional.of(list);
     }

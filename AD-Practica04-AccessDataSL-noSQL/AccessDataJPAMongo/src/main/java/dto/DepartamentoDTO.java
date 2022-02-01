@@ -32,4 +32,15 @@ public class DepartamentoDTO {
                 +", programadores="+ programadores.stream().map(Programador::getId).collect(Collectors.toList())
                 +"}";
     }
+    public String getDepartamentoCompleto(){
+        return "Departamento{id="+this.id
+                +", \nnombre="+this.nombre
+                +", \njefe="+this.jefeDepartamento
+                +", \npresupuesto="+this.presupuesto
+                +", \npresupuesto_anual="+this.presupuestoAnual
+                +", \nproyectos_desarrollo="+proyDesarrollo
+                +", \nproyectos_finalizados="+proyFinalizados
+                +", \nprogramadores="+ programadores
+                +"}";
+    }
 }

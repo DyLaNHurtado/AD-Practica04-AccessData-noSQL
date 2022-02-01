@@ -11,6 +11,7 @@ import java.sql.Timestamp;
 import java.time.Instant;
 import java.time.LocalDateTime;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class Facade {
     private static Facade instance;
@@ -193,13 +194,32 @@ public class Facade {
         mongoDB.drop();
     }
 
+    public void soluciones(){
+        departamentoCompleto();
+        issuesPorProyecto();
+    }
+
+    private void departamentoCompleto(){
+        System.out.println("Departamento con información completa.");
+        DepartamentoController controller=DepartamentoController.getInstance();
+        System.out.println(controller.getAllDepartamentos().get(0).getDepartamentoCompleto());
+    }
+
+    private void issuesPorProyecto(){
+        System.out.println("Issues abiertas por proyecto.");
+        ProyectoController controller=ProyectoController.getInstance();
+        controller.getAllProyectos().stream()
+                .filter(p->p.getRepositorio().getIssues().stream().filter(i->i.getResuelta()==false).collect(Collectors.toList()).size()!=0)
+                .forEach(p-> System.out.println(p.issuesAbiertas()));
+    }
+
     /**
      * Dar salida al JSON
      *
      * @author Dylan Hurtado
      * @version 11/12/2021 - 1.0
      */
-    public void salidaJSON() {
+    public void testingJSON() {
         System.out.println("-------------------------------\n" +
                 "\t\tOPERACIONES CRUD\n" +
                 "-------------------------------\n");
@@ -298,8 +318,8 @@ public class Facade {
         System.out.println("GET Todos los Programadores");
         System.out.println(programadorController.getAllProgramadores());
 
-        System.out.println("GET Programador con ID = 7");
-        System.out.println(programadorController.getProgramadorById(7L));
+        System.out.println("GET Programador con ID = 8");
+        System.out.println(programadorController.getProgramadorById(8L));
 
         System.out.println("POST Insertando Programador");
         ProgramadorDTO programadorDTO = ProgramadorDTO.builder()
@@ -314,9 +334,9 @@ public class Facade {
                 .build();
         System.out.println(programadorController.postProgramador(programadorDTO));
 
-        System.out.println("UPDATE Programador con ID = 7");
+        System.out.println("UPDATE Programador con ID = 8");
         programadorDTO = ProgramadorDTO.builder()
-                .id(7L)
+                .id(8L)
                 .nombre("Prueba2")
                 .fechaAlta(Timestamp.valueOf(LocalDateTime.now()))
                 .proyectosParticipa(List.of(new Proyecto()))
@@ -327,11 +347,11 @@ public class Facade {
                 .build();
         System.out.println(programadorController.updateProgramador(programadorDTO));
 
-        System.out.println("DELETE Programador con ID = 7");
+        System.out.println("DELETE Programador con ID = 8");
         Departamento d = new Departamento();
         d.setId(10L);
         programadorDTO = ProgramadorDTO.builder()
-                .id(7L)
+                .id(8L)
                 .departamento(d)
                 .proyectosParticipa(List.of(new Proyecto()))
                 .issues(List.of(new Issue()))
@@ -352,8 +372,8 @@ public class Facade {
         System.out.println("GET Todos los Proyectos");
         System.out.println(proyectoController.getAllProyectos());
 
-        System.out.println("GET Proyecto con ID = 10");
-        System.out.println(proyectoController.getProyectoById(10L));
+        System.out.println("GET Proyecto con ID = 12");
+        System.out.println(proyectoController.getProyectoById(12L));
 
         System.out.println("POST Insertando Proyecto");
         ProyectoDTO proyectoDTO = ProyectoDTO.builder()
@@ -369,9 +389,9 @@ public class Facade {
                 .build();
         System.out.println(proyectoController.postProyecto(proyectoDTO));
 
-        System.out.println("UPDATE Proyecto con ID = 10");
+        System.out.println("UPDATE Proyecto con ID = 18");
         proyectoDTO = ProyectoDTO.builder()
-                .id(10L)
+                .id(18L)
                 .nombre("Prueba")
                 .presupuesto(100.0)
                 .departamento(new Departamento())
@@ -381,9 +401,9 @@ public class Facade {
                 .build();
         System.out.println(proyectoController.updateProyecto(proyectoDTO));
 
-        System.out.println("DELETE Proyecto con ID = 10");
+        System.out.println("DELETE Proyecto con ID = 12");
         proyectoDTO = ProyectoDTO.builder()
-                .id(10L)
+                .id(12L)
                 .build();
         System.out.println(proyectoController.deleteProyecto(proyectoDTO));
     }
@@ -486,8 +506,8 @@ public class Facade {
         System.out.println(issueController.getAllIssue());
 
 
-        System.out.println("GET Issue con ID = 14");
-        System.out.println(issueController.getIssueById(14L));
+        System.out.println("GET Issue con ID = 6");
+        System.out.println(issueController.getIssueById(6L));
 
         System.out.println("POST Insertando Issue");
         IssueDTO issueDTO = IssueDTO.builder()
@@ -502,9 +522,9 @@ public class Facade {
                 .build();
         System.out.println(issueController.postIssue(issueDTO));
 
-        System.out.println("UPDATE Issue con ID = 14");
+        System.out.println("UPDATE Issue con ID = 16");
         issueDTO = IssueDTO.builder()
-                .id(14L)
+                .id(16L)
                 .titulo("IssuePruebaUpdated")
                 .texto("textoooPrueba")
                 .fecha(Timestamp.from(Instant.now()))
@@ -516,9 +536,9 @@ public class Facade {
                 .build();
         System.out.println(issueController.updateIssue(issueDTO));
 
-        System.out.println("DELETE Issue con ID = 14");
+        System.out.println("DELETE Issue con ID = 16");
         issueDTO = IssueDTO.builder()
-                .id(14L)
+                .id(16L)
                 .build();
         System.out.println(issueController.deleteIssue(issueDTO));
     }
@@ -532,11 +552,11 @@ public class Facade {
         CommitController commitController = CommitController.getInstance();
 
         System.out.println("GET Todos los Commits");
-        System.out.println(commitController.getAllCommit());
+        System.out.println(commitController.getAllCommit().toString());
 
 
-        System.out.println("GET Commit con ID = 13");
-        System.out.println(commitController.getCommitById(13L));
+        System.out.println("GET Commit con ID = 7");
+        System.out.println(commitController.getCommitById(7L));
 
         System.out.println("POST Insertando Commit");
         CommitDTO commitDTO = CommitDTO.builder()
@@ -549,9 +569,9 @@ public class Facade {
                 .build();
         System.out.println(commitController.postCommit(commitDTO));
 
-        System.out.println("UPDATE Commit con ID = 13");
+        System.out.println("UPDATE Commit con ID = 7");
         commitDTO = CommitDTO.builder()
-                .id(13L)
+                .id(7L)
                 .titulo("CommitPruebaUpdated")
                 .texto("textoooPrueba")
                 .fecha(Timestamp.from(Instant.now()))
@@ -561,9 +581,9 @@ public class Facade {
                 .build();
         System.out.println(commitController.updateCommit(commitDTO));
 
-        System.out.println("DELETE Commit con ID = 13");
+        System.out.println("DELETE Commit con ID = 7");
         commitDTO = CommitDTO.builder()
-                .id(13L)
+                .id(7L)
                 .build();
         System.out.println(commitController.deleteCommit(commitDTO));
     }
