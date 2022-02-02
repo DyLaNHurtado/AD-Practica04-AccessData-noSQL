@@ -3,10 +3,10 @@ package mapper;
 import dao.JefeProyecto;
 import dto.JefeProyectoDTO;
 
-public class JefeProyectoMapper extends BaseMapper<JefeProyecto, JefeProyectoDTO>{
+public class JefeProyectoMapper extends BaseMapper<JefeProyecto, JefeProyectoDTO> {
     @Override
     public JefeProyecto fromDTO(JefeProyectoDTO item) {
-        JefeProyecto jefe=new JefeProyecto();
+        JefeProyecto jefe = new JefeProyecto();
         jefe.setId(item.getId());
         jefe.setNombre(item.getNombre());
         jefe.setFechaAlta(item.getFechaAlta());

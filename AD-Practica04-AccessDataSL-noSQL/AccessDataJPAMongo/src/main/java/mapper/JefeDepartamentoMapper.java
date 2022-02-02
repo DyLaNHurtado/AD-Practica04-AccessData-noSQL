@@ -3,7 +3,7 @@ package mapper;
 import dao.JefeDepartamento;
 import dto.JefeDepartamentoDTO;
 
-public class JefeDepartamentoMapper extends BaseMapper<JefeDepartamento, JefeDepartamentoDTO>{
+public class JefeDepartamentoMapper extends BaseMapper<JefeDepartamento, JefeDepartamentoDTO> {
 
     @Override
     public JefeDepartamento fromDTO(JefeDepartamentoDTO item) {
