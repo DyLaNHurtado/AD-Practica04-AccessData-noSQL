@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.stream.Collectors;
 
 @Entity
 @Table(name = "commit")
@@ -26,13 +25,6 @@ public class Commit {
     }
 
     //testing
-    public Commit(long id, String titulo, String texto, Timestamp fecha) {
-        this.id = id;
-        this.titulo = titulo;
-        this.texto = texto;
-        this.fecha = fecha;
-    }
-
     public Commit(String titulo, String texto, Timestamp fecha) {
         this.titulo = titulo;
         this.texto = texto;

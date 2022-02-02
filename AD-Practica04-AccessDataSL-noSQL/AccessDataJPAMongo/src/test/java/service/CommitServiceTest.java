@@ -24,9 +24,6 @@ public class CommitServiceTest {
     @BeforeAll
     public void init(){
         repository=mock(RepoCommit.class);
-        commits = List.of(new Commit(1L, "commit1", "probando", Timestamp.valueOf(LocalDateTime.now())),
-                new Commit(2L, "commit2", "probando", Timestamp.valueOf(LocalDateTime.now())),
-                new Commit(3L, "commit3", "probando", Timestamp.valueOf(LocalDateTime.now())));
         service=new CommitService(repository);
     }
     @Test

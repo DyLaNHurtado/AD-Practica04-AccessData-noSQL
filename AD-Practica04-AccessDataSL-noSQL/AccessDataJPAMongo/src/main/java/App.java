@@ -15,6 +15,6 @@ public class App {
             facade.initDataBase();
 
         //facade.testingJSON();
-        facade.soluciones();
+        facade.body();
     }
 }

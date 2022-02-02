@@ -200,20 +200,58 @@ public class Facade {
     private void removeData() {
         ConnectionString connectionString = new ConnectionString("mongodb://mongoadmin:mongopass@localhost/mongodb?authSource=admin");
         MongoClient mongoClient = MongoClients.create(connectionString);
-
         MongoDatabase mongoDB = mongoClient.getDatabase("mongodb");
         mongoDB.drop();
     }
 
-    public void soluciones(){
-        departamentoCompleto();
-        issuesPorProyecto();
-        programadoresProyectoOrdenados();
-        programadoresCompletos();
-        proyectosMasCaros();
-        proyectosCompletos();
+    public void body(){
+        System.out.println("Login");
+        int opt=0;
+        Scanner sc=new Scanner(System.in);
+        do{
+            menu();
+            opt=sc.nextInt();
+            switch(opt){
+                case 1:
+                    departamentoCompleto();
+                    break;
+                case 2:
+                    issuesPorProyecto();
+                    break;
+                case 3:
+                    programadoresProyectoOrdenados();
+                    break;
+                case 4:
+                    programadoresCompletos();
+                    break;
+                case 5:
+                    proyectosMasCaros();
+                    break;
+                case 6:
+                    proyectosCompletos();
+                    break;
+                case 7:
+                    break;
+                case 8:
+                    System.out.println("Saliste con éxito.");
+                    break;
+                default:
+                    System.out.println("Opción incorrecta.");
+            }
+        }while(opt!=8);
     }
 
+    private void menu(){
+        System.out.println("ELIGA UNA OPCIÓN:");
+        System.out.println("1.Información departamento completo.");
+        System.out.println("2.Lista de issues abiertas por proyecto.");
+        System.out.println("3.Programador por proyecto ordenados por nº commits.");
+        System.out.println("4.Programadores y su productividad completa.");
+        System.out.println("5.Los 3 proyectos más caros y salarios.");
+        System.out.println("6.Proyectos con información completa.");
+        System.out.println("7.Login completos y ordenados por programador.");
+        System.out.println("8.Salir.");
+    }
     private void departamentoCompleto(){
         System.out.println("Departamento con información completa.");
         DepartamentoController controller=DepartamentoController.getInstance();

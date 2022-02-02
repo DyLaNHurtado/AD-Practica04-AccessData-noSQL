@@ -24,15 +24,18 @@ public class CommitDTO {
     private Repositorio repositorio;
     private Programador programador;
 
+    public CommitDTO(String titulo, String texto, Timestamp fecha) {
+        this.titulo = titulo;
+        this.texto = texto;
+        this.fecha = fecha;
+    }
+
     @Override
     public String toString(){
         return "Commit{id="+this.id
                 +", titulo="+this.titulo
                 +", texto="+this.texto
                 +", fecha="+this.fecha
-                +", issue="+this.issue.getId()
-                +", repositorio="+this.repositorio.getId()
-                +", programador="+this.programador.getId()
                 +"}";
     }
 }

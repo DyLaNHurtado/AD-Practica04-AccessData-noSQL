@@ -5,7 +5,6 @@
              version="2.2">
     <persistence-unit name="default">
         <provider>org.hibernate.ogm.jpa.HibernateOgmPersistence</provider>
-
         <class>dao.Commit</class>
         <class>dao.Departamento</class>
         <class>dao.Empleado</class>
