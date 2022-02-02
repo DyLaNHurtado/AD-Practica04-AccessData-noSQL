@@ -8,10 +8,7 @@ import dao.*;
 import dto.*;
 import manager.HibernateController;
 import manager.MongoDBController;
-import repository.RepoLogin;
-import service.LoginService;
 
-import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -591,7 +588,7 @@ public class Facade {
         jefeDepartamentoDTO = JefeDepartamentoDTO.builder()
                 .id(2L)
                 .build();
-        System.out.println(jefeDepartamentoController.deleteJegeDepartamento(jefeDepartamentoDTO));
+        System.out.println(jefeDepartamentoController.deleteJefeDepartamento(jefeDepartamentoDTO));
     }
     /**
      * Metodos CRUD issue en JSON

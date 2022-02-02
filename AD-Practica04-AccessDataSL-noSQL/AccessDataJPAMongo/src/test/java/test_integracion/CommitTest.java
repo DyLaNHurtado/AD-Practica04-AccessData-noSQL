@@ -20,8 +20,8 @@ import static org.junit.jupiter.api.Assertions.*;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class CommitTest {
-    private static HibernateController hc;
-    private static CommitController cc;
+    private HibernateController hc;
+    private CommitController cc;
     private List<CommitDTO> commits;
     private CommitMapper mapper;
 

@@ -33,10 +33,6 @@ public class IssueDTO {
                 +", texto="+this.texto
                 +", fecha="+this.fecha
                 +", resuelta="+this.resuelta
-                +", jefe="+this.jefe.getId()
-                +", repositorio="+this.repositorio.getId()
-                +", commit="+this.commit.getId()
-                +", programadores="+programadores.stream().map(Programador::getId).collect(Collectors.toList())
                 +"}";
     }
 }

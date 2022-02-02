@@ -24,6 +24,7 @@ public class CommitDTO {
     private Repositorio repositorio;
     private Programador programador;
 
+    //testing
     public CommitDTO(String titulo, String texto, Timestamp fecha) {
         this.titulo = titulo;
         this.texto = texto;

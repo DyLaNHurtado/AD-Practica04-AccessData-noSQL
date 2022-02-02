@@ -89,7 +89,7 @@ public class JefeDepartamentoController {
      * @version 11/12/2021 - 1.0
      * @return
      */
-    public JefeDepartamentoDTO deleteJegeDepartamento(JefeDepartamentoDTO jefeDepartamentoDTO) {
+    public JefeDepartamentoDTO deleteJefeDepartamento(JefeDepartamentoDTO jefeDepartamentoDTO) {
         try {
             return jefeDepartamentoService.deleteJefeDepartamento(jefeDepartamentoDTO);
         } catch (SQLException e) {

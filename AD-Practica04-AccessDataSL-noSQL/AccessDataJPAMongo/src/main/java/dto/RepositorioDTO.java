@@ -30,9 +30,6 @@ public class RepositorioDTO {
         return "Repositorio{id="+this.id
                 +", nombre="+this.nombre
                 +", fecha_creacion="+this.fechaCreacion
-                +", proyecto="+this.proyecto.getId()
-                +", issues="+issues.stream().map(Issue::getId).collect(Collectors.toList())
-                +", commit="+commits.stream().map(Commit::getId).collect(Collectors.toList())
                 +"}";
     }
 }

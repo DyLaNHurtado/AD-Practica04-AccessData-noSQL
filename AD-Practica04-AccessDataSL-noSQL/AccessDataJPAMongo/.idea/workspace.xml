@@ -4,63 +4,72 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b1d6543f-939c-48bb-ba7d-468f26de63d4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/AccessDataJPAMongo.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__antlr_antlr_2_7_7.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_classmate_1_3_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__dom4j_dom4j_1_6_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_activation_javax_activation_api_1_2_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_persistence_javax_persistence_api_2_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_xml_bind_jaxb_api_2_3_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_8_17.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_agent_1_12_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_antlr_antlr_runtime_3_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_antlr_stringtemplate_3_2_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apiguardian_apiguardian_api_1_1_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_common_hibernate_commons_annotations_5_0_3_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_hibernate_core_5_3_6_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_hql_hibernate_hql_parser_1_5_0_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_javax_persistence_hibernate_jpa_2_1_api_1_0_2_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_ogm_hibernate_ogm_core_5_4_0_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_ogm_hibernate_ogm_mongodb_5_4_0_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_javassist_javassist_3_23_1_GA.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_jandex_2_0_5_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_3_2_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_spec_javax_transaction_jboss_transaction_api_1_2_spec_1_1_1_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_7_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_engine_5_7_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_commons_1_7_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_engine_1_7_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_core_4_2_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_junit_jupiter_4_2_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mongodb_bson_3_12_10.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mongodb_mongo_java_driver_3_8_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mongodb_mongodb_driver_3_12_10.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mongodb_mongodb_driver_core_3_12_10.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_objenesis_objenesis_3_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_opentest4j_opentest4j_1_2_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_ow2_asm_asm_5_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_ow2_asm_asm_analysis_5_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_ow2_asm_asm_tree_5_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_ow2_asm_asm_util_5_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_parboiled_parboiled_core_1_1_8.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_parboiled_parboiled_java_1_1_8.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_projectlombok_lombok_1_18_22.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+    <list default="true" id="ba4e7615-87a0-4572-b258-d46adef2289e" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/AccessDataJPAMongo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/AccessDataJPAMongo.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__antlr_antlr_2_7_7.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__antlr_antlr_2_7_7.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_classmate_1_3_3.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_classmate_1_3_3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__dom4j_dom4j_1_6_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__dom4j_dom4j_1_6_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_activation_javax_activation_api_1_2_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_activation_javax_activation_api_1_2_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_persistence_javax_persistence_api_2_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_persistence_javax_persistence_api_2_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_xml_bind_jaxb_api_2_3_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_xml_bind_jaxb_api_2_3_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_8_17.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_8_17.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_agent_1_12_4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_agent_1_12_4.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_antlr_antlr_runtime_3_4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_antlr_antlr_runtime_3_4.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_antlr_stringtemplate_3_2_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_antlr_stringtemplate_3_2_1.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_apiguardian_apiguardian_api_1_1_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_apiguardian_apiguardian_api_1_1_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_common_hibernate_commons_annotations_5_0_3_Final.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_common_hibernate_commons_annotations_5_0_3_Final.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_hibernate_core_5_3_6_Final.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_hibernate_core_5_3_6_Final.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_hql_hibernate_hql_parser_1_5_0_Final.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_hql_hibernate_hql_parser_1_5_0_Final.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_javax_persistence_hibernate_jpa_2_1_api_1_0_2_Final.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_javax_persistence_hibernate_jpa_2_1_api_1_0_2_Final.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_ogm_hibernate_ogm_core_5_4_0_Final.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_ogm_hibernate_ogm_core_5_4_0_Final.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_ogm_hibernate_ogm_mongodb_5_4_0_Final.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_ogm_hibernate_ogm_mongodb_5_4_0_Final.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_javassist_javassist_3_23_1_GA.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_javassist_javassist_3_23_1_GA.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_jandex_2_0_5_Final.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_jandex_2_0_5_Final.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_3_2_Final.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_3_2_Final.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_spec_javax_transaction_jboss_transaction_api_1_2_spec_1_1_1_Final.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_spec_javax_transaction_jboss_transaction_api_1_2_spec_1_1_1_Final.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_7_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_api_5_7_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_engine_5_7_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_jupiter_junit_jupiter_engine_5_7_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_commons_1_7_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_commons_1_7_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_engine_1_7_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_junit_platform_junit_platform_engine_1_7_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_core_4_2_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_core_4_2_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_junit_jupiter_4_2_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mockito_mockito_junit_jupiter_4_2_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mongodb_bson_3_12_10.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mongodb_bson_3_12_10.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mongodb_mongo_java_driver_3_8_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mongodb_mongo_java_driver_3_8_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mongodb_mongodb_driver_3_12_10.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mongodb_mongodb_driver_3_12_10.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_mongodb_mongodb_driver_core_3_12_10.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_mongodb_mongodb_driver_core_3_12_10.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_objenesis_objenesis_3_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_objenesis_objenesis_3_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_opentest4j_opentest4j_1_2_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_opentest4j_opentest4j_1_2_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_ow2_asm_asm_5_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_ow2_asm_asm_5_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_ow2_asm_asm_analysis_5_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_ow2_asm_asm_analysis_5_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_ow2_asm_asm_tree_5_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_ow2_asm_asm_tree_5_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_ow2_asm_asm_util_5_2.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_ow2_asm_asm_util_5_2.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_parboiled_parboiled_core_1_1_8.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_parboiled_parboiled_core_1_1_8.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_parboiled_parboiled_java_1_1_8.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_parboiled_parboiled_java_1_1_8.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_projectlombok_lombok_1_18_22.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_projectlombok_lombok_1_18_22.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Facade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Facade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/Programador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/Programador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dto/LoginDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/LoginDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dto/ProgramadorDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/ProgramadorDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mapper/LoginMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mapper/LoginMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/controller/JefeDepartamentoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/JefeDepartamentoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dto/CommitDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/CommitDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dto/DepartamentoDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/DepartamentoDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dto/IssueDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/IssueDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dto/RepositorioDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/RepositorioDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/service/CommitServiceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/service/DepartamentoServiceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/service/IssueServiceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/service/ProgramadorServiceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/service/ProyectoServiceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/service/RepositorioServiceTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/test_integracion/CommitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test_integracion/CommitTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/test_integracion/DepartamentoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test_integracion/DepartamentoTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/test_integracion/IssueTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test_integracion/IssueTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/test_integracion/JefeDepartamentoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test_integracion/JefeDepartamentoTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/test_integracion/JefeProyectoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test_integracion/JefeProyectoTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/test_integracion/LoginTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test_integracion/LoginTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/test_integracion/ProgramadorTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test_integracion/ProgramadorTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/test_integracion/ProyectoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test_integracion/ProyectoTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/test_integracion/RepositorioTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test_integracion/RepositorioTest.java" afterDir="false" />
     </list>
+    <list id="0ac49d98-7f30-4876-9919-c2fa57d4a810" name="Changes by DyLaN" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -68,6 +77,13 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/java/repository/RepoCommit.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/Facade.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/service/CommitService.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/dto/ProyectoDTO.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/META-INF/persistence.xml" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="JpbToolWindowState">
     <option name="myId2FirstActivated">
@@ -97,17 +113,11 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
-  <component name="RunManager" selected="JUnit.CommitTest">
-    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="App" />
-      <module name="AccessDataJPAMongo" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="CommitTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.LoginTest">
+    <configuration name="JefeProyectoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AccessDataJPAMongo" />
       <extension name="coverage">
         <pattern>
@@ -116,16 +126,82 @@
         </pattern>
       </extension>
       <option name="PACKAGE_NAME" value="test_integracion" />
-      <option name="MAIN_CLASS_NAME" value="test_integracion.CommitTest" />
+      <option name="MAIN_CLASS_NAME" value="test_integracion.JefeProyectoTest" />
       <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LoginTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AccessDataJPAMongo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test_integracion.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test_integracion" />
+      <option name="MAIN_CLASS_NAME" value="test_integracion.LoginTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LoginTest.delete" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AccessDataJPAMongo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test_integracion.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test_integracion" />
+      <option name="MAIN_CLASS_NAME" value="test_integracion.LoginTest" />
+      <option name="METHOD_NAME" value="delete" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LoginTest.getById" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AccessDataJPAMongo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test_integracion.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test_integracion" />
+      <option name="MAIN_CLASS_NAME" value="test_integracion.LoginTest" />
+      <option name="METHOD_NAME" value="getById" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="LoginTest.insert" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AccessDataJPAMongo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test_integracion.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test_integracion" />
+      <option name="MAIN_CLASS_NAME" value="test_integracion.LoginTest" />
+      <option name="METHOD_NAME" value="insert" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.CommitTest" />
-        <item itemvalue="Application.App" />
+        <item itemvalue="JUnit.LoginTest" />
+        <item itemvalue="JUnit.LoginTest.delete" />
+        <item itemvalue="JUnit.LoginTest.insert" />
+        <item itemvalue="JUnit.LoginTest.getById" />
+        <item itemvalue="JUnit.JefeProyectoTest" />
       </list>
     </recent_temporary>
   </component>
@@ -154,5 +230,14 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/AccessDataJPAMongo$CommitServiceTest.ic" NAME="CommitServiceTest Coverage Results" MODIFIED="1643226049959" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>service.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/AccessDataJPAMongo$CommitTest.ic" NAME="CommitTest Coverage Results" MODIFIED="1643828340147" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>test_integracion.*</FILTER>
+    </SUITE>
   </component>
 </project>
