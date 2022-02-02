@@ -17,7 +17,8 @@ import java.util.stream.Collectors;
         @NamedQuery(name = "Programador.getAll", query = "SELECT c FROM dao.Programador c")
 })
 public class Programador extends Empleado implements Serializable {
-
+    private String email;
+    private String password;
     private Departamento departamento;
     private List<Proyecto> proyectosParticipa;
     private List<Commit> commits;
@@ -31,6 +32,22 @@ public class Programador extends Empleado implements Serializable {
     @Column(name = "id", nullable = false)
     public long getId() {
         return super.getId();
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     @ManyToOne(cascade = CascadeType.ALL)

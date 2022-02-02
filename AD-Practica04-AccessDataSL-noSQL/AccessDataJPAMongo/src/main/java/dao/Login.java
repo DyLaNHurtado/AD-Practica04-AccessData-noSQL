@@ -3,14 +3,15 @@ package dao;
 import lombok.AllArgsConstructor;
 
 import java.sql.Timestamp;
+import java.util.UUID;
 
 @AllArgsConstructor
 public class Login {
 
     private long id;
-    private String correo;
-    private String password;
     private Timestamp fecha;
+    private UUID token;
+    private Boolean isActivo;
 
     public Login() {
     }
@@ -23,27 +24,27 @@ public class Login {
         this.id = id;
     }
 
-    public String getCorreo() {
-        return correo;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public Timestamp getFecha() {
         return fecha;
     }
 
     public void setFecha(Timestamp fecha) {
         this.fecha = fecha;
+    }
+
+    public UUID getToken() {
+        return token;
+    }
+
+    public void setToken(UUID token) {
+        this.token = token;
+    }
+
+    public Boolean getActivo() {
+        return isActivo;
+    }
+
+    public void setActivo(Boolean activo) {
+        isActivo = activo;
     }
 }

@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
+import java.util.UUID;
 
 @Builder
 @Data
@@ -14,16 +15,16 @@ import java.sql.Timestamp;
 public class LoginDTO {
 
     private long id;
-    private String correo;
-    private String password;
     private Timestamp fecha;
+    private UUID token;
+    private Boolean isActivo;
 
     @Override
     public String toString(){
         return "Login{id="+this.id
-                +", nombre="+this.correo
-                +", password="+this.password
                 +", fecha="+this.fecha
+                +", token="+this.token
+                +", isActivo="+this.isActivo
                 +"}";
     }
 }

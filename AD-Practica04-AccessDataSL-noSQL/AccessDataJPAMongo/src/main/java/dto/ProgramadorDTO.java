@@ -14,6 +14,8 @@ public class ProgramadorDTO {
     private long id;
     private String nombre;
     private Timestamp fechaAlta;
+    private String email;
+    private String password;
     private Departamento departamento;
     private List<Proyecto> proyectosParticipa;
     private List<String> tecnologias;
@@ -28,6 +30,8 @@ public class ProgramadorDTO {
                 +", nombre="+this.nombre
                 +", fecha_alta="+this.fechaAlta
                 +", salario="+this.salario
+                +", email="+this.email
+                +", password="+this.password
                 +", departamento="+this.departamento.getId()
                 +", tecnologias="+this.tecnologias
                 +", proyectos="+proyectosParticipa.stream().map(Proyecto::getId).collect(Collectors.toList())
@@ -41,6 +45,8 @@ public class ProgramadorDTO {
                 +", nombre="+this.nombre
                 +", fecha_alta="+this.fechaAlta
                 +", salario="+this.salario
+                +", email="+this.email
+                +", password="+this.password
                 +", departamento="+this.departamento.getId()
                 +", tecnologias="+this.tecnologias
                 +", proyectos="+proyectosParticipa
