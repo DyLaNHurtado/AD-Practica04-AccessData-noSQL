@@ -12,6 +12,8 @@ public class ProgramadorMapper extends BaseMapper<Programador, ProgramadorDTO> {
         programador.setNombre(item.getNombre());
         programador.setFechaAlta(item.getFechaAlta());
         programador.setSalario(item.getSalario());
+        programador.setEmail(item.getEmail());
+        programador.setPassword(item.getPassword());
         programador.setTecnologias(item.getTecnologias());
         programador.setDepartamento(item.getDepartamento());
         programador.setCommits(item.getCommits());
@@ -27,6 +29,8 @@ public class ProgramadorMapper extends BaseMapper<Programador, ProgramadorDTO> {
                 .nombre(item.getNombre())
                 .fechaAlta(item.getFechaAlta())
                 .salario(item.getSalario())
+                .email(item.getEmail())
+                .password(item.getPassword())
                 .tecnologias(item.getTecnologias())
                 .departamento(item.getDepartamento())
                 .proyectosParticipa(item.getProyectosParticipa())

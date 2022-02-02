@@ -6,8 +6,12 @@ import com.mongodb.client.MongoDatabase;
 import controller.*;
 import dao.*;
 import dto.*;
+import jdk.swing.interop.SwingInterOpUtils;
 import manager.HibernateController;
 import manager.MongoDBController;
+import repository.RepoLogin;
+import service.LoginService;
+import utils.Cifrador;
 
 import java.sql.Timestamp;
 import java.time.Instant;
@@ -51,8 +55,8 @@ public class Facade {
         JefeDepartamento jd2 = new JefeDepartamento();
         JefeProyecto jp1 = new JefeProyecto();
         JefeProyecto jp2 = new JefeProyecto();
-        Login login1 = new Login(111L, Timestamp.from(Instant.now()),UUID.randomUUID(),false);
-        Login login2 = new Login(222L, Timestamp.from(Instant.now()),UUID.randomUUID(),false);
+        Login login1 = new Login(1L, Timestamp.from(Instant.now()), UUID.randomUUID(), false);
+        Login login2 = new Login(2L, Timestamp.from(Instant.now()), UUID.randomUUID(), false);
         Programador pro1 = new Programador();
         Programador pro2 = new Programador();
         Proyecto proy1 = new Proyecto("Proyecto X", 100d, Timestamp.from(Instant.now()), Timestamp.from(Instant.now()));//15
@@ -126,8 +130,8 @@ public class Facade {
         pro2.setSalario(1022d);
         pro1.setEmail("programador1@gmail.com");
         pro2.setEmail("programador2@gmail.com");
-        pro1.setPassword("03AC674216F3E15C761EE1A5E255F067953623C8B388B4459E13F978D7C846F4");
-        pro2.setPassword("20F3765880A5C269B747E1E906054A4B4A3A991259F1E16B5DDE4742CEC2319A");
+        pro1.setPassword("03ac674216f3e15c761ee1a5e255f067953623c8b388b4459e13f978d7c846f4");//1234
+        pro2.setPassword("f8638b979b2f4f793ddb6dbd197e0ee25a7a6ea32b0ae22f5e3c5d119d839e75");//5678
         pro1.setTecnologias(List.of("PHP", "DJango"));
         pro2.setTecnologias(List.of("Vue", "SpringBoot"));
         pro1.setDepartamento(d1);
@@ -193,7 +197,7 @@ public class Facade {
         MongoDBController mongoController = MongoDBController.getInstance();
         mongoController.open();
         MongoCollection<Login> loginCollection = mongoController.getCollection("mongodb", "login", Login.class);
-        loginCollection.insertMany(List.of(login1,login2));
+        loginCollection.insertMany(List.of(login1, login2));
         mongoController.close();
 
     }
@@ -205,57 +209,73 @@ public class Facade {
         mongoDB.drop();
     }
 
-    public void body(){
-
-        Scanner sc=new Scanner(System.in);
-        System.out.println("Introduce tu email: ");
-        String email= sc.next();
-        System.out.println("Introduce tu password: ");
-        String passwd = sc.next();
-        long cont=1L;
-        LoginController loginController = LoginController.getInstance();
-        ProgramadorController programadorController = ProgramadorController.getInstance();
-        loginController.postLogin(new LoginDTO(cont+=1L,Timestamp.from(Instant.now()),UUID.randomUUID(),true));
-        int opt=0;
-        do{
-            menu();
-            opt=sc.nextInt();
-            switch(opt){
-                case 1:
-                    departamentoCompleto();
-                    break;
-                case 2:
-                    issuesPorProyecto();
-                    break;
-                case 3:
-                    programadoresProyectoOrdenados();
-                    break;
-                case 4:
-                    programadoresCompletos();
-                    break;
-                case 5:
-                    proyectosMasCaros();
-                    break;
-                case 6:
-                    proyectosCompletos();
-                    break;
-                case 7:
-                    loginCompletosOrdenados();
-                    break;
-                case 8:
-                    System.out.println("Saliste con éxito.");
-                    //System.exit(0);
-                    break;
-                default:
-                    System.out.println("Opción incorrecta.");
-            }
-        }while(opt!=8);
+    public void body() {
+        Scanner sc = new Scanner(System.in);
+        boolean login = login();
+        if (login) {
+            int opt = 0;
+            do {
+                menu();
+                opt = sc.nextInt();
+                switch (opt) {
+                    case 1:
+                        departamentoCompleto();
+                        break;
+                    case 2:
+                        issuesPorProyecto();
+                        break;
+                    case 3:
+                        programadoresProyectoOrdenados();
+                        break;
+                    case 4:
+                        programadoresCompletos();
+                        break;
+                    case 5:
+                        proyectosMasCaros();
+                        break;
+                    case 6:
+                        proyectosCompletos();
+                        break;
+                    case 7:
+                        loginCompletosOrdenados();
+                        break;
+                    case 8:
+                        System.out.println("Saliste con éxito.");
+                        //System.exit(0);
+                        break;
+                    default:
+                        System.out.println("Opción incorrecta.");
+                }
+            } while (opt != 8);
+        } else {
+            System.out.println("Email o password incorrectos, vuelve a intentarlo");
+            body();
+        }
     }
 
+    private boolean login() {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Introduce tu email: ");
+        String email = sc.next();
+        System.out.println("Introduce tu password: ");
+        String passwd = sc.next();
+        long cont = 3L;
+        LoginController loginController = LoginController.getInstance();
+        ProgramadorController programadorController = ProgramadorController.getInstance();
+        Cifrador cifrador = new Cifrador();
+        List<ProgramadorDTO> programadores = programadorController.getAllProgramadores();
+        System.out.println(cifrador.toSHA512(passwd));
+        for (ProgramadorDTO x : programadores) {
+            if (x.getEmail().equals(email) && x.getPassword().equals(cifrador.toSHA512(passwd))) {
+                loginController.postLogin(new LoginDTO(cont + 1L, Timestamp.from(Instant.now()), UUID.randomUUID(), true));
+                return true;
+            }
+        }
+        return false;
+    }
 
-
-    private void menu(){
-        System.out.println("\tELIGA UNA OPCIÓN:");
+    private void menu() {
+        System.out.println("\t---   MENU    ---");
         System.out.println("1.- Información departamento completo.");
         System.out.println("2.- Lista de issues abiertas por proyecto.");
         System.out.println("3.- Programador por proyecto ordenados por nº commits.");
@@ -264,48 +284,50 @@ public class Facade {
         System.out.println("6.- Proyectos con información completa.");
         System.out.println("7.- Login completos y ordenados por programador.");
         System.out.println("8.- Salir.");
+        System.out.println("\tELIGA UNA OPCIÓN: ");
+
     }
 
-    private void departamentoCompleto(){
+    private void departamentoCompleto() {
         System.out.println("Departamento con información completa.");
-        DepartamentoController controller=DepartamentoController.getInstance();
+        DepartamentoController controller = DepartamentoController.getInstance();
         System.out.println(controller.getAllDepartamentos().get(0).getDepartamentoCompleto());
     }
 
-    private void issuesPorProyecto(){
+    private void issuesPorProyecto() {
         System.out.println("Issues abiertas por proyecto.");
-        ProyectoController controller=ProyectoController.getInstance();
+        ProyectoController controller = ProyectoController.getInstance();
         controller.getAllProyectos().stream()
-                .filter(p->p.getRepositorio().getIssues().stream().filter(i->i.getResuelta()==false).collect(Collectors.toList()).size()!=0)
-                .forEach(p-> System.out.println(p.issuesAbiertas()));
+                .filter(p -> p.getRepositorio().getIssues().stream().filter(i -> i.getResuelta() == false).collect(Collectors.toList()).size() != 0)
+                .forEach(p -> System.out.println(p.issuesAbiertas()));
     }
 
-    private void programadoresProyectoOrdenados(){
+    private void programadoresProyectoOrdenados() {
         System.out.println("Programadores de un proyecto ordenados por número de commits.");
-        ProyectoController controller=ProyectoController.getInstance();
-        controller.getAllProyectos().forEach(p-> System.out.println(p.ordenarProgramadoresCommit()));
+        ProyectoController controller = ProyectoController.getInstance();
+        controller.getAllProyectos().forEach(p -> System.out.println(p.ordenarProgramadoresCommit()));
     }
 
-    private void programadoresCompletos(){
+    private void programadoresCompletos() {
         System.out.println("Programadores con productividad completa.");
-        ProgramadorController controller=ProgramadorController.getInstance();
-        controller.getAllProgramadores().forEach(p-> System.out.println(p.programadorCompleto()));
+        ProgramadorController controller = ProgramadorController.getInstance();
+        controller.getAllProgramadores().forEach(p -> System.out.println(p.programadorCompleto()));
     }
 
-    private void proyectosMasCaros(){
+    private void proyectosMasCaros() {
         System.out.println("Los 3 proyectos mas caros y el salario de sus programadores.");
-        ProyectoController controller=ProyectoController.getInstance();
+        ProyectoController controller = ProyectoController.getInstance();
         controller.getAllProyectos().stream().sorted(Comparator.comparing(ProyectoDTO::getPresupuesto))
-                .limit(3).collect(Collectors.toList()).forEach(p-> System.out.println(p.programadoresSalario()));
+                .limit(3).collect(Collectors.toList()).forEach(p -> System.out.println(p.programadoresSalario()));
     }
 
-    private void proyectosCompletos(){
+    private void proyectosCompletos() {
         System.out.println("Proyectos con información completa.");
-        ProyectoController controller=ProyectoController.getInstance();
-        controller.getAllProyectos().forEach(p-> System.out.println(p.proyectoCompleto()));
+        ProyectoController controller = ProyectoController.getInstance();
+        controller.getAllProyectos().forEach(p -> System.out.println(p.proyectoCompleto()));
     }
 
-    private void loginCompletosOrdenados(){
+    private void loginCompletosOrdenados() {
 
     }
 
@@ -504,6 +526,7 @@ public class Facade {
                 .build();
         System.out.println(proyectoController.deleteProyecto(proyectoDTO));
     }
+
     /**
      * Metodos CRUD jefeProyecto en JSON
      *
@@ -524,7 +547,7 @@ public class Facade {
                 .nombre("jefeProyPrueba")
                 .fechaAlta(Timestamp.from(Instant.now()))
                 .salario(1000.0)
-                .tecnologias(List.of("Tecnologia1","Tecnologia2"))
+                .tecnologias(List.of("Tecnologia1", "Tecnologia2"))
                 .proyecto(new Proyecto())
                 .issues(List.of(new Issue()))
                 .build();
@@ -536,7 +559,7 @@ public class Facade {
                 .nombre("jefeProyPrueba")
                 .fechaAlta(Timestamp.from(Instant.now()))
                 .salario(1000.0)
-                .tecnologias(List.of("Tecnologia1","Tecnologia2"))
+                .tecnologias(List.of("Tecnologia1", "Tecnologia2"))
                 .proyecto(new Proyecto())
                 .issues(List.of(new Issue()))
                 .build();
@@ -548,6 +571,7 @@ public class Facade {
                 .build();
         System.out.println(jefeProyectoController.deleteJefeProyecto(jefeProyectoDTO));
     }
+
     /**
      * Metodos CRUD jefeDepartamento en JSON
      *
@@ -568,7 +592,7 @@ public class Facade {
                 .nombre("jefeDepPrueba")
                 .fechaAlta(Timestamp.from(Instant.now()))
                 .salario(1000.0)
-                .tecnologias(List.of("Tecnologia1","Tecnologia2"))
+                .tecnologias(List.of("Tecnologia1", "Tecnologia2"))
                 .departamento(new Departamento())
                 .build();
         System.out.println(jefeDepartamentoController.postJefeDepartamento(jefeDepartamentoDTO));
@@ -579,7 +603,7 @@ public class Facade {
                 .nombre("jefeDepPruebaUpdated")
                 .fechaAlta(Timestamp.from(Instant.now()))
                 .salario(1000.0)
-                .tecnologias(List.of("Tecnologia1","Tecnologia2"))
+                .tecnologias(List.of("Tecnologia1", "Tecnologia2"))
                 .departamento(new Departamento())
                 .build();
         System.out.println(jefeDepartamentoController.updateJefeDepartamento(jefeDepartamentoDTO));
@@ -590,6 +614,7 @@ public class Facade {
                 .build();
         System.out.println(jefeDepartamentoController.deleteJefeDepartamento(jefeDepartamentoDTO));
     }
+
     /**
      * Metodos CRUD issue en JSON
      *
@@ -639,6 +664,7 @@ public class Facade {
                 .build();
         System.out.println(issueController.deleteIssue(issueDTO));
     }
+
     /**
      * Metodos CRUD commit en JSON
      *
@@ -684,6 +710,7 @@ public class Facade {
                 .build();
         System.out.println(commitController.deleteCommit(commitDTO));
     }
+
     /**
      * Metodos CRUD repositorio en JSON
      *
