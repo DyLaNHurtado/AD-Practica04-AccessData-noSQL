@@ -5,7 +5,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.UUID;
 
 /**
@@ -20,7 +20,7 @@ import java.util.UUID;
 public class LoginDTO {
 
     private long id;
-    private Timestamp fecha;
+    private LocalDate fecha;
     private UUID token;
     private Boolean isActivo;
 

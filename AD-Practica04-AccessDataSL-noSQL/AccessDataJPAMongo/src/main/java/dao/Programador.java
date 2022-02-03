@@ -71,7 +71,6 @@ public class Programador extends Empleado implements Serializable {
             name = "participacion",
             joinColumns = @JoinColumn(name = "programador_id"),
             inverseJoinColumns = @JoinColumn(name = "proyecto_id"))
-
     public List<Proyecto> getProyectosParticipa() {
         return proyectosParticipa;
     }

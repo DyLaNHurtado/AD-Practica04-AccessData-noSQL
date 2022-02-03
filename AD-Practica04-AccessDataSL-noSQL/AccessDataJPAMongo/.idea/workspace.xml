@@ -8,46 +8,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b1d6543f-939c-48bb-ba7d-468f26de63d4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Facade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Facade.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/CommitController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/CommitController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/DepartamentoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/DepartamentoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/IssueController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/IssueController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/JefeDepartamentoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/JefeDepartamentoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/JefeProyectoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/JefeProyectoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/LoginController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/LoginController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ProgramadorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ProgramadorController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/ProyectoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ProyectoController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/controller/RepositorioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/RepositorioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mapper/CommitMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mapper/CommitMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mapper/DepartamentoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mapper/DepartamentoMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mapper/IssueMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mapper/IssueMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mapper/JefeDepartamentoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mapper/JefeDepartamentoMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mapper/JefeProyectoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mapper/JefeProyectoMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mapper/LoginMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mapper/LoginMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mapper/ProgramadorMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mapper/ProgramadorMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mapper/ProyectoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mapper/ProyectoMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mapper/RepositorioMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mapper/RepositorioMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repository/RepoCommit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/RepoCommit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repository/RepoDepartamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/RepoDepartamento.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repository/RepoIssue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/RepoIssue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repository/RepoJefeDepartamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/RepoJefeDepartamento.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repository/RepoJefeProyecto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/RepoJefeProyecto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repository/RepoLogin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/RepoLogin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repository/RepoProgramador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/RepoProgramador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repository/RepoProyecto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/RepoProyecto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repository/RepoRepositorio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/RepoRepositorio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/CommitService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/CommitService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/DepartamentoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/DepartamentoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/IssueService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/IssueService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/JefeDepartamentoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/JefeDepartamentoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/JefeProyectoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/JefeProyectoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/LoginService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/LoginService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/ProgramadorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/ProgramadorService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/ProyectoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/ProyectoService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/RepositorioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/RepositorioService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/Cifrador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/Cifrador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/Login.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dao/Programador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/Programador.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dto/LoginDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/LoginDTO.java" afterDir="false" />
     </list>
     <list id="0ac49d98-7f30-4876-9919-c2fa57d4a810" name="Changes by DyLaN" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -114,7 +79,14 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="preferences.keymap" />
   </component>
-  <component name="RunManager" selected="JUnit.CommitTest">
+  <component name="RunManager" selected="JUnit.DepartamentoTest">
+    <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="App" />
+      <module name="AccessDataJPAMongo" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="CommitTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AccessDataJPAMongo" />
       <extension name="coverage">
@@ -125,6 +97,21 @@
       </extension>
       <option name="PACKAGE_NAME" value="test_integracion" />
       <option name="MAIN_CLASS_NAME" value="test_integracion.CommitTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DepartamentoTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AccessDataJPAMongo" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="test_integracion.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="test_integracion" />
+      <option name="MAIN_CLASS_NAME" value="test_integracion.DepartamentoTest" />
       <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -161,45 +148,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="LoginTest.getById" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AccessDataJPAMongo" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test_integracion.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="test_integracion" />
-      <option name="MAIN_CLASS_NAME" value="test_integracion.LoginTest" />
-      <option name="METHOD_NAME" value="getById" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="LoginTest.insert" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AccessDataJPAMongo" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="test_integracion.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="test_integracion" />
-      <option name="MAIN_CLASS_NAME" value="test_integracion.LoginTest" />
-      <option name="METHOD_NAME" value="insert" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.CommitTest" />
+        <item itemvalue="JUnit.DepartamentoTest" />
         <item itemvalue="JUnit.LoginTest" />
+        <item itemvalue="JUnit.CommitTest" />
+        <item itemvalue="Application.App" />
         <item itemvalue="JUnit.LoginTest.delete" />
-        <item itemvalue="JUnit.LoginTest.insert" />
-        <item itemvalue="JUnit.LoginTest.getById" />
       </list>
     </recent_temporary>
   </component>
@@ -214,7 +169,7 @@
       <workItem from="1643829733813" duration="11782000" />
       <workItem from="1643883957915" duration="605000" />
       <workItem from="1643888337089" duration="6380000" />
-      <workItem from="1643901432376" duration="7141000" />
+      <workItem from="1643901432376" duration="15136000" />
     </task>
     <servers />
   </component>

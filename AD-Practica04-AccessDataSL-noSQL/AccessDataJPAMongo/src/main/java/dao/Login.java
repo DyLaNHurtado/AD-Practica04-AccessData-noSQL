@@ -3,7 +3,7 @@ package dao;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
-import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.UUID;
 
 /**
@@ -16,7 +16,7 @@ import java.util.UUID;
 public class Login {
 
     private long id;
-    private Timestamp fecha;
+    private LocalDate fecha;
     private UUID token;
     private Boolean isActivo;
 
@@ -28,11 +28,11 @@ public class Login {
         this.id = id;
     }
 
-    public Timestamp getFecha() {
+    public LocalDate getFecha() {
         return fecha;
     }
 
-    public void setFecha(Timestamp fecha) {
+    public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
 

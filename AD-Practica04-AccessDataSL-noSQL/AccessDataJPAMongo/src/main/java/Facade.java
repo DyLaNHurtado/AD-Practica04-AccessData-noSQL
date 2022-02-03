@@ -12,6 +12,7 @@ import utils.Cifrador;
 
 import java.sql.Timestamp;
 import java.time.Instant;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
@@ -58,8 +59,8 @@ public class Facade {
         JefeDepartamento jd2 = new JefeDepartamento();
         JefeProyecto jp1 = new JefeProyecto();
         JefeProyecto jp2 = new JefeProyecto();
-        Login login1 = new Login(1L, Timestamp.from(Instant.now()), UUID.randomUUID(), false);
-        Login login2 = new Login(2L, Timestamp.from(Instant.now()), UUID.randomUUID(), false);
+        Login login1 = new Login(1L, LocalDate.now(), UUID.randomUUID(), false);
+        Login login2 = new Login(2L, LocalDate.now(), UUID.randomUUID(), false);
         Programador pro1 = new Programador();
         Programador pro2 = new Programador();
         Proyecto proy1 = new Proyecto("Proyecto X", 100d, Timestamp.from(Instant.now()), Timestamp.from(Instant.now()));//15
@@ -281,7 +282,7 @@ public class Facade {
         System.out.println(cifrador.toSHA256(passwd));
         for (ProgramadorDTO x : programadores) {
             if (x.getEmail().equals(email) && x.getPassword().equals(cifrador.toSHA256(passwd))) {
-                loginController.postLogin(new LoginDTO(cont + 1L, Timestamp.from(Instant.now()), UUID.randomUUID(), true));
+                loginController.postLogin(new LoginDTO(cont + 1L, LocalDate.now(), UUID.randomUUID(), true));
                 return true;
             }
         }
@@ -299,7 +300,7 @@ public class Facade {
         System.out.println("4.- Programadores y su productividad completa.");
         System.out.println("5.- Los 3 proyectos más caros y salarios.");
         System.out.println("6.- Proyectos con información completa.");
-        System.out.println("7.- Login completos y ordenados por programador.");
+        System.out.println("7.- Login completos.");
         System.out.println("8.- Salir.");
         System.out.println("\tELIGA UNA OPCIÓN: ");
 
