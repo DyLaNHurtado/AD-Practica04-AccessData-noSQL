@@ -20,7 +20,7 @@ public class CommitService extends BaseService<Commit, Long, RepoCommit> {
 
     /**
      * Constructor con inyección de dependencias
-     * @param repository RepoCommit
+     * @param repository CommitService
      */
     public CommitService(RepoCommit repository) {
         super(repository);
@@ -29,7 +29,7 @@ public class CommitService extends BaseService<Commit, Long, RepoCommit> {
     /**
      * Mapea una lista de Commit a CommitDTO
      * @return Optional<List<CommitDTO>>
-     * @throws SQLException
+     * @throws SQLException Exception
      */
     public Optional<List<CommitDTO>> getAllCommits() throws SQLException {
 
@@ -40,7 +40,7 @@ public class CommitService extends BaseService<Commit, Long, RepoCommit> {
      * Mapea un Commit a CommitDTO a partir de una ID
      * @param id de Commit
      * @return CommitDTO
-     * @throws SQLException
+     * @throws SQLException Exception
      */
     public CommitDTO getCommitById(long id) throws SQLException {
 
@@ -49,9 +49,9 @@ public class CommitService extends BaseService<Commit, Long, RepoCommit> {
 
     /**
      * Mapea el Commit de save a CommitDTO
-     * @param commitDTO
+     * @param commitDTO CommitDTO
      * @return CommitDTO
-     * @throws SQLException
+     * @throws SQLException Exception
      */
     public CommitDTO postCommit(CommitDTO commitDTO) throws SQLException {
         Optional<Commit> res = this.save(mapper.fromDTO(commitDTO));
@@ -60,9 +60,9 @@ public class CommitService extends BaseService<Commit, Long, RepoCommit> {
 
     /**
      * Mapea el update de Commit a CommitDTO
-     * @param commitDTO
+     * @param commitDTO CommitDTO
      * @return CommitDTO
-     * @throws SQLException
+     * @throws SQLException Exception
      */
     public CommitDTO updateCommit(CommitDTO commitDTO) throws SQLException {
         Optional<Commit> res = this.update(mapper.fromDTO(commitDTO));
@@ -71,9 +71,9 @@ public class CommitService extends BaseService<Commit, Long, RepoCommit> {
 
     /**
      * Mapea el delete de Commit a CommitDTO
-     * @param commitDTO
+     * @param commitDTO CommitDTO
      * @return CommitDTO
-     * @throws SQLException
+     * @throws SQLException Exception
      */
     public CommitDTO deleteCommit(CommitDTO commitDTO) throws SQLException {
         Optional<Commit> res = this.delete(mapper.fromDTO(commitDTO));

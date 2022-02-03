@@ -15,6 +15,11 @@ import java.util.*;
  */
 public class RepoProgramador implements CrudRepository<Programador, Long> {
 
+    /**
+     * Coge todos los Programador de la DB
+     * @return Optional<List<Programador>>
+     * @throws SQLException Exception
+     */
     @Override
     public Optional<List<Programador>> getAll() throws SQLException {
         HibernateController hc = HibernateController.getInstance();
@@ -25,6 +30,12 @@ public class RepoProgramador implements CrudRepository<Programador, Long> {
         return Optional.of(list);
     }
 
+    /**
+     * Devuelve un Programador a partir de una ID
+     * @param id Long
+     * @return Optional<Programador>
+     * @throws SQLException Exception
+     */
     @Override
     public Optional<Programador> getById(Long id) throws SQLException {
         HibernateController hc = HibernateController.getInstance();
@@ -37,6 +48,12 @@ public class RepoProgramador implements CrudRepository<Programador, Long> {
         throw new SQLException("Error RepoProgramador no existe programador con ID: " + id);
     }
 
+    /**
+     * Guarda un Programador en la BD
+     * @param programador Programador
+     * @return Optional<Programador>
+     * @throws SQLException Exception
+     */
     @Override
     public Optional<Programador> save(Programador programador) throws SQLException {
         HibernateController hc = HibernateController.getInstance();
@@ -58,6 +75,12 @@ public class RepoProgramador implements CrudRepository<Programador, Long> {
         }
     }
 
+    /**
+     * Actualiza un Programador y si no se encuentra lo almacena
+     * @param programador Programador
+     * @return Optional<Programador>
+     * @throws SQLException Exception
+     */
     @Override
     public Optional<Programador> update(Programador programador) throws SQLException {
         HibernateController hc = HibernateController.getInstance();
@@ -78,7 +101,12 @@ public class RepoProgramador implements CrudRepository<Programador, Long> {
         }
     }
 
-
+    /**
+     * Elimina un Programador de la BD
+     * @param programador Programador
+     * @return Optional<Programador>
+     * @throws SQLException Exception
+     */
     @Override
     public Optional<Programador> delete(Programador programador) throws SQLException {
         HibernateController hc = HibernateController.getInstance();

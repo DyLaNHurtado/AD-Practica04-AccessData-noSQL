@@ -15,17 +15,28 @@ import java.util.Optional;
  * @verion 1.0 03/02/2022
  */
 public class RepoIssue implements CrudRepository<Issue,Long>{
+
+    /**
+     * Coge todos los Issue de la DB
+     * @return Optional<List<Issue>>
+     * @throws SQLException Exception
+     */
     @Override
     public Optional<List<Issue>> getAll() throws SQLException {
         HibernateController hc = HibernateController.getInstance();
         hc.open();
         TypedQuery<Issue> query = hc.getManager().createNamedQuery("Issue.getAll",Issue.class);
         List<Issue> list = query.getResultList();
-        //list.forEach(x-> System.out.println(x.toString()));
         hc.close();
         return Optional.of(list);
     }
 
+    /**
+     * Devuelve un Issue a partir de una ID
+     * @param id Long
+     * @return Optional<Issue>
+     * @throws SQLException Exception
+     */
     @Override
     public Optional<Issue> getById(Long id) throws SQLException {
         HibernateController hc = HibernateController.getInstance();
@@ -38,6 +49,12 @@ public class RepoIssue implements CrudRepository<Issue,Long>{
         throw new SQLException("Error RepoIssue no existe Issue con ID: " + id);
     }
 
+    /**
+     * Guarda un Issue en la BD
+     * @param issue Issue
+     * @return Optional<Issue>
+     * @throws SQLException Exception
+     */
     @Override
     public Optional<Issue> save(Issue issue) throws SQLException {
         HibernateController hc = HibernateController.getInstance();
@@ -58,6 +75,12 @@ public class RepoIssue implements CrudRepository<Issue,Long>{
         }
     }
 
+    /**
+     * Actualiza un Issue y si no se encuentra lo almacena
+     * @param issue Issue
+     * @return Optional<Issue>
+     * @throws SQLException Exception
+     */
     @Override
     public Optional<Issue> update(Issue issue) throws SQLException {
         HibernateController hc = HibernateController.getInstance();
@@ -78,6 +101,12 @@ public class RepoIssue implements CrudRepository<Issue,Long>{
         }
     }
 
+    /**
+     * Elimina un Issue de la BD
+     * @param issue Issue
+     * @return Optional<Issue>
+     * @throws SQLException Exception
+     */
     @Override
     public Optional<Issue> delete(Issue issue) throws SQLException {
         HibernateController hc = HibernateController.getInstance();

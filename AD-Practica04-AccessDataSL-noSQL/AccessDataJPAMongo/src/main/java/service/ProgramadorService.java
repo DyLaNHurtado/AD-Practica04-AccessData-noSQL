@@ -18,36 +18,38 @@ public class ProgramadorService extends BaseService<Programador, Long, RepoProgr
 
     ProgramadorMapper mapper = new ProgramadorMapper();
 
-    // Inyección de dependencias en el constructor. El servicio necesita este repositorio
+    /**
+     * Constructor con inyección de dependencias
+     * @param repository ProgramadorService
+     */
     public ProgramadorService(RepoProgramador repository) {
         super(repository);
     }
 
     /**
-     * Mapea todos los programadores a DTO
-     *
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Mapea una lista de Programador a ProgramadorDTO
+     * @return Optional<List<ProgramadorDTO>>
+     * @throws SQLException Exception
      */
     public Optional<List<ProgramadorDTO>> getAllProgramadores() throws SQLException {
         return mapper.toDTO(this.getAll());
     }
 
     /**
-     * Mapea un programador por id a DTO
-     *
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Mapea un Programador a ProgramadorDTO a partir de una ID
+     * @param id de Programador
+     * @return ProgramadorDTO
+     * @throws SQLException Exception
      */
     public ProgramadorDTO getProgramadorById(Long id) throws SQLException {
         return mapper.toDTO(this.getById(id).get());
     }
 
     /**
-     * Mapea el save de programador a DTO
-     *
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Mapea el Programador de save a ProgramadorDTO
+     * @param programadorDTO ProgramadorDTO
+     * @return ProgramadorDTO
+     * @throws SQLException Exception
      */
     public ProgramadorDTO postProgramador(ProgramadorDTO programadorDTO) throws SQLException {
         Optional<Programador> res = this.save(mapper.fromDTO(programadorDTO));
@@ -55,10 +57,10 @@ public class ProgramadorService extends BaseService<Programador, Long, RepoProgr
     }
 
     /**
-     * Mapea el update de programador a DTO
-     *
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Mapea el update de Programador a ProgramadorDTO
+     * @param programadorDTO ProgramadorDTO
+     * @return ProgramadorDTO
+     * @throws SQLException Exception
      */
     public ProgramadorDTO updateProgramador(ProgramadorDTO programadorDTO) throws SQLException {
 
@@ -68,10 +70,10 @@ public class ProgramadorService extends BaseService<Programador, Long, RepoProgr
     }
 
     /**
-     * Mapea el delete de programador a DTO
-     *
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Mapea el delete de Programador a ProgramadorDTO
+     * @param programadorDTO ProgramadorDTO
+     * @return ProgramadorDTO
+     * @throws SQLException Exception
      */
     public ProgramadorDTO deleteProgramador(ProgramadorDTO programadorDTO) throws SQLException {
         Optional<Programador> res = this.delete(mapper.fromDTO(programadorDTO));

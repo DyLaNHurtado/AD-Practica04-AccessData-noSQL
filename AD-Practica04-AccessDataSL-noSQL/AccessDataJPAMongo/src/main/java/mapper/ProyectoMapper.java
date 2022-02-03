@@ -10,6 +10,11 @@ import dao.Proyecto;
  */
 public class ProyectoMapper extends BaseMapper<Proyecto, ProyectoDTO> {
 
+    /**
+     * Devuelve un Proyecto a partir de un ProyectoDTO
+     * @param item ProyectoDTO
+     * @return Proyecto
+     */
     @Override
     public Proyecto fromDTO(ProyectoDTO item) {
         return Proyecto.builder()
@@ -26,6 +31,11 @@ public class ProyectoMapper extends BaseMapper<Proyecto, ProyectoDTO> {
                 .build();
     }
 
+    /**
+     * Devuelve un ProyectoDTO a partir de un Proyecto
+     * @param item Proyecto
+     * @return ProyectoDTO
+     */
     @Override
     public ProyectoDTO toDTO(Proyecto item) {
         return ProyectoDTO.builder()

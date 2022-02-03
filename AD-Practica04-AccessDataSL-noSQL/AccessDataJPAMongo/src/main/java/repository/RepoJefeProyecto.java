@@ -15,17 +15,28 @@ import java.util.Optional;
  * @verion 1.0 03/02/2022
  */
 public class RepoJefeProyecto implements CrudRepository<JefeProyecto,Long> {
+
+    /**
+     * Coge todos los JefeProyecto de la DB
+     * @return Optional<List<JefeProyecto>>
+     * @throws SQLException Exception
+     */
     @Override
     public Optional<List<JefeProyecto>> getAll() throws SQLException {
         HibernateController hc = HibernateController.getInstance();
         hc.open();
         TypedQuery<JefeProyecto> query = hc.getManager().createNamedQuery("JefeProyecto.getAll",JefeProyecto.class);
         List<JefeProyecto> list = query.getResultList();
-        //list.forEach(x-> System.out.println(x.toString()));
         hc.close();
         return Optional.of(list);
     }
 
+    /**
+     * Devuelve un JefeProyecto a partir de una ID
+     * @param id Long
+     * @return Optional<JefeProyecto>
+     * @throws SQLException Exception
+     */
     @Override
     public Optional<JefeProyecto> getById(Long id) throws SQLException {
         HibernateController hc = HibernateController.getInstance();
@@ -38,6 +49,12 @@ public class RepoJefeProyecto implements CrudRepository<JefeProyecto,Long> {
         throw new SQLException("Error RepoJefeProyecto no existe jefe con ID: " + id);
     }
 
+    /**
+     * Guarda un JefeProyecto en la BD
+     * @param jefe JefeProyecto
+     * @return Optional<JefeProyecto>
+     * @throws SQLException Exception
+     */
     @Override
     public Optional<JefeProyecto> save(JefeProyecto jefe) throws SQLException {
         HibernateController hc = HibernateController.getInstance();
@@ -58,6 +75,12 @@ public class RepoJefeProyecto implements CrudRepository<JefeProyecto,Long> {
         }
     }
 
+    /**
+     * Actualiza un JefeProyecto y si no se encuentra lo almacena
+     * @param jefe JefeProyecto
+     * @return Optional<JefeProyecto>
+     * @throws SQLException Exception
+     */
     @Override
     public Optional<JefeProyecto> update(JefeProyecto jefe) throws SQLException {
         HibernateController hc = HibernateController.getInstance();
@@ -78,6 +101,12 @@ public class RepoJefeProyecto implements CrudRepository<JefeProyecto,Long> {
         }
     }
 
+    /**
+     * Elimina un JefeProyecto de la BD
+     * @param jefe JefeProyecto
+     * @return Optional<JefeProyecto>
+     * @throws SQLException Exception
+     */
     @Override
     public Optional<JefeProyecto> delete(JefeProyecto jefe) throws SQLException {
         HibernateController hc = HibernateController.getInstance();

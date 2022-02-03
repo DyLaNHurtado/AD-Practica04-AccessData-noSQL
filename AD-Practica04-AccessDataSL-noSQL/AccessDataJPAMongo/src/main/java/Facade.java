@@ -248,7 +248,7 @@ public class Facade {
                         proyectosCompletos();
                         break;
                     case 7:
-                        loginCompletosOrdenados();
+                        loginCompletos();
                         break;
                     case 8:
                         System.out.println("Saliste con éxito.");
@@ -365,10 +365,11 @@ public class Facade {
     /**
      * Login ordenados por programador
      */
-    private void loginCompletosOrdenados() {
-
+    private void loginCompletos() {
+        LoginController controller = LoginController.getInstance();
+        System.out.println("Numero de sesiones: " +controller.getAllLogin().size());
+        System.out.println("Información completa : " + controller.getAllLogin());
     }
-
 
     /**
      * Comprobación del funcionamiento del programa

@@ -13,22 +13,32 @@ import java.util.List;
  * @verion 1.0 03/02/2022
  */
 public class LoginController {
+
     private static LoginController controller;
     private final LoginService service;
+
+    /**
+     * Constructor privado
+     * @param service LoginService
+     */
     private LoginController(LoginService service){
         this.service=service;
     }
 
+    /**
+     * Patron Singleton
+     * @return LoginController
+     */
     public static LoginController getInstance(){
         if(controller==null){
             controller=new LoginController(new LoginService(new RepoLogin()));
         }
         return controller;
     }
+
     /**
-     * Printea  todos los login en JSON
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * LLama al servicio y devuelve una lista de LoginDTO
+     * @return List<LoginDTO>
      */
     public List<LoginDTO> getAllLogin() {
         try {
@@ -38,10 +48,11 @@ public class LoginController {
             return null;
         }
     }
+
     /**
-     * Printea login por id en JSON
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * LLama al servicio y devuelve LoginDTO según una ID
+     * @param id Long
+     * @return LoginDTO
      */
     public LoginDTO getLoginByIdJSON(Long id) {
         try {
@@ -51,10 +62,11 @@ public class LoginController {
             return null;
         }
     }
+
     /**
-     * Printea  el save de login en JSON
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * LLama al servicio para insertar un Login
+     * @param loginDTO
+     * @return LoginDTO
      */
     public LoginDTO postLogin(LoginDTO loginDTO) {
         try {
@@ -64,10 +76,11 @@ public class LoginController {
             return null;
         }
     }
+
     /**
-     * Printea  el update de login en JSON
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Llama al servicio para actualizar un Login
+     * @param loginDTO
+     * @return LoginDTO
      */
     public LoginDTO updateLogin(LoginDTO loginDTO) {
         try {
@@ -77,10 +90,11 @@ public class LoginController {
             return null;
         }
     }
+
     /**
-     * Printea  el delete de login en JSON
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Llama al servicio para eliminar un Login
+     * @param loginDTO
+     * @return LoginDTO
      */
     public LoginDTO deleteLogin(LoginDTO loginDTO) {
         try {

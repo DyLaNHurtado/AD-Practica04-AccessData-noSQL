@@ -13,17 +13,21 @@ import java.util.List;
  * @verion 1.0 03/02/2022
  */
 public class DepartamentoController {
-    private static DepartamentoController controller = null;
 
+    private static DepartamentoController controller;
     private final DepartamentoService departamentoService;
 
+    /**
+     * Constructor privado
+     * @param departamentoService
+     */
     private DepartamentoController(DepartamentoService departamentoService) {
         this.departamentoService = departamentoService;
     }
+
     /**
-     * Patron singleton
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Patron Singleton
+     * @return DepartamentoController
      */
     public static DepartamentoController getInstance() {
         if (controller == null) {
@@ -31,10 +35,10 @@ public class DepartamentoController {
         }
         return controller;
     }
+
     /**
-     * Printea  todos los departamentos en JSON
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * LLama al servicio y devuelve una lista de DepartamentoDTO
+     * @return List<DepartamentoDTO>
      */
     public List<DepartamentoDTO> getAllDepartamentos() {
         try {
@@ -44,10 +48,11 @@ public class DepartamentoController {
             return null;
         }
     }
+
     /**
-     * Printea  departamento por id en JSON
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * LLama al servicio y devuelve DepartamentoDTO según una ID
+     * @param id Long
+     * @return DepartamentoDTO
      */
     public DepartamentoDTO getDepartamentoById(Long id) {
         try {
@@ -57,10 +62,11 @@ public class DepartamentoController {
             return null;
         }
     }
+
     /**
-     * Printea  el save de departamento en JSON
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * LLama al servicio para insertar un Departamento
+     * @param departamentoDTO
+     * @return DepartamentoDTO
      */
     public DepartamentoDTO postDepartamento(DepartamentoDTO departamentoDTO) {
         try {
@@ -70,10 +76,11 @@ public class DepartamentoController {
             return null;
         }
     }
+
     /**
-     * Printea  el update de departamento en JSON
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Llama al servicio para actualizar un Departamento
+     * @param departamentoDTO
+     * @return DepartamentoDTO
      */
     public DepartamentoDTO updateDepartamento(DepartamentoDTO departamentoDTO) {
         try {
@@ -83,10 +90,11 @@ public class DepartamentoController {
             return null;
         }
     }
+
     /**
-     * Printea  el delete de departamento en JSON
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Llama al servicio para eliminar un Departamento
+     * @param departamentoDTO
+     * @return DepartamentoDTO
      */
     public DepartamentoDTO deleteDepartamento(DepartamentoDTO departamentoDTO) {
         try {

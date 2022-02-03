@@ -18,15 +18,18 @@ public class JefeProyectoService extends BaseService<JefeProyecto, Long, RepoJef
 
     private JefeProyectoMapper mapper=new JefeProyectoMapper();
 
+    /**
+     * Constructor con inyección de dependencias
+     * @param repository JefeProyectoService
+     */
     public JefeProyectoService(RepoJefeProyecto repository) {
         super(repository);
     }
 
     /**
-     * Mapea todos los jefes de proyecto a DTO
-     *
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Mapea una lista de JefeProyecto a JefeProyectoDTO
+     * @return Optional<List<JefeProyectoDTO>>
+     * @throws SQLException Exception
      */
     public Optional<List<JefeProyectoDTO>> getAllJefeProyecto() throws SQLException {
 
@@ -34,10 +37,10 @@ public class JefeProyectoService extends BaseService<JefeProyecto, Long, RepoJef
     }
 
     /**
-     * Mapea un jefe de proyecto por id a DTO
-     *
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Mapea un JefeProyecto a JefeProyectoDTO a partir de una ID
+     * @param id JefeProyecto
+     * @return JefeProyectoDTO
+     * @throws SQLException Exception
      */
     public JefeProyectoDTO getJefeProyectoById(long id) throws SQLException {
 
@@ -45,10 +48,10 @@ public class JefeProyectoService extends BaseService<JefeProyecto, Long, RepoJef
     }
 
     /**
-     * Mapea el save de jefe de proyecto a DTO
-     *
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Mapea el JefeProyecto de save a JefeProyectoDTO
+     * @param jefeProyectoDTO JefeProyectoDTO
+     * @return JefeProyectoDTO
+     * @throws SQLException Exception
      */
     public JefeProyectoDTO postJefeProyecto(JefeProyectoDTO jefeProyectoDTO) throws SQLException {
         Optional<JefeProyecto> res = this.save(mapper.fromDTO(jefeProyectoDTO));
@@ -56,10 +59,10 @@ public class JefeProyectoService extends BaseService<JefeProyecto, Long, RepoJef
     }
 
     /**
-     * Mapea el update de jefe de proyecto a DTO
-     *
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Mapea el update de JefeProyecto a JefeProyectoDTO
+     * @param jefeProyectoDTO JefeProyectoDTO
+     * @return JefeProyectoDTO
+     * @throws SQLException Exception
      */
     public JefeProyectoDTO updateJefeProyecto(JefeProyectoDTO jefeProyectoDTO) throws SQLException {
         Optional<JefeProyecto> res = this.update(mapper.fromDTO(jefeProyectoDTO));
@@ -67,10 +70,10 @@ public class JefeProyectoService extends BaseService<JefeProyecto, Long, RepoJef
     }
 
     /**
-     * Mapea el delete de jefe de proyecto a DTO
-     *
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Mapea el delete de JefeProyecto a JefeProyectoDTO
+     * @param jefeProyectoDTO JefeProyectoDTO
+     * @return JefeProyectoDTO
+     * @throws SQLException Exception
      */
     public JefeProyectoDTO deleteJefeProyecto(JefeProyectoDTO jefeProyectoDTO) throws SQLException {
         Optional<JefeProyecto> res = this.delete(mapper.fromDTO(jefeProyectoDTO));

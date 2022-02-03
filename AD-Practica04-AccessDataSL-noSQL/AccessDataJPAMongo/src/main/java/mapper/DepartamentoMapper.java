@@ -10,6 +10,11 @@ import dao.Departamento;
  */
 public class DepartamentoMapper extends BaseMapper<Departamento, DepartamentoDTO> {
 
+    /**
+     * Devuelve un Departamento a partir de un DepartamentoDTO
+     * @param item DepartamentoDTO
+     * @return Departamento
+     */
     @Override
     public Departamento fromDTO(DepartamentoDTO item) {
         return Departamento.builder()
@@ -24,6 +29,11 @@ public class DepartamentoMapper extends BaseMapper<Departamento, DepartamentoDTO
                 .build();
     }
 
+    /**
+     * Devuelve un DepartamentoDTO a partir de un Departamento
+     * @param item Departamento
+     * @return DepartamentoDTO
+     */
     @Override
     public DepartamentoDTO toDTO(Departamento item) {
         return DepartamentoDTO.builder()

@@ -13,21 +13,32 @@ import java.util.List;
  * @verion 1.0 03/02/2022
  */
 public class CommitController {
+
     private static CommitController controller;
     private final CommitService service;
+
+    /**
+     * Constructor privado
+     * @param service CommitService
+     */
     private CommitController(CommitService service){
         this.service=service;
     }
+
+    /**
+     * Patron Singleton
+     * @return CommitController
+     */
     public static CommitController getInstance(){
         if(controller==null){
             controller=new CommitController(new CommitService(new RepoCommit()));
         }
         return controller;
     }
+
     /**
-     * Printea  todos los commit en JSON
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * LLama al servicio y devuelve una lista de CommitDTO
+     * @return List<CommitDTO>
      */
     public List<CommitDTO> getAllCommit() {
         try {
@@ -37,10 +48,11 @@ public class CommitController {
             return null;
         }
     }
+
     /**
-     * Printea commit por id en JSON
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * LLama al servicio y devuelve CommitDTO según una ID
+     * @param id Long
+     * @return CommitDTO
      */
     public CommitDTO getCommitById(Long id) {
         try {
@@ -50,10 +62,11 @@ public class CommitController {
             return null;
         }
     }
+
     /**
-     * Printea  el save de commit en JSON
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * LLama al servicio para insertar un Commit
+     * @param commitDTO
+     * @return CommitDTO
      */
     public CommitDTO postCommit(CommitDTO commitDTO) {
         try {
@@ -63,10 +76,11 @@ public class CommitController {
             return null;
         }
     }
+
     /**
-     * Printea  el update de commit en JSON
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Llama al servicio para actualizar un Commit
+     * @param commitDTO
+     * @return CommitDTO
      */
     public CommitDTO updateCommit(CommitDTO commitDTO) {
         try {
@@ -76,10 +90,11 @@ public class CommitController {
             return null;
         }
     }
+
     /**
-     * Printea  el delete de commit en JSON
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Llama al servicio para eliminar un Commit
+     * @param commitDTO
+     * @return CommitDTO
      */
     public CommitDTO deleteCommit(CommitDTO commitDTO) {
         try {

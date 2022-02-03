@@ -15,6 +15,12 @@ import java.util.Optional;
  * @verion 1.0 03/02/2022
  */
 public class RepoDepartamento implements CrudRepository<Departamento, Long> {
+
+    /**
+     * Coge todos los Departamento de la DB
+     * @return Optional<List<Departamento>>
+     * @throws SQLException Exception
+     */
     @Override
     public Optional<List<Departamento>> getAll() throws SQLException {
         HibernateController hc = HibernateController.getInstance();
@@ -25,6 +31,12 @@ public class RepoDepartamento implements CrudRepository<Departamento, Long> {
         return Optional.of(list);
     }
 
+    /**
+     * Devuelve un Departamento a partir de una ID
+     * @param id Long
+     * @return Optional<Departamento>
+     * @throws SQLException Exception
+     */
     @Override
     public Optional<Departamento> getById(Long id) throws SQLException {
         HibernateController hc = HibernateController.getInstance();
@@ -37,6 +49,12 @@ public class RepoDepartamento implements CrudRepository<Departamento, Long> {
         throw new SQLException("Error RepoDepartamento no existe Departamento con ID: " + id);
     }
 
+    /**
+     * Guarda un Departamento en la BD
+     * @param departamento Departamento
+     * @return Optional<Departamento>
+     * @throws SQLException Exception
+     */
     @Override
     public Optional<Departamento> save(Departamento departamento) throws SQLException {
         HibernateController hc = HibernateController.getInstance();
@@ -58,6 +76,12 @@ public class RepoDepartamento implements CrudRepository<Departamento, Long> {
         }
     }
 
+    /**
+     * Actualiza un Departamento y si no se encuentra lo almacena
+     * @param departamento Departamento
+     * @return Optional<Departamento>
+     * @throws SQLException Exception
+     */
     @Override
     public Optional<Departamento> update(Departamento departamento) throws SQLException {
         HibernateController hc = HibernateController.getInstance();
@@ -78,6 +102,12 @@ public class RepoDepartamento implements CrudRepository<Departamento, Long> {
         }
     }
 
+    /**
+     * Elimina un Departamento de la BD
+     * @param departamento Departamento
+     * @return Optional<Departamento>
+     * @throws SQLException Exception
+     */
     @Override
     public Optional<Departamento> delete(Departamento departamento) throws SQLException {
         HibernateController hc = HibernateController.getInstance();

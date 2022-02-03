@@ -13,24 +13,32 @@ import java.util.List;
  * @verion 1.0 03/02/2022
  */
 public class ProyectoController {
-    private static ProyectoController controller = null;
 
+    private static ProyectoController controller;
     private final ProyectoService proyectoService;
 
+    /**
+     * Constructor privado
+     * @param proyectoService
+     */
     private ProyectoController(ProyectoService proyectoService) {
         this.proyectoService = proyectoService;
     }
 
+    /**
+     * Patron Singleton
+     * @return ProyectoController
+     */
     public static ProyectoController getInstance() {
         if (controller == null) {
             controller = new ProyectoController(new ProyectoService(new RepoProyecto()));
         }
         return controller;
     }
+
     /**
-     * Printea todos los proyectos en JSON
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * LLama al servicio y devuelve una lista de ProyectoDTO
+     * @return List<ProyectoDTO>
      */
     public List<ProyectoDTO> getAllProyectos() {
         try {
@@ -40,10 +48,11 @@ public class ProyectoController {
             return null;
         }
     }
+
     /**
-     * Printea proyecto POR ID en JSON
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * LLama al servicio y devuelve ProyectoDTO según una ID
+     * @param id Long
+     * @return ProyectoDTO
      */
     public ProyectoDTO getProyectoById(Long id) {
         try {
@@ -53,10 +62,11 @@ public class ProyectoController {
             return null;
         }
     }
+
     /**
-     * Printea el save de proyecto en JSON
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * LLama al servicio para insertar un Proyecto
+     * @param proyectoDTO
+     * @return ProyectoDTO
      */
     public ProyectoDTO postProyecto(ProyectoDTO proyectoDTO) {
         try {
@@ -66,10 +76,11 @@ public class ProyectoController {
             return null;
         }
     }
+
     /**
-     * Printea el update de proyecto en JSON
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Llama al servicio para actualizar un Proyecto
+     * @param proyectoDTO
+     * @return ProyectoDTO
      */
     public ProyectoDTO updateProyecto(ProyectoDTO proyectoDTO) {
         try {
@@ -79,10 +90,11 @@ public class ProyectoController {
             return null;
         }
     }
+
     /**
-     * Printea el delete de proyecto en JSON
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Llama al servicio para eliminar un Proyecto
+     * @param proyectoDTO
+     * @return ProyectoDTO
      */
     public ProyectoDTO deleteProyecto(ProyectoDTO proyectoDTO) {
         try {

@@ -13,14 +13,22 @@ import java.util.List;
  * @verion 1.0 03/02/2022
  */
 public class RepositorioController {
-    private static RepositorioController controller = null;
 
+    private static RepositorioController controller;
     private final RepositorioService repositorioService;
 
+    /**
+     * Constructor privado
+     * @param repositorioService
+     */
     private RepositorioController(RepositorioService repositorioService) {
         this.repositorioService = repositorioService;
     }
 
+    /**
+     * Patron Singleton
+     * @return RepositorioController
+     */
     public static RepositorioController getInstance() {
         if (controller == null) {
             controller = new RepositorioController(new RepositorioService(new RepoRepositorio()));
@@ -29,10 +37,8 @@ public class RepositorioController {
     }
 
     /**
-     * Printea todos los proyectos en JSON
-     *
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * LLama al servicio y devuelve una lista de RepositorioDTO
+     * @return List<RepositorioDTO>
      */
     public List<RepositorioDTO> getAllRepositorio() {
         try {
@@ -44,10 +50,9 @@ public class RepositorioController {
     }
 
     /**
-     * Printea proyecto POR ID en JSON
-     *
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * LLama al servicio y devuelve RepositorioDTO según una ID
+     * @param id Long
+     * @return RepositorioDTO
      */
     public RepositorioDTO getRepositorioById(Long id) {
         try {
@@ -59,10 +64,9 @@ public class RepositorioController {
     }
 
     /**
-     * Printea el save de proyecto en JSON
-     *
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * LLama al servicio para insertar un Repositorio
+     * @param repositorioDTO
+     * @return RepositorioDTO
      */
     public RepositorioDTO postRepositorio(RepositorioDTO repositorioDTO) {
         try {
@@ -74,10 +78,9 @@ public class RepositorioController {
     }
 
     /**
-     * Printea el update de proyecto en JSON
-     *
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Llama al servicio para actualizar un Repositorio
+     * @param repositorioDTO
+     * @return RepositorioDTO
      */
     public RepositorioDTO updateRepositorio(RepositorioDTO repositorioDTO) {
         try {
@@ -89,10 +92,9 @@ public class RepositorioController {
     }
 
     /**
-     * Printea el delete de proyecto en JSON
-     *
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Llama al servicio para eliminar un Repositorio
+     * @param repositorioDTO
+     * @return RepositorioDTO
      */
     public RepositorioDTO deleteRepositorio(RepositorioDTO repositorioDTO) {
         try {

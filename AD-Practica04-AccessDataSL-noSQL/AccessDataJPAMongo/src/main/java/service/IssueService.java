@@ -20,15 +20,18 @@ public class IssueService extends BaseService<Issue, Long, RepoIssue> {
 
     IssueMapper mapper = new IssueMapper();
 
+    /**
+     * Constructor con inyección de dependencias
+     * @param repository IssueService
+     */
     public IssueService(RepoIssue repository) {
         super(repository);
     }
 
     /**
-     * Mapea todos los issues a DTO
-     *
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Mapea una lista de Issue a IssueDTO
+     * @return Optional<List<IssueDTO>>
+     * @throws SQLException Exception
      */
     public Optional<List<IssueDTO>> getAllIssues() throws SQLException {
 
@@ -36,10 +39,10 @@ public class IssueService extends BaseService<Issue, Long, RepoIssue> {
     }
 
     /**
-     * Mapea un issue por id a DTO
-     *
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Mapea un Issue a IssueDTO a partir de una ID
+     * @param id de Issue
+     * @return IssueDTO
+     * @throws SQLException Exception
      */
     public IssueDTO getIssueById(long id) throws SQLException {
 
@@ -47,10 +50,10 @@ public class IssueService extends BaseService<Issue, Long, RepoIssue> {
     }
 
     /**
-     * Mapea el issue de departamento a DTO
-     *
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Mapea el Issue de save a IssueDTO
+     * @param issueDTO IssueDTO
+     * @return IssueDTO
+     * @throws SQLException Exception
      */
     public IssueDTO postIssue(IssueDTO issueDTO) throws SQLException {
         Optional<Issue> res = this.save(mapper.fromDTO(issueDTO));
@@ -58,10 +61,10 @@ public class IssueService extends BaseService<Issue, Long, RepoIssue> {
     }
 
     /**
-     * Mapea el update de issue a DTO
-     *
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Mapea el update de Issue a IssueDTO
+     * @param issueDTO IssueDTO
+     * @return IssueDTO
+     * @throws SQLException Exception
      */
     public IssueDTO updateIssue(IssueDTO issueDTO) throws SQLException {
         Optional<Issue> res = this.update(mapper.fromDTO(issueDTO));
@@ -69,10 +72,10 @@ public class IssueService extends BaseService<Issue, Long, RepoIssue> {
     }
 
     /**
-     * Mapea el delete de issue a DTO
-     *
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Mapea el delete de Issue a IssueDTO
+     * @param issueDTO IssueDTO
+     * @return IssueDTO
+     * @throws SQLException Exception
      */
     public IssueDTO deleteIssue(IssueDTO issueDTO) throws SQLException {
         Optional<Issue> res = this.delete(mapper.fromDTO(issueDTO));

@@ -13,21 +13,32 @@ import java.util.List;
  * @verion 1.0 03/02/2022
  */
 public class JefeProyectoController {
+
     private static JefeProyectoController controller;
     private final JefeProyectoService service;
+
+    /**
+     * Constructor privado
+     * @param service JefeProyectoService
+     */
     private JefeProyectoController(JefeProyectoService service){
         this.service=service;
     }
+
+    /**
+     * Patron Singleton
+     * @return JefeProyectoController
+     */
     public static JefeProyectoController getInstance(){
         if(controller==null){
             controller=new JefeProyectoController(new JefeProyectoService(new RepoJefeProyecto()));
         }
         return controller;
     }
+
     /**
-     * Printea  todos los jefes de proyecto en JSON
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * LLama al servicio y devuelve una lista de JefeProyectoDTO
+     * @return List<JefeProyectoDTO>
      */
     public List<JefeProyectoDTO> getAllJefeProyecto() {
         try {
@@ -37,10 +48,11 @@ public class JefeProyectoController {
             return null;
         }
     }
+
     /**
-     * Printea jefe de proyecto por id en JSON
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * LLama al servicio y devuelve JefeProyectoDTO según una ID
+     * @param id Long
+     * @return JefeProyectoDTO
      */
     public JefeProyectoDTO getJefeProyectoById(Long id) {
         try {
@@ -50,10 +62,11 @@ public class JefeProyectoController {
             return null;
         }
     }
+
     /**
-     * Printea  el save de jefe de proyecto en JSON
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * LLama al servicio para insertar un JefeProyecto
+     * @param jefeProyectoDTO
+     * @return JefeProyectoDTO
      */
     public JefeProyectoDTO postJefeProyecto(JefeProyectoDTO jefeProyectoDTO) {
         try {
@@ -63,10 +76,11 @@ public class JefeProyectoController {
             return null;
         }
     }
+
     /**
-     * Printea  el update de jefe de proyecto en JSON
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Llama al servicio para actualizar un JefeProyecto
+     * @param jefeProyectoDTO
+     * @return JefeProyectoDTO
      */
     public JefeProyectoDTO updateJefeProyecto(JefeProyectoDTO jefeProyectoDTO) {
         try {
@@ -76,10 +90,11 @@ public class JefeProyectoController {
             return null;
         }
     }
+
     /**
-     * Printea  el delete de jefe de proyecto en JSON
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Llama al servicio para eliminar un JefeProyecto
+     * @param jefeProyectoDTO
+     * @return JefeProyectoDTO
      */
     public JefeProyectoDTO deleteJefeProyecto(JefeProyectoDTO jefeProyectoDTO) {
         try {

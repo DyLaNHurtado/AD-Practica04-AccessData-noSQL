@@ -10,6 +10,11 @@ import dto.JefeDepartamentoDTO;
  */
 public class JefeDepartamentoMapper extends BaseMapper<JefeDepartamento, JefeDepartamentoDTO> {
 
+    /**
+     * Devuelve un JefeDepartamento a partir de un JefeDepartamentoDTO
+     * @param item JefeDepartamentoDTO
+     * @return JefeDepartamento
+     */
     @Override
     public JefeDepartamento fromDTO(JefeDepartamentoDTO item) {
         JefeDepartamento jefe = new JefeDepartamento();
@@ -22,6 +27,11 @@ public class JefeDepartamentoMapper extends BaseMapper<JefeDepartamento, JefeDep
         return jefe;
     }
 
+    /**
+     * Devuelve un JefeDepartamentoDTO a partir de un JefeDepartamento
+     * @param item JefeDepartamento
+     * @return JefeDepartamentoDTO
+     */
     @Override
     public JefeDepartamentoDTO toDTO(JefeDepartamento item) {
         return JefeDepartamentoDTO.builder()

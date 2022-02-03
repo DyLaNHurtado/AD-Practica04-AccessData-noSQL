@@ -19,16 +19,18 @@ public class LoginService extends BaseService<Login, Long, RepoLogin> {
 
     LoginMapper mapper = new LoginMapper();
 
-    // Inyección de dependencias en el constructor. El servicio necesita este repositorio
+    /**
+     * Constructor con inyección de dependencias
+     * @param repository LoginService
+     */
     public LoginService(RepoLogin repository) {
         super(repository);
     }
 
     /**
-     * Mapea todos los logins a DTO
-     *
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Mapea una lista de Login a LoginDTO
+     * @return Optional<List<LoginDTO>>
+     * @throws SQLException Exception
      */
     public Optional<List<LoginDTO>> getAllLogins() throws SQLException {
 
@@ -36,10 +38,10 @@ public class LoginService extends BaseService<Login, Long, RepoLogin> {
     }
 
     /**
-     * Mapea un login por id a DTO
-     *
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Mapea un Login a LoginDTO a partir de una ID
+     * @param id de Login
+     * @return LoginDTO
+     * @throws SQLException Exception
      */
     public LoginDTO getLoginById(long id) throws SQLException {
 
@@ -47,10 +49,10 @@ public class LoginService extends BaseService<Login, Long, RepoLogin> {
     }
 
     /**
-     * Mapea el save de login a DTO
-     *
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Mapea el Login de save a LoginDTO
+     * @param loginDTO LoginDTO
+     * @return LoginDTO
+     * @throws SQLException Exception
      */
     public LoginDTO postLogin(LoginDTO loginDTO) throws SQLException {
         Optional<Login> res = this.save(mapper.fromDTO(loginDTO));
@@ -58,10 +60,10 @@ public class LoginService extends BaseService<Login, Long, RepoLogin> {
     }
 
     /**
-     * Mapea el update de login a DTO
-     *
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Mapea el update de Login a LoginDTO
+     * @param loginDTO LoginDTO
+     * @return LoginDTO
+     * @throws SQLException Exception
      */
     public LoginDTO updateLogin(LoginDTO loginDTO) throws SQLException {
         Optional<Login> res = this.update(mapper.fromDTO(loginDTO));
@@ -69,10 +71,10 @@ public class LoginService extends BaseService<Login, Long, RepoLogin> {
     }
 
     /**
-     * Mapea el delete de login a DTO
-     *
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Mapea el delete de Login a LoginDTO
+     * @param loginDTO LoginDTO
+     * @return LoginDTO
+     * @throws SQLException Exception
      */
     public LoginDTO deleteLogin(LoginDTO loginDTO) throws SQLException {
         Optional<Login> res = this.delete(mapper.fromDTO(loginDTO));

@@ -9,6 +9,7 @@ import dto.CommitDTO;
  * @verion 1.0 03/02/2022
  */
 public class CommitMapper extends BaseMapper<Commit, CommitDTO> {
+
     /**
      * Devuelve un Commit a partir de un CommitDTO
      * @param item CommitDTO

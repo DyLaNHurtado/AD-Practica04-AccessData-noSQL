@@ -13,22 +13,32 @@ import java.util.List;
  * @verion 1.0 03/02/2022
  */
 public class IssueController {
+
     private static IssueController controller;
     private final IssueService service;
+
+    /**
+     * Constructor privado
+     * @param service IssueService
+     */
     private IssueController(IssueService service){
         this.service=service;
     }
+
+    /**
+     * Patron Singleton
+     * @return IssueController
+     */
     public static IssueController getInstance(){
         if(controller==null){
             controller=new IssueController(new IssueService(new RepoIssue()));
         }
         return controller;
     }
+
     /**
-     * Printea  todos los issue en JSON
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
-     * @return
+     * LLama al servicio y devuelve una lista de IssueDTO
+     * @return List<IssueDTO>
      */
     public List<IssueDTO> getAllIssue() {
         try {
@@ -38,11 +48,11 @@ public class IssueController {
             return null;
         }
     }
+
     /**
-     * Printea issue por id en JSON
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
-     * @return
+     * LLama al servicio y devuelve IssueDTO según una ID
+     * @param id Long
+     * @return IssueDTO
      */
     public IssueDTO getIssueById(Long id) {
         try {
@@ -52,10 +62,11 @@ public class IssueController {
             return null;
         }
     }
+
     /**
-     * Printea  el save de issue en JSON
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * LLama al servicio para insertar un Issue
+     * @param issueDTO
+     * @return IssueDTO
      */
     public IssueDTO postIssue(IssueDTO issueDTO) {
         try {
@@ -65,10 +76,11 @@ public class IssueController {
             return null;
         }
     }
+
     /**
-     * Printea  el update de issue en JSON
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Llama al servicio para actualizar un Issue
+     * @param issueDTO
+     * @return IssueDTO
      */
     public IssueDTO updateIssue(IssueDTO issueDTO) {
         try {
@@ -78,10 +90,11 @@ public class IssueController {
             return null;
         }
     }
+
     /**
-     * Printea  el delete de issue en JSON
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Llama al servicio para eliminar un Issue
+     * @param issueDTO
+     * @return IssueDTO
      */
     public IssueDTO deleteIssue(IssueDTO issueDTO) {
         try {

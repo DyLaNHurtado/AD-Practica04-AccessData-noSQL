@@ -20,6 +20,12 @@ import static com.mongodb.client.model.Filters.eq;
  * @verion 1.0 03/02/2022
  */
 public class RepoLogin implements CrudRepository<Login, Long> {
+
+    /**
+     * Coge todos los Login de la DB
+     * @return Optional<List<Login>>
+     * @throws SQLException Exception
+     */
     @Override
     public Optional<List<Login>> getAll() throws SQLException {
         MongoDBController mongoController = MongoDBController.getInstance();
@@ -30,6 +36,12 @@ public class RepoLogin implements CrudRepository<Login, Long> {
         return Optional.of(list);
     }
 
+    /**
+     * Devuelve un Login a partir de una ID
+     * @param id Long
+     * @return Optional<Login>
+     * @throws SQLException Exception
+     */
     @Override
     public Optional<Login> getById(Long id) throws SQLException {
         MongoDBController mongoController = MongoDBController.getInstance();
@@ -42,6 +54,12 @@ public class RepoLogin implements CrudRepository<Login, Long> {
         throw new SQLException("Error LoginRepository dont exist login with ID: " + id);
     }
 
+    /**
+     * Guarda un Login en la BD
+     * @param login Login
+     * @return Optional<Login>
+     * @throws SQLException Exception
+     */
     @Override
     public Optional<Login> save(Login login) throws SQLException {
         MongoDBController mongoController = MongoDBController.getInstance();
@@ -57,6 +75,12 @@ public class RepoLogin implements CrudRepository<Login, Long> {
         }
     }
 
+    /**
+     * Actualiza un Login y si no se encuentra lo almacena
+     * @param login Login
+     * @return Optional<Login>
+     * @throws SQLException Exception
+     */
     @Override
     public Optional<Login> update(Login login) throws SQLException {
         MongoDBController mongoController = MongoDBController.getInstance();
@@ -73,6 +97,12 @@ public class RepoLogin implements CrudRepository<Login, Long> {
         }
     }
 
+    /**
+     * Elimina un Login de la BD
+     * @param login Login
+     * @return Optional<Login>
+     * @throws SQLException Exception
+     */
     @Override
     public Optional<Login> delete(Login login) throws SQLException {
         MongoDBController mongoController = MongoDBController.getInstance();

@@ -10,6 +10,11 @@ import dao.Programador;
  */
 public class ProgramadorMapper extends BaseMapper<Programador, ProgramadorDTO> {
 
+    /**
+     * Devuelve un Programador a partir de un ProgramadorDTO
+     * @param item ProgramadorDTO
+     * @return Programador
+     */
     @Override
     public Programador fromDTO(ProgramadorDTO item) {
         Programador programador=new Programador();
@@ -27,6 +32,11 @@ public class ProgramadorMapper extends BaseMapper<Programador, ProgramadorDTO> {
         return programador;
     }
 
+    /**
+     * Devuelve un ProgramadorDTO a partir de un Programador
+     * @param item Programador
+     * @return ProgramadorDTO
+     */
     @Override
     public ProgramadorDTO toDTO(Programador item) {
         return ProgramadorDTO.builder()

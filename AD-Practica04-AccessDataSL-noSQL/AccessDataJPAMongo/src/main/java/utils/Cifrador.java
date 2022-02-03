@@ -11,7 +11,7 @@ import java.security.NoSuchAlgorithmException;
 public class Cifrador {
     /**
      * Cifrador SHA256
-     * @param password
+     * @param password Contraseña
      * @return String password cifrada
      */
     public String toSHA256(String password) {

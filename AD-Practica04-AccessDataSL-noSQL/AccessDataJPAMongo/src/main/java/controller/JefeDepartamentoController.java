@@ -14,17 +14,20 @@ import java.util.List;
  */
 public class JefeDepartamentoController {
 
-    private static JefeDepartamentoController controller = null;
-
+    private static JefeDepartamentoController controller;
     private final JefeDepartamentoService jefeDepartamentoService;
 
+    /**
+     * Constructor privado
+     * @param jefeDepartamentoService
+     */
     private JefeDepartamentoController(JefeDepartamentoService jefeDepartamentoService) {
         this.jefeDepartamentoService = jefeDepartamentoService;
     }
+
     /**
-     * Patron singleton
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Patron Singleton
+     * @return JefeDepartamentoController
      */
     public static JefeDepartamentoController getInstance() {
         if (controller == null) {
@@ -34,9 +37,8 @@ public class JefeDepartamentoController {
     }
 
     /**
-     * Printea  todos los jefe departamemtos en JSON
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * LLama al servicio y devuelve una lista de JefeDepartamentoDTO
+     * @return List<JefeDepartamentoDTO>
      */
     public List<JefeDepartamentoDTO> getAllJefesDepartamento() {
         try {
@@ -48,9 +50,9 @@ public class JefeDepartamentoController {
     }
 
     /**
-     * Printea  jefedepartamento por id en JSON
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * LLama al servicio y devuelve JefeDepartamentoDTO según una ID
+     * @param id Long
+     * @return JefeDepartamentoDTO
      */
     public JefeDepartamentoDTO getJefeDepartamentoById(Long id) {
         try {
@@ -62,9 +64,9 @@ public class JefeDepartamentoController {
     }
 
     /**
-     * Printea  el save de jefe departamento en JSON
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * LLama al servicio para insertar un JefeDepartamento
+     * @param jefeDepartamentoDTO
+     * @return JefeDepartamentoDTO
      */
     public JefeDepartamentoDTO postJefeDepartamento(JefeDepartamentoDTO jefeDepartamentoDTO) {
         try {
@@ -74,10 +76,11 @@ public class JefeDepartamentoController {
             return null;
         }
     }
+
     /**
-     * Printea  el update de jefe departamento en JSON
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Llama al servicio para actualizar un JefeDepartamento
+     * @param jefeDepartamentoDTO
+     * @return JefeDepartamentoDTO
      */
     public JefeDepartamentoDTO updateJefeDepartamento(JefeDepartamentoDTO jefeDepartamentoDTO) {
         try {
@@ -88,11 +91,11 @@ public class JefeDepartamentoController {
             return null;
         }
     }
+
     /**
-     * Printea  el delete de jefe departamento en JSON
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
-     * @return
+     * Llama al servicio para eliminar un JefeDepartamento
+     * @param jefeDepartamentoDTO
+     * @return JefeDepartamentoDTO
      */
     public JefeDepartamentoDTO deleteJefeDepartamento(JefeDepartamentoDTO jefeDepartamentoDTO) {
         try {

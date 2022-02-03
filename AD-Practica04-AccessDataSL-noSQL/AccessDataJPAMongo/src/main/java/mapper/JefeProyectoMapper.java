@@ -9,6 +9,12 @@ import dto.JefeProyectoDTO;
  * @verion 1.0 03/02/2022
  */
 public class JefeProyectoMapper extends BaseMapper<JefeProyecto, JefeProyectoDTO> {
+
+    /**
+     * Devuelve un JefeProyecto a partir de un JefeProyectoDTO
+     * @param item JefeProyectoDTO
+     * @return JefeProyecto
+     */
     @Override
     public JefeProyecto fromDTO(JefeProyectoDTO item) {
         JefeProyecto jefe = new JefeProyecto();
@@ -22,6 +28,11 @@ public class JefeProyectoMapper extends BaseMapper<JefeProyecto, JefeProyectoDTO
         return jefe;
     }
 
+    /**
+     * Devuelve un JefeProyectoDTO a partir de un JefeProyecto
+     * @param item JefeProyecto
+     * @return JefeProyectoDTO
+     */
     @Override
     public JefeProyectoDTO toDTO(JefeProyecto item) {
         return JefeProyectoDTO.builder()

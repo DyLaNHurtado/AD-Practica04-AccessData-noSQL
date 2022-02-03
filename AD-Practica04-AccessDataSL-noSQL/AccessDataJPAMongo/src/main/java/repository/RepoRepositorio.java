@@ -15,17 +15,28 @@ import java.util.Optional;
  * @verion 1.0 03/02/2022
  */
 public class RepoRepositorio implements CrudRepository<Repositorio,Long>{
+
+    /**
+     * Coge todos los Repositorio de la DB
+     * @return Optional<List<Repositorio>>
+     * @throws SQLException Exception
+     */
     @Override
     public Optional<List<Repositorio>> getAll() throws SQLException {
         HibernateController hc = HibernateController.getInstance();
         hc.open();
         TypedQuery<Repositorio> query = hc.getManager().createNamedQuery("Repositorio.getAll",Repositorio.class);
         List<Repositorio> list = query.getResultList();
-        //list.forEach(x-> System.out.println(x.toString()));
         hc.close();
         return Optional.of(list);
     }
 
+    /**
+     * Devuelve un Repositorio a partir de una ID
+     * @param id Long
+     * @return Optional<Repositorio>
+     * @throws SQLException Exception
+     */
     @Override
     public Optional<Repositorio> getById(Long id) throws SQLException {
         HibernateController hc = HibernateController.getInstance();
@@ -38,6 +49,12 @@ public class RepoRepositorio implements CrudRepository<Repositorio,Long>{
         throw new SQLException("Error RepoRepositorio no existe repositorio con ID: " + id);
     }
 
+    /**
+     * Guarda un Repositorio en la BD
+     * @param repositorio Repositorio
+     * @return Optional<Repositorio>
+     * @throws SQLException Exception
+     */
     @Override
     public Optional<Repositorio> save(Repositorio repositorio) throws SQLException {
         HibernateController hc = HibernateController.getInstance();
@@ -58,6 +75,12 @@ public class RepoRepositorio implements CrudRepository<Repositorio,Long>{
         }
     }
 
+    /**
+     * Actualiza un Repositorio y si no se encuentra lo almacena
+     * @param repositorio Repositorio
+     * @return Optional<Repositorio>
+     * @throws SQLException Exception
+     */
     @Override
     public Optional<Repositorio> update(Repositorio repositorio) throws SQLException {
         HibernateController hc = HibernateController.getInstance();
@@ -78,6 +101,12 @@ public class RepoRepositorio implements CrudRepository<Repositorio,Long>{
         }
     }
 
+    /**
+     * Elimina un Repositorio de la BD
+     * @param repositorio Repositorio
+     * @return Optional<Repositorio>
+     * @throws SQLException Exception
+     */
     @Override
     public Optional<Repositorio> delete(Repositorio repositorio) throws SQLException {
         HibernateController hc = HibernateController.getInstance();

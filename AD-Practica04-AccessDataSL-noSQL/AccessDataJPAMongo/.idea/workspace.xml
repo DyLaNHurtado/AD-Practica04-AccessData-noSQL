@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="ANALYZE_TEST_SOURCES" value="false" />
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b1d6543f-939c-48bb-ba7d-468f26de63d4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/AccessDataJPAMongo.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/AccessDataJPAMongo.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/App.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Facade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Facade.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/CommitController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/CommitController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/DepartamentoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/DepartamentoController.java" afterDir="false" />
@@ -18,28 +20,6 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/ProgramadorController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ProgramadorController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/ProyectoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/ProyectoController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/controller/RepositorioController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/controller/RepositorioController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/Commit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/Commit.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/Departamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/Departamento.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/Empleado.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/Empleado.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/Issue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/Issue.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/JefeDepartamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/JefeDepartamento.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/JefeProyecto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/JefeProyecto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/Login.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/Login.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/Programador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/Programador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/Proyecto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/Proyecto.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dao/Repositorio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dao/Repositorio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dto/CommitDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/CommitDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dto/DepartamentoDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/DepartamentoDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dto/IssueDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/IssueDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dto/JefeDepartamentoDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/JefeDepartamentoDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dto/JefeProyectoDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/JefeProyectoDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dto/LoginDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/LoginDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dto/ProgramadorDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/ProgramadorDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dto/ProyectoDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/ProyectoDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dto/RepositorioDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dto/RepositorioDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/manager/HibernateController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/manager/HibernateController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/manager/MongoDBController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/manager/MongoDBController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/mapper/BaseMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mapper/BaseMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mapper/CommitMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mapper/CommitMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mapper/DepartamentoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mapper/DepartamentoMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mapper/IssueMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mapper/IssueMapper.java" afterDir="false" />
@@ -49,7 +29,6 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/mapper/ProgramadorMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mapper/ProgramadorMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mapper/ProyectoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mapper/ProyectoMapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/mapper/RepositorioMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/mapper/RepositorioMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/repository/CrudRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/CrudRepository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/repository/RepoCommit.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/RepoCommit.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/repository/RepoDepartamento.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/RepoDepartamento.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/repository/RepoIssue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/RepoIssue.java" afterDir="false" />
@@ -59,7 +38,6 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/repository/RepoProgramador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/RepoProgramador.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/repository/RepoProyecto.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/RepoProyecto.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/repository/RepoRepositorio.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/repository/RepoRepositorio.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/BaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/BaseService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/service/CommitService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/CommitService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/service/DepartamentoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/DepartamentoService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/service/IssueService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/IssueService.java" afterDir="false" />
@@ -69,9 +47,7 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/service/ProgramadorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/ProgramadorService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/service/ProyectoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/ProyectoService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/service/RepositorioService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/RepositorioService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/utils/ApplicationProperties.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/ApplicationProperties.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/utils/Cifrador.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/utils/Cifrador.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/test_integracion/CommitTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/test_integracion/CommitTest.java" afterDir="false" />
     </list>
     <list id="0ac49d98-7f30-4876-9919-c2fa57d4a810" name="Changes by DyLaN" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -238,6 +214,7 @@
       <workItem from="1643829733813" duration="11782000" />
       <workItem from="1643883957915" duration="605000" />
       <workItem from="1643888337089" duration="6380000" />
+      <workItem from="1643901432376" duration="7141000" />
     </task>
     <servers />
   </component>

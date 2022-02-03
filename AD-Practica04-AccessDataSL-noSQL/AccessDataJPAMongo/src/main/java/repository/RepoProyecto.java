@@ -14,6 +14,12 @@ import java.util.stream.Collectors;
  * @verion 1.0 03/02/2022
  */
 public class RepoProyecto implements CrudRepository<Proyecto, Long> {
+
+    /**
+     * Coge todos los Proyecto de la DB
+     * @return Optional<List<Proyecto>>
+     * @throws SQLException Exception
+     */
     @Override
     public Optional<List<Proyecto>> getAll() throws SQLException {
         HibernateController hc = HibernateController.getInstance();
@@ -24,6 +30,12 @@ public class RepoProyecto implements CrudRepository<Proyecto, Long> {
         return Optional.of(list);
     }
 
+    /**
+     * Devuelve un Proyecto a partir de una ID
+     * @param id Long
+     * @return Optional<Proyecto>
+     * @throws SQLException Exception
+     */
     @Override
     public Optional<Proyecto> getById(Long id) throws SQLException {
         HibernateController hc = HibernateController.getInstance();
@@ -36,6 +48,12 @@ public class RepoProyecto implements CrudRepository<Proyecto, Long> {
         throw new SQLException("Error RepoIssue no existe proyecto con ID: " + id);
     }
 
+    /**
+     * Guarda un Proyecto en la BD
+     * @param proyecto Proyecto
+     * @return Optional<Proyecto>
+     * @throws SQLException Exception
+     */
     @Override
     public Optional<Proyecto> save(Proyecto proyecto) throws SQLException {
         HibernateController hc = HibernateController.getInstance();
@@ -57,6 +75,12 @@ public class RepoProyecto implements CrudRepository<Proyecto, Long> {
         }
     }
 
+    /**
+     * Actualiza un Proyecto y si no se encuentra lo almacena
+     * @param proyecto Proyecto
+     * @return Optional<Proyecto>
+     * @throws SQLException Exception
+     */
     @Override
     public Optional<Proyecto> update(Proyecto proyecto) throws SQLException {
         HibernateController hc = HibernateController.getInstance();
@@ -77,6 +101,12 @@ public class RepoProyecto implements CrudRepository<Proyecto, Long> {
         }
     }
 
+    /**
+     * Elimina un Proyecto de la BD
+     * @param proyecto Proyecto
+     * @return Optional<Proyecto>
+     * @throws SQLException Exception
+     */
     @Override
     public Optional<Proyecto> delete(Proyecto proyecto) throws SQLException {
 
@@ -98,31 +128,4 @@ public class RepoProyecto implements CrudRepository<Proyecto, Long> {
             hc.close();
         }
     }
-
-
-    //Operacion 5
-
-    //Obtener los tres proyectos más caros en base a su presupuesto asignado y el salario
-    //de cada trabajador que participa
-
-    public Optional<List<Object>> getProyectosMasCaros() throws SQLException {
-
-
-        if (this.getAll().isPresent()) {
-            List<Proyecto> proyCaros = this.getAll().get().stream()
-                    .sorted(Comparator.comparingDouble(Proyecto::getPresupuesto).reversed())
-                    .limit(3).collect(Collectors.toList());
-            List<Double> salarios = new ArrayList<>();
-            proyCaros.forEach(x -> {
-                List<Programador> programadores = x.getProgramadores();
-                programadores.forEach(s -> salarios.add(s.getSalario()));
-
-            });
-
-            return Optional.of(List.of(proyCaros, salarios));
-        }
-        System.out.println("No se han encontrado los tres proyectos mas caros y salarios getProyectosMasCaros");
-        return Optional.empty();
-    }
-
 }

@@ -18,15 +18,18 @@ public class JefeDepartamentoService extends BaseService<JefeDepartamento, Long,
 
     private JefeDepartamentoMapper mapper=new JefeDepartamentoMapper();
 
+    /**
+     * Constructor con inyección de dependencias
+     * @param repository JefeDepartamentoService
+     */
     public JefeDepartamentoService(RepoJefeDepartamento repository) {
         super(repository);
     }
 
     /**
-     * Mapea todos los jefes de departamento a DTO
-     *
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Mapea una lista de JefeDepartamento a JefeDepartamentoDTO
+     * @return Optional<List<JefeDepartamentoDTO>>
+     * @throws SQLException Exception
      */
     public Optional<List<JefeDepartamentoDTO>> getAllJefeDepartamento() throws SQLException {
 
@@ -34,10 +37,10 @@ public class JefeDepartamentoService extends BaseService<JefeDepartamento, Long,
     }
 
     /**
-     * Mapea un jefe de departamento por id a DTO
-     *
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Mapea un JefeDepartamento a JefeDepartamentoDTO a partir de una ID
+     * @param id de JefeDepartamento
+     * @return JefeDepartamentoDTO
+     * @throws SQLException Exception
      */
     public JefeDepartamentoDTO getJefeDepartamentoById(long id) throws SQLException {
 
@@ -45,10 +48,10 @@ public class JefeDepartamentoService extends BaseService<JefeDepartamento, Long,
     }
 
     /**
-     * Mapea el save de jefe de departamento a DTO
-     *
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Mapea el JefeDepartamento de save a JefeDepartamentoDTO
+     * @param jefeDepartamentoDTO JefeDepartamentoDTO
+     * @return JefeDepartamentoDTO
+     * @throws SQLException Exception
      */
     public JefeDepartamentoDTO postJefeDepartamento(JefeDepartamentoDTO jefeDepartamentoDTO) throws SQLException {
         Optional<JefeDepartamento> res = this.save(mapper.fromDTO(jefeDepartamentoDTO));
@@ -56,10 +59,10 @@ public class JefeDepartamentoService extends BaseService<JefeDepartamento, Long,
     }
 
     /**
-     * Mapea el update de jefe de departamento a DTO
-     *
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Mapea el update de JefeDepartamento a JefeDepartamentoDTO
+     * @param jefeDepartamentoDTO JefeDepartamento
+     * @return JefeDepartamentoDTO
+     * @throws SQLException Exception
      */
     public JefeDepartamentoDTO updateJefeDepartamento(JefeDepartamentoDTO jefeDepartamentoDTO) throws SQLException {
         Optional<JefeDepartamento> res = this.update(mapper.fromDTO(jefeDepartamentoDTO));
@@ -67,10 +70,10 @@ public class JefeDepartamentoService extends BaseService<JefeDepartamento, Long,
     }
 
     /**
-     * Mapea el delete de jefe de departamento a DTO
-     *
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Mapea el delete de JefeDepartamento a JefeDepartamentoDTO
+     * @param jefeDepartamentoDTO JefeDepartamentoDTO
+     * @return JefeDepartamentoDTO
+     * @throws SQLException Exception
      */
     public JefeDepartamentoDTO deleteJefeDepartamento(JefeDepartamentoDTO jefeDepartamentoDTO) throws SQLException {
         Optional<JefeDepartamento> res = this.delete(mapper.fromDTO(jefeDepartamentoDTO));
