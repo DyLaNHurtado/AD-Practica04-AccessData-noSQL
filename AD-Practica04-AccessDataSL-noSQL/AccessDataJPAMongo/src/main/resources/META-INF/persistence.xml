@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
+             version="2.2">
+    <persistence-unit name="default">
+        <provider>org.hibernate.ogm.jpa.HibernateOgmPersistence</provider>
+        <class>dao.Commit</class>
+        <class>dao.Departamento</class>
+        <class>dao.Empleado</class>
+        <class>dao.Issue</class>
+        <class>dao.JefeDepartamento</class>
+        <class>dao.JefeProyecto</class>
+        <class>dao.Login</class>
+        <class>dao.Programador</class>
+        <class>dao.Proyecto</class>
+        <class>dao.Repositorio</class>
+        <properties>
+            <property name="hibernate.ogm.datastore.provider" value="mongodb" />
+            <property name="hibernate.ogm.datastore.database" value="mongodb" />
+            <property name="hibernate.ogm.datastore.host" value="127.0.0.1" />
+            <property name="hibernate.ogm.datastore.port" value="27017" />
+            <property name="hibernate.ogm.datastore.username" value="mongoadmin" />
+            <property name="hibernate.ogm.datastore.password" value="mongopass" />
+            <property name="hibernate.jdbc.time_zone" value="UTC"/>
+            <property name="hibernate.ogm.datastore.create_database" value="true" />
+        </properties>
+    </persistence-unit>
+</persistence>
