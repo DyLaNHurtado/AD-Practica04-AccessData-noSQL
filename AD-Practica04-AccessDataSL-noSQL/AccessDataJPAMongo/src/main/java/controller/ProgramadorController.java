@@ -6,6 +6,11 @@ import service.ProgramadorService;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * Controlador de Programador
+ * @author Dylan & Emilio
+ * @verion 1.0 03/02/2022
+ */
 public class ProgramadorController {
     private static ProgramadorController controller = null;
 

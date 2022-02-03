@@ -9,6 +9,11 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Repositorio de Departamento
+ * @author Dylan & Emilio
+ * @verion 1.0 03/02/2022
+ */
 public class RepoDepartamento implements CrudRepository<Departamento, Long> {
     @Override
     public Optional<List<Departamento>> getAll() throws SQLException {

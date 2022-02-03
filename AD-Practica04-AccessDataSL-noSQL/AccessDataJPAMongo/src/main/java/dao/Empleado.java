@@ -4,6 +4,11 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.List;
 
+/**
+ * Clase padre Empleado
+ * @author Dylan & Emilio
+ * @verion 1.0 03/02/2022
+ */
 @MappedSuperclass
 public abstract class Empleado {
 
@@ -13,8 +18,10 @@ public abstract class Empleado {
     private Double salario;
     private List<String> tecnologias;
 
-    public Empleado() {
-    }
+    /**
+     * Constructor vacío
+     */
+    public Empleado() {}
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)

@@ -9,6 +9,11 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Repositorio de Repositorio
+ * @author Dylan & Emilio
+ * @verion 1.0 03/02/2022
+ */
 public class RepoRepositorio implements CrudRepository<Repositorio,Long>{
     @Override
     public Optional<List<Repositorio>> getAll() throws SQLException {

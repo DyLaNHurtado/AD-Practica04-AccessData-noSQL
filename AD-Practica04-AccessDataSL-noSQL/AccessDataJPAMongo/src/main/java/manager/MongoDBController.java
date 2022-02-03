@@ -19,12 +19,14 @@ import static org.bson.codecs.configuration.CodecRegistries.fromProviders;
 import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
 
 /**
- * Controllador de Bases de Datos NoSQL MongoDEB
+ * Controlador de la base de datos NoSQL MongoDB
+ * @author Dylan & Emilio
+ * @verion 1.0 03/02/2022
  */
 public class MongoDBController {
+
     private static MongoDBController controller;
 
-    // Para las conexiones
     private String serverUrl;
     private String serverPort;
     private String dataBaseName;
@@ -38,14 +40,16 @@ public class MongoDBController {
 
     MongoClient mongoClient;
 
+    /**
+     * Constructor privado
+     */
     private MongoDBController() {
         initConfig();
     }
 
     /**
-     * Devuelve una instancia del controladro MongoDB
-     *
-     * @return instancia del controlador MongoDB
+     * Patron Singleton
+     * @return MongoDBController
      */
     public static MongoDBController getInstance() {
         if (controller == null) {
@@ -55,24 +59,17 @@ public class MongoDBController {
     }
 
     /**
-     * Carga la configuración de acceso al servidor de Base de Datos
-     * Puede ser directa "hardcodeada" o asignada dinámicamente a traves de ficheros .env o properties
+     * Inicia la configuración para la conexión a la BD
      */
     private void initConfig() {
-        // Leemos los datos de la base de datos que pueden estar en
-        // porperties o en .env
-        // imaginemos que el usuario y pasword estaán en .env y el resto en application.properties
-        // si no los rellenamos aquí.
         serverUrl = "localhost";
         serverPort = "27017";
         dataBaseName = "mongodb";
         user = "mongoadmin";
         password = "mongopass";
         connectionString = new ConnectionString("mongodb://" + user + ":" + password + "@" + serverUrl + ":" + serverPort + "/" + dataBaseName + "?authSource=admin");
-
         pojoCodecRegistry = fromProviders(PojoCodecProvider.builder().automatic(true).build());
         codecRegistry = fromRegistries(MongoClientSettings.getDefaultCodecRegistry(), pojoCodecRegistry);
-        // Configuramos el conector de Mongo
         clientSettings = MongoClientSettings.builder()
                 .applyConnectionString(connectionString)
                 .codecRegistry(codecRegistry)
@@ -80,23 +77,22 @@ public class MongoDBController {
     }
 
     /**
-     * Abre una conexión con la base ed datos
+     * Abre una conexión con la BD
      */
     public void open() {
         this.mongoClient = MongoClients.create(clientSettings);
     }
 
     /**
-     * Cierra la conexión con la base e datos
+     * Cierra la conexión con la BD
      */
     public void close() {
         if (mongoClient != null) mongoClient.close();
     }
 
     /**
-     * Devuelve el conjunto de Bases de datos Existentes
-     *
-     * @return Conjunto de Bases de Datos existentes
+     * Devuelve una lista de las bases de datos de la BD
+     * @return Optional<List<Document>>
      */
     public Optional<List<Document>> getDataBases() {
         return Optional.of(mongoClient.listDatabases().into(new ArrayList<>()));
@@ -104,7 +100,6 @@ public class MongoDBController {
 
     /**
      * Elimina una base de datos
-     *
      * @param dataBaseName Nombre de la Base de Datos
      */
     public void removeDataBase(@NonNull String dataBaseName) {
@@ -114,8 +109,7 @@ public class MongoDBController {
 
     /**
      * Elimina una colleción de una base de datos
-     *
-     * @param dataBaseName   Nombre de la Base de Datos
+     * @param dataBaseName Nombre de la Base de Datos
      * @param collectionName Nombre de la Colección
      */
     public void removeCollection(@NonNull String dataBaseName, @NonNull String collectionName) {
@@ -123,6 +117,14 @@ public class MongoDBController {
         dataBase.getCollection(collectionName).drop();
     }
 
+    /**
+     * Devuelve una Colección de la BD
+     * @param dataBaseName
+     * @param collectionName
+     * @param aClass
+     * @param <TDocument>
+     * @return TDocument
+     */
     public <TDocument> MongoCollection<TDocument> getCollection(@NonNull String dataBaseName,
                                                                 @NonNull String collectionName,
                                                                 @NonNull java.lang.Class<TDocument> aClass) {

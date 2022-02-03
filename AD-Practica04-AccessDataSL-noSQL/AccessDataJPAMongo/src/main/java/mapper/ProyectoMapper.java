@@ -3,6 +3,11 @@ package mapper;
 import dto.ProyectoDTO;
 import dao.Proyecto;
 
+/**
+ * Mapper de Proyecto
+ * @author Dylan & Emilio
+ * @verion 1.0 03/02/2022
+ */
 public class ProyectoMapper extends BaseMapper<Proyecto, ProyectoDTO> {
 
     @Override

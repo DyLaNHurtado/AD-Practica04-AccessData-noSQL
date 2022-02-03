@@ -1,20 +1,24 @@
 package dao;
 
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
 import java.util.UUID;
 
+/**
+ * DAO de Login
+ * @author Dylan & Emilio
+ * @verion 1.0 03/02/2022
+ */
 @AllArgsConstructor
+@NoArgsConstructor
 public class Login {
 
     private long id;
     private Timestamp fecha;
     private UUID token;
     private Boolean isActivo;
-
-    public Login() {
-    }
 
     public long getId() {
         return id;

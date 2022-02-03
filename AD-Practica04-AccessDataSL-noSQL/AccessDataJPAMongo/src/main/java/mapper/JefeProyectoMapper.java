@@ -3,6 +3,11 @@ package mapper;
 import dao.JefeProyecto;
 import dto.JefeProyectoDTO;
 
+/**
+ * Mapper de JefeProyecto
+ * @author Dylan & Emilio
+ * @verion 1.0 03/02/2022
+ */
 public class JefeProyectoMapper extends BaseMapper<JefeProyecto, JefeProyectoDTO> {
     @Override
     public JefeProyecto fromDTO(JefeProyectoDTO item) {

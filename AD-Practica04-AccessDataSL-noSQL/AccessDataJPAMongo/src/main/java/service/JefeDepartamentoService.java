@@ -9,6 +9,11 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Servicio de JefeDepartamento
+ * @author Dylan & Emilio
+ * @verion 1.0 03/02/2022
+ */
 public class JefeDepartamentoService extends BaseService<JefeDepartamento, Long, RepoJefeDepartamento>{
 
     private JefeDepartamentoMapper mapper=new JefeDepartamentoMapper();

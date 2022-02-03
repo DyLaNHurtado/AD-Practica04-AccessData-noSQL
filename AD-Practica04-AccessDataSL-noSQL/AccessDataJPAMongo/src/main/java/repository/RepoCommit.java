@@ -6,7 +6,18 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Repositorio de Commit
+ * @author Dylan & Emilio
+ * @verion 1.0 03/02/2022
+ */
 public class RepoCommit implements CrudRepository<Commit,Long>{
+
+    /**
+     * Coge todos los Commit de la DB
+     * @return Optional<List<Commit>>
+     * @throws SQLException
+     */
     @Override
     public Optional<List<Commit>> getAll() throws SQLException {
         HibernateController hc = HibernateController.getInstance();
@@ -16,6 +27,12 @@ public class RepoCommit implements CrudRepository<Commit,Long>{
         return Optional.of(list);
     }
 
+    /**
+     * Devuelve un Commit a partir de una ID
+     * @param id Long
+     * @return Optional<Commit>
+     * @throws SQLException
+     */
     @Override
     public Optional<Commit> getById(Long id) throws SQLException {
         HibernateController hc = HibernateController.getInstance();
@@ -28,6 +45,12 @@ public class RepoCommit implements CrudRepository<Commit,Long>{
         throw new SQLException("Error RepoCommit no existe Commit con ID: " + id);
     }
 
+    /**
+     * Guarda un commit en la BD
+     * @param commit
+     * @return Optional<Commit>
+     * @throws SQLException
+     */
     @Override
     public Optional<Commit> save(Commit commit) throws SQLException {
         HibernateController hc = HibernateController.getInstance();
@@ -48,6 +71,12 @@ public class RepoCommit implements CrudRepository<Commit,Long>{
         }
     }
 
+    /**
+     * Actualiza un commit y si no se encuentra lo almacena
+     * @param commit
+     * @return Optional<Commit>
+     * @throws SQLException
+     */
     @Override
     public Optional<Commit> update(Commit commit) throws SQLException {
         HibernateController hc = HibernateController.getInstance();
@@ -68,6 +97,12 @@ public class RepoCommit implements CrudRepository<Commit,Long>{
         }
     }
 
+    /**
+     * Elimina un Commit de la BD
+     * @param commit
+     * @return Optional<Commit>
+     * @throws SQLException
+     */
     @Override
     public Optional<Commit> delete(Commit commit) throws SQLException {
         HibernateController hc = HibernateController.getInstance();

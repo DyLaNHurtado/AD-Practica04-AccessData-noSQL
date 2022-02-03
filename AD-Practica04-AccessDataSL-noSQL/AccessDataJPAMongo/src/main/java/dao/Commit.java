@@ -1,16 +1,23 @@
 package dao;
 
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
 
+/**
+ * DAO de Commit
+ * @author Dylan & Emilio
+ * @verion 1.0 03/02/2022
+ */
 @Entity
 @Table(name = "commit")
 @NamedQueries({
         @NamedQuery(name = "Commit.getAll", query = "SELECT c FROM dao.Commit c")
 })
 @AllArgsConstructor
+@NoArgsConstructor
 public class Commit {
 
     private long id;
@@ -21,10 +28,12 @@ public class Commit {
     private Repositorio repositorio;
     private Programador programador;
 
-    public Commit() {
-    }
-
-    //testing
+    /**
+     * Constructor para comprobaciones
+     * @param titulo
+     * @param texto
+     * @param fecha
+     */
     public Commit(String titulo, String texto, Timestamp fecha) {
         this.titulo = titulo;
         this.texto = texto;
@@ -99,6 +108,7 @@ public class Commit {
         this.programador = programador;
     }
 
+    @Override
     public String toString(){
         return "Commit{id="+this.id
                 +", titulo="+this.titulo

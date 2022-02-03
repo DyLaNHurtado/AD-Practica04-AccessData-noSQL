@@ -14,6 +14,11 @@ import java.util.Optional;
 
 import static com.mongodb.client.model.Filters.eq;
 
+/**
+ * Repositorio de Login
+ * @author Dylan & Emilio
+ * @verion 1.0 03/02/2022
+ */
 public class RepoLogin implements CrudRepository<Login, Long> {
     @Override
     public Optional<List<Login>> getAll() throws SQLException {

@@ -4,6 +4,11 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+/**
+ * Estructura de los mapper
+ * @author Dylan & Emilio
+ * @verion 1.0 03/02/2022
+ */
 public abstract class BaseMapper<T, DTO> {
     public Optional<List<T>> fromDTO(List<DTO> items) {
         // hace falta meter cosas al dto

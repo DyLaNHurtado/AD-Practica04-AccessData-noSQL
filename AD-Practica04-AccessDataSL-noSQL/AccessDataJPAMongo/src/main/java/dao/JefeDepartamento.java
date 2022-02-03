@@ -1,19 +1,23 @@
 package dao;
 
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
+/**
+ * DAO de JefeDepartamento
+ * @author Dylan & Emilio
+ * @verion 1.0 03/02/2022
+ */
 @Entity
 @Table(name = "jefe_departamento")
 @NamedQueries({
         @NamedQuery(name = "JefeDepartamento.getAll", query = "SELECT jd FROM dao.JefeDepartamento jd")
 })
+@NoArgsConstructor
 public class JefeDepartamento extends Empleado{
 
     private Departamento departamento;
-
-    public JefeDepartamento(){
-    }
-
 
     @OneToOne(mappedBy = "jefeDepartamento",cascade = CascadeType.ALL)
     public Departamento getDepartamento() {

@@ -1,18 +1,25 @@
 package dao;
 
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * DAO de Issue
+ * @author Dylan & Emilio
+ * @verion 1.0 03/02/2022
+ */
 @Entity
 @Table(name="issue")
 @NamedQueries({
         @NamedQuery(name = "Issue.getAll", query = "SELECT i FROM dao.Issue i")
 })
 @AllArgsConstructor
+@NoArgsConstructor
 public class Issue {
 
     private long id;
@@ -25,9 +32,13 @@ public class Issue {
     private Repositorio repositorio;
     private Commit commit;
 
-    public Issue() {
-    }
-
+    /**
+     * Constructor para comprobaciones
+     * @param titulo
+     * @param texto
+     * @param fecha
+     * @param resuelta
+     */
     public Issue(String titulo, String texto, Timestamp fecha, Boolean resuelta) {
         this.titulo = titulo;
         this.texto = texto;
@@ -119,6 +130,7 @@ public class Issue {
         this.commit = commit;
     }
 
+    @Override
     public String toString(){
         return "Issue{id="+this.id
                 +", titulo="+this.titulo

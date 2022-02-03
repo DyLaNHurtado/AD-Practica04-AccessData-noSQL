@@ -3,6 +3,11 @@ package mapper;
 import dao.JefeDepartamento;
 import dto.JefeDepartamentoDTO;
 
+/**
+ * Mapper de JefeDepartamento
+ * @author Dylan & Emilio
+ * @verion 1.0 03/02/2022
+ */
 public class JefeDepartamentoMapper extends BaseMapper<JefeDepartamento, JefeDepartamentoDTO> {
 
     @Override

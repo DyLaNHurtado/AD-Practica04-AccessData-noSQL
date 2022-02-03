@@ -3,6 +3,11 @@ package mapper;
 import dao.Login;
 import dto.LoginDTO;
 
+/**
+ * Mapper de Login
+ * @author Dylan & Emilio
+ * @verion 1.0 03/02/2022
+ */
 public class LoginMapper extends BaseMapper<Login, LoginDTO> {
     @Override
     public Login fromDTO(LoginDTO item) {

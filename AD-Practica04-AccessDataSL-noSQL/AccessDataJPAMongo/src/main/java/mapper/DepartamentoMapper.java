@@ -3,6 +3,11 @@ package mapper;
 import dto.DepartamentoDTO;
 import dao.Departamento;
 
+/**
+ * Mapper de Departamento
+ * @author Dylan & Emilio
+ * @verion 1.0 03/02/2022
+ */
 public class DepartamentoMapper extends BaseMapper<Departamento, DepartamentoDTO> {
 
     @Override

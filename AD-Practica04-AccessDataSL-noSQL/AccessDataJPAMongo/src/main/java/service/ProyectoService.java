@@ -9,6 +9,11 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Servicio de Proyecto
+ * @author Dylan & Emilio
+ * @verion 1.0 03/02/2022
+ */
 public class ProyectoService extends BaseService<Proyecto, Long, RepoProyecto> {
 
     ProyectoMapper mapper = new ProyectoMapper();

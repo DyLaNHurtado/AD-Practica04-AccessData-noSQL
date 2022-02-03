@@ -4,6 +4,11 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Comportamiento de los repositorios CRUD
+ * @author Dylan & Emilio
+ * @verion 1.0 03/02/2022
+ */
 public interface CrudRepository<T, ID> {
 
     // Operaciones CRUD

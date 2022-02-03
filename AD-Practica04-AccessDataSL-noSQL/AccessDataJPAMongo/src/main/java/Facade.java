@@ -6,11 +6,8 @@ import com.mongodb.client.MongoDatabase;
 import controller.*;
 import dao.*;
 import dto.*;
-import jdk.swing.interop.SwingInterOpUtils;
 import manager.HibernateController;
 import manager.MongoDBController;
-import repository.RepoLogin;
-import service.LoginService;
 import utils.Cifrador;
 
 import java.sql.Timestamp;
@@ -19,17 +16,21 @@ import java.time.LocalDateTime;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * Fachada del programa
+ * @author Dylan & Emilio
+ * @verion 1.0 03/02/2022
+ */
 public class Facade {
     private static Facade instance;
 
-    private Facade() {
-    }
+    /**
+     * Constructor privado
+     */
+    private Facade() {}
 
     /**
      * Patron Singleton
-     *
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
      */
     public static Facade getInstance() {
         if (instance == null) {
@@ -38,13 +39,15 @@ public class Facade {
         return instance;
     }
 
+    /**
+     * Datos por defecto al inicializar el programa
+     */
     public void initDataBase() {
-        // Borramos los datos previos
         removeData();
 
         HibernateController hc = HibernateController.getInstance();
         hc.open();
-        // Commit
+
         Commit c1 = new Commit("Titulo1", "Texto1", Timestamp.from(Instant.now()));
         Commit c2 = new Commit("Titulo2", "Texto2", Timestamp.from(Instant.now()));
         Departamento d1 = new Departamento("Pepe Perez", 100d, 1000d);
@@ -63,7 +66,6 @@ public class Facade {
         Proyecto proy2 = new Proyecto("Proyecto Y", 300d, Timestamp.from(Instant.now()), Timestamp.from(Instant.now()));//15
         Repositorio rep1 = new Repositorio("Repo 1", Timestamp.from(Instant.now()));//15
         Repositorio rep2 = new Repositorio("Repo 2", Timestamp.from(Instant.now()));//15
-
 
         //Commit
         c1.setIssue(i1);
@@ -122,6 +124,7 @@ public class Facade {
         jp1.setIssues(List.of(i2));
 
         //Programador
+
         pro1.setNombre("Manolo");
         pro2.setNombre("Casemiro");
         pro1.setFechaAlta(Timestamp.from(Instant.now()));
@@ -144,6 +147,7 @@ public class Facade {
         pro2.setIssues(List.of(i2));
 
         //Proyecto
+
         proy1.setTecnologias(List.of("Flutter", "MongoDB"));
         proy2.setTecnologias(List.of("Angular", "Spring"));
         proy1.setJefe(jp1);
@@ -194,14 +198,18 @@ public class Facade {
 
         hc.close();
 
+        //Login
+
         MongoDBController mongoController = MongoDBController.getInstance();
         mongoController.open();
         MongoCollection<Login> loginCollection = mongoController.getCollection("mongodb", "login", Login.class);
         loginCollection.insertMany(List.of(login1, login2));
         mongoController.close();
-
     }
 
+    /**
+     * Vacía la base de datos
+     */
     private void removeData() {
         ConnectionString connectionString = new ConnectionString("mongodb://mongoadmin:mongopass@localhost/mongodb?authSource=admin");
         MongoClient mongoClient = MongoClients.create(connectionString);
@@ -209,6 +217,9 @@ public class Facade {
         mongoDB.drop();
     }
 
+    /**
+     * Cuerpo principal del programa
+     */
     public void body() {
         Scanner sc = new Scanner(System.in);
         boolean login = login();
@@ -241,7 +252,6 @@ public class Facade {
                         break;
                     case 8:
                         System.out.println("Saliste con éxito.");
-                        //System.exit(0);
                         break;
                     default:
                         System.out.println("Opción incorrecta.");
@@ -253,6 +263,10 @@ public class Facade {
         }
     }
 
+    /**
+     * Manejo de Login del programa
+     * @return boolean
+     */
     private boolean login() {
         Scanner sc = new Scanner(System.in);
         System.out.println("Introduce tu email: ");
@@ -264,9 +278,9 @@ public class Facade {
         ProgramadorController programadorController = ProgramadorController.getInstance();
         Cifrador cifrador = new Cifrador();
         List<ProgramadorDTO> programadores = programadorController.getAllProgramadores();
-        System.out.println(cifrador.toSHA512(passwd));
+        System.out.println(cifrador.toSHA256(passwd));
         for (ProgramadorDTO x : programadores) {
-            if (x.getEmail().equals(email) && x.getPassword().equals(cifrador.toSHA512(passwd))) {
+            if (x.getEmail().equals(email) && x.getPassword().equals(cifrador.toSHA256(passwd))) {
                 loginController.postLogin(new LoginDTO(cont + 1L, Timestamp.from(Instant.now()), UUID.randomUUID(), true));
                 return true;
             }
@@ -274,6 +288,9 @@ public class Facade {
         return false;
     }
 
+    /**
+     * Menu de opciones del programa
+     */
     private void menu() {
         System.out.println("\t---   MENU    ---");
         System.out.println("1.- Información departamento completo.");
@@ -288,12 +305,18 @@ public class Facade {
 
     }
 
+    /**
+     * Información del departamento completa
+     */
     private void departamentoCompleto() {
         System.out.println("Departamento con información completa.");
         DepartamentoController controller = DepartamentoController.getInstance();
         System.out.println(controller.getAllDepartamentos().get(0).getDepartamentoCompleto());
     }
 
+    /**
+     * Issues abiertas por proyecto
+     */
     private void issuesPorProyecto() {
         System.out.println("Issues abiertas por proyecto.");
         ProyectoController controller = ProyectoController.getInstance();
@@ -302,18 +325,27 @@ public class Facade {
                 .forEach(p -> System.out.println(p.issuesAbiertas()));
     }
 
+    /**
+     * Programadores por proyecto ordenados
+     */
     private void programadoresProyectoOrdenados() {
         System.out.println("Programadores de un proyecto ordenados por número de commits.");
         ProyectoController controller = ProyectoController.getInstance();
         controller.getAllProyectos().forEach(p -> System.out.println(p.ordenarProgramadoresCommit()));
     }
 
+    /**
+     * Información completa de los programadores
+     */
     private void programadoresCompletos() {
         System.out.println("Programadores con productividad completa.");
         ProgramadorController controller = ProgramadorController.getInstance();
         controller.getAllProgramadores().forEach(p -> System.out.println(p.programadorCompleto()));
     }
 
+    /**
+     * Los 3 proyectos más caros
+     */
     private void proyectosMasCaros() {
         System.out.println("Los 3 proyectos mas caros y el salario de sus programadores.");
         ProyectoController controller = ProyectoController.getInstance();
@@ -321,22 +353,25 @@ public class Facade {
                 .limit(3).collect(Collectors.toList()).forEach(p -> System.out.println(p.programadoresSalario()));
     }
 
+    /**
+     * Información de los proyectos completa
+     */
     private void proyectosCompletos() {
         System.out.println("Proyectos con información completa.");
         ProyectoController controller = ProyectoController.getInstance();
         controller.getAllProyectos().forEach(p -> System.out.println(p.proyectoCompleto()));
     }
 
+    /**
+     * Login ordenados por programador
+     */
     private void loginCompletosOrdenados() {
 
     }
 
 
     /**
-     * Dar salida al JSON
-     *
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Comprobación del funcionamiento del programa
      */
     public void testingJSON() {
         System.out.println("-------------------------------\n" +
@@ -380,10 +415,7 @@ public class Facade {
     }
 
     /**
-     * Metodos CRUD departamento en JSON
-     *
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Comprobación de Departamento
      */
     private void departamentoJSON() {
         DepartamentoController departamentoController = DepartamentoController.getInstance();
@@ -426,10 +458,7 @@ public class Facade {
     }
 
     /**
-     * Metodos CRUD programador en JSON
-     *
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Comprobación de Programador
      */
     private void programadorJSON() {
         ProgramadorController programadorController = ProgramadorController.getInstance();
@@ -480,10 +509,7 @@ public class Facade {
     }
 
     /**
-     * Metodos CRUD proyecto en XML
-     *
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Comprobación de Proyecto
      */
     private void proyectoJSON() {
         ProyectoController proyectoController = ProyectoController.getInstance();
@@ -528,10 +554,7 @@ public class Facade {
     }
 
     /**
-     * Metodos CRUD jefeProyecto en JSON
-     *
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Comprobación de JefeProyecto
      */
     private void jefeProyectoJSON() {
         JefeProyectoController jefeProyectoController = JefeProyectoController.getInstance();
@@ -573,10 +596,7 @@ public class Facade {
     }
 
     /**
-     * Metodos CRUD jefeDepartamento en JSON
-     *
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Comprobación de JefeDepartamento
      */
     private void jefeDepartamentoJSON() {
         JefeDepartamentoController jefeDepartamentoController = JefeDepartamentoController.getInstance();
@@ -616,10 +636,7 @@ public class Facade {
     }
 
     /**
-     * Metodos CRUD issue en JSON
-     *
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Comprobación de Issue
      */
     private void issueJSON() {
         IssueController issueController = IssueController.getInstance();
@@ -666,10 +683,7 @@ public class Facade {
     }
 
     /**
-     * Metodos CRUD commit en JSON
-     *
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Comprobación de Commit
      */
     private void commitJSON() {
         CommitController commitController = CommitController.getInstance();
@@ -712,10 +726,7 @@ public class Facade {
     }
 
     /**
-     * Metodos CRUD repositorio en JSON
-     *
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Comprobación de Repositorio
      */
     private void repositorioJSON() {
         RepositorioController repositorioController = RepositorioController.getInstance();

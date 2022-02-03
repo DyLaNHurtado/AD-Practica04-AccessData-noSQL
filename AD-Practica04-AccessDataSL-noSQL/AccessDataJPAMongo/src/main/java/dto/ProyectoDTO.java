@@ -9,6 +9,11 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * DTO de Proyecto
+ * @author Dylan & Emilio
+ * @verion 1.0 03/02/2022
+ */
 @Data
 @Builder
 public class ProyectoDTO {

@@ -9,21 +9,27 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Servicio de Commit
+ * @author Dylan & Emilio
+ * @verion 1.0 03/02/2022
+ */
 public class CommitService extends BaseService<Commit, Long, RepoCommit> {
-
 
     CommitMapper mapper = new CommitMapper();
 
-    // Inyección de dependencias en el constructor. El servicio necesita este repositorio
+    /**
+     * Constructor con inyección de dependencias
+     * @param repository RepoCommit
+     */
     public CommitService(RepoCommit repository) {
         super(repository);
     }
 
     /**
-     * Mapea todos los commit a DTO
-     *
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Mapea una lista de Commit a CommitDTO
+     * @return Optional<List<CommitDTO>>
+     * @throws SQLException
      */
     public Optional<List<CommitDTO>> getAllCommits() throws SQLException {
 
@@ -31,10 +37,10 @@ public class CommitService extends BaseService<Commit, Long, RepoCommit> {
     }
 
     /**
-     * Mapea un commit por id a DTO
-     *
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Mapea un Commit a CommitDTO a partir de una ID
+     * @param id de Commit
+     * @return CommitDTO
+     * @throws SQLException
      */
     public CommitDTO getCommitById(long id) throws SQLException {
 
@@ -42,10 +48,10 @@ public class CommitService extends BaseService<Commit, Long, RepoCommit> {
     }
 
     /**
-     * Mapea el save de commit a DTO
-     *
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Mapea el Commit de save a CommitDTO
+     * @param commitDTO
+     * @return CommitDTO
+     * @throws SQLException
      */
     public CommitDTO postCommit(CommitDTO commitDTO) throws SQLException {
         Optional<Commit> res = this.save(mapper.fromDTO(commitDTO));
@@ -53,10 +59,10 @@ public class CommitService extends BaseService<Commit, Long, RepoCommit> {
     }
 
     /**
-     * Mapea el update de commit a DTO
-     *
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Mapea el update de Commit a CommitDTO
+     * @param commitDTO
+     * @return CommitDTO
+     * @throws SQLException
      */
     public CommitDTO updateCommit(CommitDTO commitDTO) throws SQLException {
         Optional<Commit> res = this.update(mapper.fromDTO(commitDTO));
@@ -64,10 +70,10 @@ public class CommitService extends BaseService<Commit, Long, RepoCommit> {
     }
 
     /**
-     * Mapea el delete de commit a DTO
-     *
-     * @author Dylan Hurtado
-     * @version 11/12/2021 - 1.0
+     * Mapea el delete de Commit a CommitDTO
+     * @param commitDTO
+     * @return CommitDTO
+     * @throws SQLException
      */
     public CommitDTO deleteCommit(CommitDTO commitDTO) throws SQLException {
         Optional<Commit> res = this.delete(mapper.fromDTO(commitDTO));

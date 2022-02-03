@@ -7,6 +7,11 @@ import service.JefeProyectoService;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * Controlador de JefeProyecto
+ * @author Dylan & Emilio
+ * @verion 1.0 03/02/2022
+ */
 public class JefeProyectoController {
     private static JefeProyectoController controller;
     private final JefeProyectoService service;

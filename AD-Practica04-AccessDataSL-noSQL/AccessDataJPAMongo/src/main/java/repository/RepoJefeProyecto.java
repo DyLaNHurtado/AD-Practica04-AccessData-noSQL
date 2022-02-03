@@ -9,6 +9,11 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Repositorio de JefeProyecto
+ * @author Dylan & Emilio
+ * @verion 1.0 03/02/2022
+ */
 public class RepoJefeProyecto implements CrudRepository<JefeProyecto,Long> {
     @Override
     public Optional<List<JefeProyecto>> getAll() throws SQLException {

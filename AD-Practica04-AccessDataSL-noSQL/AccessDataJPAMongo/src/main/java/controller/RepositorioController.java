@@ -7,6 +7,11 @@ import service.RepositorioService;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * Controlador de Repositorio
+ * @author Dylan & Emilio
+ * @verion 1.0 03/02/2022
+ */
 public class RepositorioController {
     private static RepositorioController controller = null;
 

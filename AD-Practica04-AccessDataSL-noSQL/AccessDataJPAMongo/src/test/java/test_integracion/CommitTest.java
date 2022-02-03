@@ -36,8 +36,16 @@ public class CommitTest {
         mongoDB.drop();
         mongoDB = mongoClient.getDatabase("test");
         mongoDB.drop();
-        CommitDTO commit1 = new CommitDTO("Prueba1", "Test", Timestamp.valueOf(LocalDateTime.now()));
-        CommitDTO commit2 = new CommitDTO("Prueba2", "Test", Timestamp.valueOf(LocalDateTime.now()));
+        CommitDTO commit1 =CommitDTO.builder()
+                .titulo("Prueba1")
+                .texto("Test")
+                .fecha(Timestamp.valueOf(LocalDateTime.now()))
+                .build();
+        CommitDTO commit2 =CommitDTO.builder()
+                .titulo("Prueba2")
+                .texto("Test")
+                .fecha(Timestamp.valueOf(LocalDateTime.now()))
+                .build();
         hc.open();
         hc.getTransaction().begin();
         hc.getManager().persist(mapper.fromDTO(commit1));
@@ -70,7 +78,11 @@ public class CommitTest {
     @Test
     @Order(4)
     void insert(){
-        CommitDTO commit3=new CommitDTO("Prueba3","Test",Timestamp.valueOf(LocalDateTime.now()));
+        CommitDTO commit3=CommitDTO.builder()
+                .titulo("Prueba3")
+                .texto("Test")
+                .fecha(Timestamp.valueOf(LocalDateTime.now()))
+                .build();
         assertNotNull(cc.postCommit(commit3));
         commit3.setId(3L);
         assertNull(cc.postCommit(commit3));

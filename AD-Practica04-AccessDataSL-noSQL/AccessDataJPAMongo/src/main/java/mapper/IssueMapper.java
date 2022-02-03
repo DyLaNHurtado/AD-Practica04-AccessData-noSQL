@@ -3,6 +3,11 @@ package mapper;
 import dao.Issue;
 import dto.IssueDTO;
 
+/**
+ * Mapper de Issue
+ * @author Dylan & Emilio
+ * @verion 1.0 03/02/2022
+ */
 public class IssueMapper extends BaseMapper<Issue, IssueDTO> {
     @Override
     public Issue fromDTO(IssueDTO item) {

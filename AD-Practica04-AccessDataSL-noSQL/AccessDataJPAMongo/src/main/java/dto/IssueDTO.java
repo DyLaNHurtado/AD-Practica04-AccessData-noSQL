@@ -10,6 +10,11 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * DTO de Issue
+ * @author Dylan & Emilio
+ * @verion 1.0 03/02/2022
+ */
 @Builder
 @Data
 @AllArgsConstructor

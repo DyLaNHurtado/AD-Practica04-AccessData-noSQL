@@ -9,6 +9,11 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Servicio de JefeProyecto
+ * @author Dylan & Emilio
+ * @verion 1.0 03/02/2022
+ */
 public class JefeProyectoService extends BaseService<JefeProyecto, Long, RepoJefeProyecto>{
 
     private JefeProyectoMapper mapper=new JefeProyectoMapper();

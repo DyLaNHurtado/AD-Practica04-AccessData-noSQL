@@ -1,17 +1,24 @@
 package dao;
 
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
 import java.util.List;
 
+/**
+ * DAO de Repositorio
+ * @author Dylan & Emilio
+ * @verion 1.0 03/02/2022
+ */
 @Entity
 @Table(name="repositorio")
 @NamedQueries({
         @NamedQuery(name = "Repositorio.getAll", query = "SELECT r FROM dao.Repositorio r")
 })
 @AllArgsConstructor
+@NoArgsConstructor
 public class Repositorio {
 
     private long id;
@@ -21,8 +28,11 @@ public class Repositorio {
     private List<Issue> issues;
     private List<Commit> commits;
 
-    public Repositorio() {}
-
+    /**
+     * Constructor para comprobaciones
+     * @param nombre
+     * @param fechaCreacion
+     */
     public Repositorio(String nombre, Timestamp fechaCreacion) {
         this.nombre = nombre;
         this.fechaCreacion = fechaCreacion;
@@ -86,6 +96,7 @@ public class Repositorio {
         this.commits = commits;
     }
 
+    @Override
     public String toString(){
         return "Proyecto{id="+this.id
                 +", nombre="+this.nombre

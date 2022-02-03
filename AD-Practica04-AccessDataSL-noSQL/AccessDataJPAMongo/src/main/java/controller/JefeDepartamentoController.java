@@ -7,6 +7,11 @@ import service.JefeDepartamentoService;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * Controlador de JefeDepartamento
+ * @author Dylan & Emilio
+ * @verion 1.0 03/02/2022
+ */
 public class JefeDepartamentoController {
 
     private static JefeDepartamentoController controller = null;

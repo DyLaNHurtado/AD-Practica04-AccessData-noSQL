@@ -9,6 +9,11 @@ import lombok.Data;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * DTO de Departamento
+ * @author Dylan & Emilio
+ * @verion 1.0 03/02/2022
+ */
 @Data
 @Builder
 public class DepartamentoDTO {
@@ -33,6 +38,11 @@ public class DepartamentoDTO {
                 +", programadores="+ programadores.stream().map(Programador::getId).collect(Collectors.toList())
                 +"}";
     }
+
+    /**
+     * toString modificado para mostrar la información de los departamentos
+     * @return String
+     */
     public String getDepartamentoCompleto(){
         return "Departamento{id="+this.id
                 +", \nnombre="+this.nombre

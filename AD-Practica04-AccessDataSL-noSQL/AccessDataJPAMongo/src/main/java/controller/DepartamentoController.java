@@ -7,7 +7,11 @@ import service.DepartamentoService;
 import java.sql.SQLException;
 import java.util.List;
 
-
+/**
+ * Controlador de Departamento
+ * @author Dylan & Emilio
+ * @verion 1.0 03/02/2022
+ */
 public class DepartamentoController {
     private static DepartamentoController controller = null;
 

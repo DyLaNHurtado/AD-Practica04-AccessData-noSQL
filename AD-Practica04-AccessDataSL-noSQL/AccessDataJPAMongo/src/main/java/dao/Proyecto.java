@@ -2,6 +2,7 @@ package dao;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.GeneratorType;
 
 import javax.persistence.*;
@@ -11,8 +12,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * DAO de Proyecto
+ * @author Dylan & Emilio
+ * @verion 1.0 03/02/2022
+ */
 @Builder
 @AllArgsConstructor
+@NoArgsConstructor
 
 @Entity
 @Table(name = "proyecto")
@@ -31,9 +38,13 @@ public class Proyecto implements Serializable {
     private Repositorio repositorio;
     private List<Programador> programadores = new ArrayList<>();
 
-    public Proyecto() {
-    }
-
+    /**
+     * Constructor para comprobaciones
+     * @param nombre
+     * @param presupuesto
+     * @param fechaInicio
+     * @param fechaFin
+     */
     public Proyecto(String nombre, Double presupuesto, Timestamp fechaInicio, Timestamp fechaFin) {
         this.nombre = nombre;
         this.presupuesto = presupuesto;

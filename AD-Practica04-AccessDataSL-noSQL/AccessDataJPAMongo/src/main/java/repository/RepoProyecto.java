@@ -8,6 +8,11 @@ import java.sql.SQLException;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * Repositorio de Proyecto
+ * @author Dylan & Emilio
+ * @verion 1.0 03/02/2022
+ */
 public class RepoProyecto implements CrudRepository<Proyecto, Long> {
     @Override
     public Optional<List<Proyecto>> getAll() throws SQLException {

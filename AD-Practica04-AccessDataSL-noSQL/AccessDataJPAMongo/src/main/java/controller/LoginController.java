@@ -7,6 +7,11 @@ import service.LoginService;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * Controlador de Login
+ * @author Dylan & Emilio
+ * @verion 1.0 03/02/2022
+ */
 public class LoginController {
     private static LoginController controller;
     private final LoginService service;

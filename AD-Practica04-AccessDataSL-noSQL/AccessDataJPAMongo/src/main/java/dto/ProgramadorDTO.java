@@ -8,6 +8,11 @@ import java.sql.Timestamp;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * DTO de Programador
+ * @author Dylan & Emilio
+ * @verion 1.0 03/02/2022
+ */
 @Data
 @Builder
 public class ProgramadorDTO {

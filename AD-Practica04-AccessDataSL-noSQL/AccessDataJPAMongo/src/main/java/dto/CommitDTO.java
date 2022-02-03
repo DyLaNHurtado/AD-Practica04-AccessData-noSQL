@@ -10,6 +10,11 @@ import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
 
+/**
+ * DTO de Commit
+ * @author Dylan & Emilio
+ * @verion 1.0 03/02/2022
+ */
 @Builder
 @Data
 @AllArgsConstructor
@@ -23,13 +28,6 @@ public class CommitDTO {
     private Issue issue;
     private Repositorio repositorio;
     private Programador programador;
-
-    //testing
-    public CommitDTO(String titulo, String texto, Timestamp fecha) {
-        this.titulo = titulo;
-        this.texto = texto;
-        this.fecha = fecha;
-    }
 
     @Override
     public String toString(){

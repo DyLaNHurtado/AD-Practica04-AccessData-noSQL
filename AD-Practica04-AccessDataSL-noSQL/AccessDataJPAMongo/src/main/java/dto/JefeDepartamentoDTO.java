@@ -9,6 +9,11 @@ import lombok.NoArgsConstructor;
 import java.sql.Timestamp;
 import java.util.List;
 
+/**
+ * DTO de JefeDepartamento
+ * @author Dylan & Emilio
+ * @verion 1.0 03/02/2022
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

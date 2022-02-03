@@ -9,6 +9,11 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Servicio de Programador
+ * @author Dylan & Emilio
+ * @verion 1.0 03/02/2022
+ */
 public class ProgramadorService extends BaseService<Programador, Long, RepoProgramador> {
 
     ProgramadorMapper mapper = new ProgramadorMapper();

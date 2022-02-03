@@ -1,18 +1,19 @@
 package service;
 
-import dao.Commit;
 import dao.Login;
-import dto.CommitDTO;
 import dto.LoginDTO;
-import mapper.CommitMapper;
 import mapper.LoginMapper;
-import repository.RepoCommit;
 import repository.RepoLogin;
 
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Servicio de Login
+ * @author Dylan & Emilio
+ * @verion 1.0 03/02/2022
+ */
 public class LoginService extends BaseService<Login, Long, RepoLogin> {
 
 

@@ -1,11 +1,10 @@
-import controller.LoginController;
-import dto.LoginDTO;
-import repository.RepoLogin;
 import utils.ApplicationProperties;
 
-import java.util.List;
-
-
+/**
+ * Contiene el main del programa
+ * @author Dylan & Emilio
+ * @verion 1.0 03/02/2022
+ */
 public class App {
     public static void main(String[] args) {
         ApplicationProperties properties = new ApplicationProperties();
@@ -15,8 +14,7 @@ public class App {
                 " hecho por : " + properties.readProperty("app.autores") + " de " +
                 properties.readProperty("app.curso"));
         Facade facade = Facade.getInstance();
-        
-        // Iniciamos la base de datos al estado original en cada prueba
+
         if (properties.readProperty("database.init").equals("true"))
             facade.initDataBase();
 

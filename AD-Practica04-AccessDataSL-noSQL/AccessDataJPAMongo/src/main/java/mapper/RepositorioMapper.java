@@ -3,6 +3,11 @@ package mapper;
 import dao.Repositorio;
 import dto.RepositorioDTO;
 
+/**
+ * Mapper de Repositorio
+ * @author Dylan & Emilio
+ * @verion 1.0 03/02/2022
+ */
 public class RepositorioMapper  extends BaseMapper<Repositorio, RepositorioDTO> {
     @Override
     public Repositorio fromDTO(RepositorioDTO item) {

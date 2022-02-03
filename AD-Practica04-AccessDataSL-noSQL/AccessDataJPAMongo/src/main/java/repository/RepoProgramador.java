@@ -8,6 +8,11 @@ import javax.persistence.TypedQuery;
 import java.sql.SQLException;
 import java.util.*;
 
+/**
+ * Repositorio de Programador
+ * @author Dylan & Emilio
+ * @verion 1.0 03/02/2022
+ */
 public class RepoProgramador implements CrudRepository<Programador, Long> {
 
     @Override

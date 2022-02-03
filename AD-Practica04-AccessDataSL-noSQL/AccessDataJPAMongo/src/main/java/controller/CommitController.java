@@ -7,6 +7,11 @@ import service.CommitService;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * Controlador de Commit
+ * @author Dylan & Emilio
+ * @verion 1.0 03/02/2022
+ */
 public class CommitController {
     private static CommitController controller;
     private final CommitService service;

@@ -2,13 +2,20 @@ package dao;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * DAO de Departamento
+ * @author Dylan & Emilio
+ * @verion 1.0 03/02/2022
+ */
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
 
 @Entity
@@ -27,9 +34,12 @@ public class Departamento implements Serializable {
     private Double presupuestoAnual;
     private List<Programador> trabajadores = new ArrayList<>();
 
-    public Departamento() {
-    }
-
+    /**
+     * Constructor para comprobaciones
+     * @param nombre
+     * @param presupuesto
+     * @param presupuestoAnual
+     */
     public Departamento(String nombre, Double presupuesto, Double presupuestoAnual) {
         this.nombre = nombre;
         this.presupuesto = presupuesto;

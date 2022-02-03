@@ -2,14 +2,21 @@ package dao;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * DAO de Programador
+ * @author Dylan & Emilio
+ * @verion 1.0 03/02/2022
+ */
 @Builder
 @AllArgsConstructor
+@NoArgsConstructor
 
 @Entity
 @Table(name = "programador")
@@ -17,15 +24,13 @@ import java.util.stream.Collectors;
         @NamedQuery(name = "Programador.getAll", query = "SELECT c FROM dao.Programador c")
 })
 public class Programador extends Empleado implements Serializable {
+
     private String email;
     private String password;
     private Departamento departamento;
     private List<Proyecto> proyectosParticipa;
     private List<Commit> commits;
     private List<Issue> issues;
-
-    public Programador() {
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)

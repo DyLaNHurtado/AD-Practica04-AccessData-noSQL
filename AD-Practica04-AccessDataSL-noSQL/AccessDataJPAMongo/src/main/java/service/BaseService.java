@@ -7,6 +7,11 @@ import java.sql.SQLException;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Estructura de los Servicios
+ * @author Dylan & Emilio
+ * @verion 1.0 03/02/2022
+ */
 @RequiredArgsConstructor
 public abstract class BaseService<T, ID, R extends CrudRepository<T, ID>> {
 
